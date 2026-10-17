@@ -1,0 +1,21 @@
+Package: hotspots
+Type: Package
+Title: Hot and Cold Spot Detection by Iterative Eigenvector Spatial Filtering
+Version: 0.1.0
+Authors@R: c(
+    person("Yandira", "Cuvero", role = c("aut", "cre"), email = "yandira.cuvero@gmail.com"),
+    person("Rowan", "Cherodian", role = "aut"),
+    person("Jorge", "Mateu", role = "aut"),
+    person("Carlos", "Almeida", role = "aut"))
+Description: Reconstructs a sparse spatial graph from the eigenvectors selected by
+    Moran's I Lasso (MI-Lasso), labels cells as hot or cold using the fitted
+    spatial component, and produces a budget-constrained priority list.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports:
+    glmnet (>= 4.1),
+    igraph (>= 1.5),
+    stats
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
