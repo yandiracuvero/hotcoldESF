@@ -11,6 +11,10 @@
 #' @param weight "lambda" (published) or "gamma2"; see [reconstruct_B()].
 #' @param rounding a rounding rule, e.g. [round_quantile()], [round_mixture()],
 #'   [round_permutation()].
+#' @param a exponent of the Lasso penalty, lambda = |z0|^(-a). 2 is the
+#'   MI-Lasso default (Barde et al.); any positive value is allowed.
+#' @param response "std": standardised counts (published); "log": standardised
+#'   log(Y + 1).
 #' @param label_c cells with fhat > label_c are hot, fhat < -label_c are cold.
 #' @param max_iter cap on iterations (default: number of edges of A).
 #' @param standardize passed to glmnet.
@@ -20,6 +24,7 @@
 #' @export
 find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
                           weight = c("lambda", "gamma2"),
+                          a = 2, response = c("std", "log"),
                           rounding = round_quantile(0.75),
                           label_c = 0, max_iter = NULL,
                           standardize = TRUE, mc_min = 0.25,
@@ -28,7 +33,8 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
   stopifnot(isSymmetric(unname(A)), all(A %in% c(0, 1)), all(diag(A) == 0))
   A  <- unname(A)
   n  <- length(Y)
-  Ys <- as.numeric(scale(Y))
+  response <- match.arg(response)
+  Ys <- as.numeric(scale(if (response == "log") log1p(Y) else Y))
   Zs <- if (is.null(Z)) NULL else scale(as.matrix(Z))
   if (!is.null(Zs)) Zs <- Zs[, apply(Zs, 2, function(z) all(is.finite(z))), drop = FALSE]
   if (!is.null(Zs) && ncol(Zs) == 0) Zs <- NULL
@@ -38,7 +44,7 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
   # Step 0: is there residual spatial structure? fix lambda once ------------
   X0  <- design0(n, Zs)
   m0  <- moran_resid(stats::lm.fit(X0, Ys)$residuals, A, X0)
-  out <- list(call = match.call(), n = n, A = A, D = A, Y = Y, z0 = m0$z,
+  out <- list(call = match.call(), a = a, response = response, n = n, A = A, D = A, Y = Y, z0 = m0$z,
               p0 = m0$p, lambda = NA, weight = weight,
               rounding = rule_label(rounding), alpha = alpha, mc_min = mc_min,
               esf_inadequate = NA, fit = NULL, trace = NULL,
@@ -51,7 +57,7 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
     out$zones  <- find_zones(A, out$labels)
     return(out)
   }
-  lambda     <- abs(m0$z)^(-2)
+  lambda     <- abs(m0$z)^(-a)
   out$lambda <- lambda
 
   # Step 2: initialise -------------------------------------------------------
