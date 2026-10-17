@@ -12,7 +12,7 @@ Hotspot/
 ├── R/                 the package code: the single implementation of the algorithm
 │   ├── moran.R          Moran's I for regression residuals (exact moments)
 │   ├── esf.R            ESF(D): MI-Lasso selection, post-Lasso fit, reconstruct_B()
-│   ├── rounding.R       rounding rules: quantile, mixture, permutation
+│   ├── rounding.R       rounding rules: none, quantile, mixture, permutation
 │   ├── find_hotspots.R  main algorithm (Steps 0-4) + hot/cold labels + zones
 │   ├── rank.R           priority lists R0-R3 and baseline B0 (Step 5)
 │   └── simulate.R       queen grid + modified Thomas process
@@ -42,7 +42,8 @@ rank_cells(res, "R3")[1:20]     # top-20 cells (zones first, then centrality)
 
 - [x] **Step 1:** merged algorithm written down (`docs/algorithm.md`, draft 2)
 - [x] **Step 2:** core function in `R/` + unit tests (all passing)
-- [ ] **Step 3:** small test on a few Thomas simulations: weight Δ vs γ̂², labels vs no labels, rounding rules (`simulation/00_smoke_test.R` is the starting point)
+- [x] **Step 3:** small test (`simulation/01_small_test.R`). Findings and open questions are in `docs/step3_findings.md`
+- [ ] **Step 3b:** signal-strength experiment + response scale + λ question (to discuss)
 - [ ] **Step 4:** full simulation study: top-m metric, ranking variants R0–R3, baselines (top counts B0, Getis-Ord Gi*, LISA), CSR null scenario, scenario **with covariates**
 - [ ] **Step 5:** Madrid application, rerun with the package:
   - hot/cold map per summer (2010–2013)

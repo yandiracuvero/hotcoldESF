@@ -10,29 +10,45 @@
 #' @param A original graph. Moran's I of the residuals is ALWAYS computed with A.
 #' @param lambda fixed Lasso penalty, |z0|^(-2) (glmnet scaling).
 #' @param standardize passed to glmnet (TRUE matches the reference code).
+#' @param mc_min candidate set: only eigenvectors with eigenvalue >=
+#'   mc_min * (largest eigenvalue) enter the Lasso (Griffith's rule, 0.25 is
+#'   the usual choice). NULL uses all n eigenvectors (published version).
 #' @return list: `E_S`, `values_S` (eigenvalues), `gamma_S` (post-Lasso
 #'   coefficients), `S` (indices), `fhat` (= E_S gamma_S), `resid`, `moran`.
 #' @export
-esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE) {
+esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE, mc_min = 0.25) {
   n   <- length(Y)
   eig <- eigen(D, symmetric = TRUE)
+  cand <- if (is.null(mc_min)) seq_len(n) else
+    which(eig$values >= mc_min * eig$values[1] & eig$values > 1e-8)
+  eig$vectors <- eig$vectors[, cand, drop = FALSE]
+  eig$values  <- eig$values[cand]
   E   <- eig$vectors
+  nE  <- ncol(E)
 
   if (is.null(Z)) {
     XE  <- E
-    pen <- rep(1, n)
+    pen <- rep(1, nE)
     k   <- 0
   } else {
     Z   <- as.matrix(Z)
     k   <- ncol(Z)
     XE  <- cbind(Z, E)
-    pen <- c(rep(0, k), rep(1, n))
+    pen <- c(rep(0, k), rep(1, nE))
   }
 
-  fit <- glmnet::glmnet(XE, Y, lambda = lambda, penalty.factor = pen,
-                        standardize = standardize)
-  beta <- as.numeric(fit$beta[, 1])
-  S    <- which(beta[(k + 1):(k + n)] != 0)
+  if (nE == 0) {
+    S <- integer(0)
+  } else {
+    if (ncol(XE) < 2) {                  # glmnet needs >= 2 columns
+      XE  <- cbind(XE, 0)
+      pen <- c(pen, 1)
+    }
+    fit  <- glmnet::glmnet(XE, Y, lambda = lambda, penalty.factor = pen,
+                           standardize = standardize)
+    beta <- as.numeric(fit$beta[, 1])
+    S    <- which(beta[(k + 1):(k + nE)] != 0)
+  }
 
   X0 <- design0(n, Z)
   if (length(S) == 0) {

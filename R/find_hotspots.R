@@ -14,6 +14,7 @@
 #' @param label_c cells with fhat > label_c are hot, fhat < -label_c are cold.
 #' @param max_iter cap on iterations (default: number of edges of A).
 #' @param standardize passed to glmnet.
+#' @param mc_min candidate eigenvectors; see [esf_fit()]. NULL = all (published).
 #' @param verbose print one line per iteration.
 #' @return an object of class "hotspots"; see the README for its fields.
 #' @export
@@ -21,7 +22,8 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
                           weight = c("lambda", "gamma2"),
                           rounding = round_quantile(0.75),
                           label_c = 0, max_iter = NULL,
-                          standardize = TRUE, verbose = FALSE) {
+                          standardize = TRUE, mc_min = 0.25,
+                          verbose = FALSE) {
   weight <- match.arg(weight)
   stopifnot(isSymmetric(unname(A)), all(A %in% c(0, 1)), all(diag(A) == 0))
   A  <- unname(A)
@@ -38,7 +40,7 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
   m0  <- moran_resid(stats::lm.fit(X0, Ys)$residuals, A, X0)
   out <- list(call = match.call(), n = n, A = A, D = A, Y = Y, z0 = m0$z,
               p0 = m0$p, lambda = NA, weight = weight,
-              rounding = rule_label(rounding), alpha = alpha,
+              rounding = rule_label(rounding), alpha = alpha, mc_min = mc_min,
               esf_inadequate = NA, fit = NULL, trace = NULL,
               stop_reason = NA_character_)
   class(out) <- "hotspots"
@@ -54,12 +56,12 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
 
   # Step 2: initialise -------------------------------------------------------
   D   <- A
-  fit <- esf_fit(Ys, Zs, D, A, lambda, standardize)
-  out$esf_inadequate <- fit$moran$p <= alpha
+  fit <- esf_fit(Ys, Zs, D, A, lambda, standardize, mc_min)
+  out$esf_inadequate <- !isTRUE(fit$moran$p > alpha)
   trace <- data.frame(iter = 0, edges = n_edges(D), n_eig = length(fit$S),
                       moran_p = fit$moran$p, tau = NA_real_, accepted = TRUE)
   ctx <- list(Y = Ys, Z = Zs, A = A, lambda = lambda, weight = weight,
-              standardize = standardize)
+              standardize = standardize, mc_min = mc_min)
   stop_reason <- if (length(fit$S) == 0) "no eigenvectors selected for A" else NA
 
   # Step 3: iterate ------------------------------------------------------------
@@ -78,8 +80,8 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
     if (identical(Dc, D))  { stop_reason <- "converged"; break }
     if (n_edges(Dc) == 0)  { stop_reason <- "empty graph"; break }
 
-    fc <- esf_fit(Ys, Zs, Dc, A, lambda, standardize)
-    ok <- length(fc$S) > 0 && fc$moran$p > alpha
+    fc <- esf_fit(Ys, Zs, Dc, A, lambda, standardize, mc_min)
+    ok <- length(fc$S) > 0 && isTRUE(fc$moran$p > alpha)
     trace <- rbind(trace, data.frame(iter = k + 1, edges = n_edges(Dc),
                                      n_eig = length(fc$S), moran_p = fc$moran$p,
                                      tau = tau, accepted = ok))
@@ -87,6 +89,7 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
                                  k + 1, n_edges(D), n_edges(Dc), length(fc$S),
                                  fc$moran$p, if (ok) "" else "  (rejected)"))
     if (length(fc$S) == 0) { stop_reason <- "no eigenvectors"; break }
+    if (is.na(fc$moran$p)) { stop_reason <- "Moran undefined (saturated)"; break }
     if (fc$moran$p <= alpha) { stop_reason <- "Moran rejects"; break }
     D <- Dc; fit <- fc; k <- k + 1
   }

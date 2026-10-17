@@ -22,6 +22,7 @@ Sources: nested pruning comes from `Paquete/old/R/matrix2sf.R`. The fixed λ and
 | `R(·)` | rounding rule: takes a vector of values and returns a threshold τ **[TEST]** |
 | `m` | budget: number of cells to return |
 | `K_max` | safety cap on iterations (default: number of edges in A) |
+| `mc_min` | candidate eigenvectors: `NULL` = all n (published); 0.25 = Griffith's rule (eigenvalue ≥ 0.25 × max) **[TEST]**. See docs/step3_findings.md |
 
 ## Output
 
@@ -46,7 +47,7 @@ Sources: nested pruning comes from `Paquete/old/R/matrix2sf.R`. The fixed λ and
 1. Compute the eigendecomposition `D = E Δ Eᵀ`.
 2. Run the Lasso (glmnet) of Y on (Z unpenalised, E penalised) with the fixed λ. The selected set is `S = {j : γ̂ⱼ ≠ 0}`.
 3. Run post-Lasso OLS of Y on (1, Z, E_S). This gives `γ̂_S` (post-Lasso) and residuals `e`.
-4. Compute Moran's I of `e` **with the original A**, giving `p`.
+4. Compute Moran's I of `e` **with the original A**, giving `p`. If the post-Lasso model is (nearly) saturated (residual df < 3 or negative variance), the test is undefined: p = NA, and the candidate graph is not accepted (stop reason "Moran undefined").
 5. Return `(E_S, Δ_S, γ̂_S, p)`.
 
 ## Step 2: Initialise
@@ -113,6 +114,7 @@ These candidates are compared in the simulation with the same top-m metric:
 
 | Name | Rule | Note |
 |---|---|---|
+| `none` | keep every edge (control) | measures what the pruning adds |
 | `quantile(q)` | τ = q-quantile of v | published version; q is a free choice |
 | `mixture` | τ = antimode between the two components of a 2-component Gaussian mixture on v; if one component is preferred by BIC, keep everything | stable, formal version of the valley rule; replaces `locmodes(mod0 = 5)` |
 | `permutation(B, 0.95)` | Freedman–Lane: permute the residuals of Y on Z, recompute B, and take the pooled 95th percentile as τ | τ means "stronger than chance" |

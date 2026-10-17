@@ -21,7 +21,8 @@ proj_out <- function(X) {
 #' @param W symmetric spatial weights matrix (n x n), e.g. binary contiguity.
 #' @param X design matrix that produced the residuals (including the intercept).
 #' @return list with `I`, `z` (standardised), `p` (one-sided, H1: positive
-#'   spatial correlation).
+#'   spatial correlation). `z` and `p` are NA when the model is (nearly)
+#'   saturated and the test is undefined.
 #' @export
 moran_resid <- function(e, W, X) {
   M   <- proj_out(X)
@@ -32,6 +33,8 @@ moran_resid <- function(e, W, X) {
   EI  <- t1 / df
   VI  <- 2 * (df * t2 - t1^2) / (df^2 * (df + 2))
   I   <- as.numeric(crossprod(e, W %*% e) / crossprod(e))
+  if (df < 3 || !is.finite(VI) || VI <= 0)        # (nearly) saturated model
+    return(list(I = I, z = NA_real_, p = NA_real_))
   z   <- (I - EI) / sqrt(VI)
   list(I = I, z = z, p = stats::pnorm(z, lower.tail = FALSE))
 }

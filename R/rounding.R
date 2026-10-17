@@ -15,6 +15,13 @@ round_quantile <- function(q = 0.75) {
             label = paste0("quantile(", q, ")"))
 }
 
+#' No pruning (control)
+#'
+#' Keeps every edge, so the final graph is A. Used to measure what the
+#' iterative pruning adds beyond the first ESF fit, the labels and the ranking.
+#' @export
+round_none <- function() structure(function(v, ctx) -Inf, label = "none")
+
 #' Two-component Gaussian mixture rule
 #'
 #' Fits 1 and 2 component Gaussian mixtures (unequal variances, EM) to v. If
@@ -79,7 +86,7 @@ round_permutation <- function(nperm = 50, level = 0.95) {
     up   <- upper.tri(ctx$D) & ctx$D == 1
     null <- unlist(lapply(seq_len(nperm), function(b) {
       Yb <- yhat + sample(ols$residuals)
-      fb <- esf_fit(Yb, ctx$Z, ctx$D, ctx$A, ctx$lambda, ctx$standardize)
+      fb <- esf_fit(Yb, ctx$Z, ctx$D, ctx$A, ctx$lambda, ctx$standardize, ctx$mc_min)
       if (length(fb$S) == 0) return(numeric(0))
       Bb <- reconstruct_B(fb, ctx$weight)[up]
       Bb[Bb > 0]
