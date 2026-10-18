@@ -106,3 +106,50 @@ sim_thomas <- function(k = 20, n_parents = 3, radius = 100, sons = 1000,
        parent_cells = if (n_parents > 0) cell_of(px, py) else integer(0),
        points = pts)
 }
+
+#' Simulate a spatial autoregressive process on a latent graph with barriers
+#'
+#' The observed contiguity A is a queen grid. The process only flows through a
+#' latent graph W* (a subgraph of A): A minus "barrier" edges. Y follows a SAR
+#' model on W*: Y = rho W Y + Z beta + e, with W the row-standardised W*.
+#'
+#' @param k cells per side.
+#' @param rho spatial autoregressive parameter.
+#' @param type "barriers": a vertical river with one bridge plus a horizontal
+#'   highway on the left half; "random": a random share `p_remove` of edges is
+#'   missing; "none": W* = A (control).
+#' @param p_remove share of edges removed when type = "random".
+#' @param beta coefficients of Z = (smooth gradient, noise).
+#' @return list: `Y`, `Z`, `A`, `Wstar` (binary latent graph), `k`.
+#' @export
+sim_sar_barrier <- function(k = 20, rho = 0.8, type = c("barriers", "random", "none"),
+                            p_remove = 0.2, beta = c(1, 0)) {
+  type <- match.arg(type)
+  A  <- grid_adjacency(k)
+  n  <- k * k
+  rc <- cbind(row = (seq_len(n) - 1) %/% k, col = (seq_len(n) - 1) %% k)
+  W  <- A
+  if (type == "barriers") {
+    river <- floor(k / 2) - 1                      # cut between col river and river+1
+    bridge <- floor(k / 4)                         # one row keeps its crossing
+    hwy   <- floor(0.6 * k)                        # cut between row hwy and hwy+1
+    for (i in seq_len(n)) for (j in which(A[i, ] == 1)) {
+      ci <- rc[i, "col"]; cj <- rc[j, "col"]; ri <- rc[i, "row"]; rj <- rc[j, "row"]
+      cross_river <- (min(ci, cj) == river && max(ci, cj) == river + 1) &&
+                     !(ri == bridge && rj == bridge)
+      cross_hwy   <- (min(ri, rj) == hwy && max(ri, rj) == hwy + 1) &&
+                     max(ci, cj) <= river
+      if (cross_river || cross_hwy) W[i, j] <- 0
+    }
+  } else if (type == "random") {
+    up <- which(upper.tri(A) & A == 1)
+    drop <- sample(up, round(p_remove * length(up)))
+    W[drop] <- 0
+    W <- W * t(W)                                  # keep symmetry
+  }
+  Wr <- W / pmax(rowSums(W), 1)
+  Z  <- cbind(grad = as.numeric(scale(rc[, "col"] + rc[, "row"])),
+              noise = stats::rnorm(n))
+  Y  <- solve(diag(n) - rho * Wr, Z %*% beta + stats::rnorm(n))
+  list(Y = as.numeric(Y), Z = Z, A = A, Wstar = W, k = k)
+}

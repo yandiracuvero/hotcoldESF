@@ -15,7 +15,7 @@ Hotspot/
 │   ├── rounding.R       rounding rules: none, quantile, mixture, permutation
 │   ├── find_hotspots.R  main algorithm (Steps 0-4) + hot/cold labels + zones
 │   ├── rank.R           priority lists R0-R3 and baseline B0 (Step 5)
-│   └── simulate.R       queen grid + modified Thomas process
+│   └── simulate.R       queen grid, modified Thomas process, SAR on a latent graph
 ├── tests/testthat/    unit tests (nesting, termination, sign invariance, ...)
 ├── docs/              algorithm spec, decisions, notes
 ├── simulation/        simulation study scripts and results
@@ -44,7 +44,8 @@ rank_cells(res, "R3")[1:20]     # top-20 cells (zones first, then centrality)
 - [x] **Step 2:** core function in `R/` + unit tests (all passing)
 - [x] **Step 3:** small test (`simulation/01_small_test.R`). Findings and open questions are in `docs/step3_findings.md`
 - [x] **Step 3b:** signal strength × cell size × exponent a × log scale (`simulation/02_signal_test.R`, run on the Mac). Findings: `docs/step3b_findings.md`
-- [ ] **Decision:** how to frame the contribution (see step3b findings) + add Gi*/LISA baselines
+- [x] **Step 3c:** latent-graph recovery test (`simulation/03_latent_graph.R`): the reconstruction does NOT recover W*. See `docs/step3c_latent_graph.md`
+- [ ] **Decision:** how to frame the contribution (with co-authors) + add Gi*/LISA baselines
 - [ ] **Step 4:** full simulation study: top-m metric, ranking variants R0–R3, baselines (top counts B0, Getis-Ord Gi*, LISA), CSR null scenario, scenario **with covariates**
 - [ ] **Step 5:** Madrid application, rerun with the package:
   - hot/cold map per summer (2010–2013)
