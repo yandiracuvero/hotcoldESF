@@ -45,6 +45,21 @@ A quick check (20×20, B50, 10 replicates) of other ESF settings: log/counts × 
 3. **For ranking, Gi* on covariate-adjusted residuals equals or exceeds ESF in every scenario.** The gap is large with weak clusters: 0.81 vs 0.19 on 20×20, and 0.58 vs 0.11 on 40×40.
 4. **Gi* and LISA on raw counts flag the covariate area as hot** (45–94% of their hot cells), and flag hot cells when no clusters exist. Covariate adjustment is the step that matters most.
 
+## Example maps and bands (`simulation/09_example_maps.R` → fig8a–c, fig9a–c)
+
+Three datasets re-created with the seeds of experiment 07: (a) B200 rep 1, ESF precision 1.00; (b) B50 rep 2, ESF 0.00 vs Gi* 0.95; (c) B50 rep 17, ESF 0.60 vs Gi* 1.00.
+
+Number of eigenvectors selected by the Lasso (λ = |z0|^(-2)), median per scenario: A 379, B500 372, B200 337 (20×20) and 1327 (40×40), B50 1 (20×20) and 0.5 (40×40). In 20×20 B50, 6 of the 17 datasets that pass the Moran test select 0 eigenvectors, so f̂ = 0 and the ESF ranking falls back to the tie-breaker (counts), which points at the covariate area.
+
+What the examples show:
+
+1. **Weak clusters (b): the penalty is too strong.** Moran z ≈ 3 gives λ ≈ 0.1, no eigenvector enters, f̂ = 0 everywhere, no cell is hot. Gi* on residuals finds two of the three clusters.
+2. **Strong clusters (a, c): the penalty is too weak.** z ≈ 7–13 gives λ ≈ 0.006–0.02 and 176–318 of 400 eigenvectors, so f̂ is close to the residual map (compare panels c and d). The null fits also select many eigenvectors, so the band is about as wide as the noise (±1 sd). Only the top of each cluster clears it (19 of 37 and 14 of 39 cluster cells are hot), and isolated noise cells are labelled hot or cold.
+3. **Cold labels are false in all examples.** The simulation has no cold process; the 22–24 cold cells are cells with few counts.
+4. Gi* averages each cell with its neighbours, which removes cell-level noise; with many eigenvectors, f̂ keeps it.
+
+So the earlier explanation ("many eigenvectors fit noise") holds only for strong clusters; with weak clusters, ESF fails because the Lasso selects nothing. Both failures come from the penalty rule λ = |z0|^(-a), which ties the amount of smoothing to the strength of the Moran signal.
+
 ## Open decision (for the co-authors)
 
 ESF's distinctive contribution in these simulations is error control in the hot/cold labels: a Moran gate plus a permutation band. It is not ranking power. Options:
