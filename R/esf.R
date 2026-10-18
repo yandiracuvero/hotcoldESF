@@ -13,12 +13,16 @@
 #' @param mc_min candidate set: only eigenvectors with eigenvalue >=
 #'   mc_min * (largest eigenvalue) enter the Lasso (Griffith's rule, 0.25 is
 #'   the usual choice). NULL uses all n eigenvectors (published version).
+#' @param test compute Moran's I of the residuals (skipped inside permutations).
+#' @param eig optional precomputed `eigen(D, symmetric = TRUE)` (reused by the
+#'   permutation rule, where D is the same for every permutation).
 #' @return list: `E_S`, `values_S` (eigenvalues), `gamma_S` (post-Lasso
 #'   coefficients), `S` (indices), `fhat` (= E_S gamma_S), `resid`, `moran`.
 #' @export
-esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE, mc_min = 0.25) {
+esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE, mc_min = 0.25,
+                    eig = NULL, test = TRUE) {
   n   <- length(Y)
-  eig <- eigen(D, symmetric = TRUE)
+  if (is.null(eig)) eig <- eigen(D, symmetric = TRUE)
   cand <- if (is.null(mc_min)) seq_len(n) else
     which(eig$values >= mc_min * eig$values[1] & eig$values > 1e-8)
   eig$vectors <- eig$vectors[, cand, drop = FALSE]
@@ -55,7 +59,7 @@ esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE, mc_min = 0.25) {
     ols <- stats::lm.fit(X0, Y)
     return(list(E_S = NULL, values_S = numeric(0), gamma_S = numeric(0),
                 S = S, fhat = rep(0, n), resid = ols$residuals,
-                moran = moran_resid(ols$residuals, A, X0)))
+                moran = if (test) moran_resid(ols$residuals, A, X0) else NULL))
   }
 
   E_S  <- E[, S, drop = FALSE]
@@ -74,7 +78,7 @@ esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE, mc_min = 0.25) {
        # with it), so only deviations from the mean are meaningful.
        fhat     = as.numeric(scale(E_S %*% gamma_S, scale = FALSE)),
        resid    = ols$residuals,
-       moran    = moran_resid(ols$residuals, A, Xp))
+       moran    = if (test) moran_resid(ols$residuals, A, Xp) else NULL)
 }
 
 #' Reconstruct the matrix B from a fit

@@ -1,0 +1,1541 @@
+"scenario","rep","rule","ranking","precision","cold","edges_kept","iters","stop","J","cut","kept","secs"
+"A",1,"none","Centrality, whole graph",0,0.95,1,0,"converged",NA,NA,NA,0.834345579147339
+"A",1,"none","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.837066173553467
+"A",1,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.838398933410645
+"A",1,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,0.842673063278198
+"A",1,"q50","Centrality, whole graph",0,1,0.5,1,"Moran rejects",NA,NA,NA,1.29754257202148
+"A",1,"q50","Centrality, hot cells",0.9,0,0.5,1,"Moran rejects",NA,NA,NA,1.30040049552917
+"A",1,"q50","Largest excess",1,0,0.5,1,"Moran rejects",NA,NA,NA,1.3017635345459
+"A",1,"q50","Hot zones first",0.8,0,0.5,1,"Moran rejects",NA,NA,NA,1.30530118942261
+"A",1,"q75","Centrality, whole graph",0.15,0.7,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.62670373916626
+"A",1,"q75","Centrality, hot cells",0.8,0,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.62908816337585
+"A",1,"q75","Largest excess",1,0,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.63031101226807
+"A",1,"q75","Hot zones first",0.85,0,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.63485503196716
+"A",1,"q80","Centrality, whole graph",0.15,0.65,0.0101214574898785,3,"Moran undefined (saturated)",NA,NA,NA,1.82458853721619
+"A",1,"q80","Centrality, hot cells",1,0,0.0101214574898785,3,"Moran undefined (saturated)",NA,NA,NA,1.82675266265869
+"A",1,"q80","Largest excess",1,0,0.0101214574898785,3,"Moran undefined (saturated)",NA,NA,NA,1.82796239852905
+"A",1,"q80","Hot zones first",1,0,0.0101214574898785,3,"Moran undefined (saturated)",NA,NA,NA,1.82986903190613
+"A",1,"q90","Centrality, whole graph",0,0.95,1,0,"Moran rejects",NA,NA,NA,0.819498300552368
+"A",1,"q90","Centrality, hot cells",1,0,1,0,"Moran rejects",NA,NA,NA,0.822704315185547
+"A",1,"q90","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,0.824332714080811
+"A",1,"q90","Hot zones first",0.85,0,1,0,"Moran rejects",NA,NA,NA,0.829454183578491
+"A",1,"mixture","Centrality, whole graph",0.15,0.7,0.153171390013495,10,"converged",NA,NA,NA,4.55881237983704
+"A",1,"mixture","Centrality, hot cells",0.8,0,0.153171390013495,10,"converged",NA,NA,NA,4.56106901168823
+"A",1,"mixture","Largest excess",1,0,0.153171390013495,10,"converged",NA,NA,NA,4.56231427192688
+"A",1,"mixture","Hot zones first",0.85,0,0.153171390013495,10,"converged",NA,NA,NA,4.56597590446472
+"A",1,"permutation","Centrality, whole graph",0.15,0.75,0.00809716599190283,2,"Moran undefined (saturated)",NA,NA,NA,32.0347292423248
+"A",1,"permutation","Centrality, hot cells",1,0,0.00809716599190283,2,"Moran undefined (saturated)",NA,NA,NA,32.0371060371399
+"A",1,"permutation","Largest excess",1,0,0.00809716599190283,2,"Moran undefined (saturated)",NA,NA,NA,32.0384919643402
+"A",1,"permutation","Hot zones first",1,0,0.00809716599190283,2,"Moran undefined (saturated)",NA,NA,NA,32.0404555797577
+"B",1,"none","Centrality, whole graph",0.25,0.7,1,0,"converged",NA,NA,NA,0.920647621154785
+"B",1,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.923503637313843
+"B",1,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,0.924689769744873
+"B",1,"none","Hot zones first",0.65,0,1,0,"converged",NA,NA,NA,0.929965972900391
+"B",1,"q50","Centrality, whole graph",0.65,0.15,0.0209176788124157,7,"converged",NA,NA,NA,3.26626777648926
+"B",1,"q50","Centrality, hot cells",0.7,0,0.0209176788124157,7,"converged",NA,NA,NA,3.26921701431274
+"B",1,"q50","Largest excess",0.95,0,0.0209176788124157,7,"converged",NA,NA,NA,3.27044820785522
+"B",1,"q50","Hot zones first",0.7,0,0.0209176788124157,7,"converged",NA,NA,NA,3.2751202583313
+"B",1,"q75","Centrality, whole graph",0.25,0.7,0.062753036437247,2,"Moran rejects",NA,NA,NA,1.62883114814758
+"B",1,"q75","Centrality, hot cells",0.75,0,0.062753036437247,2,"Moran rejects",NA,NA,NA,1.63129329681396
+"B",1,"q75","Largest excess",0.95,0,0.062753036437247,2,"Moran rejects",NA,NA,NA,1.63264107704163
+"B",1,"q75","Hot zones first",0.75,0,0.062753036437247,2,"Moran rejects",NA,NA,NA,1.63619351387024
+"B",1,"q80","Centrality, whole graph",0.15,0.7,0.0087719298245614,3,"Moran rejects",NA,NA,NA,1.92380595207214
+"B",1,"q80","Centrality, hot cells",0.9,0,0.0087719298245614,3,"Moran rejects",NA,NA,NA,1.92630434036255
+"B",1,"q80","Largest excess",0.95,0,0.0087719298245614,3,"Moran rejects",NA,NA,NA,1.92760396003723
+"B",1,"q80","Hot zones first",0.9,0,0.0087719298245614,3,"Moran rejects",NA,NA,NA,1.92992281913757
+"B",1,"q90","Centrality, whole graph",0,0.95,0.0101214574898785,2,"Moran rejects",NA,NA,NA,1.37491345405579
+"B",1,"q90","Centrality, hot cells",0.95,0,0.0101214574898785,2,"Moran rejects",NA,NA,NA,1.37643265724182
+"B",1,"q90","Largest excess",0.95,0,0.0101214574898785,2,"Moran rejects",NA,NA,NA,1.37790513038635
+"B",1,"q90","Hot zones first",0.95,0,0.0101214574898785,2,"Moran rejects",NA,NA,NA,1.37948417663574
+"B",1,"mixture","Centrality, whole graph",0.4,0.5,0.0229419703103914,5,"converged",NA,NA,NA,2.41700482368469
+"B",1,"mixture","Centrality, hot cells",0.9,0,0.0229419703103914,5,"converged",NA,NA,NA,2.41972661018372
+"B",1,"mixture","Largest excess",0.95,0,0.0229419703103914,5,"converged",NA,NA,NA,2.42098832130432
+"B",1,"mixture","Hot zones first",0.9,0,0.0229419703103914,5,"converged",NA,NA,NA,2.42334485054016
+"B",1,"permutation","Centrality, whole graph",0.25,0.25,0.00202429149797571,3,"converged",NA,NA,NA,42.3055939674377
+"B",1,"permutation","Centrality, hot cells",0.95,0,0.00202429149797571,3,"converged",NA,NA,NA,42.3070499897003
+"B",1,"permutation","Largest excess",0.95,0,0.00202429149797571,3,"converged",NA,NA,NA,42.308257818222
+"B",1,"permutation","Hot zones first",0.95,0,0.00202429149797571,3,"converged",NA,NA,NA,42.309764623642
+"D80",1,"none",NA,NA,NA,1,0,"converged",0,0,1,0.695844888687134
+"D80",1,"q50",NA,NA,NA,0.0148448043184885,7,"converged",-0.021693544991368,0.964705882352941,0.0136005726556908,2.97153234481812
+"D80",1,"q75",NA,NA,NA,0.00742240215924426,5,"converged",-0.00460650974777876,0.988235294117647,0.00715819613457409,1.89891982078552
+"D80",1,"q80",NA,NA,NA,0.00269905533063428,5,"converged",0.00286327845382961,1,0.00286327845382963,2.23234343528748
+"D80",1,"q90",NA,NA,NA,0.100539811066127,1,"Moran rejects",0.0442544949261021,0.941176470588235,0.103078024337867,1.06619429588318
+"D80",1,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.70577597618103
+"D80",1,"permutation",NA,NA,NA,0.000674763832658569,3,"converged",0.000715819613457347,1,0.000715819613457409,39.0085036754608
+"D95",1,"none",NA,NA,NA,1,0,"converged",0,0,1,0.68110179901123
+"D95",1,"q50",NA,NA,NA,0.5,1,"Moran rejects",-0.00624026274790523,0.494117647058824,0.499642090193271,1.36571645736694
+"D95",1,"q75",NA,NA,NA,0.0107962213225371,4,"converged",-0.00102741168049181,0.988235294117647,0.0107372942018611,1.79399824142456
+"D95",1,"q80",NA,NA,NA,0.00742240215924426,5,"converged",0.00787401574803148,1,0.0078740157480315,2.23104596138
+"D95",1,"q90",NA,NA,NA,0.00134952766531714,3,"converged",0.00143163922691492,1,0.00143163922691482,1.28902173042297
+"D95",1,"mixture",NA,NA,NA,0.00809716599190283,7,"converged",0.00858983536148883,1,0.00858983536148891,2.97513055801392
+"D95",1,"permutation",NA,NA,NA,0.00134952766531714,2,"converged",0.00143163922691492,1,0.00143163922691482,30.5829274654388
+"D0",1,"none",NA,NA,NA,1,0,"converged",NA,NA,1,1.01432847976685
+"D0",1,"q50",NA,NA,NA,0.0121457489878543,7,"converged",NA,NA,0.0121457489878543,2.77348828315735
+"D0",1,"q75",NA,NA,NA,0.00944669365721997,5,"converged",NA,NA,0.00944669365721997,2.23211407661438
+"D0",1,"q80",NA,NA,NA,0.0087719298245614,4,"converged",NA,NA,0.0087719298245614,1.68366646766663
+"D0",1,"q90",NA,NA,NA,0.000674763832658569,4,"converged",NA,NA,0.000674763832658569,1.66960525512695
+"D0",1,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.533307313919067
+"D0",1,"permutation",NA,NA,NA,0.00202429149797571,3,"converged",NA,NA,0.00202429149797571,39.1733877658844
+"A",2,"none","Centrality, whole graph",0.3,0.4,1,0,"converged",NA,NA,NA,0.843339920043945
+"A",2,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.846356153488159
+"A",2,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.847574949264526
+"A",2,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,0.851613521575928
+"A",2,"q50","Centrality, whole graph",0.2,0.7,0.0323886639676113,5,"Moran undefined (saturated)",NA,NA,NA,2.71836853027344
+"A",2,"q50","Centrality, hot cells",0.75,0,0.0323886639676113,5,"Moran undefined (saturated)",NA,NA,NA,2.72061014175415
+"A",2,"q50","Largest excess",1,0,0.0323886639676113,5,"Moran undefined (saturated)",NA,NA,NA,2.72184300422668
+"A",2,"q50","Hot zones first",0.75,0,0.0323886639676113,5,"Moran undefined (saturated)",NA,NA,NA,2.72615528106689
+"A",2,"q75","Centrality, whole graph",0.9,0.05,0.00134952766531714,5,"converged",NA,NA,NA,2.29033279418945
+"A",2,"q75","Centrality, hot cells",1,0,0.00134952766531714,5,"converged",NA,NA,NA,2.29255604743958
+"A",2,"q75","Largest excess",1,0,0.00134952766531714,5,"converged",NA,NA,NA,2.29388666152954
+"A",2,"q75","Hot zones first",1,0,0.00134952766531714,5,"converged",NA,NA,NA,2.29599165916443
+"A",2,"q80","Centrality, whole graph",0,0.9,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.09099864959717
+"A",2,"q80","Centrality, hot cells",0.85,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.09325170516968
+"A",2,"q80","Largest excess",1,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.09443378448486
+"A",2,"q80","Hot zones first",0.85,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.09857845306396
+"A",2,"q90","Centrality, whole graph",0.05,0.8,0.100539811066127,1,"Moran rejects",NA,NA,NA,0.998820781707764
+"A",2,"q90","Centrality, hot cells",0.75,0,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.0009446144104
+"A",2,"q90","Largest excess",1,0,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.00209498405457
+"A",2,"q90","Hot zones first",0.75,0,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.00692105293274
+"A",2,"mixture","Centrality, whole graph",0.3,0.65,0.0836707152496626,8,"converged",NA,NA,NA,3.33958220481873
+"A",2,"mixture","Centrality, hot cells",0.8,0,0.0836707152496626,8,"converged",NA,NA,NA,3.34174060821533
+"A",2,"mixture","Largest excess",1,0,0.0836707152496626,8,"converged",NA,NA,NA,3.34298276901245
+"A",2,"mixture","Hot zones first",0.8,0,0.0836707152496626,8,"converged",NA,NA,NA,3.34578847885132
+"A",2,"permutation","Centrality, whole graph",0.9,0.1,0.000674763832658569,3,"empty graph",NA,NA,NA,40.972469329834
+"A",2,"permutation","Centrality, hot cells",1,0,0.000674763832658569,3,"empty graph",NA,NA,NA,40.9740521907806
+"A",2,"permutation","Largest excess",1,0,0.000674763832658569,3,"empty graph",NA,NA,NA,40.9753115177155
+"A",2,"permutation","Hot zones first",1,0,0.000674763832658569,3,"empty graph",NA,NA,NA,40.9767823219299
+"B",2,"none","Centrality, whole graph",0,1,1,0,"converged",NA,NA,NA,0.915270805358887
+"B",2,"none","Centrality, hot cells",0.65,0,1,0,"converged",NA,NA,NA,0.91870641708374
+"B",2,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,0.91992974281311
+"B",2,"none","Hot zones first",0.5,0,1,0,"converged",NA,NA,NA,0.925130844116211
+"B",2,"q50","Centrality, whole graph",0,1,1,0,"Moran rejects",NA,NA,NA,1.15033197402954
+"B",2,"q50","Centrality, hot cells",0.65,0,1,0,"Moran rejects",NA,NA,NA,1.1537139415741
+"B",2,"q50","Largest excess",0.95,0,1,0,"Moran rejects",NA,NA,NA,1.15511202812195
+"B",2,"q50","Hot zones first",0.5,0,1,0,"Moran rejects",NA,NA,NA,1.1605749130249
+"B",2,"q75","Centrality, whole graph",0.1,0.75,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.17187190055847
+"B",2,"q75","Centrality, hot cells",0.6,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.17485547065735
+"B",2,"q75","Largest excess",0.95,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.1763026714325
+"B",2,"q75","Hot zones first",0.6,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.18200516700745
+"B",2,"q80","Centrality, whole graph",0.65,0,0.00134952766531714,5,"converged",NA,NA,NA,2.42893004417419
+"B",2,"q80","Centrality, hot cells",0.95,0,0.00134952766531714,5,"converged",NA,NA,NA,2.4316143989563
+"B",2,"q80","Largest excess",0.95,0,0.00134952766531714,5,"converged",NA,NA,NA,2.43290448188782
+"B",2,"q80","Hot zones first",0.95,0,0.00134952766531714,5,"converged",NA,NA,NA,2.43546199798584
+"B",2,"q90","Centrality, whole graph",0.45,0.15,0.00134952766531714,3,"converged",NA,NA,NA,1.8186719417572
+"B",2,"q90","Centrality, hot cells",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,1.82035112380981
+"B",2,"q90","Largest excess",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,1.82157015800476
+"B",2,"q90","Hot zones first",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,1.82305097579956
+"B",2,"mixture","Centrality, whole graph",0.5,0.4,0.0128205128205128,9,"converged",NA,NA,NA,3.67479753494263
+"B",2,"mixture","Centrality, hot cells",0.9,0,0.0128205128205128,9,"converged",NA,NA,NA,3.6771879196167
+"B",2,"mixture","Largest excess",0.95,0,0.0128205128205128,9,"converged",NA,NA,NA,3.6785671710968
+"B",2,"mixture","Hot zones first",0.9,0,0.0128205128205128,9,"converged",NA,NA,NA,3.68214535713196
+"B",2,"permutation","Centrality, whole graph",0.3,0.4,0.00269905533063428,2,"converged",NA,NA,NA,34.0945520401001
+"B",2,"permutation","Centrality, hot cells",0.95,0,0.00269905533063428,2,"converged",NA,NA,NA,34.0960164070129
+"B",2,"permutation","Largest excess",0.95,0,0.00269905533063428,2,"converged",NA,NA,NA,34.0972826480865
+"B",2,"permutation","Hot zones first",0.95,0,0.00269905533063428,2,"converged",NA,NA,NA,34.0987942218781
+"D80",2,"none",NA,NA,NA,1,0,"converged",0,0,1,0.658598184585571
+"D80",2,"q50",NA,NA,NA,0.01417004048583,8,"converged",0.0150322118826056,1,0.0150322118826056,3.76970481872559
+"D80",2,"q75",NA,NA,NA,0.00742240215924426,5,"converged",0.00787401574803148,1,0.0078740157480315,2.16152858734131
+"D80",2,"q80",NA,NA,NA,0.00134952766531714,5,"converged",0.00143163922691492,1,0.00143163922691482,1.89702343940735
+"D80",2,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.83889198303223
+"D80",2,"mixture",NA,NA,NA,0.43859649122807,3,"Moran rejects",0.190711187839488,0.741176470588235,0.449534717251253,1.77205109596252
+"D80",2,"permutation",NA,NA,NA,0.00269905533063428,3,"converged",0.00286327845382961,1,0.00286327845382963,39.5723915100098
+"D95",2,"none",NA,NA,NA,1,0,"converged",0,0,1,0.676268100738525
+"D95",2,"q50",NA,NA,NA,1,0,"Moran rejects",0,0,1,0.917382001876831
+"D95",2,"q75",NA,NA,NA,0.01417004048583,4,"converged",-0.0348898901006359,0.952941176470588,0.0121689334287759,2.00566792488098
+"D95",2,"q80",NA,NA,NA,0.0404858299595142,2,"Moran rejects",-0.0194534506716072,0.941176470588235,0.0393700787401575,1.38480448722839
+"D95",2,"q90",NA,NA,NA,0.100539811066127,1,"Moran rejects",-0.0306286580487599,0.870588235294118,0.0987831066571224,1.05041790008545
+"D95",2,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.736647605895996
+"D95",2,"permutation",NA,NA,NA,1,0,"Moran rejects",0,0,1,11.8622808456421
+"D0",2,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.792640686035156
+"D0",2,"q50",NA,NA,NA,0.0107962213225371,7,"converged",NA,NA,0.0107962213225371,2.71572756767273
+"D0",2,"q75",NA,NA,NA,0.00944669365721997,5,"converged",NA,NA,0.00944669365721997,2.28054189682007
+"D0",2,"q80",NA,NA,NA,0.0168690958164642,4,"converged",NA,NA,0.0168690958164642,1.87495374679565
+"D0",2,"q90",NA,NA,NA,0.00539811066126856,3,"converged",NA,NA,0.00539811066126856,1.34874296188354
+"D0",2,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.706008434295654
+"D0",2,"permutation",NA,NA,NA,0.00269905533063428,3,"converged",NA,NA,0.00269905533063428,40.8784713745117
+"A",3,"none","Centrality, whole graph",0,0.9,1,0,"converged",NA,NA,NA,0.866401672363281
+"A",3,"none","Centrality, hot cells",0.65,0,1,0,"converged",NA,NA,NA,0.869549036026001
+"A",3,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.87091064453125
+"A",3,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,0.877470731735229
+"A",3,"q50","Centrality, whole graph",0.6,0.35,0.0168690958164642,6,"Moran undefined (saturated)",NA,NA,NA,3.13587617874146
+"A",3,"q50","Centrality, hot cells",0.9,0,0.0168690958164642,6,"Moran undefined (saturated)",NA,NA,NA,3.13938307762146
+"A",3,"q50","Largest excess",1,0,0.0168690958164642,6,"Moran undefined (saturated)",NA,NA,NA,3.14095878601074
+"A",3,"q50","Hot zones first",0.9,0,0.0168690958164642,6,"Moran undefined (saturated)",NA,NA,NA,3.14473628997803
+"A",3,"q75","Centrality, whole graph",0.85,0.15,0.00202429149797571,5,"converged",NA,NA,NA,2.02443838119507
+"A",3,"q75","Centrality, hot cells",1,0,0.00202429149797571,5,"converged",NA,NA,NA,2.02576851844788
+"A",3,"q75","Largest excess",1,0,0.00202429149797571,5,"converged",NA,NA,NA,2.02714061737061
+"A",3,"q75","Hot zones first",1,0,0.00202429149797571,5,"converged",NA,NA,NA,2.02880263328552
+"A",3,"q80","Centrality, whole graph",0.2,0.5,0.0134952766531714,3,"Moran undefined (saturated)",NA,NA,NA,1.88879084587097
+"A",3,"q80","Centrality, hot cells",0.9,0,0.0134952766531714,3,"Moran undefined (saturated)",NA,NA,NA,1.89116263389587
+"A",3,"q80","Largest excess",1,0,0.0134952766531714,3,"Moran undefined (saturated)",NA,NA,NA,1.89251303672791
+"A",3,"q80","Hot zones first",0.9,0,0.0134952766531714,3,"Moran undefined (saturated)",NA,NA,NA,1.89528965950012
+"A",3,"q90","Centrality, whole graph",0.25,0.7,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.08597564697266
+"A",3,"q90","Centrality, hot cells",0.85,0,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.09304928779602
+"A",3,"q90","Largest excess",1,0,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.09445881843567
+"A",3,"q90","Hot zones first",0.9,0,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.0981752872467
+"A",3,"mixture","Centrality, whole graph",0.45,0.4,0.0701754385964912,6,"converged",NA,NA,NA,2.98906326293945
+"A",3,"mixture","Centrality, hot cells",0.75,0,0.0701754385964912,6,"converged",NA,NA,NA,2.99125695228577
+"A",3,"mixture","Largest excess",1,0,0.0701754385964912,6,"converged",NA,NA,NA,2.99250626564026
+"A",3,"mixture","Hot zones first",0.8,0,0.0701754385964912,6,"converged",NA,NA,NA,2.99831223487854
+"A",3,"permutation","Centrality, whole graph",0,0.9,1,0,"Moran undefined (saturated)",NA,NA,NA,13.4387452602386
+"A",3,"permutation","Centrality, hot cells",0.65,0,1,0,"Moran undefined (saturated)",NA,NA,NA,13.4413590431213
+"A",3,"permutation","Largest excess",1,0,1,0,"Moran undefined (saturated)",NA,NA,NA,13.442583322525
+"A",3,"permutation","Hot zones first",0.85,0,1,0,"Moran undefined (saturated)",NA,NA,NA,13.4470875263214
+"B",3,"none","Centrality, whole graph",0.4,0.55,1,0,"converged",NA,NA,NA,0.848325729370117
+"B",3,"none","Centrality, hot cells",0.9,0,1,0,"converged",NA,NA,NA,0.851157426834106
+"B",3,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,0.852306842803955
+"B",3,"none","Hot zones first",1,0,1,0,"converged",NA,NA,NA,0.85668683052063
+"B",3,"q50","Centrality, whole graph",0.75,0.15,0.062753036437247,4,"Moran rejects",NA,NA,NA,2.43190145492554
+"B",3,"q50","Centrality, hot cells",0.9,0,0.062753036437247,4,"Moran rejects",NA,NA,NA,2.43437170982361
+"B",3,"q50","Largest excess",0.95,0,0.062753036437247,4,"Moran rejects",NA,NA,NA,2.43626284599304
+"B",3,"q50","Hot zones first",0.85,0,0.062753036437247,4,"Moran rejects",NA,NA,NA,2.44257712364197
+"B",3,"q75","Centrality, whole graph",0.4,0.55,1,0,"Moran rejects",NA,NA,NA,1.1388521194458
+"B",3,"q75","Centrality, hot cells",0.9,0,1,0,"Moran rejects",NA,NA,NA,1.14127254486084
+"B",3,"q75","Largest excess",0.95,0,1,0,"Moran rejects",NA,NA,NA,1.14253377914429
+"B",3,"q75","Hot zones first",1,0,1,0,"Moran rejects",NA,NA,NA,1.14694714546204
+"B",3,"q80","Centrality, whole graph",0.5,0.05,0.000674763832658569,5,"converged",NA,NA,NA,2.35935139656067
+"B",3,"q80","Centrality, hot cells",0.95,0,0.000674763832658569,5,"converged",NA,NA,NA,2.36153054237366
+"B",3,"q80","Largest excess",0.95,0,0.000674763832658569,5,"converged",NA,NA,NA,2.36294889450073
+"B",3,"q80","Hot zones first",0.95,0,0.000674763832658569,5,"converged",NA,NA,NA,2.36477446556091
+"B",3,"q90","Centrality, whole graph",0.55,0.1,0.00134952766531714,4,"converged",NA,NA,NA,2.04554677009583
+"B",3,"q90","Centrality, hot cells",0.95,0,0.00134952766531714,4,"converged",NA,NA,NA,2.0478777885437
+"B",3,"q90","Largest excess",0.95,0,0.00134952766531714,4,"converged",NA,NA,NA,2.04919862747192
+"B",3,"q90","Hot zones first",0.95,0,0.00134952766531714,4,"converged",NA,NA,NA,2.05120372772217
+"B",3,"mixture","Centrality, whole graph",0.2,0.55,0.218623481781377,6,"converged",NA,NA,NA,3.24751806259155
+"B",3,"mixture","Centrality, hot cells",0.8,0,0.218623481781377,6,"converged",NA,NA,NA,3.2504518032074
+"B",3,"mixture","Largest excess",1,0,0.218623481781377,6,"converged",NA,NA,NA,3.25200843811035
+"B",3,"mixture","Hot zones first",0.8,0,0.218623481781377,6,"converged",NA,NA,NA,3.25672006607056
+"B",3,"permutation","Centrality, whole graph",0.5,0.1,0.000674763832658569,3,"converged",NA,NA,NA,41.6207044124603
+"B",3,"permutation","Centrality, hot cells",0.95,0,0.000674763832658569,3,"converged",NA,NA,NA,41.6222038269043
+"B",3,"permutation","Largest excess",0.95,0,0.000674763832658569,3,"converged",NA,NA,NA,41.6234209537506
+"B",3,"permutation","Hot zones first",0.95,0,0.000674763832658569,3,"converged",NA,NA,NA,41.6248052120209
+"D80",3,"none",NA,NA,NA,1,0,"converged",0,0,1,0.758659362792969
+"D80",3,"q50",NA,NA,NA,0.0128205128205128,8,"converged",0.0136005726556907,1,0.0136005726556908,3.08138823509216
+"D80",3,"q75",NA,NA,NA,0.00539811066126856,5,"converged",0.00572655690765922,1,0.00572655690765927,2.22319984436035
+"D80",3,"q80",NA,NA,NA,0.0087719298245614,4,"converged",0.0093056549749464,1,0.00930565497494631,1.75681090354919
+"D80",3,"q90",NA,NA,NA,0.00134952766531714,3,"converged",0.00143163922691492,1,0.00143163922691482,1.37570977210999
+"D80",3,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.871700048446655
+"D80",3,"permutation",NA,NA,NA,0.00539811066126856,2,"empty graph",0.00572655690765922,1,0.00572655690765927,29.6265513896942
+"D95",3,"none",NA,NA,NA,1,0,"converged",0,0,1,0.670539617538452
+"D95",3,"q50",NA,NA,NA,0.0067476383265857,9,"converged",-0.00532232936123622,0.988235294117647,0.00644237652111668,4.05427694320679
+"D95",3,"q75",NA,NA,NA,0.00539811066126856,5,"converged",0.00572655690765922,1,0.00572655690765927,2.01597356796265
+"D95",3,"q80",NA,NA,NA,0.00269905533063428,5,"converged",0.00286327845382961,1,0.00286327845382963,2.23360204696655
+"D95",3,"q90",NA,NA,NA,0.000674763832658569,4,"converged",0.000715819613457347,1,0.000715819613457409,1.82306337356567
+"D95",3,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.460063934326172
+"D95",3,"permutation",NA,NA,NA,0.00269905533063428,3,"converged",0.00286327845382961,1,0.00286327845382963,38.8160548210144
+"D0",3,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.806467056274414
+"D0",3,"q50",NA,NA,NA,0.0148448043184885,7,"converged",NA,NA,0.0148448043184885,2.86294770240784
+"D0",3,"q75",NA,NA,NA,0.0101214574898785,5,"converged",NA,NA,0.0101214574898785,2.39721822738647
+"D0",3,"q80",NA,NA,NA,0.00337381916329285,5,"converged",NA,NA,0.00337381916329285,1.86717176437378
+"D0",3,"q90",NA,NA,NA,0.000674763832658569,4,"converged",NA,NA,0.000674763832658569,1.73126196861267
+"D0",3,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.495114803314209
+"D0",3,"permutation",NA,NA,NA,0.00269905533063428,3,"converged",NA,NA,0.00269905533063428,37.5382857322693
+"A",4,"none","Centrality, whole graph",0,0.95,1,0,"converged",NA,NA,NA,0.934033393859863
+"A",4,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.937292814254761
+"A",4,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.938515186309814
+"A",4,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,0.942903995513916
+"A",4,"q50","Centrality, whole graph",0.3,0.6,0.0121457489878543,7,"converged",NA,NA,NA,3.02580785751343
+"A",4,"q50","Centrality, hot cells",0.95,0,0.0121457489878543,7,"converged",NA,NA,NA,3.02795243263245
+"A",4,"q50","Largest excess",1,0,0.0121457489878543,7,"converged",NA,NA,NA,3.02920436859131
+"A",4,"q50","Hot zones first",0.95,0,0.0121457489878543,7,"converged",NA,NA,NA,3.03159761428833
+"A",4,"q75","Centrality, whole graph",0.1,0.75,0.00809716599190283,5,"converged",NA,NA,NA,2.35853552818298
+"A",4,"q75","Centrality, hot cells",0.95,0,0.00809716599190283,5,"converged",NA,NA,NA,2.36074733734131
+"A",4,"q75","Largest excess",1,0,0.00809716599190283,5,"converged",NA,NA,NA,2.36202359199524
+"A",4,"q75","Hot zones first",0.95,0,0.00809716599190283,5,"converged",NA,NA,NA,2.36409378051758
+"A",4,"q80","Centrality, whole graph",0.3,0.35,0.0182186234817814,4,"converged",NA,NA,NA,1.83656430244446
+"A",4,"q80","Centrality, hot cells",0.95,0,0.0182186234817814,4,"converged",NA,NA,NA,1.83865785598755
+"A",4,"q80","Largest excess",1,0,0.0182186234817814,4,"converged",NA,NA,NA,1.83985614776611
+"A",4,"q80","Hot zones first",0.95,0,0.0182186234817814,4,"converged",NA,NA,NA,1.84260725975037
+"A",4,"q90","Centrality, whole graph",0.05,0.85,0.0107962213225371,2,"Moran undefined (saturated)",NA,NA,NA,1.32910799980164
+"A",4,"q90","Centrality, hot cells",1,0,0.0107962213225371,2,"Moran undefined (saturated)",NA,NA,NA,1.33056402206421
+"A",4,"q90","Largest excess",1,0,0.0107962213225371,2,"Moran undefined (saturated)",NA,NA,NA,1.33180236816406
+"A",4,"q90","Hot zones first",1,0,0.0107962213225371,2,"Moran undefined (saturated)",NA,NA,NA,1.33319115638733
+"A",4,"mixture","Centrality, whole graph",0.25,0.6,0.221997300944669,5,"Moran rejects",NA,NA,NA,2.72917747497559
+"A",4,"mixture","Centrality, hot cells",0.8,0,0.221997300944669,5,"Moran rejects",NA,NA,NA,2.73174047470093
+"A",4,"mixture","Largest excess",1,0,0.221997300944669,5,"Moran rejects",NA,NA,NA,2.73302555084229
+"A",4,"mixture","Hot zones first",0.7,0,0.221997300944669,5,"Moran rejects",NA,NA,NA,2.73603868484497
+"A",4,"permutation","Centrality, whole graph",0.5,0.45,0.00404858299595142,1,"converged",NA,NA,NA,22.7369244098663
+"A",4,"permutation","Centrality, hot cells",1,0,0.00404858299595142,1,"converged",NA,NA,NA,22.7392964363098
+"A",4,"permutation","Largest excess",1,0,0.00404858299595142,1,"converged",NA,NA,NA,22.7405660152435
+"A",4,"permutation","Hot zones first",1,0,0.00404858299595142,1,"converged",NA,NA,NA,22.7427501678467
+"B",4,"none","Centrality, whole graph",0,0.85,1,0,"converged",NA,NA,NA,0.870498418807983
+"B",4,"none","Centrality, hot cells",0.9,0,1,0,"converged",NA,NA,NA,0.873888254165649
+"B",4,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.875242233276367
+"B",4,"none","Hot zones first",0.55,0,1,0,"converged",NA,NA,NA,0.880742073059082
+"B",4,"q50","Centrality, whole graph",0.3,0.25,0.0202429149797571,7,"converged",NA,NA,NA,3.1496274471283
+"B",4,"q50","Centrality, hot cells",0.45,0,0.0202429149797571,7,"converged",NA,NA,NA,3.15216040611267
+"B",4,"q50","Largest excess",0.95,0,0.0202429149797571,7,"converged",NA,NA,NA,3.15349268913269
+"B",4,"q50","Hot zones first",0.45,0,0.0202429149797571,7,"converged",NA,NA,NA,3.15789604187012
+"B",4,"q75","Centrality, whole graph",0.1,0.7,0.00809716599190283,4,"converged",NA,NA,NA,1.95449948310852
+"B",4,"q75","Centrality, hot cells",0.85,0,0.00809716599190283,4,"converged",NA,NA,NA,1.95665097236633
+"B",4,"q75","Largest excess",0.95,0,0.00809716599190283,4,"converged",NA,NA,NA,1.9579484462738
+"B",4,"q75","Hot zones first",0.85,0,0.00809716599190283,4,"converged",NA,NA,NA,1.9602952003479
+"B",4,"q80","Centrality, whole graph",0.05,0.55,0.00404858299595142,4,"converged",NA,NA,NA,1.72114634513855
+"B",4,"q80","Centrality, hot cells",0.95,0,0.00404858299595142,4,"converged",NA,NA,NA,1.72258162498474
+"B",4,"q80","Largest excess",0.95,0,0.00404858299595142,4,"converged",NA,NA,NA,1.7239043712616
+"B",4,"q80","Hot zones first",0.95,0,0.00404858299595142,4,"converged",NA,NA,NA,1.7253155708313
+"B",4,"q90","Centrality, whole graph",0.1,0.75,0.0067476383265857,3,"converged",NA,NA,NA,1.76940250396729
+"B",4,"q90","Centrality, hot cells",0.95,0,0.0067476383265857,3,"converged",NA,NA,NA,1.77176690101624
+"B",4,"q90","Largest excess",0.95,0,0.0067476383265857,3,"converged",NA,NA,NA,1.77306222915649
+"B",4,"q90","Hot zones first",0.95,0,0.0067476383265857,3,"converged",NA,NA,NA,1.77517771720886
+"B",4,"mixture","Centrality, whole graph",0.2,0.55,0.0337381916329285,8,"converged",NA,NA,NA,3.3549268245697
+"B",4,"mixture","Centrality, hot cells",0.8,0,0.0337381916329285,8,"converged",NA,NA,NA,3.35716390609741
+"B",4,"mixture","Largest excess",0.95,0,0.0337381916329285,8,"converged",NA,NA,NA,3.35839819908142
+"B",4,"mixture","Hot zones first",0.8,0,0.0337381916329285,8,"converged",NA,NA,NA,3.36128854751587
+"B",4,"permutation","Centrality, whole graph",0.45,0.1,0.000674763832658569,3,"converged",NA,NA,NA,42.9742724895477
+"B",4,"permutation","Centrality, hot cells",0.95,0,0.000674763832658569,3,"converged",NA,NA,NA,42.9757170677185
+"B",4,"permutation","Largest excess",0.95,0,0.000674763832658569,3,"converged",NA,NA,NA,42.9770038127899
+"B",4,"permutation","Hot zones first",0.95,0,0.000674763832658569,3,"converged",NA,NA,NA,42.9784891605377
+"D80",4,"none",NA,NA,NA,1,0,"converged",0,0,1,0.676339864730835
+"D80",4,"q50",NA,NA,NA,0.00607287449392713,9,"converged",0.00644237652111679,1,0.00644237652111668,3.28885865211487
+"D80",4,"q75",NA,NA,NA,0.0087719298245614,5,"converged",0.0093056549749464,1,0.00930565497494631,1.9744439125061
+"D80",4,"q80",NA,NA,NA,0.0067476383265857,4,"converged",0.00715819613457414,1,0.00715819613457409,1.64237809181213
+"D80",4,"q90",NA,NA,NA,0.000674763832658569,4,"converged",0.000715819613457347,1,0.000715819613457409,1.60488319396973
+"D80",4,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.451194763183594
+"D80",4,"permutation",NA,NA,NA,0.000674763832658569,3,"empty graph",0.000715819613457347,1,0.000715819613457409,36.2196378707886
+"D95",4,"none",NA,NA,NA,1,0,"converged",0,0,1,0.788238286972046
+"D95",4,"q50",NA,NA,NA,0.0148448043184885,7,"converged",-0.00921301949555775,0.976470588235294,0.0143163922691482,3.14544272422791
+"D95",4,"q75",NA,NA,NA,0.00269905533063428,6,"converged",-0.00961724704198064,0.988235294117647,0.00214745884037223,2.62936878204346
+"D95",4,"q80",NA,NA,NA,0.00269905533063428,5,"converged",0.00286327845382961,1,0.00286327845382963,2.24434542655945
+"D95",4,"q90",NA,NA,NA,0.00337381916329285,3,"converged",-0.00890142742852329,0.988235294117647,0.00286327845382963,1.3669900894165
+"D95",4,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.753690004348755
+"D95",4,"permutation",NA,NA,NA,0.00134952766531714,1,"converged",-0.0110488862688954,0.988235294117647,0.000715819613457409,21.3983898162842
+"D0",4,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.749096155166626
+"D0",4,"q50",NA,NA,NA,0.0101214574898785,8,"converged",NA,NA,0.0101214574898785,2.95674324035645
+"D0",4,"q75",NA,NA,NA,0.00944669365721997,4,"converged",NA,NA,0.00944669365721997,1.89242124557495
+"D0",4,"q80",NA,NA,NA,0.00944669365721997,4,"converged",NA,NA,0.00944669365721997,1.69221425056458
+"D0",4,"q90",NA,NA,NA,0.00134952766531714,4,"converged",NA,NA,0.00134952766531714,1.72309422492981
+"D0",4,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.538321256637573
+"D0",4,"permutation",NA,NA,NA,0.000674763832658569,2,"converged",NA,NA,0.000674763832658569,28.9985640048981
+"A",5,"none","Centrality, whole graph",0.35,0.45,1,0,"converged",NA,NA,NA,0.888844966888428
+"A",5,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.892029762268066
+"A",5,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.893288135528564
+"A",5,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,0.901922464370728
+"A",5,"q50","Centrality, whole graph",0.3,0.65,0.0337381916329285,5,"Moran undefined (saturated)",NA,NA,NA,2.79113554954529
+"A",5,"q50","Centrality, hot cells",0.85,0,0.0337381916329285,5,"Moran undefined (saturated)",NA,NA,NA,2.79386448860168
+"A",5,"q50","Largest excess",1,0,0.0337381916329285,5,"Moran undefined (saturated)",NA,NA,NA,2.79524278640747
+"A",5,"q50","Hot zones first",0.85,0,0.0337381916329285,5,"Moran undefined (saturated)",NA,NA,NA,2.79939723014832
+"A",5,"q75","Centrality, whole graph",0.05,0.75,0.0634278002699055,2,"Moran rejects",NA,NA,NA,1.406085729599
+"A",5,"q75","Centrality, hot cells",0.75,0,0.0634278002699055,2,"Moran rejects",NA,NA,NA,1.40838575363159
+"A",5,"q75","Largest excess",1,0,0.0634278002699055,2,"Moran rejects",NA,NA,NA,1.40960311889648
+"A",5,"q75","Hot zones first",0.75,0,0.0634278002699055,2,"Moran rejects",NA,NA,NA,1.41311407089233
+"A",5,"q80","Centrality, whole graph",0.35,0.45,1,0,"Moran rejects",NA,NA,NA,0.756313800811768
+"A",5,"q80","Centrality, hot cells",0.85,0,1,0,"Moran rejects",NA,NA,NA,0.758739233016968
+"A",5,"q80","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,0.759932518005371
+"A",5,"q80","Hot zones first",0.85,0,1,0,"Moran rejects",NA,NA,NA,0.766432523727417
+"A",5,"q90","Centrality, whole graph",0.05,0.9,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.25564122200012
+"A",5,"q90","Centrality, hot cells",0.65,0,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.25953459739685
+"A",5,"q90","Largest excess",1,0,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.26166415214539
+"A",5,"q90","Hot zones first",0.7,0,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.27024340629578
+"A",5,"mixture","Centrality, whole graph",0.1,0.7,0.179487179487179,10,"Moran rejects",NA,NA,NA,4.33908009529114
+"A",5,"mixture","Centrality, hot cells",0.85,0,0.179487179487179,10,"Moran rejects",NA,NA,NA,4.34137940406799
+"A",5,"mixture","Largest excess",1,0,0.179487179487179,10,"Moran rejects",NA,NA,NA,4.34266376495361
+"A",5,"mixture","Hot zones first",0.75,0,0.179487179487179,10,"Moran rejects",NA,NA,NA,4.34739637374878
+"A",5,"permutation","Centrality, whole graph",0.35,0.45,1,0,"Moran rejects",NA,NA,NA,12.7911524772644
+"A",5,"permutation","Centrality, hot cells",0.85,0,1,0,"Moran rejects",NA,NA,NA,12.7935185432434
+"A",5,"permutation","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,12.794780254364
+"A",5,"permutation","Hot zones first",0.85,0,1,0,"Moran rejects",NA,NA,NA,12.7991383075714
+"B",5,"none","Centrality, whole graph",0.15,0.6,1,0,"converged",NA,NA,NA,0.911146640777588
+"B",5,"none","Centrality, hot cells",0.7,0,1,0,"converged",NA,NA,NA,0.914604425430298
+"B",5,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.915919065475464
+"B",5,"none","Hot zones first",0.7,0,1,0,"converged",NA,NA,NA,0.922544479370117
+"B",5,"q50","Centrality, whole graph",0.25,0.55,0.0121457489878543,7,"converged",NA,NA,NA,3.18379592895508
+"B",5,"q50","Centrality, hot cells",0.85,0,0.0121457489878543,7,"converged",NA,NA,NA,3.18606352806091
+"B",5,"q50","Largest excess",0.95,0,0.0121457489878543,7,"converged",NA,NA,NA,3.18737053871155
+"B",5,"q50","Hot zones first",0.85,0,0.0121457489878543,7,"converged",NA,NA,NA,3.19013500213623
+"B",5,"q75","Centrality, whole graph",0.15,0.6,1,0,"Moran rejects",NA,NA,NA,0.866243124008179
+"B",5,"q75","Centrality, hot cells",0.7,0,1,0,"Moran rejects",NA,NA,NA,0.869542598724365
+"B",5,"q75","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,0.871107578277588
+"B",5,"q75","Hot zones first",0.7,0,1,0,"Moran rejects",NA,NA,NA,0.877841949462891
+"B",5,"q80","Centrality, whole graph",0,0.9,0.0067476383265857,4,"converged",NA,NA,NA,2.16716885566711
+"B",5,"q80","Centrality, hot cells",0.95,0,0.0067476383265857,4,"converged",NA,NA,NA,2.16870784759521
+"B",5,"q80","Largest excess",0.95,0,0.0067476383265857,4,"converged",NA,NA,NA,2.1699104309082
+"B",5,"q80","Hot zones first",0.95,0,0.0067476383265857,4,"converged",NA,NA,NA,2.17130184173584
+"B",5,"q90","Centrality, whole graph",0.3,0.55,0.0101214574898785,3,"converged",NA,NA,NA,1.47835350036621
+"B",5,"q90","Centrality, hot cells",0.95,0,0.0101214574898785,3,"converged",NA,NA,NA,1.48063564300537
+"B",5,"q90","Largest excess",0.95,0,0.0101214574898785,3,"converged",NA,NA,NA,1.4818799495697
+"B",5,"q90","Hot zones first",0.95,0,0.0101214574898785,3,"converged",NA,NA,NA,1.48481512069702
+"B",5,"mixture","Centrality, whole graph",0.15,0.6,1,0,"converged",NA,NA,NA,0.84233832359314
+"B",5,"mixture","Centrality, hot cells",0.7,0,1,0,"converged",NA,NA,NA,0.844873666763306
+"B",5,"mixture","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.846329689025879
+"B",5,"mixture","Hot zones first",0.7,0,1,0,"converged",NA,NA,NA,0.852430105209351
+"B",5,"permutation","Centrality, whole graph",0.15,0.6,1,0,"Moran rejects",NA,NA,NA,12.8070597648621
+"B",5,"permutation","Centrality, hot cells",0.7,0,1,0,"Moran rejects",NA,NA,NA,12.8096647262573
+"B",5,"permutation","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,12.8108351230621
+"B",5,"permutation","Hot zones first",0.7,0,1,0,"Moran rejects",NA,NA,NA,12.8160283565521
+"D80",5,"none",NA,NA,NA,1,0,"converged",0,0,1,0.745439052581787
+"D80",5,"q50",NA,NA,NA,0.062753036437247,4,"Moran rejects",-0.0332729799149438,0.905882352941176,0.0608446671438797,2.13001155853271
+"D80",5,"q75",NA,NA,NA,0.0121457489878543,4,"converged",0.000404227546423108,0.988235294117647,0.0121689334287759,1.89068055152893
+"D80",5,"q80",NA,NA,NA,0.0067476383265857,4,"converged",-0.0178028548570467,0.976470588235294,0.00572655690765927,1.70121741294861
+"D80",5,"q90",NA,NA,NA,0.00134952766531714,3,"converged",0.00143163922691492,1,0.00143163922691482,1.49095153808594
+"D80",5,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.636600017547607
+"D80",5,"permutation",NA,NA,NA,0.00404858299595142,3,"converged",0.00429491768074453,1,0.00429491768074445,39.8790180683136
+"D95",5,"none",NA,NA,NA,1,0,"converged",0,0,1,0.688671112060547
+"D95",5,"q50",NA,NA,NA,0.062753036437247,4,"Moran rejects",-0.0207924544191335,0.917647058823529,0.0615604867573371,2.20064616203308
+"D95",5,"q75",NA,NA,NA,1,0,"Moran rejects",0,0,1,0.678059101104736
+"D95",5,"q80",NA,NA,NA,0.0067476383265857,4,"converged",0.00715819613457414,1,0.00715819613457409,1.94129633903503
+"D95",5,"q90",NA,NA,NA,0.00134952766531714,3,"converged",0.00143163922691492,1,0.00143163922691482,1.41799879074097
+"D95",5,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.680610179901123
+"D95",5,"permutation",NA,NA,NA,1,0,"empty graph",0,0,1,11.5386054515839
+"D0",5,"none",NA,NA,NA,1,0,"converged",NA,NA,1,1.00207495689392
+"D0",5,"q50",NA,NA,NA,0.0330634278002699,5,"Moran rejects",NA,NA,0.0330634278002699,2.46862101554871
+"D0",5,"q75",NA,NA,NA,0.00539811066126856,4,"converged",NA,NA,0.00539811066126856,1.92832851409912
+"D0",5,"q80",NA,NA,NA,0.0168690958164642,5,"converged",NA,NA,0.0168690958164642,1.91854763031006
+"D0",5,"q90",NA,NA,NA,0.00134952766531714,3,"converged",NA,NA,0.00134952766531714,1.54379868507385
+"D0",5,"mixture",NA,NA,NA,0.0222672064777328,5,"converged",NA,NA,0.0222672064777328,2.30631828308105
+"D0",5,"permutation",NA,NA,NA,1,0,"Moran rejects",NA,NA,1,11.8492505550385
+"A",6,"none","Centrality, whole graph",0,0.95,1,0,"converged",NA,NA,NA,0.846851110458374
+"A",6,"none","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.850048542022705
+"A",6,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.85124659538269
+"A",6,"none","Hot zones first",0.75,0,1,0,"converged",NA,NA,NA,0.854954242706299
+"A",6,"q50","Centrality, whole graph",0.3,0.45,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.87829804420471
+"A",6,"q50","Centrality, hot cells",0.6,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.8809506893158
+"A",6,"q50","Largest excess",1,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.88223266601562
+"A",6,"q50","Hot zones first",0.55,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.88586974143982
+"A",6,"q75","Centrality, whole graph",0.05,0.75,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.23406052589417
+"A",6,"q75","Centrality, hot cells",0.8,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.23730301856995
+"A",6,"q75","Largest excess",1,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.23906135559082
+"A",6,"q75","Hot zones first",0.65,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.24497175216675
+"A",6,"q80","Centrality, whole graph",0.1,0.8,0.0411605937921727,2,"Moran undefined (saturated)",NA,NA,NA,1.38809251785278
+"A",6,"q80","Centrality, hot cells",0.95,0,0.0411605937921727,2,"Moran undefined (saturated)",NA,NA,NA,1.39046454429626
+"A",6,"q80","Largest excess",1,0,0.0411605937921727,2,"Moran undefined (saturated)",NA,NA,NA,1.39177823066711
+"A",6,"q80","Hot zones first",0.95,0,0.0411605937921727,2,"Moran undefined (saturated)",NA,NA,NA,1.39485168457031
+"A",6,"q90","Centrality, whole graph",0.85,0.1,0.00134952766531714,4,"converged",NA,NA,NA,1.81882619857788
+"A",6,"q90","Centrality, hot cells",1,0,0.00134952766531714,4,"converged",NA,NA,NA,1.82031393051147
+"A",6,"q90","Largest excess",1,0,0.00134952766531714,4,"converged",NA,NA,NA,1.82147789001465
+"A",6,"q90","Hot zones first",1,0,0.00134952766531714,4,"converged",NA,NA,NA,1.82283234596252
+"A",6,"mixture","Centrality, whole graph",0.3,0.5,0.0566801619433198,8,"Moran rejects",NA,NA,NA,3.79601860046387
+"A",6,"mixture","Centrality, hot cells",0.75,0,0.0566801619433198,8,"Moran rejects",NA,NA,NA,3.79809308052063
+"A",6,"mixture","Largest excess",1,0,0.0566801619433198,8,"Moran rejects",NA,NA,NA,3.79948306083679
+"A",6,"mixture","Hot zones first",0.75,0,0.0566801619433198,8,"Moran rejects",NA,NA,NA,3.80327463150024
+"A",6,"permutation","Centrality, whole graph",0,0.95,1,0,"Moran rejects",NA,NA,NA,12.3598966598511
+"A",6,"permutation","Centrality, hot cells",1,0,1,0,"Moran rejects",NA,NA,NA,12.3619272708893
+"A",6,"permutation","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,12.3631052970886
+"A",6,"permutation","Hot zones first",0.75,0,1,0,"Moran rejects",NA,NA,NA,12.3662374019623
+"B",6,"none","Centrality, whole graph",0,0.75,1,0,"converged",NA,NA,NA,0.870962381362915
+"B",6,"none","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.875229835510254
+"B",6,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.876822233200073
+"B",6,"none","Hot zones first",0.7,0,1,0,"converged",NA,NA,NA,0.884340286254883
+"B",6,"q50","Centrality, whole graph",0,0.95,0.249662618083671,2,"Moran rejects",NA,NA,NA,1.81455564498901
+"B",6,"q50","Centrality, hot cells",0.7,0,0.249662618083671,2,"Moran rejects",NA,NA,NA,1.8168306350708
+"B",6,"q50","Largest excess",1,0,0.249662618083671,2,"Moran rejects",NA,NA,NA,1.81799507141113
+"B",6,"q50","Hot zones first",0.75,0,0.249662618083671,2,"Moran rejects",NA,NA,NA,1.82363176345825
+"B",6,"q75","Centrality, whole graph",0.35,0.15,0.00269905533063428,5,"converged",NA,NA,NA,2.27801918983459
+"B",6,"q75","Centrality, hot cells",0.95,0,0.00269905533063428,5,"converged",NA,NA,NA,2.27953052520752
+"B",6,"q75","Largest excess",0.95,0,0.00269905533063428,5,"converged",NA,NA,NA,2.28091597557068
+"B",6,"q75","Hot zones first",0.95,0,0.00269905533063428,5,"converged",NA,NA,NA,2.28243350982666
+"B",6,"q80","Centrality, whole graph",0.2,0.55,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.25018239021301
+"B",6,"q80","Centrality, hot cells",0.7,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.25267291069031
+"B",6,"q80","Largest excess",1,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.25395274162292
+"B",6,"q80","Hot zones first",0.7,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.25944447517395
+"B",6,"q90","Centrality, whole graph",0.4,0.15,0.00134952766531714,3,"converged",NA,NA,NA,1.6263325214386
+"B",6,"q90","Centrality, hot cells",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,1.62783145904541
+"B",6,"q90","Largest excess",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,1.62906932830811
+"B",6,"q90","Hot zones first",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,1.63046908378601
+"B",6,"mixture","Centrality, whole graph",0.15,0.55,0.0506072874493927,7,"converged",NA,NA,NA,3.07805967330933
+"B",6,"mixture","Centrality, hot cells",0.6,0,0.0506072874493927,7,"converged",NA,NA,NA,3.08041262626648
+"B",6,"mixture","Largest excess",1,0,0.0506072874493927,7,"converged",NA,NA,NA,3.08171558380127
+"B",6,"mixture","Hot zones first",0.6,0,0.0506072874493927,7,"converged",NA,NA,NA,3.08569931983948
+"B",6,"permutation","Centrality, whole graph",0.2,0.3,0.00337381916329285,2,"converged",NA,NA,NA,31.6191823482513
+"B",6,"permutation","Centrality, hot cells",0.95,0,0.00337381916329285,2,"converged",NA,NA,NA,31.621542930603
+"B",6,"permutation","Largest excess",0.95,0,0.00337381916329285,2,"converged",NA,NA,NA,31.6227962970734
+"B",6,"permutation","Hot zones first",0.95,0,0.00337381916329285,2,"converged",NA,NA,NA,31.6248641014099
+"D80",6,"none",NA,NA,NA,1,0,"converged",0,0,1,0.660455465316772
+"D80",6,"q50",NA,NA,NA,0.0114709851551957,8,"converged",-0.0127921175628448,0.976470588235294,0.0107372942018611,3.2123646736145
+"D80",6,"q75",NA,NA,NA,0.0067476383265857,5,"converged",-0.0178028548570467,0.976470588235294,0.00572655690765927,1.96724152565002
+"D80",6,"q80",NA,NA,NA,0.00337381916329285,4,"converged",-0.00890142742852329,0.988235294117647,0.00286327845382963,1.58970594406128
+"D80",6,"q90",NA,NA,NA,0.00134952766531714,4,"converged",-0.0110488862688954,0.988235294117647,0.000715819613457409,1.72894072532654
+"D80",6,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.467761039733887
+"D80",6,"permutation",NA,NA,NA,0.00202429149797571,3,"empty graph",0.00214745884037226,1,0.00214745884037223,37.3436150550842
+"D95",6,"none",NA,NA,NA,1,0,"converged",0,0,1,0.64865255355835
+"D95",6,"q50",NA,NA,NA,0.01417004048583,8,"converged",-0.0099288391090151,0.976470588235294,0.0136005726556908,3.28336095809937
+"D95",6,"q75",NA,NA,NA,0.00809716599190283,4,"converged",-0.00389069013432142,0.988235294117647,0.0078740157480315,1.86297249794006
+"D95",6,"q80",NA,NA,NA,0.00134952766531714,5,"converged",0.00143163922691492,1,0.00143163922691482,2.42716288566589
+"D95",6,"q90",NA,NA,NA,0.00134952766531714,3,"converged",0.00143163922691492,1,0.00143163922691482,1.30856919288635
+"D95",6,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.541733980178833
+"D95",6,"permutation",NA,NA,NA,0.00269905533063428,1,"empty graph",-0.0220977725377911,0.976470588235294,0.00143163922691482,21.2006256580353
+"D0",6,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.945197582244873
+"D0",6,"q50",NA,NA,NA,0.0128205128205128,7,"converged",NA,NA,0.0128205128205128,2.74834871292114
+"D0",6,"q75",NA,NA,NA,0.00742240215924426,6,"converged",NA,NA,0.00742240215924426,2.40818309783936
+"D0",6,"q80",NA,NA,NA,0.00134952766531714,5,"converged",NA,NA,0.00134952766531714,2.14258694648743
+"D0",6,"q90",NA,NA,NA,0.00134952766531714,4,"converged",NA,NA,0.00134952766531714,1.76492285728455
+"D0",6,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.543548107147217
+"D0",6,"permutation",NA,NA,NA,0.000674763832658569,2,"converged",NA,NA,0.000674763832658569,31.0504417419434
+"A",7,"none","Centrality, whole graph",0,0.9,1,0,"converged",NA,NA,NA,0.890850782394409
+"A",7,"none","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.893626928329468
+"A",7,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.894761085510254
+"A",7,"none","Hot zones first",0.75,0,1,0,"converged",NA,NA,NA,0.899571895599365
+"A",7,"q50","Centrality, whole graph",0.2,0.6,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.88335633277893
+"A",7,"q50","Centrality, hot cells",0.7,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.88558673858643
+"A",7,"q50","Largest excess",1,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.88683843612671
+"A",7,"q50","Hot zones first",0.7,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.89106225967407
+"A",7,"q75","Centrality, whole graph",0,0.9,0.0634278002699055,2,"Moran undefined (saturated)",NA,NA,NA,1.60219979286194
+"A",7,"q75","Centrality, hot cells",0.75,0,0.0634278002699055,2,"Moran undefined (saturated)",NA,NA,NA,1.60460543632507
+"A",7,"q75","Largest excess",1,0,0.0634278002699055,2,"Moran undefined (saturated)",NA,NA,NA,1.60598182678223
+"A",7,"q75","Hot zones first",0.75,0,0.0634278002699055,2,"Moran undefined (saturated)",NA,NA,NA,1.60907649993896
+"A",7,"q80","Centrality, whole graph",0.05,0.7,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.39701342582703
+"A",7,"q80","Centrality, hot cells",0.75,0,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.39949703216553
+"A",7,"q80","Largest excess",1,0,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.40116238594055
+"A",7,"q80","Hot zones first",0.75,0,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.40541172027588
+"A",7,"q90","Centrality, whole graph",0.2,0.65,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.38807106018066
+"A",7,"q90","Centrality, hot cells",0.6,0,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.3907163143158
+"A",7,"q90","Largest excess",1,0,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.39202451705933
+"A",7,"q90","Hot zones first",0.6,0,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.39537596702576
+"A",7,"mixture","Centrality, whole graph",0.2,0.6,0.121457489878543,7,"converged",NA,NA,NA,3.35233211517334
+"A",7,"mixture","Centrality, hot cells",0.5,0,0.121457489878543,7,"converged",NA,NA,NA,3.35495972633362
+"A",7,"mixture","Largest excess",1,0,0.121457489878543,7,"converged",NA,NA,NA,3.35631322860718
+"A",7,"mixture","Hot zones first",0.6,0,0.121457489878543,7,"converged",NA,NA,NA,3.36049318313599
+"A",7,"permutation","Centrality, whole graph",0,0.9,1,0,"Moran rejects",NA,NA,NA,12.6059033870697
+"A",7,"permutation","Centrality, hot cells",1,0,1,0,"Moran rejects",NA,NA,NA,12.6080858707428
+"A",7,"permutation","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,12.6092677116394
+"A",7,"permutation","Hot zones first",0.75,0,1,0,"Moran rejects",NA,NA,NA,12.6140048503876
+"B",7,"none","Centrality, whole graph",0,0.8,1,0,"converged",NA,NA,NA,0.852905988693237
+"B",7,"none","Centrality, hot cells",0.8,0,1,0,"converged",NA,NA,NA,0.8558669090271
+"B",7,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,0.857021570205688
+"B",7,"none","Hot zones first",0.8,0,1,0,"converged",NA,NA,NA,0.861298084259033
+"B",7,"q50","Centrality, whole graph",0,0.85,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.9975950717926
+"B",7,"q50","Centrality, hot cells",0.45,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.00049638748169
+"B",7,"q50","Largest excess",0.95,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.00173187255859
+"B",7,"q50","Hot zones first",0.45,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.00626230239868
+"B",7,"q75","Centrality, whole graph",0.15,0.6,0.0107962213225371,4,"converged",NA,NA,NA,2.18137216567993
+"B",7,"q75","Centrality, hot cells",0.9,0,0.0107962213225371,4,"converged",NA,NA,NA,2.18383932113647
+"B",7,"q75","Largest excess",0.95,0,0.0107962213225371,4,"converged",NA,NA,NA,2.18528008460999
+"B",7,"q75","Hot zones first",0.9,0,0.0107962213225371,4,"converged",NA,NA,NA,2.18771767616272
+"B",7,"q80","Centrality, whole graph",0.1,0.6,0.0134952766531714,4,"converged",NA,NA,NA,2.02358245849609
+"B",7,"q80","Centrality, hot cells",0.85,0,0.0134952766531714,4,"converged",NA,NA,NA,2.02601766586304
+"B",7,"q80","Largest excess",1,0,0.0134952766531714,4,"converged",NA,NA,NA,2.02724647521973
+"B",7,"q80","Hot zones first",0.85,0,0.0134952766531714,4,"converged",NA,NA,NA,2.02967524528503
+"B",7,"q90","Centrality, whole graph",0.4,0.2,0.00202429149797571,3,"converged",NA,NA,NA,1.77690625190735
+"B",7,"q90","Centrality, hot cells",0.95,0,0.00202429149797571,3,"converged",NA,NA,NA,1.7792534828186
+"B",7,"q90","Largest excess",1,0,0.00202429149797571,3,"converged",NA,NA,NA,1.78044009208679
+"B",7,"q90","Hot zones first",0.95,0,0.00202429149797571,3,"converged",NA,NA,NA,1.78234887123108
+"B",7,"mixture","Centrality, whole graph",0.3,0.45,0.048582995951417,7,"converged",NA,NA,NA,3.50508236885071
+"B",7,"mixture","Centrality, hot cells",0.7,0,0.048582995951417,7,"converged",NA,NA,NA,3.50745749473572
+"B",7,"mixture","Largest excess",1,0,0.048582995951417,7,"converged",NA,NA,NA,3.50868487358093
+"B",7,"mixture","Hot zones first",0.75,0,0.048582995951417,7,"converged",NA,NA,NA,3.51819920539856
+"B",7,"permutation","Centrality, whole graph",0.5,0.1,0.000674763832658569,3,"converged",NA,NA,NA,41.9556684494019
+"B",7,"permutation","Centrality, hot cells",1,0,0.000674763832658569,3,"converged",NA,NA,NA,41.9570877552032
+"B",7,"permutation","Largest excess",1,0,0.000674763832658569,3,"converged",NA,NA,NA,41.9582302570343
+"B",7,"permutation","Hot zones first",1,0,0.000674763832658569,3,"converged",NA,NA,NA,41.9595503807068
+"D80",7,"none",NA,NA,NA,1,0,"converged",0,0,1,0.643099308013916
+"D80",7,"q50",NA,NA,NA,0.0107962213225371,7,"Moran rejects",-0.00102741168049181,0.988235294117647,0.0107372942018611,2.92447662353516
+"D80",7,"q75",NA,NA,NA,0.00202429149797571,5,"converged",-0.0103330666554381,0.988235294117647,0.00143163922691482,2.14960980415344
+"D80",7,"q80",NA,NA,NA,0.00607287449392713,5,"converged",-0.018518674470504,0.976470588235294,0.00501073729420186,1.8965048789978
+"D80",7,"q90",NA,NA,NA,0.000674763832658569,4,"converged",0.000715819613457347,1,0.000715819613457409,1.92503881454468
+"D80",7,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.527415990829468
+"D80",7,"permutation",NA,NA,NA,0.00404858299595142,3,"converged",-0.00818560781506583,0.988235294117647,0.00357909806728704,35.3030326366425
+"D95",7,"none",NA,NA,NA,1,0,"converged",0,0,1,0.651249647140503
+"D95",7,"q50",NA,NA,NA,0.0107962213225371,8,"converged",0.0114531138153184,1,0.0114531138153185,3.25234293937683
+"D95",7,"q75",NA,NA,NA,0.00134952766531714,5,"converged",0.00143163922691492,1,0.00143163922691482,2.31997179985046
+"D95",7,"q80",NA,NA,NA,0.00809716599190283,4,"converged",0.00858983536148883,1,0.00858983536148891,1.7228856086731
+"D95",7,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.9692018032074
+"D95",7,"mixture",NA,NA,NA,0.0411605937921727,6,"converged",-0.00625710556233949,0.952941176470588,0.0408017179670723,2.55288648605347
+"D95",7,"permutation",NA,NA,NA,0.000674763832658569,2,"empty graph",0.000715819613457347,1,0.000715819613457409,31.6033446788788
+"D0",7,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.759913444519043
+"D0",7,"q50",NA,NA,NA,0.125506072874494,3,"Moran rejects",NA,NA,0.125506072874494,1.77607035636902
+"D0",7,"q75",NA,NA,NA,1,0,"Moran rejects",NA,NA,1,0.728950500488281
+"D0",7,"q80",NA,NA,NA,0.0101214574898785,5,"converged",NA,NA,0.0101214574898785,2.10070133209229
+"D0",7,"q90",NA,NA,NA,0.00134952766531714,4,"converged",NA,NA,0.00134952766531714,1.7082085609436
+"D0",7,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.496077060699463
+"D0",7,"permutation",NA,NA,NA,0.000674763832658569,2,"empty graph",NA,NA,0.000674763832658569,30.2624258995056
+"A",8,"none","Centrality, whole graph",0,0.9,1,0,"converged",NA,NA,NA,1.00927400588989
+"A",8,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,1.01276397705078
+"A",8,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,1.01404571533203
+"A",8,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,1.01954030990601
+"A",8,"q50","Centrality, whole graph",0.6,0.3,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.1269896030426
+"A",8,"q50","Centrality, hot cells",0.85,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.12965273857117
+"A",8,"q50","Largest excess",1,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.13127136230469
+"A",8,"q50","Hot zones first",0.85,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.13436651229858
+"A",8,"q75","Centrality, whole graph",0.05,0.75,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.35520625114441
+"A",8,"q75","Centrality, hot cells",0.95,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.36027598381042
+"A",8,"q75","Largest excess",1,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.36293077468872
+"A",8,"q75","Hot zones first",0.8,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.36795091629028
+"A",8,"q80","Centrality, whole graph",0.05,0.9,0.0404858299595142,2,"Moran rejects",NA,NA,NA,1.6567714214325
+"A",8,"q80","Centrality, hot cells",0.8,0,0.0404858299595142,2,"Moran rejects",NA,NA,NA,1.65888166427612
+"A",8,"q80","Largest excess",1,0,0.0404858299595142,2,"Moran rejects",NA,NA,NA,1.66010451316833
+"A",8,"q80","Hot zones first",0.8,0,0.0404858299595142,2,"Moran rejects",NA,NA,NA,1.66360139846802
+"A",8,"q90","Centrality, whole graph",0.9,0.1,0.000674763832658569,4,"converged",NA,NA,NA,1.99673390388489
+"A",8,"q90","Centrality, hot cells",1,0,0.000674763832658569,4,"converged",NA,NA,NA,1.99867224693298
+"A",8,"q90","Largest excess",1,0,0.000674763832658569,4,"converged",NA,NA,NA,2.00015497207642
+"A",8,"q90","Hot zones first",1,0,0.000674763832658569,4,"converged",NA,NA,NA,2.00212287902832
+"A",8,"mixture","Centrality, whole graph",0.35,0.35,0.0330634278002699,8,"converged",NA,NA,NA,4.28517532348633
+"A",8,"mixture","Centrality, hot cells",0.75,0,0.0330634278002699,8,"converged",NA,NA,NA,4.2879319190979
+"A",8,"mixture","Largest excess",1,0,0.0330634278002699,8,"converged",NA,NA,NA,4.28935790061951
+"A",8,"mixture","Hot zones first",0.8,0,0.0330634278002699,8,"converged",NA,NA,NA,4.29547929763794
+"A",8,"permutation","Centrality, whole graph",0,0.9,1,0,"Moran rejects",NA,NA,NA,14.1730995178223
+"A",8,"permutation","Centrality, hot cells",0.85,0,1,0,"Moran rejects",NA,NA,NA,14.175354719162
+"A",8,"permutation","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,14.1764965057373
+"A",8,"permutation","Hot zones first",0.85,0,1,0,"Moran rejects",NA,NA,NA,14.1810142993927
+"B",8,"none","Centrality, whole graph",0.05,0.85,1,0,"converged",NA,NA,NA,1.06542158126831
+"B",8,"none","Centrality, hot cells",0.8,0,1,0,"converged",NA,NA,NA,1.06880688667297
+"B",8,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,1.07008004188538
+"B",8,"none","Hot zones first",0.6,0,1,0,"converged",NA,NA,NA,1.07574796676636
+"B",8,"q50","Centrality, whole graph",0.7,0.15,0.0188933873144399,7,"converged",NA,NA,NA,3.26322722434998
+"B",8,"q50","Centrality, hot cells",0.8,0,0.0188933873144399,7,"converged",NA,NA,NA,3.26845669746399
+"B",8,"q50","Largest excess",0.95,0,0.0188933873144399,7,"converged",NA,NA,NA,3.27051568031311
+"B",8,"q50","Hot zones first",0.8,0,0.0188933873144399,7,"converged",NA,NA,NA,3.27947664260864
+"B",8,"q75","Centrality, whole graph",0.55,0.05,0.00134952766531714,6,"converged",NA,NA,NA,3.07389402389526
+"B",8,"q75","Centrality, hot cells",1,0,0.00134952766531714,6,"converged",NA,NA,NA,3.07781147956848
+"B",8,"q75","Largest excess",0.95,0,0.00134952766531714,6,"converged",NA,NA,NA,3.07976317405701
+"B",8,"q75","Hot zones first",1,0,0.00134952766531714,6,"converged",NA,NA,NA,3.08276057243347
+"B",8,"q80","Centrality, whole graph",0.45,0.2,0.00202429149797571,4,"converged",NA,NA,NA,2.09656286239624
+"B",8,"q80","Centrality, hot cells",0.95,0,0.00202429149797571,4,"converged",NA,NA,NA,2.09942030906677
+"B",8,"q80","Largest excess",0.95,0,0.00202429149797571,4,"converged",NA,NA,NA,2.10177850723267
+"B",8,"q80","Hot zones first",0.95,0,0.00202429149797571,4,"converged",NA,NA,NA,2.10371255874634
+"B",8,"q90","Centrality, whole graph",0.15,0.4,0.00337381916329285,4,"converged",NA,NA,NA,2.36057066917419
+"B",8,"q90","Centrality, hot cells",0.95,0,0.00337381916329285,4,"converged",NA,NA,NA,2.36217665672302
+"B",8,"q90","Largest excess",0.95,0,0.00337381916329285,4,"converged",NA,NA,NA,2.36343932151794
+"B",8,"q90","Hot zones first",0.95,0,0.00337381916329285,4,"converged",NA,NA,NA,2.36510181427002
+"B",8,"mixture","Centrality, whole graph",0.35,0.4,0.0418353576248313,2,"converged",NA,NA,NA,1.46599793434143
+"B",8,"mixture","Centrality, hot cells",0.8,0,0.0418353576248313,2,"converged",NA,NA,NA,1.4687864780426
+"B",8,"mixture","Largest excess",0.95,0,0.0418353576248313,2,"converged",NA,NA,NA,1.4701099395752
+"B",8,"mixture","Hot zones first",0.8,0,0.0418353576248313,2,"converged",NA,NA,NA,1.47577786445618
+"B",8,"permutation","Centrality, whole graph",0.5,0.15,0.00134952766531714,3,"converged",NA,NA,NA,44.7262101173401
+"B",8,"permutation","Centrality, hot cells",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,44.7276701927185
+"B",8,"permutation","Largest excess",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,44.7288618087769
+"B",8,"permutation","Hot zones first",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,44.7302565574646
+"D80",8,"none",NA,NA,NA,1,0,"converged",0,0,1,0.703311681747437
+"D80",8,"q50",NA,NA,NA,0.0101214574898785,8,"converged",-0.0142237567897596,0.976470588235294,0.00930565497494631,3.34101724624634
+"D80",8,"q75",NA,NA,NA,0.250337381916329,1,"Moran rejects",-0.0589245862983705,0.694117647058824,0.246957766642806,1.06667113304138
+"D80",8,"q80",NA,NA,NA,0.00809716599190283,4,"converged",0.00858983536148883,1,0.00858983536148891,1.95247960090637
+"D80",8,"q90",NA,NA,NA,0.00134952766531714,3,"converged",0.00143163922691492,1,0.00143163922691482,1.64126205444336
+"D80",8,"mixture",NA,NA,NA,0.00944669365721997,8,"converged",-0.014939576403217,0.976470588235294,0.00858983536148891,3.44797372817993
+"D80",8,"permutation",NA,NA,NA,0.000674763832658569,3,"converged",0.000715819613457347,1,0.000715819613457409,40.3364434242249
+"D95",8,"none",NA,NA,NA,1,0,"converged",0,0,1,0.676549196243286
+"D95",8,"q50",NA,NA,NA,0.0114709851551957,8,"converged",-0.00031159206703435,0.988235294117647,0.0114531138153185,3.2742133140564
+"D95",8,"q75",NA,NA,NA,0.00809716599190283,5,"converged",0.00858983536148883,1,0.00858983536148891,2.3232593536377
+"D95",8,"q80",NA,NA,NA,0.0121457489878543,4,"converged",0.000404227546423108,0.988235294117647,0.0121689334287759,1.70351409912109
+"D95",8,"q90",NA,NA,NA,0.000674763832658569,4,"converged",0.000715819613457347,1,0.000715819613457409,2.03059244155884
+"D95",8,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.613665103912354
+"D95",8,"permutation",NA,NA,NA,0.00269905533063428,2,"converged",0.00286327845382961,1,0.00286327845382963,31.1864318847656
+"D0",8,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.96518611907959
+"D0",8,"q50",NA,NA,NA,0.0128205128205128,8,"converged",NA,NA,0.0128205128205128,4.05543756484985
+"D0",8,"q75",NA,NA,NA,0.250337381916329,1,"Moran rejects",NA,NA,0.250337381916329,1.11917567253113
+"D0",8,"q80",NA,NA,NA,0.200404858299595,1,"Moran rejects",NA,NA,0.200404858299595,1.15174198150635
+"D0",8,"q90",NA,NA,NA,0.00134952766531714,3,"Moran rejects",NA,NA,0.00134952766531714,1.71182322502136
+"D0",8,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.498286008834839
+"D0",8,"permutation",NA,NA,NA,0.00944669365721997,1,"Moran rejects",NA,NA,0.00944669365721997,21.9144456386566
+"A",9,"none","Centrality, whole graph",0.25,0.65,1,0,"converged",NA,NA,NA,0.830956220626831
+"A",9,"none","Centrality, hot cells",0.95,0,1,0,"converged",NA,NA,NA,0.834091424942017
+"A",9,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.835416555404663
+"A",9,"none","Hot zones first",0.95,0,1,0,"converged",NA,NA,NA,0.840620040893555
+"A",9,"q50","Centrality, whole graph",0.3,0.6,0.5,1,"Moran rejects",NA,NA,NA,1.30869698524475
+"A",9,"q50","Centrality, hot cells",1,0,0.5,1,"Moran rejects",NA,NA,NA,1.31105399131775
+"A",9,"q50","Largest excess",1,0,0.5,1,"Moran rejects",NA,NA,NA,1.31228113174438
+"A",9,"q50","Hot zones first",1,0,0.5,1,"Moran rejects",NA,NA,NA,1.31626558303833
+"A",9,"q75","Centrality, whole graph",0.35,0.55,0.0263157894736842,3,"Moran undefined (saturated)",NA,NA,NA,1.83001637458801
+"A",9,"q75","Centrality, hot cells",1,0,0.0263157894736842,3,"Moran undefined (saturated)",NA,NA,NA,1.83245515823364
+"A",9,"q75","Largest excess",1,0,0.0263157894736842,3,"Moran undefined (saturated)",NA,NA,NA,1.83369088172913
+"A",9,"q75","Hot zones first",1,0,0.0263157894736842,3,"Moran undefined (saturated)",NA,NA,NA,1.83654356002808
+"A",9,"q80","Centrality, whole graph",0.05,0.85,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.74808049201965
+"A",9,"q80","Centrality, hot cells",0.95,0,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.75027775764465
+"A",9,"q80","Largest excess",1,0,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.75148248672485
+"A",9,"q80","Hot zones first",0.95,0,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.754727602005
+"A",9,"q90","Centrality, whole graph",0,0.95,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.26208186149597
+"A",9,"q90","Centrality, hot cells",0.95,0,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.26937174797058
+"A",9,"q90","Largest excess",1,0,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.27130651473999
+"A",9,"q90","Hot zones first",0.9,0,0.100539811066127,1,"Moran undefined (saturated)",NA,NA,NA,1.27677702903748
+"A",9,"mixture","Centrality, whole graph",0.25,0.65,1,0,"converged",NA,NA,NA,0.793371915817261
+"A",9,"mixture","Centrality, hot cells",0.95,0,1,0,"converged",NA,NA,NA,0.79597544670105
+"A",9,"mixture","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.797290802001953
+"A",9,"mixture","Hot zones first",0.95,0,1,0,"converged",NA,NA,NA,0.80203914642334
+"A",9,"permutation","Centrality, whole graph",0.2,0.7,0.0762483130904184,1,"Moran undefined (saturated)",NA,NA,NA,21.880405664444
+"A",9,"permutation","Centrality, hot cells",0.95,0,0.0762483130904184,1,"Moran undefined (saturated)",NA,NA,NA,21.8825645446777
+"A",9,"permutation","Largest excess",1,0,0.0762483130904184,1,"Moran undefined (saturated)",NA,NA,NA,21.8838262557983
+"A",9,"permutation","Hot zones first",0.9,0,0.0762483130904184,1,"Moran undefined (saturated)",NA,NA,NA,21.8899738788605
+"B",9,"none","Centrality, whole graph",0,0.9,1,0,"converged",NA,NA,NA,0.875301122665405
+"B",9,"none","Centrality, hot cells",0.75,0,1,0,"converged",NA,NA,NA,0.879083633422852
+"B",9,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,0.880328178405762
+"B",9,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,0.885858535766602
+"B",9,"q50","Centrality, whole graph",0.45,0.5,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.20945286750793
+"B",9,"q50","Centrality, hot cells",0.85,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.2135329246521
+"B",9,"q50","Largest excess",1,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.21525716781616
+"B",9,"q50","Hot zones first",0.8,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.22269463539124
+"B",9,"q75","Centrality, whole graph",0.75,0.2,0.0209176788124157,4,"converged",NA,NA,NA,2.11339020729065
+"B",9,"q75","Centrality, hot cells",0.75,0,0.0209176788124157,4,"converged",NA,NA,NA,2.1159074306488
+"B",9,"q75","Largest excess",1,0,0.0209176788124157,4,"converged",NA,NA,NA,2.11725354194641
+"B",9,"q75","Hot zones first",0.75,0,0.0209176788124157,4,"converged",NA,NA,NA,2.12254738807678
+"B",9,"q80","Centrality, whole graph",0.4,0.15,0.00269905533063428,6,"converged",NA,NA,NA,2.61339950561523
+"B",9,"q80","Centrality, hot cells",0.95,0,0.00269905533063428,6,"converged",NA,NA,NA,2.61495161056519
+"B",9,"q80","Largest excess",0.95,0,0.00269905533063428,6,"converged",NA,NA,NA,2.61621999740601
+"B",9,"q80","Hot zones first",0.95,0,0.00269905533063428,6,"converged",NA,NA,NA,2.61766481399536
+"B",9,"q90","Centrality, whole graph",0.4,0.15,0.00134952766531714,4,"converged",NA,NA,NA,2.11380219459534
+"B",9,"q90","Centrality, hot cells",0.95,0,0.00134952766531714,4,"converged",NA,NA,NA,2.11540579795837
+"B",9,"q90","Largest excess",0.95,0,0.00134952766531714,4,"converged",NA,NA,NA,2.11663007736206
+"B",9,"q90","Hot zones first",0.95,0,0.00134952766531714,4,"converged",NA,NA,NA,2.11797952651978
+"B",9,"mixture","Centrality, whole graph",0.15,0.7,0.092442645074224,6,"Moran rejects",NA,NA,NA,3.19240927696228
+"B",9,"mixture","Centrality, hot cells",0.65,0,0.092442645074224,6,"Moran rejects",NA,NA,NA,3.19483947753906
+"B",9,"mixture","Largest excess",0.95,0,0.092442645074224,6,"Moran rejects",NA,NA,NA,3.19604563713074
+"B",9,"mixture","Hot zones first",0.65,0,0.092442645074224,6,"Moran rejects",NA,NA,NA,3.19944310188293
+"B",9,"permutation","Centrality, whole graph",0.45,0,0.000674763832658569,4,"converged",NA,NA,NA,52.3321185112
+"B",9,"permutation","Centrality, hot cells",0.85,0,0.000674763832658569,4,"converged",NA,NA,NA,52.3346617221832
+"B",9,"permutation","Largest excess",0.95,0,0.000674763832658569,4,"converged",NA,NA,NA,52.3363065719604
+"B",9,"permutation","Hot zones first",0.85,0,0.000674763832658569,4,"converged",NA,NA,NA,52.3383936882019
+"D80",9,"none",NA,NA,NA,1,0,"converged",0,0,1,0.671587228775024
+"D80",9,"q50",NA,NA,NA,0.0155195681511471,7,"converged",-0.00849719988210029,0.976470588235294,0.0150322118826056,3.12089967727661
+"D80",9,"q75",NA,NA,NA,0.00269905533063428,5,"converged",-0.00961724704198064,0.988235294117647,0.00214745884037223,2.1853814125061
+"D80",9,"q80",NA,NA,NA,0.00404858299595142,5,"converged",0.00429491768074453,1,0.00429491768074445,2.09448647499084
+"D80",9,"q90",NA,NA,NA,0.00607287449392713,3,"converged",0.00644237652111679,1,0.00644237652111668,1.38347291946411
+"D80",9,"mixture",NA,NA,NA,0.0161943319838057,9,"converged",-0.0202619057644532,0.964705882352941,0.0150322118826056,3.75169253349304
+"D80",9,"permutation",NA,NA,NA,0.00134952766531714,3,"converged",0.00143163922691492,1,0.00143163922691482,38.3812820911407
+"D95",9,"none",NA,NA,NA,1,0,"converged",0,0,1,0.699458837509155
+"D95",9,"q50",NA,NA,NA,0.125506072874494,3,"Moran rejects",-0.0291043833424566,0.847058823529412,0.123836793128132,1.80292916297913
+"D95",9,"q75",NA,NA,NA,0.062753036437247,2,"Moran rejects",-0.0332729799149438,0.905882352941176,0.0608446671438797,1.53784036636353
+"D95",9,"q80",NA,NA,NA,0.00404858299595142,4,"converged",0.00429491768074453,1,0.00429491768074445,1.83674931526184
+"D95",9,"q90",NA,NA,NA,0.100539811066127,1,"Moran rejects",0.0567350204219124,0.952941176470588,0.103793843951324,0.957440614700317
+"D95",9,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.532773733139038
+"D95",9,"permutation",NA,NA,NA,0.00134952766531714,2,"converged",0.00143163922691492,1,0.00143163922691482,31.1445698738098
+"D0",9,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.931643724441528
+"D0",9,"q50",NA,NA,NA,0.0134952766531714,8,"converged",NA,NA,0.0134952766531714,3.0528666973114
+"D0",9,"q75",NA,NA,NA,0.0114709851551957,4,"converged",NA,NA,0.0114709851551957,1.85273051261902
+"D0",9,"q80",NA,NA,NA,0.00944669365721997,4,"converged",NA,NA,0.00944669365721997,1.83238458633423
+"D0",9,"q90",NA,NA,NA,0.00337381916329285,3,"converged",NA,NA,0.00337381916329285,1.57587718963623
+"D0",9,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.528976678848267
+"D0",9,"permutation",NA,NA,NA,0.000674763832658569,3,"converged",NA,NA,0.000674763832658569,38.0419011116028
+"A",10,"none","Centrality, whole graph",0.5,0.15,1,0,"converged",NA,NA,NA,0.839414358139038
+"A",10,"none","Centrality, hot cells",0.65,0,1,0,"converged",NA,NA,NA,0.843001127243042
+"A",10,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.844250679016113
+"A",10,"none","Hot zones first",0.65,0,1,0,"converged",NA,NA,NA,0.850086688995361
+"A",10,"q50","Centrality, whole graph",0.1,0.75,0.0634278002699055,4,"Moran rejects",NA,NA,NA,2.20586061477661
+"A",10,"q50","Centrality, hot cells",0.8,0,0.0634278002699055,4,"Moran rejects",NA,NA,NA,2.20846939086914
+"A",10,"q50","Largest excess",1,0,0.0634278002699055,4,"Moran rejects",NA,NA,NA,2.20985317230225
+"A",10,"q50","Hot zones first",0.8,0,0.0634278002699055,4,"Moran rejects",NA,NA,NA,2.21325659751892
+"A",10,"q75","Centrality, whole graph",0.5,0.4,0.0188933873144399,3,"Moran rejects",NA,NA,NA,1.81833529472351
+"A",10,"q75","Centrality, hot cells",0.85,0,0.0188933873144399,3,"Moran rejects",NA,NA,NA,2.01908183097839
+"A",10,"q75","Largest excess",1,0,0.0188933873144399,3,"Moran rejects",NA,NA,NA,2.02062678337097
+"A",10,"q75","Hot zones first",0.85,0,0.0188933873144399,3,"Moran rejects",NA,NA,NA,2.02507090568542
+"A",10,"q80","Centrality, whole graph",0.9,0.1,0.00134952766531714,5,"converged",NA,NA,NA,2.2918803691864
+"A",10,"q80","Centrality, hot cells",1,0,0.00134952766531714,5,"converged",NA,NA,NA,2.29401040077209
+"A",10,"q80","Largest excess",1,0,0.00134952766531714,5,"converged",NA,NA,NA,2.29526329040527
+"A",10,"q80","Hot zones first",1,0,0.00134952766531714,5,"converged",NA,NA,NA,2.297278881073
+"A",10,"q90","Centrality, whole graph",0.85,0.1,0.00134952766531714,3,"converged",NA,NA,NA,1.64478087425232
+"A",10,"q90","Centrality, hot cells",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,1.64717173576355
+"A",10,"q90","Largest excess",1,0,0.00134952766531714,3,"converged",NA,NA,NA,1.64854717254639
+"A",10,"q90","Hot zones first",0.95,0,0.00134952766531714,3,"converged",NA,NA,NA,1.65065312385559
+"A",10,"mixture","Centrality, whole graph",0.5,0.15,1,0,"converged",NA,NA,NA,0.678465604782104
+"A",10,"mixture","Centrality, hot cells",0.65,0,1,0,"converged",NA,NA,NA,0.681269645690918
+"A",10,"mixture","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.682989835739136
+"A",10,"mixture","Hot zones first",0.65,0,1,0,"converged",NA,NA,NA,0.688233137130737
+"A",10,"permutation","Centrality, whole graph",0.5,0.15,1,0,"Moran rejects",NA,NA,NA,12.798971414566
+"A",10,"permutation","Centrality, hot cells",0.65,0,1,0,"Moran rejects",NA,NA,NA,12.8019604682922
+"A",10,"permutation","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,12.8032009601593
+"A",10,"permutation","Hot zones first",0.65,0,1,0,"Moran rejects",NA,NA,NA,12.8084561824799
+"B",10,"none","Centrality, whole graph",0.45,0.5,1,0,"converged",NA,NA,NA,0.94690203666687
+"B",10,"none","Centrality, hot cells",0.65,0,1,0,"converged",NA,NA,NA,0.951083183288574
+"B",10,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.952322483062744
+"B",10,"none","Hot zones first",0.6,0,1,0,"converged",NA,NA,NA,0.95843505859375
+"B",10,"q50","Centrality, whole graph",0.45,0.4,0.0330634278002699,5,"Moran rejects",NA,NA,NA,2.55957913398743
+"B",10,"q50","Centrality, hot cells",0.85,0,0.0330634278002699,5,"Moran rejects",NA,NA,NA,2.56185865402222
+"B",10,"q50","Largest excess",1,0,0.0330634278002699,5,"Moran rejects",NA,NA,NA,2.56301307678223
+"B",10,"q50","Hot zones first",0.85,0,0.0330634278002699,5,"Moran rejects",NA,NA,NA,2.56608819961548
+"B",10,"q75","Centrality, whole graph",0.15,0.55,0.0155195681511471,5,"converged",NA,NA,NA,2.36197209358215
+"B",10,"q75","Centrality, hot cells",0.85,0,0.0155195681511471,5,"converged",NA,NA,NA,2.36825346946716
+"B",10,"q75","Largest excess",1,0,0.0155195681511471,5,"converged",NA,NA,NA,2.36962556838989
+"B",10,"q75","Hot zones first",0.85,0,0.0155195681511471,5,"converged",NA,NA,NA,2.37201023101807
+"B",10,"q80","Centrality, whole graph",0.2,0.75,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.30706334114075
+"B",10,"q80","Centrality, hot cells",0.75,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.30996918678284
+"B",10,"q80","Largest excess",1,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.3114812374115
+"B",10,"q80","Hot zones first",0.95,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.31985402107239
+"B",10,"q90","Centrality, whole graph",0.35,0.55,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.33937430381775
+"B",10,"q90","Centrality, hot cells",0.65,0,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.34197425842285
+"B",10,"q90","Largest excess",1,0,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.34326100349426
+"B",10,"q90","Hot zones first",0.85,0,0.100539811066127,1,"Moran rejects",NA,NA,NA,1.35020017623901
+"B",10,"mixture","Centrality, whole graph",0.35,0.55,0.207827260458839,6,"Moran rejects",NA,NA,NA,3.73060393333435
+"B",10,"mixture","Centrality, hot cells",0.8,0,0.207827260458839,6,"Moran rejects",NA,NA,NA,3.7328360080719
+"B",10,"mixture","Largest excess",1,0,0.207827260458839,6,"Moran rejects",NA,NA,NA,3.73410439491272
+"B",10,"mixture","Hot zones first",0.9,0,0.207827260458839,6,"Moran rejects",NA,NA,NA,3.73904871940613
+"B",10,"permutation","Centrality, whole graph",0.4,0.2,0.00134952766531714,3,"converged",NA,NA,NA,42.560581445694
+"B",10,"permutation","Centrality, hot cells",1,0,0.00134952766531714,3,"converged",NA,NA,NA,42.5620138645172
+"B",10,"permutation","Largest excess",1,0,0.00134952766531714,3,"converged",NA,NA,NA,42.5633006095886
+"B",10,"permutation","Hot zones first",1,0,0.00134952766531714,3,"converged",NA,NA,NA,42.5648102760315
+"D80",10,"none",NA,NA,NA,1,0,"converged",0,0,1,0.661929845809937
+"D80",10,"q50",NA,NA,NA,0.00742240215924426,8,"converged",0.00787401574803148,1,0.0078740157480315,3.02345204353333
+"D80",10,"q75",NA,NA,NA,0.250337381916329,1,"Moran rejects",0.0409196176681124,0.788235294117647,0.252684323550465,0.903722047805786
+"D80",10,"q80",NA,NA,NA,0.00539811066126856,4,"converged",0.00572655690765922,1,0.00572655690765927,1.70670795440674
+"D80",10,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.53646898269653
+"D80",10,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.662180662155151
+"D80",10,"permutation",NA,NA,NA,0.000674763832658569,2,"empty graph",0.000715819613457347,1,0.000715819613457409,26.2672119140625
+"D95",10,"none",NA,NA,NA,1,0,"converged",0,0,1,0.738597631454468
+"D95",10,"q50",NA,NA,NA,0.00742240215924426,8,"converged",-0.0170870352435892,0.976470588235294,0.00644237652111668,3.22081613540649
+"D95",10,"q75",NA,NA,NA,0.00472334682860999,5,"converged",-0.00746978820160848,0.988235294117647,0.00429491768074445,2.07287836074829
+"D95",10,"q80",NA,NA,NA,0.00472334682860999,4,"converged",-0.00746978820160848,0.988235294117647,0.00429491768074445,1.83749938011169
+"D95",10,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.77565956115723
+"D95",10,"mixture",NA,NA,NA,0.0114709851551957,6,"converged",-0.0127921175628448,0.976470588235294,0.0107372942018611,2.57199573516846
+"D95",10,"permutation",NA,NA,NA,0.000674763832658569,3,"converged",0.000715819613457347,1,0.000715819613457409,39.6771655082703
+"D0",10,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.898847579956055
+"D0",10,"q50",NA,NA,NA,0.5,1,"Moran rejects",NA,NA,0.5,1.15688109397888
+"D0",10,"q75",NA,NA,NA,0.0067476383265857,4,"converged",NA,NA,0.0067476383265857,1.80816411972046
+"D0",10,"q80",NA,NA,NA,0.00472334682860999,4,"converged",NA,NA,0.00472334682860999,1.80237889289856
+"D0",10,"q90",NA,NA,NA,0.000674763832658569,4,"converged",NA,NA,0.000674763832658569,1.56014895439148
+"D0",10,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.681033372879028
+"D0",10,"permutation",NA,NA,NA,0.000674763832658569,2,"converged",NA,NA,0.000674763832658569,29.6496398448944
+"A",11,"none","Centrality, whole graph",0,1,1,0,"converged",NA,NA,NA,0.811568260192871
+"A",11,"none","Centrality, hot cells",0.95,0,1,0,"converged",NA,NA,NA,0.814280271530151
+"A",11,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.815464019775391
+"A",11,"none","Hot zones first",0.95,0,1,0,"converged",NA,NA,NA,0.818735122680664
+"A",11,"q50","Centrality, whole graph",0.45,0.4,0.0195681511470985,6,"Moran undefined (saturated)",NA,NA,NA,3.30943250656128
+"A",11,"q50","Centrality, hot cells",1,0,0.0195681511470985,6,"Moran undefined (saturated)",NA,NA,NA,3.31153798103333
+"A",11,"q50","Largest excess",1,0,0.0195681511470985,6,"Moran undefined (saturated)",NA,NA,NA,3.31274223327637
+"A",11,"q50","Hot zones first",1,0,0.0195681511470985,6,"Moran undefined (saturated)",NA,NA,NA,3.31524157524109
+"A",11,"q75","Centrality, whole graph",0,0.9,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.05230522155762
+"A",11,"q75","Centrality, hot cells",0.9,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.05474638938904
+"A",11,"q75","Largest excess",1,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.05598092079163
+"A",11,"q75","Hot zones first",0.9,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.0631992816925
+"A",11,"q80","Centrality, whole graph",0,1,1,0,"Moran rejects",NA,NA,NA,0.756841421127319
+"A",11,"q80","Centrality, hot cells",0.95,0,1,0,"Moran rejects",NA,NA,NA,0.759320497512817
+"A",11,"q80","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,0.761034250259399
+"A",11,"q80","Hot zones first",0.95,0,1,0,"Moran rejects",NA,NA,NA,0.764483690261841
+"A",11,"q90","Centrality, whole graph",0,0.9,0.0114709851551957,2,"Moran undefined (saturated)",NA,NA,NA,1.66152620315552
+"A",11,"q90","Centrality, hot cells",1,0,0.0114709851551957,2,"Moran undefined (saturated)",NA,NA,NA,1.66369366645813
+"A",11,"q90","Largest excess",1,0,0.0114709851551957,2,"Moran undefined (saturated)",NA,NA,NA,1.66569066047668
+"A",11,"q90","Hot zones first",1,0,0.0114709851551957,2,"Moran undefined (saturated)",NA,NA,NA,1.66790676116943
+"A",11,"mixture","Centrality, whole graph",0,0.95,0.0951417004048583,6,"Moran rejects",NA,NA,NA,3.15082049369812
+"A",11,"mixture","Centrality, hot cells",0.95,0,0.0951417004048583,6,"Moran rejects",NA,NA,NA,3.15365076065063
+"A",11,"mixture","Largest excess",1,0,0.0951417004048583,6,"Moran rejects",NA,NA,NA,3.15496063232422
+"A",11,"mixture","Hot zones first",0.95,0,0.0951417004048583,6,"Moran rejects",NA,NA,NA,3.16133165359497
+"A",11,"permutation","Centrality, whole graph",0,1,0.0323886639676113,1,"Moran undefined (saturated)",NA,NA,NA,22.9203884601593
+"A",11,"permutation","Centrality, hot cells",1,0,0.0323886639676113,1,"Moran undefined (saturated)",NA,NA,NA,22.9222123622894
+"A",11,"permutation","Largest excess",1,0,0.0323886639676113,1,"Moran undefined (saturated)",NA,NA,NA,22.9237513542175
+"A",11,"permutation","Hot zones first",1,0,0.0323886639676113,1,"Moran undefined (saturated)",NA,NA,NA,22.9252018928528
+"B",11,"none","Centrality, whole graph",0,0.8,1,0,"converged",NA,NA,NA,0.917938947677612
+"B",11,"none","Centrality, hot cells",0.95,0,1,0,"converged",NA,NA,NA,0.920814037322998
+"B",11,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.922017812728882
+"B",11,"none","Hot zones first",0.65,0,1,0,"converged",NA,NA,NA,0.928102016448975
+"B",11,"q50","Centrality, whole graph",0.55,0.15,0.0249662618083671,7,"converged",NA,NA,NA,3.15652656555176
+"B",11,"q50","Centrality, hot cells",0.8,0,0.0249662618083671,7,"converged",NA,NA,NA,3.15873956680298
+"B",11,"q50","Largest excess",1,0,0.0249662618083671,7,"converged",NA,NA,NA,3.15997743606567
+"B",11,"q50","Hot zones first",0.8,0,0.0249662618083671,7,"converged",NA,NA,NA,3.16438603401184
+"B",11,"q75","Centrality, whole graph",0.2,0.5,0.00944669365721997,5,"converged",NA,NA,NA,2.27226066589355
+"B",11,"q75","Centrality, hot cells",0.8,0,0.00944669365721997,5,"converged",NA,NA,NA,2.27483820915222
+"B",11,"q75","Largest excess",1,0,0.00944669365721997,5,"converged",NA,NA,NA,2.27622985839844
+"B",11,"q75","Hot zones first",0.8,0,0.00944669365721997,5,"converged",NA,NA,NA,2.27960705757141
+"B",11,"q80","Centrality, whole graph",0.35,0.35,0.00404858299595142,4,"converged",NA,NA,NA,2.2522144317627
+"B",11,"q80","Centrality, hot cells",1,0,0.00404858299595142,4,"converged",NA,NA,NA,2.25367641448975
+"B",11,"q80","Largest excess",1,0,0.00404858299595142,4,"converged",NA,NA,NA,2.2549204826355
+"B",11,"q80","Hot zones first",1,0,0.00404858299595142,4,"converged",NA,NA,NA,2.25638008117676
+"B",11,"q90","Centrality, whole graph",0.1,0.7,0.00809716599190283,3,"converged",NA,NA,NA,1.52888488769531
+"B",11,"q90","Centrality, hot cells",0.95,0,0.00809716599190283,3,"converged",NA,NA,NA,1.53138279914856
+"B",11,"q90","Largest excess",1,0,0.00809716599190283,3,"converged",NA,NA,NA,1.53275609016418
+"B",11,"q90","Hot zones first",0.95,0,0.00809716599190283,3,"converged",NA,NA,NA,1.53496193885803
+"B",11,"mixture","Centrality, whole graph",0.35,0.5,0.0148448043184885,12,"converged",NA,NA,NA,5.68519854545593
+"B",11,"mixture","Centrality, hot cells",0.85,0,0.0148448043184885,12,"converged",NA,NA,NA,5.68762373924255
+"B",11,"mixture","Largest excess",1,0,0.0148448043184885,12,"converged",NA,NA,NA,5.68891072273254
+"B",11,"mixture","Hot zones first",0.85,0,0.0148448043184885,12,"converged",NA,NA,NA,5.69250750541687
+"B",11,"permutation","Centrality, whole graph",0.65,0.05,0.000674763832658569,3,"converged",NA,NA,NA,42.87415599823
+"B",11,"permutation","Centrality, hot cells",1,0,0.000674763832658569,3,"converged",NA,NA,NA,42.8756611347198
+"B",11,"permutation","Largest excess",1,0,0.000674763832658569,3,"converged",NA,NA,NA,42.8769760131836
+"B",11,"permutation","Hot zones first",1,0,0.000674763832658569,3,"converged",NA,NA,NA,42.8783860206604
+"D80",11,"none",NA,NA,NA,1,0,"converged",0,0,1,0.773626804351807
+"D80",11,"q50",NA,NA,NA,0.0317139001349528,5,"Moran rejects",0.0336435218324982,1,0.0336435218324982,2.60682225227356
+"D80",11,"q75",NA,NA,NA,0.0168690958164642,3,"Moran rejects",0.0178954903364352,1,0.0178954903364352,2.45187544822693
+"D80",11,"q80",NA,NA,NA,0.0404858299595142,2,"Moran rejects",0.0304686513116341,0.988235294117647,0.0422333571939871,1.61754131317139
+"D80",11,"q90",NA,NA,NA,0.100539811066127,1,"Moran rejects",0.0442544949261021,0.941176470588235,0.103078024337867,1.19258975982666
+"D80",11,"mixture",NA,NA,NA,0.234817813765182,3,"Moran rejects",0.0494168175502128,0.811764705882353,0.23765211166786,2.22733163833618
+"D80",11,"permutation",NA,NA,NA,0.0296896086369771,1,"Moran rejects",0.00653501200050521,0.976470588235294,0.0300644237652112,22.0391225814819
+"D95",11,"none",NA,NA,NA,1,0,"converged",0,0,1,0.661522388458252
+"D95",11,"q50",NA,NA,NA,0.0114709851551957,8,"converged",-0.00031159206703435,0.988235294117647,0.0114531138153185,3.25906419754028
+"D95",11,"q75",NA,NA,NA,0.0128205128205128,5,"converged",0.0136005726556907,1,0.0136005726556908,2.18671703338623
+"D95",11,"q80",NA,NA,NA,0.00134952766531714,6,"converged",0.00143163922691492,1,0.00143163922691482,2.16230821609497
+"D95",11,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.76155829429626
+"D95",11,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.638222694396973
+"D95",11,"permutation",NA,NA,NA,0.00134952766531714,1,"empty graph",0.00143163922691492,1,0.00143163922691482,20.8687152862549
+"D0",11,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.963733434677124
+"D0",11,"q50",NA,NA,NA,0.01417004048583,8,"converged",NA,NA,0.01417004048583,4.13361740112305
+"D0",11,"q75",NA,NA,NA,0.0121457489878543,5,"converged",NA,NA,0.0121457489878543,2.02478384971619
+"D0",11,"q80",NA,NA,NA,0.0121457489878543,4,"converged",NA,NA,0.0121457489878543,1.60989952087402
+"D0",11,"q90",NA,NA,NA,0.000674763832658569,4,"converged",NA,NA,0.000674763832658569,1.71573138237
+"D0",11,"mixture",NA,NA,NA,0.0249662618083671,4,"converged",NA,NA,0.0249662618083671,1.97232818603516
+"D0",11,"permutation",NA,NA,NA,0.000674763832658569,2,"converged",NA,NA,0.000674763832658569,30.963764667511
+"A",12,"none","Centrality, whole graph",0.65,0.2,1,0,"converged",NA,NA,NA,0.838518381118774
+"A",12,"none","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.842022895812988
+"A",12,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.843362092971802
+"A",12,"none","Hot zones first",0.7,0,1,0,"converged",NA,NA,NA,0.84769344329834
+"A",12,"q50","Centrality, whole graph",0.4,0.55,0.250337381916329,2,"Moran rejects",NA,NA,NA,1.7287654876709
+"A",12,"q50","Centrality, hot cells",0.65,0,0.250337381916329,2,"Moran rejects",NA,NA,NA,1.73099398612976
+"A",12,"q50","Largest excess",1,0,0.250337381916329,2,"Moran rejects",NA,NA,NA,1.73215579986572
+"A",12,"q50","Hot zones first",0.65,0,0.250337381916329,2,"Moran rejects",NA,NA,NA,1.73526763916016
+"A",12,"q75","Centrality, whole graph",0,0.95,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.28146195411682
+"A",12,"q75","Centrality, hot cells",0.7,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.28399920463562
+"A",12,"q75","Largest excess",1,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.28596258163452
+"A",12,"q75","Hot zones first",0.7,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.29078936576843
+"A",12,"q80","Centrality, whole graph",0.85,0.15,0.00134952766531714,5,"converged",NA,NA,NA,2.31340575218201
+"A",12,"q80","Centrality, hot cells",1,0,0.00134952766531714,5,"converged",NA,NA,NA,2.31483054161072
+"A",12,"q80","Largest excess",1,0,0.00134952766531714,5,"converged",NA,NA,NA,2.31604385375977
+"A",12,"q80","Hot zones first",1,0,0.00134952766531714,5,"converged",NA,NA,NA,2.31744074821472
+"A",12,"q90","Centrality, whole graph",0.7,0.2,0.00202429149797571,3,"converged",NA,NA,NA,1.65708780288696
+"A",12,"q90","Centrality, hot cells",1,0,0.00202429149797571,3,"converged",NA,NA,NA,1.65906834602356
+"A",12,"q90","Largest excess",1,0,0.00202429149797571,3,"converged",NA,NA,NA,1.66093778610229
+"A",12,"q90","Hot zones first",1,0,0.00202429149797571,3,"converged",NA,NA,NA,1.66293787956238
+"A",12,"mixture","Centrality, whole graph",0.2,0.7,0.206477732793522,4,"Moran rejects",NA,NA,NA,2.39865517616272
+"A",12,"mixture","Centrality, hot cells",0.7,0,0.206477732793522,4,"Moran rejects",NA,NA,NA,2.40151739120483
+"A",12,"mixture","Largest excess",1,0,0.206477732793522,4,"Moran rejects",NA,NA,NA,2.40280628204346
+"A",12,"mixture","Hot zones first",0.75,0,0.206477732793522,4,"Moran rejects",NA,NA,NA,2.40852999687195
+"A",12,"permutation","Centrality, whole graph",0.65,0.2,1,0,"Moran rejects",NA,NA,NA,13.0577952861786
+"A",12,"permutation","Centrality, hot cells",1,0,1,0,"Moran rejects",NA,NA,NA,13.0603461265564
+"A",12,"permutation","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,13.0615446567535
+"A",12,"permutation","Hot zones first",0.7,0,1,0,"Moran rejects",NA,NA,NA,13.0654916763306
+"B",12,"none","Centrality, whole graph",0,0.95,1,0,"converged",NA,NA,NA,0.987751483917236
+"B",12,"none","Centrality, hot cells",0.7,0,1,0,"converged",NA,NA,NA,0.99189281463623
+"B",12,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,0.993725299835205
+"B",12,"none","Hot zones first",0.7,0,1,0,"converged",NA,NA,NA,1.00027632713318
+"B",12,"q50","Centrality, whole graph",0.5,0.15,0.0215924426450742,7,"converged",NA,NA,NA,3.287264585495
+"B",12,"q50","Centrality, hot cells",0.55,0,0.0215924426450742,7,"converged",NA,NA,NA,3.28998684883118
+"B",12,"q50","Largest excess",0.95,0,0.0215924426450742,7,"converged",NA,NA,NA,3.29118728637695
+"B",12,"q50","Hot zones first",0.55,0,0.0215924426450742,7,"converged",NA,NA,NA,3.29588770866394
+"B",12,"q75","Centrality, whole graph",0.4,0.45,0.0215924426450742,4,"converged",NA,NA,NA,2.27577543258667
+"B",12,"q75","Centrality, hot cells",0.75,0,0.0215924426450742,4,"converged",NA,NA,NA,2.27839589118958
+"B",12,"q75","Largest excess",0.95,0,0.0215924426450742,4,"converged",NA,NA,NA,2.27987098693848
+"B",12,"q75","Hot zones first",0.75,0,0.0215924426450742,4,"converged",NA,NA,NA,2.28329110145569
+"B",12,"q80","Centrality, whole graph",0.35,0.35,0.0161943319838057,5,"converged",NA,NA,NA,2.26614332199097
+"B",12,"q80","Centrality, hot cells",0.85,0,0.0161943319838057,5,"converged",NA,NA,NA,2.26896357536316
+"B",12,"q80","Largest excess",0.95,0,0.0161943319838057,5,"converged",NA,NA,NA,2.27028512954712
+"B",12,"q80","Hot zones first",0.85,0,0.0161943319838057,5,"converged",NA,NA,NA,2.27356266975403
+"B",12,"q90","Centrality, whole graph",0.35,0.3,0.00202429149797571,4,"converged",NA,NA,NA,2.08138179779053
+"B",12,"q90","Centrality, hot cells",0.9,0,0.00202429149797571,4,"converged",NA,NA,NA,2.08290076255798
+"B",12,"q90","Largest excess",0.9,0,0.00202429149797571,4,"converged",NA,NA,NA,2.08422899246216
+"B",12,"q90","Hot zones first",0.9,0,0.00202429149797571,4,"converged",NA,NA,NA,2.08576798439026
+"B",12,"mixture","Centrality, whole graph",0.25,0.4,0.0931174089068826,7,"converged",NA,NA,NA,3.1569492816925
+"B",12,"mixture","Centrality, hot cells",0.75,0,0.0931174089068826,7,"converged",NA,NA,NA,3.16240048408508
+"B",12,"mixture","Largest excess",0.95,0,0.0931174089068826,7,"converged",NA,NA,NA,3.16408562660217
+"B",12,"mixture","Hot zones first",0.75,0,0.0931174089068826,7,"converged",NA,NA,NA,3.16862440109253
+"B",12,"permutation","Centrality, whole graph",0.4,0.1,0.000674763832658569,3,"converged",NA,NA,NA,41.9377491474152
+"B",12,"permutation","Centrality, hot cells",0.9,0,0.000674763832658569,3,"converged",NA,NA,NA,41.9393932819366
+"B",12,"permutation","Largest excess",0.9,0,0.000674763832658569,3,"converged",NA,NA,NA,41.940681219101
+"B",12,"permutation","Hot zones first",0.9,0,0.000674763832658569,3,"converged",NA,NA,NA,41.9421746730804
+"D80",12,"none",NA,NA,NA,1,0,"converged",0,0,1,0.647114515304565
+"D80",12,"q50",NA,NA,NA,0.0128205128205128,8,"converged",-0.0363215293275507,0.952941176470588,0.0107372942018611,3.16292119026184
+"D80",12,"q75",NA,NA,NA,0.0087719298245614,4,"converged",-0.00317487052086396,0.988235294117647,0.00858983536148891,1.79126715660095
+"D80",12,"q80",NA,NA,NA,0.0087719298245614,5,"converged",-0.0156553960166744,0.976470588235294,0.0078740157480315,1.7885913848877
+"D80",12,"q90",NA,NA,NA,0.000674763832658569,4,"converged",0.000715819613457347,1,0.000715819613457409,1.7002899646759
+"D80",12,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.492498874664307
+"D80",12,"permutation",NA,NA,NA,0.00607287449392713,2,"empty graph",-0.00603814897469368,0.988235294117647,0.00572655690765927,27.5460216999054
+"D95",12,"none",NA,NA,NA,1,0,"converged",0,0,1,0.652387142181396
+"D95",12,"q50",NA,NA,NA,0.0107962213225371,7,"converged",-0.0135079371763022,0.976470588235294,0.0100214745884037,2.89632081985474
+"D95",12,"q75",NA,NA,NA,0.00202429149797571,6,"converged",0.00214745884037226,1,0.00214745884037223,2.74615597724915
+"D95",12,"q80",NA,NA,NA,0.00134952766531714,5,"converged",-0.0110488862688954,0.988235294117647,0.000715819613457409,2.23699855804443
+"D95",12,"q90",NA,NA,NA,0.00539811066126856,4,"converged",-0.0317150195797717,0.964705882352941,0.00357909806728704,1.83093309402466
+"D95",12,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.454965829849243
+"D95",12,"permutation",NA,NA,NA,0.000674763832658569,3,"converged",-0.0117647058823529,0.988235294117647,0,41.4080369472504
+"D0",12,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.82845401763916
+"D0",12,"q50",NA,NA,NA,0.250337381916329,2,"Moran rejects",NA,NA,0.250337381916329,1.95152449607849
+"D0",12,"q75",NA,NA,NA,0.0195681511470985,5,"converged",NA,NA,0.0195681511470985,1.92960262298584
+"D0",12,"q80",NA,NA,NA,0.0087719298245614,4,"converged",NA,NA,0.0087719298245614,1.82072949409485
+"D0",12,"q90",NA,NA,NA,0.0067476383265857,3,"converged",NA,NA,0.0067476383265857,1.27677702903748
+"D0",12,"mixture",NA,NA,NA,0.0202429149797571,7,"converged",NA,NA,0.0202429149797571,3.04653978347778
+"D0",12,"permutation",NA,NA,NA,1,0,"empty graph",NA,NA,1,11.3424310684204
+"A",13,"none","Centrality, whole graph",0.05,0.8,1,0,"converged",NA,NA,NA,0.815265417098999
+"A",13,"none","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.818694353103638
+"A",13,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.820339918136597
+"A",13,"none","Hot zones first",0.75,0,1,0,"converged",NA,NA,NA,0.825406074523926
+"A",13,"q50","Centrality, whole graph",0.15,0.45,0.034412955465587,5,"Moran undefined (saturated)",NA,NA,NA,2.86469435691833
+"A",13,"q50","Centrality, hot cells",0.8,0,0.034412955465587,5,"Moran undefined (saturated)",NA,NA,NA,2.86790990829468
+"A",13,"q50","Largest excess",1,0,0.034412955465587,5,"Moran undefined (saturated)",NA,NA,NA,2.8697566986084
+"A",13,"q50","Hot zones first",0.8,0,0.034412955465587,5,"Moran undefined (saturated)",NA,NA,NA,2.8745129108429
+"A",13,"q75","Centrality, whole graph",0,0.9,0.0634278002699055,2,"Moran rejects",NA,NA,NA,1.69551110267639
+"A",13,"q75","Centrality, hot cells",0.7,0,0.0634278002699055,2,"Moran rejects",NA,NA,NA,1.6980197429657
+"A",13,"q75","Largest excess",1,0,0.0634278002699055,2,"Moran rejects",NA,NA,NA,1.69939875602722
+"A",13,"q75","Hot zones first",0.7,0,0.0634278002699055,2,"Moran rejects",NA,NA,NA,1.70464062690735
+"A",13,"q80","Centrality, whole graph",0.05,0.85,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.10452628135681
+"A",13,"q80","Centrality, hot cells",0.85,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.10805153846741
+"A",13,"q80","Largest excess",1,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.11048173904419
+"A",13,"q80","Hot zones first",0.85,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.12059545516968
+"A",13,"q90","Centrality, whole graph",0.05,0.8,1,0,"Moran rejects",NA,NA,NA,0.979097366333008
+"A",13,"q90","Centrality, hot cells",1,0,1,0,"Moran rejects",NA,NA,NA,0.981595754623413
+"A",13,"q90","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,0.982926607131958
+"A",13,"q90","Hot zones first",0.75,0,1,0,"Moran rejects",NA,NA,NA,0.988854885101318
+"A",13,"mixture","Centrality, whole graph",0.35,0.5,0.201079622132254,6,"Moran rejects",NA,NA,NA,2.84658336639404
+"A",13,"mixture","Centrality, hot cells",0.9,0,0.201079622132254,6,"Moran rejects",NA,NA,NA,2.84875822067261
+"A",13,"mixture","Largest excess",1,0,0.201079622132254,6,"Moran rejects",NA,NA,NA,2.85012435913086
+"A",13,"mixture","Hot zones first",0.75,0,0.201079622132254,6,"Moran rejects",NA,NA,NA,2.85335850715637
+"A",13,"permutation","Centrality, whole graph",0.05,0.8,0.048582995951417,1,"Moran undefined (saturated)",NA,NA,NA,22.2352378368378
+"A",13,"permutation","Centrality, hot cells",0.9,0,0.048582995951417,1,"Moran undefined (saturated)",NA,NA,NA,22.2374618053436
+"A",13,"permutation","Largest excess",1,0,0.048582995951417,1,"Moran undefined (saturated)",NA,NA,NA,22.2387316226959
+"A",13,"permutation","Hot zones first",0.9,0,0.048582995951417,1,"Moran undefined (saturated)",NA,NA,NA,22.2423534393311
+"B",13,"none","Centrality, whole graph",0.2,0.75,1,0,"converged",NA,NA,NA,0.876878499984741
+"B",13,"none","Centrality, hot cells",0.7,0,1,0,"converged",NA,NA,NA,0.879963159561157
+"B",13,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,0.881299734115601
+"B",13,"none","Hot zones first",0.65,0,1,0,"converged",NA,NA,NA,0.886289596557617
+"B",13,"q50","Centrality, whole graph",0.45,0.2,0.0222672064777328,7,"converged",NA,NA,NA,3.41574954986572
+"B",13,"q50","Centrality, hot cells",0.55,0,0.0222672064777328,7,"converged",NA,NA,NA,3.4186897277832
+"B",13,"q50","Largest excess",0.95,0,0.0222672064777328,7,"converged",NA,NA,NA,3.42000484466553
+"B",13,"q50","Hot zones first",0.55,0,0.0222672064777328,7,"converged",NA,NA,NA,3.424720287323
+"B",13,"q75","Centrality, whole graph",0.1,0.65,0.0101214574898785,4,"converged",NA,NA,NA,1.83355188369751
+"B",13,"q75","Centrality, hot cells",0.95,0,0.0101214574898785,4,"converged",NA,NA,NA,1.83978176116943
+"B",13,"q75","Largest excess",0.95,0,0.0101214574898785,4,"converged",NA,NA,NA,1.84116530418396
+"B",13,"q75","Hot zones first",0.95,0,0.0101214574898785,4,"converged",NA,NA,NA,1.84322285652161
+"B",13,"q80","Centrality, whole graph",0.45,0.15,0.00134952766531714,6,"converged",NA,NA,NA,2.88323950767517
+"B",13,"q80","Centrality, hot cells",0.95,0,0.00134952766531714,6,"converged",NA,NA,NA,2.88462352752686
+"B",13,"q80","Largest excess",0.95,0,0.00134952766531714,6,"converged",NA,NA,NA,2.88582110404968
+"B",13,"q80","Hot zones first",0.95,0,0.00134952766531714,6,"converged",NA,NA,NA,2.88719797134399
+"B",13,"q90","Centrality, whole graph",0.35,0.3,0.00202429149797571,3,"converged",NA,NA,NA,1.48943018913269
+"B",13,"q90","Centrality, hot cells",0.95,0,0.00202429149797571,3,"converged",NA,NA,NA,1.49087524414062
+"B",13,"q90","Largest excess",0.95,0,0.00202429149797571,3,"converged",NA,NA,NA,1.49211359024048
+"B",13,"q90","Hot zones first",0.95,0,0.00202429149797571,3,"converged",NA,NA,NA,1.49353885650635
+"B",13,"mixture","Centrality, whole graph",0.15,0.5,0.533738191632928,2,"Moran rejects",NA,NA,NA,2.17866539955139
+"B",13,"mixture","Centrality, hot cells",0.65,0,0.533738191632928,2,"Moran rejects",NA,NA,NA,2.18156981468201
+"B",13,"mixture","Largest excess",0.95,0,0.533738191632928,2,"Moran rejects",NA,NA,NA,2.18305253982544
+"B",13,"mixture","Hot zones first",0.65,0,0.533738191632928,2,"Moran rejects",NA,NA,NA,2.1891610622406
+"B",13,"permutation","Centrality, whole graph",0.15,0.55,0.0087719298245614,2,"converged",NA,NA,NA,31.8190159797668
+"B",13,"permutation","Centrality, hot cells",0.75,0,0.0087719298245614,2,"converged",NA,NA,NA,31.8216497898102
+"B",13,"permutation","Largest excess",0.95,0,0.0087719298245614,2,"converged",NA,NA,NA,31.8229718208313
+"B",13,"permutation","Hot zones first",0.75,0,0.0087719298245614,2,"converged",NA,NA,NA,31.8260922431946
+"D80",13,"none",NA,NA,NA,1,0,"converged",0,0,1,0.739475965499878
+"D80",13,"q50",NA,NA,NA,0.0155195681511471,7,"converged",-0.00849719988210029,0.976470588235294,0.0150322118826056,2.77937865257263
+"D80",13,"q75",NA,NA,NA,0.01417004048583,4,"converged",0.00255168638679537,0.988235294117647,0.0143163922691482,1.78447985649109
+"D80",13,"q80",NA,NA,NA,0.200404858299595,1,"Moran rejects",0.0253905427596952,0.823529411764706,0.201861130994989,1.03096747398376
+"D80",13,"q90",NA,NA,NA,0.00472334682860999,3,"converged",-0.00746978820160848,0.988235294117647,0.00429491768074445,1.21141409873962
+"D80",13,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.507561206817627
+"D80",13,"permutation",NA,NA,NA,0.00404858299595142,3,"converged",-0.0206661333108763,0.976470588235294,0.00286327845382963,38.5864646434784
+"D95",13,"none",NA,NA,NA,1,0,"converged",0,0,1,0.672487258911133
+"D95",13,"q50",NA,NA,NA,0.0148448043184885,7,"converged",-0.00921301949555775,0.976470588235294,0.0143163922691482,3.34598565101624
+"D95",13,"q75",NA,NA,NA,0.00134952766531714,6,"converged",0.00143163922691492,1,0.00143163922691482,2.23917698860168
+"D95",13,"q80",NA,NA,NA,0.0121457489878543,4,"converged",-0.0245568234451977,0.964705882352941,0.0107372942018611,1.74347591400146
+"D95",13,"q90",NA,NA,NA,0.00472334682860999,3,"converged",0.00501073729420187,1,0.00501073729420186,1.49799489974976
+"D95",13,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.497014760971069
+"D95",13,"permutation",NA,NA,NA,1,0,"empty graph",0,0,1,11.9522244930267
+"D0",13,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.949510335922241
+"D0",13,"q50",NA,NA,NA,0.0121457489878543,7,"converged",NA,NA,0.0121457489878543,3.12888598442078
+"D0",13,"q75",NA,NA,NA,0.0128205128205128,5,"converged",NA,NA,0.0128205128205128,2.21062874794006
+"D0",13,"q80",NA,NA,NA,0.00134952766531714,5,"converged",NA,NA,0.00134952766531714,1.97443795204163
+"D0",13,"q90",NA,NA,NA,0.0087719298245614,3,"converged",NA,NA,0.0087719298245614,1.83905959129333
+"D0",13,"mixture",NA,NA,NA,0.721997300944669,1,"converged",NA,NA,0.721997300944669,0.831834077835083
+"D0",13,"permutation",NA,NA,NA,0.00134952766531714,2,"converged",NA,NA,0.00134952766531714,31.312618970871
+"A",14,"none","Centrality, whole graph",0,0.8,1,0,"converged",NA,NA,NA,0.861738920211792
+"A",14,"none","Centrality, hot cells",0.9,0,1,0,"converged",NA,NA,NA,0.864563465118408
+"A",14,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.866600513458252
+"A",14,"none","Hot zones first",0.9,0,1,0,"converged",NA,NA,NA,0.870210886001587
+"A",14,"q50","Centrality, whole graph",0.3,0.55,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.2783362865448
+"A",14,"q50","Centrality, hot cells",0.55,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.28061294555664
+"A",14,"q50","Largest excess",1,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.28179049491882
+"A",14,"q50","Hot zones first",0.55,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.28495717048645
+"A",14,"q75","Centrality, whole graph",0,0.95,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.16254281997681
+"A",14,"q75","Centrality, hot cells",0.7,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.16519474983215
+"A",14,"q75","Largest excess",1,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.16677618026733
+"A",14,"q75","Hot zones first",0.8,0,0.250337381916329,1,"Moran rejects",NA,NA,NA,1.17219495773315
+"A",14,"q80","Centrality, whole graph",0,0.8,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.19016671180725
+"A",14,"q80","Centrality, hot cells",0.7,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.1924877166748
+"A",14,"q80","Largest excess",1,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.19384789466858
+"A",14,"q80","Hot zones first",0.7,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.20029282569885
+"A",14,"q90","Centrality, whole graph",0,0.8,1,0,"Moran rejects",NA,NA,NA,0.907320022583008
+"A",14,"q90","Centrality, hot cells",0.9,0,1,0,"Moran rejects",NA,NA,NA,0.910027265548706
+"A",14,"q90","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,0.911290407180786
+"A",14,"q90","Hot zones first",0.9,0,1,0,"Moran rejects",NA,NA,NA,0.913964509963989
+"A",14,"mixture","Centrality, whole graph",0,0.8,1,0,"converged",NA,NA,NA,0.598535299301147
+"A",14,"mixture","Centrality, hot cells",0.9,0,1,0,"converged",NA,NA,NA,0.601510763168335
+"A",14,"mixture","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.603217124938965
+"A",14,"mixture","Hot zones first",0.9,0,1,0,"converged",NA,NA,NA,0.606906890869141
+"A",14,"permutation","Centrality, whole graph",0,0.8,1,0,"Moran rejects",NA,NA,NA,14.5188493728638
+"A",14,"permutation","Centrality, hot cells",0.9,0,1,0,"Moran rejects",NA,NA,NA,14.522096157074
+"A",14,"permutation","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,14.5237789154053
+"A",14,"permutation","Hot zones first",0.9,0,1,0,"Moran rejects",NA,NA,NA,14.5271530151367
+"B",14,"none","Centrality, whole graph",0.15,0.7,1,0,"converged",NA,NA,NA,0.882294893264771
+"B",14,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.885858535766602
+"B",14,"none","Largest excess",0.9,0,1,0,"converged",NA,NA,NA,0.887128591537476
+"B",14,"none","Hot zones first",0.9,0,1,0,"converged",NA,NA,NA,0.892976999282837
+"B",14,"q50","Centrality, whole graph",0.15,0.7,0.0128205128205128,8,"converged",NA,NA,NA,3.74918794631958
+"B",14,"q50","Centrality, hot cells",0.85,0,0.0128205128205128,8,"converged",NA,NA,NA,3.75170660018921
+"B",14,"q50","Largest excess",0.9,0,0.0128205128205128,8,"converged",NA,NA,NA,3.75297069549561
+"B",14,"q50","Hot zones first",0.85,0,0.0128205128205128,8,"converged",NA,NA,NA,3.75510120391846
+"B",14,"q75","Centrality, whole graph",0.35,0.3,0.00269905533063428,5,"converged",NA,NA,NA,2.35386633872986
+"B",14,"q75","Centrality, hot cells",0.9,0,0.00269905533063428,5,"converged",NA,NA,NA,2.35538625717163
+"B",14,"q75","Largest excess",0.9,0,0.00269905533063428,5,"converged",NA,NA,NA,2.35668802261353
+"B",14,"q75","Hot zones first",0.9,0,0.00269905533063428,5,"converged",NA,NA,NA,2.35821223258972
+"B",14,"q80","Centrality, whole graph",0.45,0.15,0.00134952766531714,5,"converged",NA,NA,NA,2.34577679634094
+"B",14,"q80","Centrality, hot cells",0.9,0,0.00134952766531714,5,"converged",NA,NA,NA,2.34735798835754
+"B",14,"q80","Largest excess",0.9,0,0.00134952766531714,5,"converged",NA,NA,NA,2.34884738922119
+"B",14,"q80","Hot zones first",0.9,0,0.00134952766531714,5,"converged",NA,NA,NA,2.35086798667908
+"B",14,"q90","Centrality, whole graph",0.45,0.1,0.00134952766531714,4,"converged",NA,NA,NA,1.9221498966217
+"B",14,"q90","Centrality, hot cells",0.9,0,0.00134952766531714,4,"converged",NA,NA,NA,1.92360258102417
+"B",14,"q90","Largest excess",0.9,0,0.00134952766531714,4,"converged",NA,NA,NA,1.92479705810547
+"B",14,"q90","Hot zones first",0.9,0,0.00134952766531714,4,"converged",NA,NA,NA,1.92613649368286
+"B",14,"mixture","Centrality, whole graph",0.15,0.7,1,0,"converged",NA,NA,NA,0.560140609741211
+"B",14,"mixture","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.562500953674316
+"B",14,"mixture","Largest excess",0.9,0,1,0,"converged",NA,NA,NA,0.563655614852905
+"B",14,"mixture","Hot zones first",0.9,0,1,0,"converged",NA,NA,NA,0.567694664001465
+"B",14,"permutation","Centrality, whole graph",0.55,0.1,0.000674763832658569,3,"converged",NA,NA,NA,42.5348646640778
+"B",14,"permutation","Centrality, hot cells",0.9,0,0.000674763832658569,3,"converged",NA,NA,NA,42.5363190174103
+"B",14,"permutation","Largest excess",0.9,0,0.000674763832658569,3,"converged",NA,NA,NA,42.5375626087189
+"B",14,"permutation","Hot zones first",0.9,0,0.000674763832658569,3,"converged",NA,NA,NA,42.5390315055847
+"D80",14,"none",NA,NA,NA,1,0,"converged",0,0,1,0.708128929138184
+"D80",14,"q50",NA,NA,NA,0.0121457489878543,7,"converged",-0.0120762979493874,0.976470588235294,0.0114531138153185,2.8116512298584
+"D80",14,"q75",NA,NA,NA,0.00472334682860999,5,"converged",0.00501073729420187,1,0.00501073729420186,2.04349708557129
+"D80",14,"q80",NA,NA,NA,0.00742240215924426,4,"converged",-0.00460650974777876,0.988235294117647,0.00715819613457409,1.86792492866516
+"D80",14,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.61597418785095
+"D80",14,"mixture",NA,NA,NA,0.659919028340081,2,"converged",0.0510842561792075,0.388235294117647,0.662848962061561,1.60504913330078
+"D80",14,"permutation",NA,NA,NA,0.000674763832658569,3,"converged",0.000715819613457347,1,0.000715819613457409,39.0277903079987
+"D95",14,"none",NA,NA,NA,1,0,"converged",0,0,1,0.628689527511597
+"D95",14,"q50",NA,NA,NA,0.0310391363022942,5,"Moran rejects",-0.0419554507558213,0.929411764705882,0.0286327845382963,2.43743681907654
+"D95",14,"q75",NA,NA,NA,0.0067476383265857,4,"Moran rejects",0.00715819613457414,1,0.00715819613457409,2.32736253738403
+"D95",14,"q80",NA,NA,NA,0.00134952766531714,5,"converged",0.00143163922691492,1,0.00143163922691482,2.11934494972229
+"D95",14,"q90",NA,NA,NA,0.00134952766531714,3,"converged",0.00143163922691492,1,0.00143163922691482,1.43070912361145
+"D95",14,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.502402305603027
+"D95",14,"permutation",NA,NA,NA,0.000674763832658569,2,"empty graph",0.000715819613457347,1,0.000715819613457409,31.1341500282288
+"D0",14,"none",NA,NA,NA,1,0,"converged",NA,NA,1,1.02043128013611
+"D0",14,"q50",NA,NA,NA,0.0107962213225371,8,"converged",NA,NA,0.0107962213225371,3.37824463844299
+"D0",14,"q75",NA,NA,NA,0.250337381916329,1,"Moran rejects",NA,NA,0.250337381916329,1.31363439559937
+"D0",14,"q80",NA,NA,NA,0.0155195681511471,3,"converged",NA,NA,0.0155195681511471,1.31670236587524
+"D0",14,"q90",NA,NA,NA,0.0121457489878543,2,"Moran rejects",NA,NA,0.0121457489878543,1.31299304962158
+"D0",14,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.513342142105103
+"D0",14,"permutation",NA,NA,NA,0.00202429149797571,2,"converged",NA,NA,0.00202429149797571,32.1937453746796
+"A",15,"none","Centrality, whole graph",0.25,0.55,1,0,"converged",NA,NA,NA,0.848766088485718
+"A",15,"none","Centrality, hot cells",0.95,0,1,0,"converged",NA,NA,NA,0.851443529129028
+"A",15,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.8526611328125
+"A",15,"none","Hot zones first",0.95,0,1,0,"converged",NA,NA,NA,0.856576442718506
+"A",15,"q50","Centrality, whole graph",0.25,0.6,0.0647773279352227,4,"Moran rejects",NA,NA,NA,2.62325739860535
+"A",15,"q50","Centrality, hot cells",0.8,0,0.0647773279352227,4,"Moran rejects",NA,NA,NA,2.62572431564331
+"A",15,"q50","Largest excess",1,0,0.0647773279352227,4,"Moran rejects",NA,NA,NA,2.62712860107422
+"A",15,"q50","Hot zones first",0.8,0,0.0647773279352227,4,"Moran rejects",NA,NA,NA,2.62997364997864
+"A",15,"q75","Centrality, whole graph",0.2,0.65,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.55809092521667
+"A",15,"q75","Centrality, hot cells",0.75,0,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.5603666305542
+"A",15,"q75","Largest excess",1,0,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.56188654899597
+"A",15,"q75","Hot zones first",0.75,0,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.56527924537659
+"A",15,"q80","Centrality, whole graph",0.05,0.85,0.01417004048583,3,"Moran undefined (saturated)",NA,NA,NA,1.92705988883972
+"A",15,"q80","Centrality, hot cells",0.95,0,0.01417004048583,3,"Moran undefined (saturated)",NA,NA,NA,1.92964434623718
+"A",15,"q80","Largest excess",1,0,0.01417004048583,3,"Moran undefined (saturated)",NA,NA,NA,1.93118071556091
+"A",15,"q80","Hot zones first",0.95,0,0.01417004048583,3,"Moran undefined (saturated)",NA,NA,NA,1.93362808227539
+"A",15,"q90","Centrality, whole graph",0.25,0.55,1,0,"Moran rejects",NA,NA,NA,0.882636547088623
+"A",15,"q90","Centrality, hot cells",0.95,0,1,0,"Moran rejects",NA,NA,NA,0.885503053665161
+"A",15,"q90","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,0.887156963348389
+"A",15,"q90","Hot zones first",0.95,0,1,0,"Moran rejects",NA,NA,NA,0.896089553833008
+"A",15,"mixture","Centrality, whole graph",0.4,0.5,0.0836707152496626,10,"converged",NA,NA,NA,4.60359668731689
+"A",15,"mixture","Centrality, hot cells",0.8,0,0.0836707152496626,10,"converged",NA,NA,NA,4.60622954368591
+"A",15,"mixture","Largest excess",1,0,0.0836707152496626,10,"converged",NA,NA,NA,4.60779285430908
+"A",15,"mixture","Hot zones first",0.75,0,0.0836707152496626,10,"converged",NA,NA,NA,4.6121346950531
+"A",15,"permutation","Centrality, whole graph",0,0.7,0.0263157894736842,1,"Moran undefined (saturated)",NA,NA,NA,24.0290138721466
+"A",15,"permutation","Centrality, hot cells",1,0,0.0263157894736842,1,"Moran undefined (saturated)",NA,NA,NA,24.0306220054626
+"A",15,"permutation","Largest excess",1,0,0.0263157894736842,1,"Moran undefined (saturated)",NA,NA,NA,24.032247543335
+"A",15,"permutation","Hot zones first",1,0,0.0263157894736842,1,"Moran undefined (saturated)",NA,NA,NA,24.0340216159821
+"B",15,"none","Centrality, whole graph",0,0.85,1,0,"converged",NA,NA,NA,0.933972597122192
+"B",15,"none","Centrality, hot cells",0.95,0,1,0,"converged",NA,NA,NA,0.936923503875732
+"B",15,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.938584327697754
+"B",15,"none","Hot zones first",0.95,0,1,0,"converged",NA,NA,NA,0.943581819534302
+"B",15,"q50","Centrality, whole graph",0.65,0.1,0.0182186234817814,7,"converged",NA,NA,NA,3.41019129753113
+"B",15,"q50","Centrality, hot cells",0.65,0,0.0182186234817814,7,"converged",NA,NA,NA,3.41269063949585
+"B",15,"q50","Largest excess",1,0,0.0182186234817814,7,"converged",NA,NA,NA,3.41430521011353
+"B",15,"q50","Hot zones first",0.65,0,0.0182186234817814,7,"converged",NA,NA,NA,3.42120480537415
+"B",15,"q75","Centrality, whole graph",0.25,0.7,0.0114709851551957,4,"converged",NA,NA,NA,2.5265965461731
+"B",15,"q75","Centrality, hot cells",1,0,0.0114709851551957,4,"converged",NA,NA,NA,2.52957463264465
+"B",15,"q75","Largest excess",1,0,0.0114709851551957,4,"converged",NA,NA,NA,2.53109312057495
+"B",15,"q75","Hot zones first",1,0,0.0114709851551957,4,"converged",NA,NA,NA,2.53468012809753
+"B",15,"q80","Centrality, whole graph",0.2,0.6,0.0087719298245614,4,"converged",NA,NA,NA,2.24035120010376
+"B",15,"q80","Centrality, hot cells",0.9,0,0.0087719298245614,4,"converged",NA,NA,NA,2.24282932281494
+"B",15,"q80","Largest excess",1,0,0.0087719298245614,4,"converged",NA,NA,NA,2.24412441253662
+"B",15,"q80","Hot zones first",0.9,0,0.0087719298245614,4,"converged",NA,NA,NA,2.24701976776123
+"B",15,"q90","Centrality, whole graph",0.5,0.25,0.00337381916329285,4,"converged",NA,NA,NA,1.83258867263794
+"B",15,"q90","Centrality, hot cells",1,0,0.00337381916329285,4,"converged",NA,NA,NA,1.83500051498413
+"B",15,"q90","Largest excess",1,0,0.00337381916329285,4,"converged",NA,NA,NA,1.83679032325745
+"B",15,"q90","Hot zones first",1,0,0.00337381916329285,4,"converged",NA,NA,NA,1.84124231338501
+"B",15,"mixture","Centrality, whole graph",0.55,0.25,0.0917678812415655,4,"converged",NA,NA,NA,2.33969855308533
+"B",15,"mixture","Centrality, hot cells",0.85,0,0.0917678812415655,4,"converged",NA,NA,NA,2.34229135513306
+"B",15,"mixture","Largest excess",1,0,0.0917678812415655,4,"converged",NA,NA,NA,2.34353733062744
+"B",15,"mixture","Hot zones first",0.85,0,0.0917678812415655,4,"converged",NA,NA,NA,2.34706592559814
+"B",15,"permutation","Centrality, whole graph",0.5,0.1,0.00202429149797571,2,"converged",NA,NA,NA,34.1543169021606
+"B",15,"permutation","Centrality, hot cells",0.95,0,0.00202429149797571,2,"converged",NA,NA,NA,34.1565837860107
+"B",15,"permutation","Largest excess",1,0,0.00202429149797571,2,"converged",NA,NA,NA,34.1577844619751
+"B",15,"permutation","Hot zones first",0.95,0,0.00202429149797571,2,"converged",NA,NA,NA,34.1603798866272
+"D80",15,"none",NA,NA,NA,1,0,"converged",0,0,1,0.671875715255737
+"D80",15,"q50",NA,NA,NA,0.0101214574898785,10,"converged",-0.00174323129394915,0.988235294117647,0.0100214745884037,4.0265064239502
+"D80",15,"q75",NA,NA,NA,0.00809716599190283,4,"Moran rejects",0.00858983536148883,1,0.00858983536148891,2.12459897994995
+"D80",15,"q80",NA,NA,NA,0.0087719298245614,3,"Moran rejects",0.0093056549749464,1,0.00930565497494631,1.55868315696716
+"D80",15,"q90",NA,NA,NA,0.00134952766531714,3,"Moran rejects",0.00143163922691492,1,0.00143163922691482,1.74694037437439
+"D80",15,"mixture",NA,NA,NA,1,0,"Moran rejects",0,0,1,0.89685583114624
+"D80",15,"permutation",NA,NA,NA,0.00607287449392713,3,"converged",0.00644237652111679,1,0.00644237652111668,41.1216359138489
+"D95",15,"none",NA,NA,NA,1,0,"converged",0,0,1,0.717454433441162
+"D95",15,"q50",NA,NA,NA,0.5,1,"Moran rejects",-0.0561623647311466,0.447058823529412,0.496778811739442,1.30912184715271
+"D95",15,"q75",NA,NA,NA,0.0188933873144399,3,"Moran rejects",-0.00491810181481334,0.976470588235294,0.0186113099498926,2.17198491096497
+"D95",15,"q80",NA,NA,NA,0.00404858299595142,5,"converged",-0.00818560781506583,0.988235294117647,0.00357909806728704,2.37961578369141
+"D95",15,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.74774312973022
+"D95",15,"mixture",NA,NA,NA,0.157894736842105,4,"converged",-0.119550296854604,0.729411764705882,0.151037938439513,2.08063793182373
+"D95",15,"permutation",NA,NA,NA,0.00134952766531714,1,"converged",0.00143163922691492,1,0.00143163922691482,21.2295224666595
+"D0",15,"none",NA,NA,NA,1,0,"converged",NA,NA,1,1.05501365661621
+"D0",15,"q50",NA,NA,NA,0.0148448043184885,8,"converged",NA,NA,0.0148448043184885,3.49410009384155
+"D0",15,"q75",NA,NA,NA,0.0101214574898785,5,"converged",NA,NA,0.0101214574898785,2.33270955085754
+"D0",15,"q80",NA,NA,NA,0.0107962213225371,4,"converged",NA,NA,0.0107962213225371,1.93958926200867
+"D0",15,"q90",NA,NA,NA,1,0,"Moran rejects",NA,NA,1,0.749934673309326
+"D0",15,"mixture",NA,NA,NA,0.0114709851551957,4,"converged",NA,NA,0.0114709851551957,2.0312602519989
+"D0",15,"permutation",NA,NA,NA,0.000674763832658569,2,"converged",NA,NA,0.000674763832658569,31.4824435710907
+"A",16,"none","Centrality, whole graph",0,0.9,1,0,"converged",NA,NA,NA,0.978943586349487
+"A",16,"none","Centrality, hot cells",0.75,0,1,0,"converged",NA,NA,NA,0.982730627059937
+"A",16,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.984079599380493
+"A",16,"none","Hot zones first",0.75,0,1,0,"converged",NA,NA,NA,0.988471508026123
+"A",16,"q50","Centrality, whole graph",0.1,0.85,0.0317139001349528,5,"Moran undefined (saturated)",NA,NA,NA,3.14343166351318
+"A",16,"q50","Centrality, hot cells",0.9,0,0.0317139001349528,5,"Moran undefined (saturated)",NA,NA,NA,3.14590620994568
+"A",16,"q50","Largest excess",1,0,0.0317139001349528,5,"Moran undefined (saturated)",NA,NA,NA,3.14725565910339
+"A",16,"q50","Hot zones first",0.9,0,0.0317139001349528,5,"Moran undefined (saturated)",NA,NA,NA,3.14995217323303
+"A",16,"q75","Centrality, whole graph",0.2,0.6,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.90193390846252
+"A",16,"q75","Centrality, hot cells",0.75,0,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.90424680709839
+"A",16,"q75","Largest excess",1,0,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.9055278301239
+"A",16,"q75","Hot zones first",0.75,0,0.062753036437247,2,"Moran undefined (saturated)",NA,NA,NA,1.90881085395813
+"A",16,"q80","Centrality, whole graph",0.05,0.85,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.55199670791626
+"A",16,"q80","Centrality, hot cells",0.75,0,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.55490660667419
+"A",16,"q80","Largest excess",1,0,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.5565390586853
+"A",16,"q80","Hot zones first",0.75,0,0.0404858299595142,2,"Moran undefined (saturated)",NA,NA,NA,1.56050062179565
+"A",16,"q90","Centrality, whole graph",0,0.9,0.0121457489878543,2,"Moran undefined (saturated)",NA,NA,NA,1.43467211723328
+"A",16,"q90","Centrality, hot cells",0.9,0,0.0121457489878543,2,"Moran undefined (saturated)",NA,NA,NA,1.43691301345825
+"A",16,"q90","Largest excess",1,0,0.0121457489878543,2,"Moran undefined (saturated)",NA,NA,NA,1.43809247016907
+"A",16,"q90","Hot zones first",0.9,0,0.0121457489878543,2,"Moran undefined (saturated)",NA,NA,NA,1.43999528884888
+"A",16,"mixture","Centrality, whole graph",0.25,0.65,0.0769230769230769,6,"converged",NA,NA,NA,3.02493596076965
+"A",16,"mixture","Centrality, hot cells",0.8,0,0.0769230769230769,6,"converged",NA,NA,NA,3.02768540382385
+"A",16,"mixture","Largest excess",1,0,0.0769230769230769,6,"converged",NA,NA,NA,3.02905321121216
+"A",16,"mixture","Hot zones first",0.85,0,0.0769230769230769,6,"converged",NA,NA,NA,3.03668785095215
+"A",16,"permutation","Centrality, whole graph",0.05,0.9,0.0796221322537112,1,"Moran undefined (saturated)",NA,NA,NA,23.9106841087341
+"A",16,"permutation","Centrality, hot cells",0.8,0,0.0796221322537112,1,"Moran undefined (saturated)",NA,NA,NA,23.9130802154541
+"A",16,"permutation","Largest excess",1,0,0.0796221322537112,1,"Moran undefined (saturated)",NA,NA,NA,23.9142851829529
+"A",16,"permutation","Hot zones first",0.8,0,0.0796221322537112,1,"Moran undefined (saturated)",NA,NA,NA,23.9174470901489
+"B",16,"none","Centrality, whole graph",0.05,0.85,1,0,"converged",NA,NA,NA,0.951996803283691
+"B",16,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.956957817077637
+"B",16,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.959037065505981
+"B",16,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,0.971043825149536
+"B",16,"q50","Centrality, whole graph",0,0.85,0.0323886639676113,5,"Moran rejects",NA,NA,NA,2.89946269989014
+"B",16,"q50","Centrality, hot cells",0.7,0,0.0323886639676113,5,"Moran rejects",NA,NA,NA,2.90177416801453
+"B",16,"q50","Largest excess",0.85,0,0.0323886639676113,5,"Moran rejects",NA,NA,NA,2.90313148498535
+"B",16,"q50","Hot zones first",0.7,0,0.0323886639676113,5,"Moran rejects",NA,NA,NA,2.9071626663208
+"B",16,"q75","Centrality, whole graph",0.2,0.4,0.0155195681511471,5,"converged",NA,NA,NA,2.54172253608704
+"B",16,"q75","Centrality, hot cells",0.75,0,0.0155195681511471,5,"converged",NA,NA,NA,2.54426097869873
+"B",16,"q75","Largest excess",0.85,0,0.0155195681511471,5,"converged",NA,NA,NA,2.54560422897339
+"B",16,"q75","Hot zones first",0.75,0,0.0155195681511471,5,"converged",NA,NA,NA,2.54915571212769
+"B",16,"q80","Centrality, whole graph",0.05,0.75,0.0134952766531714,4,"converged",NA,NA,NA,1.81233286857605
+"B",16,"q80","Centrality, hot cells",0.8,0,0.0134952766531714,4,"converged",NA,NA,NA,1.81479215621948
+"B",16,"q80","Largest excess",0.85,0,0.0134952766531714,4,"converged",NA,NA,NA,1.81603193283081
+"B",16,"q80","Hot zones first",0.8,0,0.0134952766531714,4,"converged",NA,NA,NA,1.81895780563354
+"B",16,"q90","Centrality, whole graph",0.05,0.55,0.0128205128205128,3,"converged",NA,NA,NA,1.51844954490662
+"B",16,"q90","Centrality, hot cells",0.75,0,0.0128205128205128,3,"converged",NA,NA,NA,1.52118587493896
+"B",16,"q90","Largest excess",0.85,0,0.0128205128205128,3,"converged",NA,NA,NA,1.52247738838196
+"B",16,"q90","Hot zones first",0.75,0,0.0128205128205128,3,"converged",NA,NA,NA,1.52473282814026
+"B",16,"mixture","Centrality, whole graph",0.3,0.45,0.0107962213225371,7,"converged",NA,NA,NA,3.48313760757446
+"B",16,"mixture","Centrality, hot cells",0.85,0,0.0107962213225371,7,"converged",NA,NA,NA,3.48544239997864
+"B",16,"mixture","Largest excess",0.85,0,0.0107962213225371,7,"converged",NA,NA,NA,3.48674392700195
+"B",16,"mixture","Hot zones first",0.85,0,0.0107962213225371,7,"converged",NA,NA,NA,3.48991274833679
+"B",16,"permutation","Centrality, whole graph",0,0.8,0.0465587044534413,1,"Moran rejects",NA,NA,NA,24.4849803447723
+"B",16,"permutation","Centrality, hot cells",0.75,0,0.0465587044534413,1,"Moran rejects",NA,NA,NA,24.4876525402069
+"B",16,"permutation","Largest excess",0.9,0,0.0465587044534413,1,"Moran rejects",NA,NA,NA,24.489089012146
+"B",16,"permutation","Hot zones first",0.75,0,0.0465587044534413,1,"Moran rejects",NA,NA,NA,24.4931864738464
+"D80",16,"none",NA,NA,NA,1,0,"converged",0,0,1,0.738774061203003
+"D80",16,"q50",NA,NA,NA,0.0067476383265857,8,"converged",-0.00532232936123622,0.988235294117647,0.00644237652111668,3.32617545127869
+"D80",16,"q75",NA,NA,NA,0.00809716599190283,5,"converged",-0.00389069013432142,0.988235294117647,0.0078740157480315,2.29839706420898
+"D80",16,"q80",NA,NA,NA,0.0067476383265857,4,"converged",0.00715819613457414,1,0.00715819613457409,1.8673050403595
+"D80",16,"q90",NA,NA,NA,0.00134952766531714,3,"converged",-0.0110488862688954,0.988235294117647,0.000715819613457409,1.48039221763611
+"D80",16,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.782709121704102
+"D80",16,"permutation",NA,NA,NA,0.000674763832658569,3,"empty graph",0.000715819613457347,1,0.000715819613457409,40.650799036026
+"D95",16,"none",NA,NA,NA,1,0,"converged",0,0,1,0.708564043045044
+"D95",16,"q50",NA,NA,NA,0.0087719298245614,8,"converged",-0.0156553960166744,0.976470588235294,0.0078740157480315,3.63912868499756
+"D95",16,"q75",NA,NA,NA,0.00404858299595142,5,"converged",-0.045627184302497,0.952941176470588,0.00143163922691482,2.30746293067932
+"D95",16,"q80",NA,NA,NA,0.00269905533063428,5,"converged",-0.0220977725377911,0.976470588235294,0.00143163922691482,2.43234825134277
+"D95",16,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.96165609359741
+"D95",16,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.508976459503174
+"D95",16,"permutation",NA,NA,NA,0.00269905533063428,2,"converged",-0.0345782980336014,0.964705882352941,0.000715819613457409,33.0284507274628
+"D0",16,"none",NA,NA,NA,1,0,"converged",NA,NA,1,1.09174752235413
+"D0",16,"q50",NA,NA,NA,0.0161943319838057,7,"converged",NA,NA,0.0161943319838057,3.02109503746033
+"D0",16,"q75",NA,NA,NA,0.0121457489878543,4,"converged",NA,NA,0.0121457489878543,1.93630242347717
+"D0",16,"q80",NA,NA,NA,0.00607287449392713,5,"converged",NA,NA,0.00607287449392713,2.16246199607849
+"D0",16,"q90",NA,NA,NA,0.00809716599190283,4,"converged",NA,NA,0.00809716599190283,2.17444968223572
+"D0",16,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.529958963394165
+"D0",16,"permutation",NA,NA,NA,0.00134952766531714,2,"converged",NA,NA,0.00134952766531714,31.1723604202271
+"A",17,"none","Centrality, whole graph",0.05,0.85,1,0,"converged",NA,NA,NA,0.935447454452515
+"A",17,"none","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.93854832649231
+"A",17,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.940389394760132
+"A",17,"none","Hot zones first",0.8,0,1,0,"converged",NA,NA,NA,0.945642471313477
+"A",17,"q50","Centrality, whole graph",0.7,0.25,0.0641025641025641,4,"Moran rejects",NA,NA,NA,2.56624937057495
+"A",17,"q50","Centrality, hot cells",0.95,0,0.0641025641025641,4,"Moran rejects",NA,NA,NA,2.56901502609253
+"A",17,"q50","Largest excess",1,0,0.0641025641025641,4,"Moran rejects",NA,NA,NA,2.57019662857056
+"A",17,"q50","Hot zones first",0.95,0,0.0641025641025641,4,"Moran rejects",NA,NA,NA,2.57379341125488
+"A",17,"q75","Centrality, whole graph",0.3,0.5,0.0182186234817814,4,"converged",NA,NA,NA,1.82496500015259
+"A",17,"q75","Centrality, hot cells",0.95,0,0.0182186234817814,4,"converged",NA,NA,NA,1.82738852500916
+"A",17,"q75","Largest excess",1,0,0.0182186234817814,4,"converged",NA,NA,NA,1.82867836952209
+"A",17,"q75","Hot zones first",0.95,0,0.0182186234817814,4,"converged",NA,NA,NA,1.83144783973694
+"A",17,"q80","Centrality, whole graph",0.25,0.55,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.42712497711182
+"A",17,"q80","Centrality, hot cells",0.9,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.42974066734314
+"A",17,"q80","Largest excess",1,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.43113589286804
+"A",17,"q80","Hot zones first",0.75,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.43516802787781
+"A",17,"q90","Centrality, whole graph",0.1,0.65,0.0134952766531714,2,"Moran undefined (saturated)",NA,NA,NA,1.47129917144775
+"A",17,"q90","Centrality, hot cells",0.8,0,0.0134952766531714,2,"Moran undefined (saturated)",NA,NA,NA,1.47469806671143
+"A",17,"q90","Largest excess",1,0,0.0134952766531714,2,"Moran undefined (saturated)",NA,NA,NA,1.47613906860352
+"A",17,"q90","Hot zones first",0.8,0,0.0134952766531714,2,"Moran undefined (saturated)",NA,NA,NA,1.47992706298828
+"A",17,"mixture","Centrality, whole graph",0.5,0.4,0.0404858299595142,10,"converged",NA,NA,NA,4.20805025100708
+"A",17,"mixture","Centrality, hot cells",0.8,0,0.0404858299595142,10,"converged",NA,NA,NA,4.21075892448425
+"A",17,"mixture","Largest excess",1,0,0.0404858299595142,10,"converged",NA,NA,NA,4.21215796470642
+"A",17,"mixture","Hot zones first",0.8,0,0.0404858299595142,10,"converged",NA,NA,NA,4.21577525138855
+"A",17,"permutation","Centrality, whole graph",0.35,0.4,0.0303643724696356,1,"Moran rejects",NA,NA,NA,22.9772868156433
+"A",17,"permutation","Centrality, hot cells",0.9,0,0.0303643724696356,1,"Moran rejects",NA,NA,NA,22.9795708656311
+"A",17,"permutation","Largest excess",1,0,0.0303643724696356,1,"Moran rejects",NA,NA,NA,22.9808149337769
+"A",17,"permutation","Hot zones first",0.9,0,0.0303643724696356,1,"Moran rejects",NA,NA,NA,22.9850487709045
+"B",17,"none","Centrality, whole graph",0,0.95,1,0,"converged",NA,NA,NA,0.885354280471802
+"B",17,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.888797760009766
+"B",17,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,0.8899827003479
+"B",17,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,0.894976139068604
+"B",17,"q50","Centrality, whole graph",0.5,0.45,0.0168690958164642,8,"converged",NA,NA,NA,3.58084797859192
+"B",17,"q50","Centrality, hot cells",0.8,0,0.0168690958164642,8,"converged",NA,NA,NA,3.58391499519348
+"B",17,"q50","Largest excess",0.95,0,0.0168690958164642,8,"converged",NA,NA,NA,3.58526849746704
+"B",17,"q50","Hot zones first",0.8,0,0.0168690958164642,8,"converged",NA,NA,NA,3.5898380279541
+"B",17,"q75","Centrality, whole graph",0.2,0.7,0.0087719298245614,5,"converged",NA,NA,NA,2.6018271446228
+"B",17,"q75","Centrality, hot cells",0.95,0,0.0087719298245614,5,"converged",NA,NA,NA,2.60442018508911
+"B",17,"q75","Largest excess",0.95,0,0.0087719298245614,5,"converged",NA,NA,NA,2.60570073127747
+"B",17,"q75","Hot zones first",0.95,0,0.0087719298245614,5,"converged",NA,NA,NA,2.60814833641052
+"B",17,"q80","Centrality, whole graph",0.4,0.55,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.15944957733154
+"B",17,"q80","Centrality, hot cells",0.85,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.34250831604004
+"B",17,"q80","Largest excess",0.95,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.34423971176147
+"B",17,"q80","Hot zones first",0.8,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.34787678718567
+"B",17,"q90","Centrality, whole graph",0.5,0.1,0.000674763832658569,4,"converged",NA,NA,NA,1.76115036010742
+"B",17,"q90","Centrality, hot cells",0.95,0,0.000674763832658569,4,"converged",NA,NA,NA,1.76322174072266
+"B",17,"q90","Largest excess",0.95,0,0.000674763832658569,4,"converged",NA,NA,NA,1.76470923423767
+"B",17,"q90","Hot zones first",0.95,0,0.000674763832658569,4,"converged",NA,NA,NA,1.76653051376343
+"B",17,"mixture","Centrality, whole graph",0.55,0.3,0.0350877192982456,5,"converged",NA,NA,NA,2.15979409217834
+"B",17,"mixture","Centrality, hot cells",0.8,0,0.0350877192982456,5,"converged",NA,NA,NA,2.16206383705139
+"B",17,"mixture","Largest excess",0.95,0,0.0350877192982456,5,"converged",NA,NA,NA,2.16330409049988
+"B",17,"mixture","Hot zones first",0.8,0,0.0350877192982456,5,"converged",NA,NA,NA,2.16731119155884
+"B",17,"permutation","Centrality, whole graph",0.5,0.1,0.00134952766531714,2,"converged",NA,NA,NA,32.7317028045654
+"B",17,"permutation","Centrality, hot cells",0.95,0,0.00134952766531714,2,"converged",NA,NA,NA,32.7338356971741
+"B",17,"permutation","Largest excess",0.95,0,0.00134952766531714,2,"converged",NA,NA,NA,32.7350761890411
+"B",17,"permutation","Hot zones first",0.95,0,0.00134952766531714,2,"converged",NA,NA,NA,32.7372415065765
+"D80",17,"none",NA,NA,NA,1,0,"converged",0,0,1,0.678803682327271
+"D80",17,"q50",NA,NA,NA,0.00809716599190283,8,"converged",-0.0163712156301318,0.976470588235294,0.00715819613457409,3.11882042884827
+"D80",17,"q75",NA,NA,NA,0.00337381916329285,4,"converged",0.00357909806728696,1,0.00357909806728704,1.6597888469696
+"D80",17,"q80",NA,NA,NA,0.00472334682860999,4,"converged",0.00501073729420187,1,0.00501073729420186,1.48187232017517
+"D80",17,"q90",NA,NA,NA,0.100539811066127,1,"Moran rejects",0.00681291843867116,0.905882352941176,0.100930565497495,0.894583463668823
+"D80",17,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.487120628356934
+"D80",17,"permutation",NA,NA,NA,0.00202429149797571,3,"converged",0.00214745884037226,1,0.00214745884037223,34.2826852798462
+"D95",17,"none",NA,NA,NA,1,0,"converged",0,0,1,0.640145778656006
+"D95",17,"q50",NA,NA,NA,0.250337381916329,2,"Moran rejects",-0.233651943239715,0.529411764705882,0.236936292054402,1.58209776878357
+"D95",17,"q75",NA,NA,NA,0.062753036437247,2,"Moran rejects",0.00416859657248736,0.941176470588235,0.062992125984252,1.43075919151306
+"D95",17,"q80",NA,NA,NA,0.200404858299595,1,"Moran rejects",0.0753126447429366,0.870588235294118,0.204724409448819,1.1395149230957
+"D95",17,"q90",NA,NA,NA,0.000674763832658569,4,"converged",0.000715819613457347,1,0.000715819613457409,1.5020112991333
+"D95",17,"mixture",NA,NA,NA,0.787449392712551,2,"converged",-0.138119499768411,0.0823529411764706,0.779527559055118,1.34916996955872
+"D95",17,"permutation",NA,NA,NA,0.00404858299595142,3,"converged",-0.00818560781506583,0.988235294117647,0.00357909806728704,38.6505162715912
+"D0",17,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.765606164932251
+"D0",17,"q50",NA,NA,NA,0.00944669365721997,8,"converged",NA,NA,0.00944669365721997,2.97912216186523
+"D0",17,"q75",NA,NA,NA,0.00607287449392713,5,"converged",NA,NA,0.00607287449392713,1.97712898254395
+"D0",17,"q80",NA,NA,NA,0.00607287449392713,4,"converged",NA,NA,0.00607287449392713,1.4449291229248
+"D0",17,"q90",NA,NA,NA,0.000674763832658569,4,"converged",NA,NA,0.000674763832658569,1.49818897247314
+"D0",17,"mixture",NA,NA,NA,0.607962213225371,2,"converged",NA,NA,0.607962213225371,1.41595387458801
+"D0",17,"permutation",NA,NA,NA,0.00134952766531714,1,"empty graph",NA,NA,0.00134952766531714,19.1990849971771
+"A",18,"none","Centrality, whole graph",0.2,0.55,1,0,"converged",NA,NA,NA,0.859864950180054
+"A",18,"none","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.863071441650391
+"A",18,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.864242315292358
+"A",18,"none","Hot zones first",1,0,1,0,"converged",NA,NA,NA,0.871687650680542
+"A",18,"q50","Centrality, whole graph",0.15,0.65,0.0668016194331984,4,"Moran rejects",NA,NA,NA,2.40373945236206
+"A",18,"q50","Centrality, hot cells",0.65,0,0.0668016194331984,4,"Moran rejects",NA,NA,NA,2.40612316131592
+"A",18,"q50","Largest excess",1,0,0.0668016194331984,4,"Moran rejects",NA,NA,NA,2.40743803977966
+"A",18,"q50","Hot zones first",0.65,0,0.0668016194331984,4,"Moran rejects",NA,NA,NA,2.41115880012512
+"A",18,"q75","Centrality, whole graph",0.45,0.35,0.0155195681511471,4,"converged",NA,NA,NA,1.68698978424072
+"A",18,"q75","Centrality, hot cells",0.8,0,0.0155195681511471,4,"converged",NA,NA,NA,1.68929219245911
+"A",18,"q75","Largest excess",1,0,0.0155195681511471,4,"converged",NA,NA,NA,1.69052863121033
+"A",18,"q75","Hot zones first",0.8,0,0.0155195681511471,4,"converged",NA,NA,NA,1.69404530525208
+"A",18,"q80","Centrality, whole graph",0.2,0.65,0.0101214574898785,3,"Moran undefined (saturated)",NA,NA,NA,1.69203400611877
+"A",18,"q80","Centrality, hot cells",0.95,0,0.0101214574898785,3,"Moran undefined (saturated)",NA,NA,NA,1.69429588317871
+"A",18,"q80","Largest excess",1,0,0.0101214574898785,3,"Moran undefined (saturated)",NA,NA,NA,1.69546580314636
+"A",18,"q80","Hot zones first",0.95,0,0.0101214574898785,3,"Moran undefined (saturated)",NA,NA,NA,1.6977527141571
+"A",18,"q90","Centrality, whole graph",0,0.95,0.0121457489878543,2,"Moran undefined (saturated)",NA,NA,NA,1.69847321510315
+"A",18,"q90","Centrality, hot cells",1,0,0.0121457489878543,2,"Moran undefined (saturated)",NA,NA,NA,1.69996213912964
+"A",18,"q90","Largest excess",1,0,0.0121457489878543,2,"Moran undefined (saturated)",NA,NA,NA,1.70116639137268
+"A",18,"q90","Hot zones first",1,0,0.0121457489878543,2,"Moran undefined (saturated)",NA,NA,NA,1.70255494117737
+"A",18,"mixture","Centrality, whole graph",0.5,0.3,0.186909581646424,6,"Moran rejects",NA,NA,NA,3.04261541366577
+"A",18,"mixture","Centrality, hot cells",0.75,0,0.186909581646424,6,"Moran rejects",NA,NA,NA,3.04481244087219
+"A",18,"mixture","Largest excess",1,0,0.186909581646424,6,"Moran rejects",NA,NA,NA,3.04598689079285
+"A",18,"mixture","Hot zones first",0.75,0,0.186909581646424,6,"Moran rejects",NA,NA,NA,3.04946660995483
+"A",18,"permutation","Centrality, whole graph",0.1,0.75,0.172739541160594,1,"Moran undefined (saturated)",NA,NA,NA,22.9009349346161
+"A",18,"permutation","Centrality, hot cells",0.7,0,0.172739541160594,1,"Moran undefined (saturated)",NA,NA,NA,22.9030692577362
+"A",18,"permutation","Largest excess",1,0,0.172739541160594,1,"Moran undefined (saturated)",NA,NA,NA,22.9042863845825
+"A",18,"permutation","Hot zones first",0.75,0,0.172739541160594,1,"Moran undefined (saturated)",NA,NA,NA,22.9101271629333
+"B",18,"none","Centrality, whole graph",0,0.85,1,0,"converged",NA,NA,NA,0.904556035995483
+"B",18,"none","Centrality, hot cells",0.35,0,1,0,"converged",NA,NA,NA,0.907333612442017
+"B",18,"none","Largest excess",0.8,0,1,0,"converged",NA,NA,NA,0.908481121063232
+"B",18,"none","Hot zones first",0.8,0,1,0,"converged",NA,NA,NA,0.912605762481689
+"B",18,"q50","Centrality, whole graph",0.4,0.45,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.03511333465576
+"B",18,"q50","Centrality, hot cells",0.55,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.03752994537354
+"B",18,"q50","Largest excess",0.85,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.03870534896851
+"B",18,"q50","Hot zones first",0.75,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.04232859611511
+"B",18,"q75","Centrality, whole graph",0.25,0.55,0.0168690958164642,4,"converged",NA,NA,NA,1.91598653793335
+"B",18,"q75","Centrality, hot cells",0.75,0,0.0168690958164642,4,"converged",NA,NA,NA,1.91885828971863
+"B",18,"q75","Largest excess",0.85,0,0.0168690958164642,4,"converged",NA,NA,NA,1.92018961906433
+"B",18,"q75","Hot zones first",0.75,0,0.0168690958164642,4,"converged",NA,NA,NA,1.92303276062012
+"B",18,"q80","Centrality, whole graph",0.45,0.1,0.00134952766531714,5,"converged",NA,NA,NA,2.16979336738586
+"B",18,"q80","Centrality, hot cells",0.85,0,0.00134952766531714,5,"converged",NA,NA,NA,2.17119264602661
+"B",18,"q80","Largest excess",0.85,0,0.00134952766531714,5,"converged",NA,NA,NA,2.17238354682922
+"B",18,"q80","Hot zones first",0.85,0,0.00134952766531714,5,"converged",NA,NA,NA,2.17374038696289
+"B",18,"q90","Centrality, whole graph",0.4,0.15,0.00134952766531714,3,"converged",NA,NA,NA,1.67770648002625
+"B",18,"q90","Centrality, hot cells",0.85,0,0.00134952766531714,3,"converged",NA,NA,NA,1.67908787727356
+"B",18,"q90","Largest excess",0.85,0,0.00134952766531714,3,"converged",NA,NA,NA,1.68021249771118
+"B",18,"q90","Hot zones first",0.85,0,0.00134952766531714,3,"converged",NA,NA,NA,1.68165850639343
+"B",18,"mixture","Centrality, whole graph",0.05,0.8,0.0917678812415655,5,"converged",NA,NA,NA,2.47031807899475
+"B",18,"mixture","Centrality, hot cells",0.75,0,0.0917678812415655,5,"converged",NA,NA,NA,2.47290301322937
+"B",18,"mixture","Largest excess",0.85,0,0.0917678812415655,5,"converged",NA,NA,NA,2.47418022155762
+"B",18,"mixture","Hot zones first",0.85,0,0.0917678812415655,5,"converged",NA,NA,NA,2.48236846923828
+"B",18,"permutation","Centrality, whole graph",0.3,0.2,0.00337381916329285,3,"converged",NA,NA,NA,41.0864193439484
+"B",18,"permutation","Centrality, hot cells",0.85,0,0.00337381916329285,3,"converged",NA,NA,NA,41.0887396335602
+"B",18,"permutation","Largest excess",0.85,0,0.00337381916329285,3,"converged",NA,NA,NA,41.0902292728424
+"B",18,"permutation","Hot zones first",0.85,0,0.00337381916329285,3,"converged",NA,NA,NA,41.0925500392914
+"D80",18,"none",NA,NA,NA,1,0,"converged",0,0,1,0.697386980056763
+"D80",18,"q50",NA,NA,NA,0.0107962213225371,8,"converged",-0.00102741168049181,0.988235294117647,0.0107372942018611,3.25145769119263
+"D80",18,"q75",NA,NA,NA,0.00404858299595142,5,"converged",0.00429491768074453,1,0.00429491768074445,1.95619583129883
+"D80",18,"q80",NA,NA,NA,0.0107962213225371,5,"converged",0.0114531138153184,1,0.0114531138153185,1.92817974090576
+"D80",18,"q90",NA,NA,NA,0.000674763832658569,4,"converged",0.000715819613457347,1,0.000715819613457409,2.07967710494995
+"D80",18,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.501864671707153
+"D80",18,"permutation",NA,NA,NA,0.000674763832658569,3,"converged",0.000715819613457347,1,0.000715819613457409,36.8513541221619
+"D95",18,"none",NA,NA,NA,1,0,"converged",0,0,1,0.658029556274414
+"D95",18,"q50",NA,NA,NA,0.0087719298245614,8,"converged",-0.00317487052086396,0.988235294117647,0.00858983536148891,3.3208487033844
+"D95",18,"q75",NA,NA,NA,0.00269905533063428,6,"converged",-0.0220977725377911,0.976470588235294,0.00143163922691482,2.55893635749817
+"D95",18,"q80",NA,NA,NA,0.0148448043184885,4,"converged",0.00326750600025272,0.988235294117647,0.0150322118826056,2.04883646965027
+"D95",18,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.67818331718445
+"D95",18,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.512146711349487
+"D95",18,"permutation",NA,NA,NA,0.00134952766531714,3,"converged",0.00143163922691492,1,0.00143163922691482,40.105916261673
+"D0",18,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.970725774765015
+"D0",18,"q50",NA,NA,NA,0.0134952766531714,7,"converged",NA,NA,0.0134952766531714,3.21146416664124
+"D0",18,"q75",NA,NA,NA,0.00134952766531714,5,"converged",NA,NA,0.00134952766531714,2.14705991744995
+"D0",18,"q80",NA,NA,NA,0.200404858299595,1,"Moran rejects",NA,NA,0.200404858299595,0.987654685974121
+"D0",18,"q90",NA,NA,NA,0.00202429149797571,3,"converged",NA,NA,0.00202429149797571,1.55777502059937
+"D0",18,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.518614768981934
+"D0",18,"permutation",NA,NA,NA,0.00539811066126856,2,"converged",NA,NA,0.00539811066126856,31.1557219028473
+"A",19,"none","Centrality, whole graph",0,0.9,1,0,"converged",NA,NA,NA,0.835235118865967
+"A",19,"none","Centrality, hot cells",0.95,0,1,0,"converged",NA,NA,NA,0.838109016418457
+"A",19,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.839314937591553
+"A",19,"none","Hot zones first",0.95,0,1,0,"converged",NA,NA,NA,0.845662832260132
+"A",19,"q50","Centrality, whole graph",0.3,0.55,0.0337381916329285,5,"Moran undefined (saturated)",NA,NA,NA,2.62634325027466
+"A",19,"q50","Centrality, hot cells",0.75,0,0.0337381916329285,5,"Moran undefined (saturated)",NA,NA,NA,2.62855124473572
+"A",19,"q50","Largest excess",1,0,0.0337381916329285,5,"Moran undefined (saturated)",NA,NA,NA,2.62973260879517
+"A",19,"q50","Hot zones first",0.75,0,0.0337381916329285,5,"Moran undefined (saturated)",NA,NA,NA,2.63373374938965
+"A",19,"q75","Centrality, whole graph",0.25,0.75,0.0371120107962213,3,"Moran undefined (saturated)",NA,NA,NA,1.89121341705322
+"A",19,"q75","Centrality, hot cells",0.8,0,0.0371120107962213,3,"Moran undefined (saturated)",NA,NA,NA,1.89347767829895
+"A",19,"q75","Largest excess",1,0,0.0371120107962213,3,"Moran undefined (saturated)",NA,NA,NA,1.8947479724884
+"A",19,"q75","Hot zones first",0.8,0,0.0371120107962213,3,"Moran undefined (saturated)",NA,NA,NA,1.89903855323792
+"A",19,"q80","Centrality, whole graph",0.2,0.75,0.0411605937921727,2,"Moran undefined (saturated)",NA,NA,NA,1.39017367362976
+"A",19,"q80","Centrality, hot cells",0.9,0,0.0411605937921727,2,"Moran undefined (saturated)",NA,NA,NA,1.39262223243713
+"A",19,"q80","Largest excess",1,0,0.0411605937921727,2,"Moran undefined (saturated)",NA,NA,NA,1.39418387413025
+"A",19,"q80","Hot zones first",0.9,0,0.0411605937921727,2,"Moran undefined (saturated)",NA,NA,NA,1.39891195297241
+"A",19,"q90","Centrality, whole graph",0.1,0.7,0.0134952766531714,2,"Moran undefined (saturated)",NA,NA,NA,1.51164078712463
+"A",19,"q90","Centrality, hot cells",0.95,0,0.0134952766531714,2,"Moran undefined (saturated)",NA,NA,NA,1.51376938819885
+"A",19,"q90","Largest excess",1,0,0.0134952766531714,2,"Moran undefined (saturated)",NA,NA,NA,1.5149998664856
+"A",19,"q90","Hot zones first",0.95,0,0.0134952766531714,2,"Moran undefined (saturated)",NA,NA,NA,1.516934633255
+"A",19,"mixture","Centrality, whole graph",0.25,0.7,0.087719298245614,7,"converged",NA,NA,NA,3.02200531959534
+"A",19,"mixture","Centrality, hot cells",0.85,0,0.087719298245614,7,"converged",NA,NA,NA,3.02557730674744
+"A",19,"mixture","Largest excess",1,0,0.087719298245614,7,"converged",NA,NA,NA,3.02698493003845
+"A",19,"mixture","Hot zones first",0.85,0,0.087719298245614,7,"converged",NA,NA,NA,3.03067564964294
+"A",19,"permutation","Centrality, whole graph",0,1,0.13225371120108,1,"Moran undefined (saturated)",NA,NA,NA,23.1415579319
+"A",19,"permutation","Centrality, hot cells",0.85,0,0.13225371120108,1,"Moran undefined (saturated)",NA,NA,NA,23.1474590301514
+"A",19,"permutation","Largest excess",1,0,0.13225371120108,1,"Moran undefined (saturated)",NA,NA,NA,23.1491374969482
+"A",19,"permutation","Hot zones first",0.85,0,0.13225371120108,1,"Moran undefined (saturated)",NA,NA,NA,23.1551039218903
+"B",19,"none","Centrality, whole graph",0.1,0.85,1,0,"converged",NA,NA,NA,0.942412376403809
+"B",19,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.945431709289551
+"B",19,"none","Largest excess",0.85,0,1,0,"converged",NA,NA,NA,0.946630001068115
+"B",19,"none","Hot zones first",0.95,0,1,0,"converged",NA,NA,NA,0.949719429016113
+"B",19,"q50","Centrality, whole graph",0.35,0.35,0.0188933873144399,9,"converged",NA,NA,NA,3.92757034301758
+"B",19,"q50","Centrality, hot cells",0.85,0,0.0188933873144399,9,"converged",NA,NA,NA,3.92979121208191
+"B",19,"q50","Largest excess",1,0,0.0188933873144399,9,"converged",NA,NA,NA,3.93096423149109
+"B",19,"q50","Hot zones first",0.85,0,0.0188933873144399,9,"converged",NA,NA,NA,3.93384575843811
+"B",19,"q75","Centrality, whole graph",0.5,0,0.00134952766531714,6,"converged",NA,NA,NA,2.67946100234985
+"B",19,"q75","Centrality, hot cells",0.85,0,0.00134952766531714,6,"converged",NA,NA,NA,2.68219256401062
+"B",19,"q75","Largest excess",1,0,0.00134952766531714,6,"converged",NA,NA,NA,2.68373370170593
+"B",19,"q75","Hot zones first",0.85,0,0.00134952766531714,6,"converged",NA,NA,NA,2.68615055084229
+"B",19,"q80","Centrality, whole graph",0.2,0.4,0.00404858299595142,5,"converged",NA,NA,NA,2.9100456237793
+"B",19,"q80","Centrality, hot cells",1,0,0.00404858299595142,5,"converged",NA,NA,NA,2.91175699234009
+"B",19,"q80","Largest excess",1,0,0.00404858299595142,5,"converged",NA,NA,NA,2.91302275657654
+"B",19,"q80","Hot zones first",1,0,0.00404858299595142,5,"converged",NA,NA,NA,2.91445660591125
+"B",19,"q90","Centrality, whole graph",0.4,0.2,0.00134952766531714,4,"converged",NA,NA,NA,2.03622341156006
+"B",19,"q90","Centrality, hot cells",1,0,0.00134952766531714,4,"converged",NA,NA,NA,2.03798627853394
+"B",19,"q90","Largest excess",1,0,0.00134952766531714,4,"converged",NA,NA,NA,2.03915977478027
+"B",19,"q90","Hot zones first",1,0,0.00134952766531714,4,"converged",NA,NA,NA,2.04050183296204
+"B",19,"mixture","Centrality, whole graph",0.65,0.15,0.170715249662618,5,"Moran rejects",NA,NA,NA,3.00611758232117
+"B",19,"mixture","Centrality, hot cells",0.85,0,0.170715249662618,5,"Moran rejects",NA,NA,NA,3.00987863540649
+"B",19,"mixture","Largest excess",1,0,0.170715249662618,5,"Moran rejects",NA,NA,NA,3.01183843612671
+"B",19,"mixture","Hot zones first",0.85,0,0.170715249662618,5,"Moran rejects",NA,NA,NA,3.01671743392944
+"B",19,"permutation","Centrality, whole graph",0.4,0.2,0.00202429149797571,3,"converged",NA,NA,NA,44.5668394565582
+"B",19,"permutation","Centrality, hot cells",1,0,0.00202429149797571,3,"converged",NA,NA,NA,44.5692598819733
+"B",19,"permutation","Largest excess",1,0,0.00202429149797571,3,"converged",NA,NA,NA,44.5705585479736
+"B",19,"permutation","Hot zones first",1,0,0.00202429149797571,3,"converged",NA,NA,NA,44.5725371837616
+"D80",19,"none",NA,NA,NA,1,0,"converged",0,0,1,0.644354820251465
+"D80",19,"q50",NA,NA,NA,0.0202429149797571,7,"converged",-0.0159669880837088,0.964705882352941,0.01932712956335,2.83749294281006
+"D80",19,"q75",NA,NA,NA,0.00809716599190283,5,"converged",-0.0163712156301318,0.976470588235294,0.00715819613457409,2.03809213638306
+"D80",19,"q80",NA,NA,NA,0.0404858299595142,2,"Moran rejects",0.0179881258158239,0.976470588235294,0.0415175375805297,1.40923500061035
+"D80",19,"q90",NA,NA,NA,0.100539811066127,1,"Moran rejects",-0.0805507600320013,0.823529411764706,0.0959198282032928,1.01879358291626
+"D80",19,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.477825880050659
+"D80",19,"permutation",NA,NA,NA,0.000674763832658569,3,"converged",-0.0117647058823529,0.988235294117647,0,40.5747344493866
+"D95",19,"none",NA,NA,NA,1,0,"converged",0,0,1,0.676391363143921
+"D95",19,"q50",NA,NA,NA,0.062753036437247,4,"Moran rejects",-0.133117183881427,0.811764705882353,0.0551181102362205,2.33792662620544
+"D95",19,"q75",NA,NA,NA,0.00269905533063428,5,"converged",0.00286327845382961,1,0.00286327845382963,2.12814784049988
+"D95",19,"q80",NA,NA,NA,0.00539811066126856,4,"converged",-0.0192344940839615,0.976470588235294,0.00429491768074445,1.61392521858215
+"D95",19,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.80657625198364
+"D95",19,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.500984668731689
+"D95",19,"permutation",NA,NA,NA,0.00134952766531714,2,"converged",0.00143163922691492,1,0.00143163922691482,31.6182596683502
+"D0",19,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.80876636505127
+"D0",19,"q50",NA,NA,NA,0.0357624831309042,5,"Moran rejects",NA,NA,0.0357624831309042,2.57671689987183
+"D0",19,"q75",NA,NA,NA,0.0121457489878543,5,"converged",NA,NA,0.0121457489878543,1.80735421180725
+"D0",19,"q80",NA,NA,NA,0.0067476383265857,4,"converged",NA,NA,0.0067476383265857,1.48799157142639
+"D0",19,"q90",NA,NA,NA,0.00134952766531714,4,"converged",NA,NA,0.00134952766531714,1.72899341583252
+"D0",19,"mixture",NA,NA,NA,0.782051282051282,1,"converged",NA,NA,0.782051282051282,0.954095840454102
+"D0",19,"permutation",NA,NA,NA,0.00539811066126856,2,"converged",NA,NA,0.00539811066126856,29.7690234184265
+"A",20,"none","Centrality, whole graph",0,0.9,1,0,"converged",NA,NA,NA,0.832492828369141
+"A",20,"none","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.835808753967285
+"A",20,"none","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.837032794952393
+"A",20,"none","Hot zones first",1,0,1,0,"converged",NA,NA,NA,0.840090036392212
+"A",20,"q50","Centrality, whole graph",0.6,0.35,0.125506072874494,3,"Moran rejects",NA,NA,NA,1.99884223937988
+"A",20,"q50","Centrality, hot cells",0.85,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.00184512138367
+"A",20,"q50","Largest excess",1,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.00354337692261
+"A",20,"q50","Hot zones first",0.85,0,0.125506072874494,3,"Moran rejects",NA,NA,NA,2.00726532936096
+"A",20,"q75","Centrality, whole graph",0,0.9,1,0,"Moran rejects",NA,NA,NA,0.787726640701294
+"A",20,"q75","Centrality, hot cells",1,0,1,0,"Moran rejects",NA,NA,NA,0.789961338043213
+"A",20,"q75","Largest excess",1,0,1,0,"Moran rejects",NA,NA,NA,0.791312217712402
+"A",20,"q75","Hot zones first",1,0,1,0,"Moran rejects",NA,NA,NA,0.793780565261841
+"A",20,"q80","Centrality, whole graph",0.05,0.9,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.06551456451416
+"A",20,"q80","Centrality, hot cells",0.85,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.0682373046875
+"A",20,"q80","Largest excess",1,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.069504737854
+"A",20,"q80","Hot zones first",0.85,0,0.200404858299595,1,"Moran rejects",NA,NA,NA,1.07237768173218
+"A",20,"q90","Centrality, whole graph",0.9,0.1,0.00134952766531714,3,"converged",NA,NA,NA,1.69658136367798
+"A",20,"q90","Centrality, hot cells",1,0,0.00134952766531714,3,"converged",NA,NA,NA,1.6987133026123
+"A",20,"q90","Largest excess",1,0,0.00134952766531714,3,"converged",NA,NA,NA,1.70008254051208
+"A",20,"q90","Hot zones first",1,0,0.00134952766531714,3,"converged",NA,NA,NA,1.70211291313171
+"A",20,"mixture","Centrality, whole graph",0,0.9,1,0,"converged",NA,NA,NA,0.571285009384155
+"A",20,"mixture","Centrality, hot cells",1,0,1,0,"converged",NA,NA,NA,0.573405742645264
+"A",20,"mixture","Largest excess",1,0,1,0,"converged",NA,NA,NA,0.574717283248901
+"A",20,"mixture","Hot zones first",1,0,1,0,"converged",NA,NA,NA,0.577736854553223
+"A",20,"permutation","Centrality, whole graph",0.8,0.2,0.00134952766531714,2,"converged",NA,NA,NA,31.9977240562439
+"A",20,"permutation","Centrality, hot cells",1,0,0.00134952766531714,2,"converged",NA,NA,NA,31.9990446567535
+"A",20,"permutation","Largest excess",1,0,0.00134952766531714,2,"converged",NA,NA,NA,32.0002470016479
+"A",20,"permutation","Hot zones first",1,0,0.00134952766531714,2,"converged",NA,NA,NA,32.0016522407532
+"B",20,"none","Centrality, whole graph",0.2,0.6,1,0,"converged",NA,NA,NA,0.849602460861206
+"B",20,"none","Centrality, hot cells",0.85,0,1,0,"converged",NA,NA,NA,0.852617979049683
+"B",20,"none","Largest excess",0.95,0,1,0,"converged",NA,NA,NA,0.853811740875244
+"B",20,"none","Hot zones first",0.85,0,1,0,"converged",NA,NA,NA,0.857861518859863
+"B",20,"q50","Centrality, whole graph",0.3,0.45,0.0202429149797571,7,"converged",NA,NA,NA,3.09415245056152
+"B",20,"q50","Centrality, hot cells",0.7,0,0.0202429149797571,7,"converged",NA,NA,NA,3.09672069549561
+"B",20,"q50","Largest excess",0.95,0,0.0202429149797571,7,"converged",NA,NA,NA,3.09786915779114
+"B",20,"q50","Hot zones first",0.7,0,0.0202429149797571,7,"converged",NA,NA,NA,3.10152864456177
+"B",20,"q75","Centrality, whole graph",0.35,0.2,0.00269905533063428,5,"converged",NA,NA,NA,2.30001616477966
+"B",20,"q75","Centrality, hot cells",0.85,0,0.00269905533063428,5,"converged",NA,NA,NA,2.30263757705688
+"B",20,"q75","Largest excess",0.95,0,0.00269905533063428,5,"converged",NA,NA,NA,2.30390405654907
+"B",20,"q75","Hot zones first",0.85,0,0.00269905533063428,5,"converged",NA,NA,NA,2.30582141876221
+"B",20,"q80","Centrality, whole graph",0.55,0,0.00134952766531714,5,"converged",NA,NA,NA,2.56128835678101
+"B",20,"q80","Centrality, hot cells",0.9,0,0.00134952766531714,5,"converged",NA,NA,NA,2.56753182411194
+"B",20,"q80","Largest excess",0.95,0,0.00134952766531714,5,"converged",NA,NA,NA,2.56905627250671
+"B",20,"q80","Hot zones first",0.9,0,0.00134952766531714,5,"converged",NA,NA,NA,2.57122921943665
+"B",20,"q90","Centrality, whole graph",0.2,0.6,1,0,"Moran rejects",NA,NA,NA,0.762322902679443
+"B",20,"q90","Centrality, hot cells",0.85,0,1,0,"Moran rejects",NA,NA,NA,0.764840364456177
+"B",20,"q90","Largest excess",0.95,0,1,0,"Moran rejects",NA,NA,NA,0.766010046005249
+"B",20,"q90","Hot zones first",0.85,0,1,0,"Moran rejects",NA,NA,NA,0.769461154937744
+"B",20,"mixture","Centrality, whole graph",0.4,0.5,0.0290148448043185,11,"converged",NA,NA,NA,4.6387186050415
+"B",20,"mixture","Centrality, hot cells",0.8,0,0.0290148448043185,11,"converged",NA,NA,NA,4.64103841781616
+"B",20,"mixture","Largest excess",0.95,0,0.0290148448043185,11,"converged",NA,NA,NA,4.64241909980774
+"B",20,"mixture","Hot zones first",0.8,0,0.0290148448043185,11,"converged",NA,NA,NA,4.64618229866028
+"B",20,"permutation","Centrality, whole graph",0.25,0.4,0.00337381916329285,3,"converged",NA,NA,NA,43.0754907131195
+"B",20,"permutation","Centrality, hot cells",0.95,0,0.00337381916329285,3,"converged",NA,NA,NA,43.0789020061493
+"B",20,"permutation","Largest excess",0.95,0,0.00337381916329285,3,"converged",NA,NA,NA,43.0807032585144
+"B",20,"permutation","Hot zones first",0.95,0,0.00337381916329285,3,"converged",NA,NA,NA,43.083128452301
+"D80",20,"none",NA,NA,NA,1,0,"converged",0,0,1,0.647011280059814
+"D80",20,"q50",NA,NA,NA,0.0161943319838057,6,"Moran rejects",0.00469914522716741,0.988235294117647,0.0164638511095204,2.77804660797119
+"D80",20,"q75",NA,NA,NA,0.250337381916329,1,"Moran rejects",-0.0714051117941807,0.682352941176471,0.246241947029349,0.918196439743042
+"D80",20,"q80",NA,NA,NA,0.00742240215924426,4,"converged",-0.00460650974777876,0.988235294117647,0.00715819613457409,1.85021328926086
+"D80",20,"q90",NA,NA,NA,0.100539811066127,1,"Moran rejects",-0.0306286580487599,0.870588235294118,0.0987831066571224,0.980356216430664
+"D80",20,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.441462755203247
+"D80",20,"permutation",NA,NA,NA,0.114709851551957,1,"Moran rejects",-0.0280769716619648,0.858823529411765,0.113099498926271,19.5679814815521
+"D95",20,"none",NA,NA,NA,1,0,"converged",0,0,1,0.759658098220825
+"D95",20,"q50",NA,NA,NA,0.5,1,"Moran rejects",-0.0436818392353362,0.458823529411765,0.497494631352899,1.4947338104248
+"D95",20,"q75",NA,NA,NA,0.0121457489878543,5,"converged",0.000404227546423108,0.988235294117647,0.0121689334287759,2.14248871803284
+"D95",20,"q80",NA,NA,NA,0.0107962213225371,5,"converged",-0.0135079371763022,0.976470588235294,0.0100214745884037,1.90842723846436
+"D95",20,"q90",NA,NA,NA,0.00134952766531714,4,"converged",0.00143163922691492,1,0.00143163922691482,1.80148649215698
+"D95",20,"mixture",NA,NA,NA,1,0,"converged",0,0,1,0.435372829437256
+"D95",20,"permutation",NA,NA,NA,1,0,"empty graph",0,0,1,12.3765068054199
+"D0",20,"none",NA,NA,NA,1,0,"converged",NA,NA,1,0.740146160125732
+"D0",20,"q50",NA,NA,NA,0.01417004048583,7,"converged",NA,NA,0.01417004048583,3.00931215286255
+"D0",20,"q75",NA,NA,NA,0.0087719298245614,5,"converged",NA,NA,0.0087719298245614,2.18843102455139
+"D0",20,"q80",NA,NA,NA,0.00269905533063428,4,"converged",NA,NA,0.00269905533063428,1.65378618240356
+"D0",20,"q90",NA,NA,NA,1,0,"Moran rejects",NA,NA,1,0.876588106155396
+"D0",20,"mixture",NA,NA,NA,1,0,"converged",NA,NA,1,0.527345180511475
+"D0",20,"permutation",NA,NA,NA,0.00337381916329285,2,"converged",NA,NA,0.00337381916329285,30.215583562851

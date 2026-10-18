@@ -1,0 +1,381 @@
+"sons","rep","rule","ranking","precision","recall","cov_fp","edges_kept","iters","stop","secs"
+50,1,"benchmark","Top counts",0.025,0,0.925,NA,NA,NA,NA
+50,1,"benchmark","Top residuals",0.2,0.666666666666667,0.4,NA,NA,NA,NA
+50,1,"benchmark","Top residuals (log)",0.2625,0.666666666666667,0.0125,NA,NA,NA,NA
+50,1,"none","Centrality, whole graph",0.1875,0.333333333333333,0.4125,1,0,"converged",28.5487372875214
+50,1,"none","Centrality, hot cells",0,0,0,1,0,"converged",28.5487372875214
+50,1,"none","Largest excess",0.2,0.666666666666667,0.4125,1,0,"converged",28.5487372875214
+50,1,"none","Hot zones first",0,0,0,1,0,"converged",28.5487372875214
+50,1,"q75","Centrality, whole graph",0.0875,0,0,0.250081142486206,1,"Moran rejects",66.2216410636902
+50,1,"q75","Centrality, hot cells",0.1625,0.333333333333333,0.175,0.250081142486206,1,"Moran rejects",66.2216410636902
+50,1,"q75","Largest excess",0.2,0.666666666666667,0.45,0.250081142486206,1,"Moran rejects",66.2216410636902
+50,1,"q75","Hot zones first",0.1375,0,0.2375,0.250081142486206,1,"Moran rejects",66.2216410636902
+50,1,"q90","Centrality, whole graph",0.0375,0,0,0.100129827977929,1,"Moran rejects",60.7197670936584
+50,1,"q90","Centrality, hot cells",0.2,0,0.025,0.100129827977929,1,"Moran rejects",60.7197670936584
+50,1,"q90","Largest excess",0.1875,0.333333333333333,0.475,0.100129827977929,1,"Moran rejects",60.7197670936584
+50,1,"q90","Hot zones first",0.225,0,0.1375,0.100129827977929,1,"Moran rejects",60.7197670936584
+50,1,"permutation","Centrality, whole graph",0.1875,0.333333333333333,0.4125,1,0,"Moran rejects",159.560194015503
+50,1,"permutation","Centrality, hot cells",0,0,0,1,0,"Moran rejects",159.560194015503
+50,1,"permutation","Largest excess",0.2,0.666666666666667,0.4125,1,0,"Moran rejects",159.560194015503
+50,1,"permutation","Hot zones first",0,0,0,1,0,"Moran rejects",159.560194015503
+200,1,"benchmark","Top counts",0.1375,0.333333333333333,0.8,NA,NA,NA,NA
+200,1,"benchmark","Top residuals",0.5875,1,0.275,NA,NA,NA,NA
+200,1,"benchmark","Top residuals (log)",0.75,1,0.0125,NA,NA,NA,NA
+200,1,"none","Centrality, whole graph",0.3125,0.333333333333333,0.1125,1,0,"converged",30.677304983139
+200,1,"none","Centrality, hot cells",0.9375,1,0,1,0,"converged",30.677304983139
+200,1,"none","Largest excess",0.5625,1,0.3,1,0,"converged",30.677304983139
+200,1,"none","Hot zones first",0.9375,1,0,1,0,"converged",30.677304983139
+200,1,"q75","Centrality, whole graph",0.3,0.666666666666667,0.25,0.0626419993508601,2,"Moran rejects",85.8397080898285
+200,1,"q75","Centrality, hot cells",0.4625,1,0.25,0.0626419993508601,2,"Moran rejects",85.8397080898285
+200,1,"q75","Largest excess",0.55,1,0.3125,0.0626419993508601,2,"Moran rejects",85.8397080898285
+200,1,"q75","Hot zones first",0.4625,1,0.275,0.0626419993508601,2,"Moran rejects",85.8397080898285
+200,1,"q90","Centrality, whole graph",0.1,0.333333333333333,0.1,0.100129827977929,1,"Moran rejects",62.8667957782745
+200,1,"q90","Centrality, hot cells",0.4375,1,0.1625,0.100129827977929,1,"Moran rejects",62.8667957782745
+200,1,"q90","Largest excess",0.575,1,0.2875,0.100129827977929,1,"Moran rejects",62.8667957782745
+200,1,"q90","Hot zones first",0.5625,1,0.1875,0.100129827977929,1,"Moran rejects",62.8667957782745
+200,1,"permutation","Centrality, whole graph",0.3125,0.333333333333333,0.1125,1,0,"Moran rejects",172.056638717651
+200,1,"permutation","Centrality, hot cells",0.9375,1,0,1,0,"Moran rejects",172.056638717651
+200,1,"permutation","Largest excess",0.5625,1,0.3,1,0,"Moran rejects",172.056638717651
+200,1,"permutation","Hot zones first",0.9375,1,0,1,0,"Moran rejects",172.056638717651
+50,2,"benchmark","Top counts",0.0125,0.333333333333333,0.975,NA,NA,NA,NA
+50,2,"benchmark","Top residuals",0.15,1,0.3875,NA,NA,NA,NA
+50,2,"benchmark","Top residuals (log)",0.25,1,0.0375,NA,NA,NA,NA
+50,2,"none","Centrality, whole graph",0.1375,0,0,1,0,"converged",29.1384520530701
+50,2,"none","Centrality, hot cells",0.675,0.666666666666667,0,1,0,"converged",29.1384520530701
+50,2,"none","Largest excess",0.125,1,0.5125,1,0,"converged",29.1384520530701
+50,2,"none","Hot zones first",0.675,0.666666666666667,0,1,0,"converged",29.1384520530701
+50,2,"q75","Centrality, whole graph",0,0,0.1875,0.0626419993508601,2,"Moran rejects",77.8866794109344
+50,2,"q75","Centrality, hot cells",0.1875,0.666666666666667,0.2,0.0626419993508601,2,"Moran rejects",77.8866794109344
+50,2,"q75","Largest excess",0.15,1,0.5,0.0626419993508601,2,"Moran rejects",77.8866794109344
+50,2,"q75","Hot zones first",0.1875,0.666666666666667,0.2,0.0626419993508601,2,"Moran rejects",77.8866794109344
+50,2,"q90","Centrality, whole graph",0.1375,0,0,1,0,"Moran rejects",41.6606557369232
+50,2,"q90","Centrality, hot cells",0.675,0.666666666666667,0,1,0,"Moran rejects",41.6606557369232
+50,2,"q90","Largest excess",0.125,1,0.5125,1,0,"Moran rejects",41.6606557369232
+50,2,"q90","Hot zones first",0.675,0.666666666666667,0,1,0,"Moran rejects",41.6606557369232
+50,2,"permutation","Centrality, whole graph",0.1375,0,0,1,0,"Moran rejects",156.574511289597
+50,2,"permutation","Centrality, hot cells",0.675,0.666666666666667,0,1,0,"Moran rejects",156.574511289597
+50,2,"permutation","Largest excess",0.125,1,0.5125,1,0,"Moran rejects",156.574511289597
+50,2,"permutation","Hot zones first",0.675,0.666666666666667,0,1,0,"Moran rejects",156.574511289597
+200,2,"benchmark","Top counts",0.2125,0.666666666666667,0.725,NA,NA,NA,NA
+200,2,"benchmark","Top residuals",0.55,0.666666666666667,0.3,NA,NA,NA,NA
+200,2,"benchmark","Top residuals (log)",0.725,1,0.0125,NA,NA,NA,NA
+200,2,"none","Centrality, whole graph",0.1375,0,0.275,1,0,"converged",28.4243867397308
+200,2,"none","Centrality, hot cells",0.9375,0.666666666666667,0,1,0,"converged",28.4243867397308
+200,2,"none","Largest excess",0.55,0.666666666666667,0.275,1,0,"converged",28.4243867397308
+200,2,"none","Hot zones first",0.9375,0.666666666666667,0,1,0,"converged",28.4243867397308
+200,2,"q75","Centrality, whole graph",0.2,0.666666666666667,0.0375,0.0160662122687439,3,"Moran rejects",102.496509552002
+200,2,"q75","Centrality, hot cells",0.45,1,0.275,0.0160662122687439,3,"Moran rejects",102.496509552002
+200,2,"q75","Largest excess",0.4625,0.666666666666667,0.4,0.0160662122687439,3,"Moran rejects",102.496509552002
+200,2,"q75","Hot zones first",0.45,1,0.275,0.0160662122687439,3,"Moran rejects",102.496509552002
+200,2,"q90","Centrality, whole graph",0.075,0,0,0.100129827977929,1,"Moran rejects",64.9731211662292
+200,2,"q90","Centrality, hot cells",0.3375,0.333333333333333,0.075,0.100129827977929,1,"Moran rejects",64.9731211662292
+200,2,"q90","Largest excess",0.5,0.666666666666667,0.375,0.100129827977929,1,"Moran rejects",64.9731211662292
+200,2,"q90","Hot zones first",0.45,0.333333333333333,0.1625,0.100129827977929,1,"Moran rejects",64.9731211662292
+200,2,"permutation","Centrality, whole graph",0.075,0,0,0.0908795845504706,1,"Moran rejects",306.13885641098
+200,2,"permutation","Centrality, hot cells",0.375,0.333333333333333,0.1,0.0908795845504706,1,"Moran rejects",306.13885641098
+200,2,"permutation","Largest excess",0.5,0.666666666666667,0.375,0.0908795845504706,1,"Moran rejects",306.13885641098
+200,2,"permutation","Hot zones first",0.425,0.333333333333333,0.15,0.0908795845504706,1,"Moran rejects",306.13885641098
+50,3,"benchmark","Top counts",0.0125,0,0.9375,NA,NA,NA,NA
+50,3,"benchmark","Top residuals",0.125,0.333333333333333,0.3625,NA,NA,NA,NA
+50,3,"benchmark","Top residuals (log)",0.2,0.666666666666667,0,NA,NA,NA,NA
+50,3,"none","Centrality, whole graph",0.6125,0.333333333333333,0,1,0,"converged",26.0729537010193
+50,3,"none","Centrality, hot cells",0.425,0.333333333333333,0,1,0,"converged",26.0729537010193
+50,3,"none","Largest excess",0.1125,0.333333333333333,0.3625,1,0,"converged",26.0729537010193
+50,3,"none","Hot zones first",0.425,0.333333333333333,0,1,0,"converged",26.0729537010193
+50,3,"q75","Centrality, whole graph",0.15,0,0.3,0.0159039272963324,3,"Moran rejects",89.6099743843079
+50,3,"q75","Centrality, hot cells",0.1375,0.333333333333333,0.475,0.0159039272963324,3,"Moran rejects",89.6099743843079
+50,3,"q75","Largest excess",0.1125,0.333333333333333,0.45,0.0159039272963324,3,"Moran rejects",89.6099743843079
+50,3,"q75","Hot zones first",0.1375,0.333333333333333,0.475,0.0159039272963324,3,"Moran rejects",89.6099743843079
+50,3,"q90","Centrality, whole graph",0,0,0.0125,0.100129827977929,1,"Moran rejects",56.1283011436462
+50,3,"q90","Centrality, hot cells",0.125,0.666666666666667,0.2625,0.100129827977929,1,"Moran rejects",56.1283011436462
+50,3,"q90","Largest excess",0.1125,0.333333333333333,0.3875,0.100129827977929,1,"Moran rejects",56.1283011436462
+50,3,"q90","Hot zones first",0.1875,0.666666666666667,0.3125,0.100129827977929,1,"Moran rejects",56.1283011436462
+50,3,"permutation","Centrality, whole graph",0.6125,0.333333333333333,0,1,0,"Moran rejects",133.345644235611
+50,3,"permutation","Centrality, hot cells",0.425,0.333333333333333,0,1,0,"Moran rejects",133.345644235611
+50,3,"permutation","Largest excess",0.1125,0.333333333333333,0.3625,1,0,"Moran rejects",133.345644235611
+50,3,"permutation","Hot zones first",0.425,0.333333333333333,0,1,0,"Moran rejects",133.345644235611
+200,3,"benchmark","Top counts",0.25,0.666666666666667,0.75,NA,NA,NA,NA
+200,3,"benchmark","Top residuals",0.6,1,0.3625,NA,NA,NA,NA
+200,3,"benchmark","Top residuals (log)",0.8,1,0,NA,NA,NA,NA
+200,3,"none","Centrality, whole graph",0,0,0,1,0,"converged",28.3155608177185
+200,3,"none","Centrality, hot cells",0.8125,1,0,1,0,"converged",28.3155608177185
+200,3,"none","Largest excess",0.5625,1,0.4,1,0,"converged",28.3155608177185
+200,3,"none","Hot zones first",0.8125,1,0,1,0,"converged",28.3155608177185
+200,3,"q75","Centrality, whole graph",0.1375,0.333333333333333,0.05,0.250081142486206,1,"Moran rejects",61.833315372467
+200,3,"q75","Centrality, hot cells",0.6125,0.666666666666667,0.35,0.250081142486206,1,"Moran rejects",61.833315372467
+200,3,"q75","Largest excess",0.5125,1,0.4625,0.250081142486206,1,"Moran rejects",61.833315372467
+200,3,"q75","Hot zones first",0.625,0.666666666666667,0.2,0.250081142486206,1,"Moran rejects",61.833315372467
+200,3,"q90","Centrality, whole graph",0.1875,0.333333333333333,0.175,0.100129827977929,1,"Moran rejects",63.190603017807
+200,3,"q90","Centrality, hot cells",0.4375,1,0.375,0.100129827977929,1,"Moran rejects",63.190603017807
+200,3,"q90","Largest excess",0.6,1,0.375,0.100129827977929,1,"Moran rejects",63.190603017807
+200,3,"q90","Hot zones first",0.5625,1,0.4,0.100129827977929,1,"Moran rejects",63.190603017807
+200,3,"permutation","Centrality, whole graph",0.1,0.333333333333333,0.1625,0.0457643622200584,1,"Moran rejects",296.281888008118
+200,3,"permutation","Centrality, hot cells",0.3625,1,0.25,0.0457643622200584,1,"Moran rejects",296.281888008118
+200,3,"permutation","Largest excess",0.55,1,0.425,0.0457643622200584,1,"Moran rejects",296.281888008118
+200,3,"permutation","Hot zones first",0.375,1,0.25,0.0457643622200584,1,"Moran rejects",296.281888008118
+50,4,"benchmark","Top counts",0,0,0.9625,NA,NA,NA,NA
+50,4,"benchmark","Top residuals",0.2125,0.666666666666667,0.4375,NA,NA,NA,NA
+50,4,"benchmark","Top residuals (log)",0.325,0.666666666666667,0.0125,NA,NA,NA,NA
+50,4,"none","Centrality, whole graph",0.1125,0,0,1,0,"converged",25.8504796028137
+50,4,"none","Centrality, hot cells",0.525,0.333333333333333,0,1,0,"converged",25.8504796028137
+50,4,"none","Largest excess",0.2125,0.666666666666667,0.4375,1,0,"converged",25.8504796028137
+50,4,"none","Hot zones first",0.525,0.333333333333333,0,1,0,"converged",25.8504796028137
+50,4,"q75","Centrality, whole graph",0.0125,0,0.3875,0.0624797143784486,2,"Moran rejects",75.6032481193542
+50,4,"q75","Centrality, hot cells",0.125,0.333333333333333,0.5,0.0624797143784486,2,"Moran rejects",75.6032481193542
+50,4,"q75","Largest excess",0.1875,0.333333333333333,0.4875,0.0624797143784486,2,"Moran rejects",75.6032481193542
+50,4,"q75","Hot zones first",0.1375,0.333333333333333,0.5,0.0624797143784486,2,"Moran rejects",75.6032481193542
+50,4,"q90","Centrality, whole graph",0,0,0,0.100129827977929,1,"Moran rejects",55.9049940109253
+50,4,"q90","Centrality, hot cells",0.1625,0.333333333333333,0.2875,0.100129827977929,1,"Moran rejects",55.9049940109253
+50,4,"q90","Largest excess",0.2125,0.333333333333333,0.4875,0.100129827977929,1,"Moran rejects",55.9049940109253
+50,4,"q90","Hot zones first",0.175,0.333333333333333,0.35,0.100129827977929,1,"Moran rejects",55.9049940109253
+50,4,"permutation","Centrality, whole graph",0.0125,0,0,0.0688088283024992,1,"Moran rejects",268.180459022522
+50,4,"permutation","Centrality, hot cells",0.1375,0.333333333333333,0.3125,0.0688088283024992,1,"Moran rejects",268.180459022522
+50,4,"permutation","Largest excess",0.1875,0.333333333333333,0.475,0.0688088283024992,1,"Moran rejects",268.180459022522
+50,4,"permutation","Hot zones first",0.1375,0.333333333333333,0.3625,0.0688088283024992,1,"Moran rejects",268.180459022522
+200,4,"benchmark","Top counts",0.05,0,0.95,NA,NA,NA,NA
+200,4,"benchmark","Top residuals",0.6625,1,0.2625,NA,NA,NA,NA
+200,4,"benchmark","Top residuals (log)",0.7875,1,0,NA,NA,NA,NA
+200,4,"none","Centrality, whole graph",0.2,0.333333333333333,0,1,0,"converged",27.6613340377808
+200,4,"none","Centrality, hot cells",0.8625,0.666666666666667,0,1,0,"converged",27.6613340377808
+200,4,"none","Largest excess",0.575,1,0.375,1,0,"converged",27.6613340377808
+200,4,"none","Hot zones first",0.8625,0.666666666666667,0,1,0,"converged",27.6613340377808
+200,4,"q75","Centrality, whole graph",0.2,0.333333333333333,0,1,0,"Moran rejects",45.0387508869171
+200,4,"q75","Centrality, hot cells",0.8625,0.666666666666667,0,1,0,"Moran rejects",45.0387508869171
+200,4,"q75","Largest excess",0.575,1,0.375,1,0,"Moran rejects",45.0387508869171
+200,4,"q75","Hot zones first",0.8625,0.666666666666667,0,1,0,"Moran rejects",45.0387508869171
+200,4,"q90","Centrality, whole graph",0.1125,0,0.0875,0.100129827977929,1,"Moran rejects",62.295868396759
+200,4,"q90","Centrality, hot cells",0.475,0.666666666666667,0.3375,0.100129827977929,1,"Moran rejects",62.295868396759
+200,4,"q90","Largest excess",0.6,1,0.3375,0.100129827977929,1,"Moran rejects",62.295868396759
+200,4,"q90","Hot zones first",0.5,0.666666666666667,0.4,0.100129827977929,1,"Moran rejects",62.295868396759
+200,4,"permutation","Centrality, whole graph",0.0875,0,0.1125,0.0292112950340798,1,"Moran rejects",302.440181732178
+200,4,"permutation","Centrality, hot cells",0.3,0.333333333333333,0.2125,0.0292112950340798,1,"Moran rejects",302.440181732178
+200,4,"permutation","Largest excess",0.6125,1,0.325,0.0292112950340798,1,"Moran rejects",302.440181732178
+200,4,"permutation","Hot zones first",0.3,0.333333333333333,0.2125,0.0292112950340798,1,"Moran rejects",302.440181732178
+50,5,"benchmark","Top counts",0,0,0.9625,NA,NA,NA,NA
+50,5,"benchmark","Top residuals",0.2,0.666666666666667,0.3875,NA,NA,NA,NA
+50,5,"benchmark","Top residuals (log)",0.3,1,0.0125,NA,NA,NA,NA
+50,5,"none","Centrality, whole graph",0,0,0,1,0,"converged",26.9166812896729
+50,5,"none","Centrality, hot cells",0.6375,0.666666666666667,0.1375,1,0,"converged",26.9166812896729
+50,5,"none","Largest excess",0.1875,0.666666666666667,0.45,1,0,"converged",26.9166812896729
+50,5,"none","Hot zones first",0.2875,0.333333333333333,0.625,1,0,"converged",26.9166812896729
+50,5,"q75","Centrality, whole graph",0.1125,0.333333333333333,0.1875,0.250081142486206,1,"Moran rejects",60.4157991409302
+50,5,"q75","Centrality, hot cells",0.25,0.333333333333333,0.3125,0.250081142486206,1,"Moran rejects",60.4157991409302
+50,5,"q75","Largest excess",0.1625,0.666666666666667,0.5,0.250081142486206,1,"Moran rejects",60.4157991409302
+50,5,"q75","Hot zones first",0.2375,0.333333333333333,0.3875,0.250081142486206,1,"Moran rejects",60.4157991409302
+50,5,"q90","Centrality, whole graph",0,0,0.0125,0.100129827977929,1,"Moran rejects",58.0107345581055
+50,5,"q90","Centrality, hot cells",0.1875,0.333333333333333,0.125,0.100129827977929,1,"Moran rejects",58.0107345581055
+50,5,"q90","Largest excess",0.175,0.666666666666667,0.45,0.100129827977929,1,"Moran rejects",58.0107345581055
+50,5,"q90","Hot zones first",0.1875,0.333333333333333,0.225,0.100129827977929,1,"Moran rejects",58.0107345581055
+50,5,"permutation","Centrality, whole graph",0,0,0.1,0.14930217461863,1,"Moran rejects",279.95648598671
+50,5,"permutation","Centrality, hot cells",0.15,0.333333333333333,0.1875,0.14930217461863,1,"Moran rejects",279.95648598671
+50,5,"permutation","Largest excess",0.2,0.666666666666667,0.45,0.14930217461863,1,"Moran rejects",279.95648598671
+50,5,"permutation","Hot zones first",0.1875,0.333333333333333,0.225,0.14930217461863,1,"Moran rejects",279.95648598671
+200,5,"benchmark","Top counts",0.0875,0.666666666666667,0.875,NA,NA,NA,NA
+200,5,"benchmark","Top residuals",0.65,1,0.2625,NA,NA,NA,NA
+200,5,"benchmark","Top residuals (log)",0.85,1,0.025,NA,NA,NA,NA
+200,5,"none","Centrality, whole graph",0,0,0.0375,1,0,"converged",27.5579922199249
+200,5,"none","Centrality, hot cells",0.825,0.666666666666667,0,1,0,"converged",27.5579922199249
+200,5,"none","Largest excess",0.5875,1,0.325,1,0,"converged",27.5579922199249
+200,5,"none","Hot zones first",0.825,0.666666666666667,0,1,0,"converged",27.5579922199249
+200,5,"q75","Centrality, whole graph",0.1375,0.333333333333333,0.0875,0.0165530671859786,3,"Moran rejects",100.273487329483
+200,5,"q75","Centrality, hot cells",0.5375,1,0.3,0.0165530671859786,3,"Moran rejects",100.273487329483
+200,5,"q75","Largest excess",0.5125,1,0.4,0.0165530671859786,3,"Moran rejects",100.273487329483
+200,5,"q75","Hot zones first",0.5375,1,0.3,0.0165530671859786,3,"Moran rejects",100.273487329483
+200,5,"q90","Centrality, whole graph",0.075,0,0.0875,0.100129827977929,1,"Moran rejects",61.5316824913025
+200,5,"q90","Centrality, hot cells",0.575,0.666666666666667,0.125,0.100129827977929,1,"Moran rejects",61.5316824913025
+200,5,"q90","Largest excess",0.625,1,0.2875,0.100129827977929,1,"Moran rejects",61.5316824913025
+200,5,"q90","Hot zones first",0.7,1,0.15,0.100129827977929,1,"Moran rejects",61.5316824913025
+200,5,"permutation","Centrality, whole graph",0,0,0.0375,1,0,"Moran rejects",167.421343326569
+200,5,"permutation","Centrality, hot cells",0.825,0.666666666666667,0,1,0,"Moran rejects",167.421343326569
+200,5,"permutation","Largest excess",0.5875,1,0.325,1,0,"Moran rejects",167.421343326569
+200,5,"permutation","Hot zones first",0.825,0.666666666666667,0,1,0,"Moran rejects",167.421343326569
+50,6,"benchmark","Top counts",0.05,0.333333333333333,0.9375,NA,NA,NA,NA
+50,6,"benchmark","Top residuals",0.225,1,0.4125,NA,NA,NA,NA
+50,6,"benchmark","Top residuals (log)",0.3125,1,0,NA,NA,NA,NA
+50,6,"none","Centrality, whole graph",0.1125,0,0,1,0,"converged",25.9633417129517
+50,6,"none","Centrality, hot cells",0.2875,0.666666666666667,0,1,0,"converged",25.9633417129517
+50,6,"none","Largest excess",0.225,1,0.4125,1,0,"converged",25.9633417129517
+50,6,"none","Hot zones first",0.2875,0.666666666666667,0,1,0,"converged",25.9633417129517
+50,6,"q75","Centrality, whole graph",0.15,0.333333333333333,0.05,0.0626419993508601,2,"Moran rejects",76.4987454414368
+50,6,"q75","Centrality, hot cells",0.3375,1,0.125,0.0626419993508601,2,"Moran rejects",76.4987454414368
+50,6,"q75","Largest excess",0.2125,1,0.5,0.0626419993508601,2,"Moran rejects",76.4987454414368
+50,6,"q75","Hot zones first",0.3375,1,0.125,0.0626419993508601,2,"Moran rejects",76.4987454414368
+50,6,"q90","Centrality, whole graph",0.0375,0,0.0125,0.100129827977929,1,"Moran rejects",56.8512997627258
+50,6,"q90","Centrality, hot cells",0.2125,1,0.0625,0.100129827977929,1,"Moran rejects",56.8512997627258
+50,6,"q90","Largest excess",0.2125,1,0.5,0.100129827977929,1,"Moran rejects",56.8512997627258
+50,6,"q90","Hot zones first",0.2125,0.666666666666667,0.1375,0.100129827977929,1,"Moran rejects",56.8512997627258
+50,6,"permutation","Centrality, whole graph",0,0,0.1,0.169750081142486,1,"Moran rejects",267.021083831787
+50,6,"permutation","Centrality, hot cells",0.225,0.666666666666667,0.1,0.169750081142486,1,"Moran rejects",267.021083831787
+50,6,"permutation","Largest excess",0.225,1,0.4875,0.169750081142486,1,"Moran rejects",267.021083831787
+50,6,"permutation","Hot zones first",0.3,0.666666666666667,0.225,0.169750081142486,1,"Moran rejects",267.021083831787
+200,6,"benchmark","Top counts",0.175,1,0.8125,NA,NA,NA,NA
+200,6,"benchmark","Top residuals",0.6375,1,0.325,NA,NA,NA,NA
+200,6,"benchmark","Top residuals (log)",0.8875,1,0,NA,NA,NA,NA
+200,6,"none","Centrality, whole graph",0,0,0,1,0,"converged",28.6195437908173
+200,6,"none","Centrality, hot cells",0.9,0.666666666666667,0,1,0,"converged",28.6195437908173
+200,6,"none","Largest excess",0.6625,1,0.2875,1,0,"converged",28.6195437908173
+200,6,"none","Hot zones first",0.5875,0.333333333333333,0,1,0,"converged",28.6195437908173
+200,6,"q75","Centrality, whole graph",0.0875,0.333333333333333,0.075,0.0626419993508601,2,"Moran rejects",85.0867874622345
+200,6,"q75","Centrality, hot cells",0.525,1,0.175,0.0626419993508601,2,"Moran rejects",85.0867874622345
+200,6,"q75","Largest excess",0.575,1,0.4,0.0626419993508601,2,"Moran rejects",85.0867874622345
+200,6,"q75","Hot zones first",0.55,1,0.2,0.0626419993508601,2,"Moran rejects",85.0867874622345
+200,6,"q90","Centrality, whole graph",0,0,0,1,0,"Moran rejects",45.7772936820984
+200,6,"q90","Centrality, hot cells",0.9,0.666666666666667,0,1,0,"Moran rejects",45.7772936820984
+200,6,"q90","Largest excess",0.6625,1,0.2875,1,0,"Moran rejects",45.7772936820984
+200,6,"q90","Hot zones first",0.5875,0.333333333333333,0,1,0,"Moran rejects",45.7772936820984
+200,6,"permutation","Centrality, whole graph",0.2,0.333333333333333,0,0.104186952288218,1,"Moran rejects",312.888082265854
+200,6,"permutation","Centrality, hot cells",0.725,1,0.0875,0.104186952288218,1,"Moran rejects",312.888082265854
+200,6,"permutation","Largest excess",0.5875,1,0.3875,0.104186952288218,1,"Moran rejects",312.888082265854
+200,6,"permutation","Hot zones first",0.825,1,0.0875,0.104186952288218,1,"Moran rejects",312.888082265854
+50,7,"benchmark","Top counts",0,0,0.9625,NA,NA,NA,NA
+50,7,"benchmark","Top residuals",0.225,0.666666666666667,0.375,NA,NA,NA,NA
+50,7,"benchmark","Top residuals (log)",0.375,1,0,NA,NA,NA,NA
+50,7,"none","Centrality, whole graph",0,0,0,1,0,"converged",28.865715265274
+50,7,"none","Centrality, hot cells",0.5875,1,0,1,0,"converged",28.865715265274
+50,7,"none","Largest excess",0.25,0.666666666666667,0.3375,1,0,"converged",28.865715265274
+50,7,"none","Hot zones first",0.5875,1,0,1,0,"converged",28.865715265274
+50,7,"q75","Centrality, whole graph",0.0125,0,0.275,0.0626419993508601,2,"Moran rejects",79.9154191017151
+50,7,"q75","Centrality, hot cells",0.0875,0.333333333333333,0.2125,0.0626419993508601,2,"Moran rejects",79.9154191017151
+50,7,"q75","Largest excess",0.225,0.666666666666667,0.4375,0.0626419993508601,2,"Moran rejects",79.9154191017151
+50,7,"q75","Hot zones first",0.0875,0.333333333333333,0.225,0.0626419993508601,2,"Moran rejects",79.9154191017151
+50,7,"q90","Centrality, whole graph",0.1875,0.333333333333333,0.15,0.100129827977929,1,"Moran rejects",57.740049123764
+50,7,"q90","Centrality, hot cells",0.3125,0.666666666666667,0.1,0.100129827977929,1,"Moran rejects",57.740049123764
+50,7,"q90","Largest excess",0.225,0.666666666666667,0.4375,0.100129827977929,1,"Moran rejects",57.740049123764
+50,7,"q90","Hot zones first",0.4125,1,0.175,0.100129827977929,1,"Moran rejects",57.740049123764
+50,7,"permutation","Centrality, whole graph",0.2625,0.666666666666667,0.175,0.229470950989938,1,"Moran rejects",282.823700904846
+50,7,"permutation","Centrality, hot cells",0.525,0.666666666666667,0.075,0.229470950989938,1,"Moran rejects",282.823700904846
+50,7,"permutation","Largest excess",0.225,0.666666666666667,0.4375,0.229470950989938,1,"Moran rejects",282.823700904846
+50,7,"permutation","Hot zones first",0.6625,1,0.1875,0.229470950989938,1,"Moran rejects",282.823700904846
+200,7,"benchmark","Top counts",0.1125,0.333333333333333,0.875,NA,NA,NA,NA
+200,7,"benchmark","Top residuals",0.6375,1,0.3,NA,NA,NA,NA
+200,7,"benchmark","Top residuals (log)",0.8,1,0,NA,NA,NA,NA
+200,7,"none","Centrality, whole graph",0.5625,0.333333333333333,0,1,0,"converged",27.8589596748352
+200,7,"none","Centrality, hot cells",0.9,0.666666666666667,0,1,0,"converged",27.8589596748352
+200,7,"none","Largest excess",0.525,1,0.45,1,0,"converged",27.8589596748352
+200,7,"none","Hot zones first",0.4125,0.333333333333333,0.5875,1,0,"converged",27.8589596748352
+200,7,"q75","Centrality, whole graph",0.075,0,0.2125,0.0626419993508601,2,"Moran rejects",80.7598557472229
+200,7,"q75","Centrality, hot cells",0.4625,1,0.15,0.0626419993508601,2,"Moran rejects",80.7598557472229
+200,7,"q75","Largest excess",0.6125,1,0.325,0.0626419993508601,2,"Moran rejects",80.7598557472229
+200,7,"q75","Hot zones first",0.4625,1,0.15,0.0626419993508601,2,"Moran rejects",80.7598557472229
+200,7,"q90","Centrality, whole graph",0.15,0.333333333333333,0,0.100129827977929,1,"Moran rejects",59.3100707530975
+200,7,"q90","Centrality, hot cells",0.8125,1,0.025,0.100129827977929,1,"Moran rejects",59.3100707530975
+200,7,"q90","Largest excess",0.5625,1,0.4125,0.100129827977929,1,"Moran rejects",59.3100707530975
+200,7,"q90","Hot zones first",0.8625,1,0,0.100129827977929,1,"Moran rejects",59.3100707530975
+200,7,"permutation","Centrality, whole graph",0.15,0.333333333333333,0,0.0853618954884778,1,"Moran rejects",369.480684757233
+200,7,"permutation","Centrality, hot cells",0.775,1,0.05,0.0853618954884778,1,"Moran rejects",369.480684757233
+200,7,"permutation","Largest excess",0.5625,1,0.4125,0.0853618954884778,1,"Moran rejects",369.480684757233
+200,7,"permutation","Hot zones first",0.775,1,0.0625,0.0853618954884778,1,"Moran rejects",369.480684757233
+50,8,"benchmark","Top counts",0.025,0,0.9625,NA,NA,NA,NA
+50,8,"benchmark","Top residuals",0.225,0.666666666666667,0.35,NA,NA,NA,NA
+50,8,"benchmark","Top residuals (log)",0.3375,0.666666666666667,0,NA,NA,NA,NA
+50,8,"none","Centrality, whole graph",0,0,0,1,0,"converged",24.7431993484497
+50,8,"none","Centrality, hot cells",0.6625,1,0,1,0,"converged",24.7431993484497
+50,8,"none","Largest excess",0.225,0.666666666666667,0.3625,1,0,"converged",24.7431993484497
+50,8,"none","Hot zones first",0.6625,1,0,1,0,"converged",24.7431993484497
+50,8,"q75","Centrality, whole graph",0.15,0.666666666666667,0.3,0.00616682895163908,4,"Moran rejects",103.53210067749
+50,8,"q75","Centrality, hot cells",0.175,0.666666666666667,0.4875,0.00616682895163908,4,"Moran rejects",103.53210067749
+50,8,"q75","Largest excess",0.2125,0.666666666666667,0.45,0.00616682895163908,4,"Moran rejects",103.53210067749
+50,8,"q75","Hot zones first",0.175,0.666666666666667,0.4875,0.00616682895163908,4,"Moran rejects",103.53210067749
+50,8,"q90","Centrality, whole graph",0.075,0.333333333333333,0.2,0.00989938331710484,2,"Moran rejects",76.371960401535
+50,8,"q90","Centrality, hot cells",0.2,0.666666666666667,0.425,0.00989938331710484,2,"Moran rejects",76.371960401535
+50,8,"q90","Largest excess",0.225,0.666666666666667,0.4,0.00989938331710484,2,"Moran rejects",76.371960401535
+50,8,"q90","Hot zones first",0.2,0.666666666666667,0.425,0.00989938331710484,2,"Moran rejects",76.371960401535
+50,8,"permutation","Centrality, whole graph",0,0,0,1,0,"Moran rejects",143.584053754807
+50,8,"permutation","Centrality, hot cells",0.6625,1,0,1,0,"Moran rejects",143.584053754807
+50,8,"permutation","Largest excess",0.225,0.666666666666667,0.3625,1,0,"Moran rejects",143.584053754807
+50,8,"permutation","Hot zones first",0.6625,1,0,1,0,"Moran rejects",143.584053754807
+200,8,"benchmark","Top counts",0.0875,0.666666666666667,0.9,NA,NA,NA,NA
+200,8,"benchmark","Top residuals",0.6,1,0.3,NA,NA,NA,NA
+200,8,"benchmark","Top residuals (log)",0.8,1,0,NA,NA,NA,NA
+200,8,"none","Centrality, whole graph",0.6375,0.666666666666667,0,1,0,"converged",27.5879068374634
+200,8,"none","Centrality, hot cells",0.9375,1,0,1,0,"converged",27.5879068374634
+200,8,"none","Largest excess",0.525,1,0.4,1,0,"converged",27.5879068374634
+200,8,"none","Hot zones first",0.9375,1,0,1,0,"converged",27.5879068374634
+200,8,"q75","Centrality, whole graph",0.3125,0.333333333333333,0.4,0.0629665692956832,2,"Moran rejects",79.2602813243866
+200,8,"q75","Centrality, hot cells",0.525,0.666666666666667,0.2875,0.0629665692956832,2,"Moran rejects",79.2602813243866
+200,8,"q75","Largest excess",0.5625,1,0.35,0.0629665692956832,2,"Moran rejects",79.2602813243866
+200,8,"q75","Hot zones first",0.575,1,0.3125,0.0629665692956832,2,"Moran rejects",79.2602813243866
+200,8,"q90","Centrality, whole graph",0.6375,0.666666666666667,0,1,0,"Moran rejects",41.4050467014313
+200,8,"q90","Centrality, hot cells",0.9375,1,0,1,0,"Moran rejects",41.4050467014313
+200,8,"q90","Largest excess",0.525,1,0.4,1,0,"Moran rejects",41.4050467014313
+200,8,"q90","Hot zones first",0.9375,1,0,1,0,"Moran rejects",41.4050467014313
+200,8,"permutation","Centrality, whole graph",0.6375,0.666666666666667,0,1,0,"Moran rejects",163.582442522049
+200,8,"permutation","Centrality, hot cells",0.9375,1,0,1,0,"Moran rejects",163.582442522049
+200,8,"permutation","Largest excess",0.525,1,0.4,1,0,"Moran rejects",163.582442522049
+200,8,"permutation","Hot zones first",0.9375,1,0,1,0,"Moran rejects",163.582442522049
+50,9,"benchmark","Top counts",0,0,0.9375,NA,NA,NA,NA
+50,9,"benchmark","Top residuals",0.1125,0.333333333333333,0.425,NA,NA,NA,NA
+50,9,"benchmark","Top residuals (log)",0.175,0.333333333333333,0.025,NA,NA,NA,NA
+50,9,"none","Centrality, whole graph",0,0,0,1,0,"converged",25.7017412185669
+50,9,"none","Centrality, hot cells",0.3,0.333333333333333,0,1,0,"converged",25.7017412185669
+50,9,"none","Largest excess",0.125,0.333333333333333,0.425,1,0,"converged",25.7017412185669
+50,9,"none","Hot zones first",0.3,0.333333333333333,0,1,0,"converged",25.7017412185669
+50,9,"q75","Centrality, whole graph",0.3,0.333333333333333,0.55,0.062317429406037,2,"Moran rejects",75.3884391784668
+50,9,"q75","Centrality, hot cells",0.3625,0.666666666666667,0.3125,0.062317429406037,2,"Moran rejects",75.3884391784668
+50,9,"q75","Largest excess",0.1,0.333333333333333,0.45,0.062317429406037,2,"Moran rejects",75.3884391784668
+50,9,"q75","Hot zones first",0.3375,0.666666666666667,0.3375,0.062317429406037,2,"Moran rejects",75.3884391784668
+50,9,"q90","Centrality, whole graph",0.0125,0,0.3625,0.100129827977929,1,"Moran rejects",56.0615882873535
+50,9,"q90","Centrality, hot cells",0.2125,0.666666666666667,0.2875,0.100129827977929,1,"Moran rejects",56.0615882873535
+50,9,"q90","Largest excess",0.0875,0.333333333333333,0.475,0.100129827977929,1,"Moran rejects",56.0615882873535
+50,9,"q90","Hot zones first",0.2375,0.666666666666667,0.375,0.100129827977929,1,"Moran rejects",56.0615882873535
+50,9,"permutation","Centrality, whole graph",0.1125,0.333333333333333,0.175,0.055014605647517,1,"Moran rejects",270.356650114059
+50,9,"permutation","Centrality, hot cells",0.175,0.333333333333333,0.2125,0.055014605647517,1,"Moran rejects",270.356650114059
+50,9,"permutation","Largest excess",0.1125,0.333333333333333,0.45,0.055014605647517,1,"Moran rejects",270.356650114059
+50,9,"permutation","Hot zones first",0.15,0,0.25,0.055014605647517,1,"Moran rejects",270.356650114059
+200,9,"benchmark","Top counts",0.1375,1,0.8375,NA,NA,NA,NA
+200,9,"benchmark","Top residuals",0.6,1,0.2875,NA,NA,NA,NA
+200,9,"benchmark","Top residuals (log)",0.8,1,0,NA,NA,NA,NA
+200,9,"none","Centrality, whole graph",0.0625,0,0,1,0,"converged",28.9061093330383
+200,9,"none","Centrality, hot cells",0.8875,0.666666666666667,0,1,0,"converged",28.9061093330383
+200,9,"none","Largest excess",0.5625,1,0.3625,1,0,"converged",28.9061093330383
+200,9,"none","Hot zones first",0.8875,0.666666666666667,0,1,0,"converged",28.9061093330383
+200,9,"q75","Centrality, whole graph",0.0125,0,0.15,0.0626419993508601,2,"Moran rejects",83.7299380302429
+200,9,"q75","Centrality, hot cells",0.5625,0.666666666666667,0.2125,0.0626419993508601,2,"Moran rejects",83.7299380302429
+200,9,"q75","Largest excess",0.6,1,0.3125,0.0626419993508601,2,"Moran rejects",83.7299380302429
+200,9,"q75","Hot zones first",0.7,1,0.2,0.0626419993508601,2,"Moran rejects",83.7299380302429
+200,9,"q90","Centrality, whole graph",0.175,0.666666666666667,0.0125,0.100129827977929,1,"Moran rejects",62.9418532848358
+200,9,"q90","Centrality, hot cells",0.8125,1,0,0.100129827977929,1,"Moran rejects",62.9418532848358
+200,9,"q90","Largest excess",0.6125,1,0.3,0.100129827977929,1,"Moran rejects",62.9418532848358
+200,9,"q90","Hot zones first",0.825,1,0.0875,0.100129827977929,1,"Moran rejects",62.9418532848358
+200,9,"permutation","Centrality, whole graph",0.2375,0.666666666666667,0,0.0900681596884128,1,"Moran rejects",332.660963058472
+200,9,"permutation","Centrality, hot cells",0.75,1,0,0.0900681596884128,1,"Moran rejects",332.660963058472
+200,9,"permutation","Largest excess",0.5875,1,0.3125,0.0900681596884128,1,"Moran rejects",332.660963058472
+200,9,"permutation","Hot zones first",0.85,1,0.05,0.0900681596884128,1,"Moran rejects",332.660963058472
+50,10,"benchmark","Top counts",0,0,0.9125,NA,NA,NA,NA
+50,10,"benchmark","Top residuals",0.225,1,0.425,NA,NA,NA,NA
+50,10,"benchmark","Top residuals (log)",0.325,1,0,NA,NA,NA,NA
+50,10,"none","Centrality, whole graph",0,0,0.825,1,0,"converged",25.1720292568207
+50,10,"none","Centrality, hot cells",0.675,1,0,1,0,"converged",25.1720292568207
+50,10,"none","Largest excess",0.225,1,0.425,1,0,"converged",25.1720292568207
+50,10,"none","Hot zones first",0.675,1,0,1,0,"converged",25.1720292568207
+50,10,"q75","Centrality, whole graph",0.2125,0.333333333333333,0.2375,0.0621551444336254,2,"Moran rejects",76.2356450557709
+50,10,"q75","Centrality, hot cells",0.1875,0.666666666666667,0.2625,0.0621551444336254,2,"Moran rejects",76.2356450557709
+50,10,"q75","Largest excess",0.2,0.666666666666667,0.5,0.0621551444336254,2,"Moran rejects",76.2356450557709
+50,10,"q75","Hot zones first",0.2125,0.666666666666667,0.2625,0.0621551444336254,2,"Moran rejects",76.2356450557709
+50,10,"q90","Centrality, whole graph",0.075,0,0.1625,0.00989938331710484,2,"Moran rejects",76.9394106864929
+50,10,"q90","Centrality, hot cells",0.15,0.666666666666667,0.45,0.00989938331710484,2,"Moran rejects",76.9394106864929
+50,10,"q90","Largest excess",0.2,0.666666666666667,0.4875,0.00989938331710484,2,"Moran rejects",76.9394106864929
+50,10,"q90","Hot zones first",0.15,0.666666666666667,0.45,0.00989938331710484,2,"Moran rejects",76.9394106864929
+50,10,"permutation","Centrality, whole graph",0,0,0.825,1,0,"Moran rejects",146.458634138107
+50,10,"permutation","Centrality, hot cells",0.675,1,0,1,0,"Moran rejects",146.458634138107
+50,10,"permutation","Largest excess",0.225,1,0.425,1,0,"Moran rejects",146.458634138107
+50,10,"permutation","Hot zones first",0.675,1,0,1,0,"Moran rejects",146.458634138107
+200,10,"benchmark","Top counts",0.1875,1,0.7625,NA,NA,NA,NA
+200,10,"benchmark","Top residuals",0.625,1,0.2625,NA,NA,NA,NA
+200,10,"benchmark","Top residuals (log)",0.7875,1,0,NA,NA,NA,NA
+200,10,"none","Centrality, whole graph",0,0,0.3625,1,0,"converged",34.6590397357941
+200,10,"none","Centrality, hot cells",0.925,1,0,1,0,"converged",34.6590397357941
+200,10,"none","Largest excess",0.6625,1,0.2125,1,0,"converged",34.6590397357941
+200,10,"none","Hot zones first",0.925,1,0,1,0,"converged",34.6590397357941
+200,10,"q75","Centrality, whole graph",0,0,0.625,0.0626419993508601,2,"Moran rejects",91.7356772422791
+200,10,"q75","Centrality, hot cells",0.35,0.666666666666667,0.325,0.0626419993508601,2,"Moran rejects",91.7356772422791
+200,10,"q75","Largest excess",0.5875,1,0.3,0.0626419993508601,2,"Moran rejects",91.7356772422791
+200,10,"q75","Hot zones first",0.4125,0.666666666666667,0.325,0.0626419993508601,2,"Moran rejects",91.7356772422791
+200,10,"q90","Centrality, whole graph",0.15,0,0.075,0.100129827977929,1,"Moran rejects",64.4106805324554
+200,10,"q90","Centrality, hot cells",0.3625,1,0.2,0.100129827977929,1,"Moran rejects",64.4106805324554
+200,10,"q90","Largest excess",0.5625,1,0.325,0.100129827977929,1,"Moran rejects",64.4106805324554
+200,10,"q90","Hot zones first",0.45,1,0.225,0.100129827977929,1,"Moran rejects",64.4106805324554
+200,10,"permutation","Centrality, whole graph",0,0,0.3625,1,0,"Moran rejects",171.381480932236
+200,10,"permutation","Centrality, hot cells",0.925,1,0,1,0,"Moran rejects",171.381480932236
+200,10,"permutation","Largest excess",0.6625,1,0.2125,1,0,"Moran rejects",171.381480932236
+200,10,"permutation","Hot zones first",0.925,1,0,1,0,"Moran rejects",171.381480932236

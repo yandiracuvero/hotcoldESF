@@ -84,9 +84,11 @@ round_permutation <- function(nperm = 50, level = 0.95) {
     ols  <- stats::lm.fit(X0, ctx$Y)
     yhat <- ctx$Y - ols$residuals
     up   <- upper.tri(ctx$D) & ctx$D == 1
+    eig  <- eigen(ctx$D, symmetric = TRUE)            # same graph for every permutation
     null <- unlist(lapply(seq_len(nperm), function(b) {
       Yb <- yhat + sample(ols$residuals)
-      fb <- esf_fit(Yb, ctx$Z, ctx$D, ctx$A, ctx$lambda, ctx$standardize, ctx$mc_min)
+      fb <- esf_fit(Yb, ctx$Z, ctx$D, ctx$A, ctx$lambda, ctx$standardize, ctx$mc_min,
+                    eig = eig, test = FALSE)
       if (length(fb$S) == 0) return(numeric(0))
       Bb <- reconstruct_B(fb, ctx$weight)[up]
       Bb[Bb > 0]

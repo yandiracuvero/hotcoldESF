@@ -2,7 +2,7 @@
 #
 # Reads the results of the three experiments (no re-simulation, except figure S2,
 # which runs one example in a few seconds) and draws:
-#   fig1_cold_zones.png          published ranking picks cold zones (experiment 1)
+#   fig1_cold_zones.png          the baseline ranking picks cold zones (experiment 1)
 #   fig2_iteration_no_effect.png iterating does not change precision (experiment 2)
 #   fig3_latent_graph.png        reconstruction does not find barriers (experiment 3)
 #   figS1_where_esf_helps.png    precision by grid and cluster strength (experiment 2)
@@ -43,12 +43,12 @@ x1 <- read.csv("simulation/results/01_small_test.csv", stringsAsFactors = FALSE)
 x2 <- read.csv("simulation/results/02_signal_test.csv", stringsAsFactors = FALSE)
 x3 <- read.csv("simulation/results/03_latent_graph.csv", stringsAsFactors = FALSE)
 
-# ==== Figure 1: the published ranking picks cold zones (experiment 1) ==========
+# ==== Figure 1: the baseline ranking picks cold zones (experiment 1) ===========
 key <- data.frame(
   variant = c("all/lambda/q75", "baseline", "all/lambda/q75", "all/lambda/q75", "baseline"),
   ranking = c("R0", "B0", "R3", "R2", "B1"),
-  label   = c("Published (R0)", "Top counts", "Hot zones first (R3)",
-              "Hot cells by f-hat (R2)", "Top residuals on Z"),
+  label   = c("Baseline: centrality,\nwhole graph", "Benchmark: top counts", "Hot zones first",
+              "Largest excess", "Benchmark: top residuals"),
   stringsAsFactors = FALSE)
 get1 <- function(sc, v, r, col) mean_na(x1[x1$scenario == sc & x1$variant == v & x1$ranking == r, col])
 prec <- sapply(c("S1", "S2"), function(sc) mapply(get1, sc, key$variant, key$ranking, "precision"))
@@ -66,17 +66,17 @@ fig("fig1_cold_zones.png", 1500, 700, {
   segments(0, y - off, prec[, "S2"], y - off, lwd = 7, lend = 1, col = ifelse(is_pub, ACCENT, GREY))
   text(prec[, "S1"], y + off, sprintf("%.2f", prec[, "S1"]), pos = 4, cex = 0.8, col = DARK, xpd = TRUE)
   text(prec[, "S2"], y - off, sprintf("%.2f", prec[, "S2"]), pos = 4, cex = 0.8, col = DARK, xpd = TRUE)
-  legend("bottomright", c("clusters only", "clusters + covariate"), lwd = 7, col = c(LIGHT, GREY),
+  legend("bottomright", c("A: clusters only", "B: clusters + covariate area"), lwd = 7, col = c(LIGHT, GREY),
          bty = "n", cex = 0.8, inset = c(0, -0.02))
-  title_left("The published ranking has the lowest precision",
-             "Experiment 1: 20 replicates per scenario, 400 cells, top 20 cells")
+  title_left("The baseline ranking has the lowest precision",
+             "Scenarios A and B: 20 replicates each, 400 cells, top 20 cells")
   par(mar = c(4, 10, 4.5, 3))
   cc <- cold[!is.na(cold)]; lab <- key$label[!is.na(cold)]
-  bp <- barplot(100 * cc, horiz = TRUE, xlim = c(0, 100), col = ifelse(grepl("Published", lab), ACCENT, GREY),
+  bp <- barplot(100 * cc, horiz = TRUE, xlim = c(0, 100), col = ifelse(grepl("Baseline", lab), ACCENT, GREY),
                 border = NA, names.arg = lab, cex.names = 0.8, xlab = "Cold cells among the top 20 (%)", axes = FALSE)
   axis(1, at = seq(0, 100, 25))
   text(100 * cc, bp, sprintf("%.0f%%", 100 * cc), pos = 4, cex = 0.8, col = DARK, xpd = TRUE)
-  title_left("Half of its picks are cold zones", "Scenario with covariate")
+  title_left("Half of its picks are cold zones", "Scenario B (clusters + covariate area)")
 })
 
 # ==== Figure 2: iterating does not change precision (experiment 2) =============
@@ -94,23 +94,23 @@ maxdiff <- max(abs(w$precision.q75 - w$precision.none))
 
 fig("fig2_iteration_no_effect.png", 1500, 700, {
   par(mfrow = c(1, 2), mar = c(4.2, 4.2, 4.5, 1))
-  plot(NA, xlim = c(0, 1), ylim = c(0, 1), xlab = "Precision, single ESF fit (no iteration)",
-       ylab = "Precision, iterated reconstruction", bty = "n", asp = 1)
+  plot(NA, xlim = c(0, 1), ylim = c(0, 1), xlab = "Precision, no rounding (single ESF fit)",
+       ylab = "Precision, 75% quantile rounding, iterated", bty = "n", asp = 1)
   abline(h = seq(0, 1, 0.25), v = seq(0, 1, 0.25), col = LIGHT)
   abline(0, 1, col = DARK, lty = 2)
   text(0.97, 0.9, "no change", srt = 45, col = DARK, cex = 0.8, adj = 1)
   points(w$precision.none, w$precision.q75, pch = 21, bg = adjustcolor(ACCENT, 0.5), col = "white", cex = 1.4)
   title_left("No systematic gain: settings scatter on both sides",
-             sprintf("%d settings (grid x strength x scale x a x ranking), mean of 10 runs each",
+             sprintf("Scenario B, %d settings (grid x strength x scale x a x ranking), 10 runs each",
                      nrow(w)))
   par(mar = c(4.2, 9, 4.5, 2))
   dp <- d[d$edges_kept < 0.999, ]
-  rk <- c(R0 = "Published (R0)", R2 = "Hot cells by f-hat (R2)", R3 = "Hot zones first (R3)")
+  rk <- c(R0 = "Baseline: centrality,\nwhole graph", R2 = "Largest excess", R3 = "Hot zones first")
   st <- t(sapply(names(rk), function(r) { z <- dp$diff[dp$ranking == r]
     c(m = mean(z), lo = mean(z) - 1.96 * sd(z) / sqrt(length(z)), hi = mean(z) + 1.96 * sd(z) / sqrt(length(z)), n = length(z)) }))
   yy <- rev(seq_len(nrow(st)))
   plot(NA, xlim = c(-0.15, 0.15), ylim = c(0.5, nrow(st) + 0.5), yaxt = "n", bty = "n",
-       xlab = "Precision change from iterating (mean, 95% CI)", ylab = "")
+       xlab = "Precision change from rounding + iterating (mean, 95% CI)", ylab = "")
   abline(v = seq(-0.15, 0.15, 0.05), col = LIGHT); abline(v = 0, col = DARK)
   axis(2, at = yy, labels = rk, tick = FALSE, cex.axis = 0.85)
   segments(st[, "lo"], yy, st[, "hi"], yy, lwd = 2, col = GREY)
@@ -143,22 +143,26 @@ fig("fig3_latent_graph.png", 1500, 700, {
   text(1, au$AUC_B_gamma2[last] + 0.03, "reconstruction b_ij\n(gamma^2 weights)", pos = 4, col = GREY, cex = 0.8, xpd = TRUE)
   text(1, au$AUC_B_lambda[last] - 0.03, "reconstruction b_ij\n(eigenvalue weights)", pos = 4, col = GREY, cex = 0.8, xpd = TRUE)
   title_left("Reconstructed weights do not detect barriers",
-             "SAR on a grid with a river and a highway; 20 replicates per rho")
-  par(mar = c(4.2, 9, 4.5, 2))
+             "Scenario D: SAR on a grid with a river and a highway; 20 replicates per rho")
+  par(mar = c(4.2, 12, 4.5, 2))
   ctrl <- ctrl[order(ctrl$edges_kept), ]
+  vlab <- c("all/lambda/q75" = "Baseline (75% quantile)", "all/lambda/mix" = "Mixture",
+            "all/gamma2/mix" = "Mixture, gamma^2 weights", "g25/lambda/q75" = "Griffith candidates, 75%",
+            "g25/lambda/mix" = "Griffith candidates, mixture")
+  ctrl$variant <- vlab[ctrl$variant]
   bp <- barplot(100 * ctrl$edges_kept, horiz = TRUE, xlim = c(0, 118), col = GREY, border = NA,
                 names.arg = ctrl$variant, cex.names = 0.75, xlab = "Edges kept (%)", axes = FALSE)
   axis(1, at = seq(0, 100, 25))
   abline(v = 100, col = ACCENT, lty = 2)
   text(100, max(bp) + 0.9, "should be 100%", col = ACCENT, cex = 0.8, xpd = TRUE)
   text(103, bp, sprintf("%.0f%%", 100 * ctrl$edges_kept), adj = 0, cex = 0.8, col = DARK, xpd = TRUE)
-  title_left("With no barriers, edges are still cut", "Control: data generated on the full grid")
+  title_left("No barriers, yet edges are cut", "Scenario D0: same process on the full grid")
 })
 
 # ==== Figure S1: where ESF helps (experiment 2) =================================
 pick <- data.frame(v = c("B0|-", "B1_log|-", "std_a2_q75|R0", "log_a2_none|R2", "std_a2_none|R3"),
-                   lab = c("Top counts", "Top residuals, log scale", "Published (R0)",
-                           "ESF log, hot cells by f-hat", "ESF, hot zones first (R3)"),
+                   lab = c("Benchmark: top counts", "Benchmark: top residuals (log)", "Baseline",
+                           "Largest excess (log)", "Hot zones first"),
                    col = c(LIGHT, DARK, WARM, GREY, ACCENT), lwd = c(2, 2.5, 2, 2, 3),
                    stringsAsFactors = FALSE)
 x2$v <- paste(x2$method, x2$ranking, sep = "|")
@@ -183,7 +187,7 @@ fig("figS1_where_esf_helps.png", 1500, 750, {
   lab_y <- lab_y - max(0, max(lab_y) - 1.02)
   text(max(xx) + 0.3, lab_y, pick$lab[o], adj = 0, col = ifelse(pick$col[o] == LIGHT, GREY, pick$col[o]), cex = 0.8, xpd = TRUE)
   title_left("ESF zones beat adjusted residuals only on the fine grid with weak clusters",
-             "Experiment 2, scenario with covariate; 10 replicates per setting")
+             "Scenario B on three grids and three cluster strengths; 10 replicates per setting")
 })
 
 # ==== Figure S2: one example, step by step ======================================
@@ -216,9 +220,9 @@ fig("figS2_example_run.png", 1800, 1250, {
   draw_grid(sprintf("(c) Iteration %d: %d edges", mid - 1, sum(res$graphs[[mid]]$D) / 2), D = res$graphs[[mid]]$D)
   draw_grid(sprintf("(d) Final graph (iteration %d): %d edges", ng - 1, sum(res$D) / 2), D = res$D)
   draw_grid("(e) Fitted spatial component f-hat (red = hot, blue = cold)", value = res$fhat, pal = divpal)
-  draw_grid(sprintf("(f) Top %d cells: published R0 (squares)", m), value = res$fhat, pal = divpal,
+  draw_grid(sprintf("(f) Top %d cells chosen by the baseline (squares)", m), value = res$fhat, pal = divpal,
             top = rank_cells(res, "R0")[1:m])
-  mtext("One simulated map, published settings (all eigenvectors, eigenvalue weights, q75, harmonic centrality)",
+  mtext("One simulated map (scenario B), baseline configuration: all eigenvectors, eigenvalue weights, 75% quantile, centrality on the whole graph",
         outer = TRUE, side = 3, line = 1, adj = 0.02, font = 2, col = DARK)
   mtext("Red circles: true clusters. Dashed circle: covariate-driven area (should not be hot).",
         outer = TRUE, side = 1, line = 0.5, adj = 0.02, col = GREY, cex = 0.85)
@@ -226,3 +230,73 @@ fig("figS2_example_run.png", 1800, 1250, {
 
 message("Figures written to simulation/figures/: ",
         paste(list.files("simulation/figures", pattern = "png$"), collapse = ", "))
+
+# ==== Figure 4: rounding rules compared (experiment 05_rounding_rules.R) =========
+if (file.exists("simulation/results/05_rounding_rules.csv")) {
+  x5 <- read.csv("simulation/results/05_rounding_rules.csv", stringsAsFactors = FALSE)
+  ord  <- c("none", "q50", "q75", "q80", "q90", "mixture", "permutation")
+  olab <- c("none\n(full grid)", "50%\nquantile", "75%\nquantile\n(baseline)", "80%\nquantile",
+            "90%\nquantile", "mixture\n(valley)", "permutation")
+  rks  <- c("Largest excess", "Hot zones first", "Centrality, hot cells", "Centrality, whole graph")
+  rcol <- c(DARK, ACCENT, GREY, WARM)
+  ab <- x5[x5$scenario %in% c("A", "B"), ]
+  P  <- sapply(rks, function(r) sapply(ord, function(o) mean_na(ab$precision[ab$ranking == r & ab$rule == o])))
+  d0 <- sapply(ord, function(o) mean_na(x5$edges_kept[x5$scenario == "D0" & x5$rule == o]))
+  jd <- sapply(ord, function(o) mean_na(x5$J[x5$scenario %in% c("D80", "D95") & x5$rule == o]))
+  fig("fig4_rounding_rules.png", 1800, 800, {
+    layout(matrix(1:2, 1), widths = c(1.5, 1))
+    par(mar = c(6.5, 4.2, 4.5, 11))
+    xs <- seq_along(ord)
+    plot(NA, xlim = c(0.7, length(ord) + 0.3), ylim = c(0, 1), xaxt = "n", bty = "n",
+         xlab = "", ylab = "Precision (top 20 of 400 cells)")
+    abline(h = seq(0, 1, 0.25), col = LIGHT)
+    axis(1, at = xs, labels = FALSE); mtext(olab, side = 1, at = xs, line = 2.6, cex = 0.7, col = DARK)
+    for (j in seq_along(rks)) lines(xs, P[, j], col = rcol[j], lwd = 2.5, type = "o", pch = 16)
+    ends <- P[length(ord), ]; o <- order(ends); ly <- ends[o]
+    for (j in seq_along(ly)[-1]) ly[j] <- max(ly[j], ly[j - 1] + 0.05)
+    text(length(ord) + 0.15, ly, rks[o], adj = 0, col = rcol[o], cex = 0.8, xpd = TRUE)
+    title_left("No rounding rule beats ranking by largest excess with no rounding",
+               "Scenarios A and B, 20 replicates each; everything else as in the baseline")
+    par(mar = c(6.5, 4.2, 4.5, 2))
+    bp <- barplot(100 * d0, col = ifelse(ord == "none", LIGHT, GREY), border = NA, ylim = c(0, 110),
+                  names.arg = rep("", length(ord)), ylab = "Edges kept when there are no barriers (%)", axes = FALSE)
+    axis(2, at = seq(0, 100, 25))
+    mtext(olab, side = 1, at = bp, line = 2.6, cex = 0.62, col = DARK)
+    abline(h = 100, col = ACCENT, lty = 2)
+    text(bp, 100 * d0 + 4, sprintf("%.0f%%", 100 * d0), cex = 0.75, col = DARK)
+    title_left("Every rule cuts edges that are real",
+               sprintf("Scenario D0, no barriers. With barriers: J = %.2f to %.2f (0 = chance)",
+                       min(jd, na.rm = TRUE), max(jd, na.rm = TRUE)))
+  })
+}
+
+# ==== Figure 5: fine grid, weak clusters (experiment 06_fine_grid.R) ============
+if (file.exists("simulation/results/06_fine_grid.csv")) {
+  x6 <- read.csv("simulation/results/06_fine_grid.csv", stringsAsFactors = FALSE)
+  ord6 <- c("none", "q75", "q90", "permutation")
+  lab6 <- c("none\n(full grid)", "75%\nquantile\n(baseline)", "90%\nquantile", "permutation")
+  rks6 <- c("Centrality, hot cells", "Hot zones first", "Largest excess", "Centrality, whole graph")
+  col6 <- c(GREY, ACCENT, DARK, WARM)
+  fig("fig5_fine_grid.png", 1800, 780, {
+    par(mfrow = c(1, 2), mar = c(6.5, 4.2, 4.5, 11), oma = c(0, 0, 1.5, 0))
+    for (sn in c(50, 200)) {
+      z <- x6[x6$sons == sn, ]
+      P <- sapply(rks6, function(r) sapply(ord6, function(o) mean_na(z$precision[z$ranking == r & z$rule == o])))
+      bm <- mean_na(z$precision[z$rule == "benchmark" & z$ranking == "Top residuals (log)"])
+      xs <- seq_along(ord6)
+      plot(NA, xlim = c(0.7, length(ord6) + 0.3), ylim = c(0, 1), xaxt = "n", bty = "n",
+           xlab = "", ylab = "Precision (top 80 of 1600 cells)")
+      abline(h = seq(0, 1, 0.25), col = LIGHT)
+      segments(0.7, bm, length(ord6) + 0.05, bm, col = DARK, lty = 2)
+      axis(1, at = xs, labels = FALSE); mtext(lab6, side = 1, at = xs, line = 2.6, cex = 0.72, col = DARK)
+      for (j in seq_along(rks6)) lines(xs, P[, j], col = col6[j], lwd = 2.5, type = "o", pch = 16)
+      ends <- c(P[length(ord6), ], bm); labs <- c(rks6, "Top residuals (log), dashed")
+      cols <- c(col6, DARK); o <- order(ends); ly <- ends[o]
+      for (j in seq_along(ly)[-1]) ly[j] <- max(ly[j], ly[j - 1] + 0.06)
+      text(length(ord6) + 0.15, ly, labs[o], adj = 0, col = cols[o], cex = 0.8, xpd = TRUE)
+      title_left(sprintf("%d points per cluster", sn), "Scenario B, 40 x 40 grid, 10 replicates")
+    }
+    mtext("On the fine grid, every rounding rule makes the zone-based rankings worse",
+          outer = TRUE, side = 3, line = 0, adj = 0.03, font = 2, col = DARK, cex = 1.1)
+  })
+}
