@@ -43,7 +43,8 @@ rank_cells(res, "R3")[1:20]     # top-20 cells (zones first, then centrality)
 - [x] **Step 1:** merged algorithm written down (`docs/algorithm.md`, draft 2)
 - [x] **Step 2:** core function in `R/` + unit tests (all passing)
 - [x] **Step 3:** small test (`simulation/01_small_test.R`). Findings and open questions are in `docs/step3_findings.md`
-- [ ] **Step 3b:** signal-strength experiment + response scale + λ question (to discuss)
+- [x] **Step 3b:** signal strength × cell size × exponent a × log scale (`simulation/02_signal_test.R`, run on the Mac). Findings: `docs/step3b_findings.md`
+- [ ] **Decision:** how to frame the contribution (see step3b findings) + add Gi*/LISA baselines
 - [ ] **Step 4:** full simulation study: top-m metric, ranking variants R0–R3, baselines (top counts B0, Getis-Ord Gi*, LISA), CSR null scenario, scenario **with covariates**
 - [ ] **Step 5:** Madrid application, rerun with the package:
   - hot/cold map per summer (2010–2013)
