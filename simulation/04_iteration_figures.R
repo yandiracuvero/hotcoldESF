@@ -9,7 +9,7 @@
 #   figS2_example_run.png        one simulated map, step by step
 #
 # Run from the repo root, in RStudio or the Terminal:
-#     Rscript simulation/04_iteration_figures.R
+#     Rscript 04_iteration_figures.R
 # Figures are written to simulation/figures/. In RStudio, set SHOW <- TRUE to also
 # draw them in the Plots pane.
 
@@ -17,7 +17,7 @@ SHOW <- interactive()
 suppressMessages({
   if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else library(hotspots)
 })
-dir.create("simulation/figures", showWarnings = FALSE, recursive = TRUE)
+dir.create("figures", showWarnings = FALSE, recursive = TRUE)
 
 # ---- palette: grey first, one accent -----------------------------------------
 GREY   <- "#9AA0A6"; DARK <- "#3C4043"; LIGHT <- "#DADCE0"
@@ -25,7 +25,7 @@ ACCENT <- "#1A73E8"; ACC2 <- "#8AB4F8"; WARM <- "#D93025"
 mean_na <- function(z) mean(z, na.rm = TRUE)
 
 fig <- function(file, width, height, expr) {
-  png(file.path("simulation/figures", file), width = width, height = height,
+  png(file.path("figures", file), width = width, height = height,
       res = 150, pointsize = 10)
   on.exit(dev.off())
   par(family = "sans", col.axis = DARK, col.lab = DARK, fg = GREY, las = 1,
@@ -39,9 +39,9 @@ title_left <- function(main, sub = NULL) {
   if (!is.null(sub)) mtext(sub, side = 3, line = 1, adj = 0, col = GREY, cex = 0.85)
 }
 
-x1 <- read.csv("simulation/results/01_small_test.csv", stringsAsFactors = FALSE)
-x2 <- read.csv("simulation/results/02_signal_test.csv", stringsAsFactors = FALSE)
-x3 <- read.csv("simulation/results/03_latent_graph.csv", stringsAsFactors = FALSE)
+x1 <- read.csv("results/01_small_test.csv", stringsAsFactors = FALSE)
+x2 <- read.csv("results/02_signal_test.csv", stringsAsFactors = FALSE)
+x3 <- read.csv("results/03_latent_graph.csv", stringsAsFactors = FALSE)
 
 # ==== Figure 1: the baseline ranking picks cold zones (experiment 1) ===========
 key <- data.frame(
@@ -174,7 +174,7 @@ fig("figS1_where_esf_helps.png", 1500, 750, {
   abline(h = seq(0, 1, 0.25), col = LIGHT)
   axis(1, at = xx, labels = cfg$sons, tick = FALSE, line = -0.5)
   mtext(c("10 x 10 grid", "20 x 20 grid", "40 x 40 grid"), side = 1, line = 2, at = tapply(xx, cfg$k, mean), col = DARK)
-  mtext("points per cluster", side = 1, line = 3.5, col = GREY, cex = 0.85)
+  mtext("Points per cluster", side = 1, line = 3.5, col = GREY, cex = 0.85)
   ends <- numeric(nrow(pick))
   for (i in seq_len(nrow(pick))) {
     yv <- mapply(function(k, s) mean_na(x2$precision[x2$scenario == "S2" & x2$v == pick$v[i] & x2$k == k & x2$sons == s]),
@@ -228,12 +228,12 @@ fig("figS2_example_run.png", 1800, 1250, {
         outer = TRUE, side = 1, line = 0.5, adj = 0.02, col = GREY, cex = 0.85)
 })
 
-message("Figures written to simulation/figures/: ",
-        paste(list.files("simulation/figures", pattern = "png$"), collapse = ", "))
+message("Figures written to figures/: ",
+        paste(list.files("figures", pattern = "png$"), collapse = ", "))
 
 # ==== Figure 4: rounding rules compared (experiment 05_rounding_rules.R) =========
-if (file.exists("simulation/results/05_rounding_rules.csv")) {
-  x5 <- read.csv("simulation/results/05_rounding_rules.csv", stringsAsFactors = FALSE)
+if (file.exists("results/05_rounding_rules.csv")) {
+  x5 <- read.csv("results/05_rounding_rules.csv", stringsAsFactors = FALSE)
   ord  <- c("none", "q50", "q75", "q80", "q90", "mixture", "permutation")
   olab <- c("none\n(full grid)", "50%\nquantile", "75%\nquantile\n(baseline)", "80%\nquantile",
             "90%\nquantile", "mixture\n(valley)", "permutation")
@@ -271,8 +271,8 @@ if (file.exists("simulation/results/05_rounding_rules.csv")) {
 }
 
 # ==== Figure 5: fine grid, weak clusters (experiment 06_fine_grid.R) ============
-if (file.exists("simulation/results/06_fine_grid.csv")) {
-  x6 <- read.csv("simulation/results/06_fine_grid.csv", stringsAsFactors = FALSE)
+if (file.exists("results/06_fine_grid.csv")) {
+  x6 <- read.csv("results/06_fine_grid.csv", stringsAsFactors = FALSE)
   ord6 <- c("none", "q75", "q90", "permutation")
   lab6 <- c("none\n(full grid)", "75%\nquantile\n(baseline)", "90%\nquantile", "permutation")
   rks6 <- c("Centrality, hot cells", "Hot zones first", "Largest excess", "Centrality, whole graph")
