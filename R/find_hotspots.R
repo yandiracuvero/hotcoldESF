@@ -20,6 +20,8 @@
 #' @param standardize passed to glmnet.
 #' @param mc_min candidate eigenvectors; see [esf_fit()]. NULL = all (published).
 #' @param verbose print one line per iteration.
+#' @param keep_graphs store every accepted graph (and its fhat) in `out$graphs`,
+#'   to plot the iterations.
 #' @return an object of class "hotspots"; see the README for its fields.
 #' @export
 find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
@@ -28,7 +30,7 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
                           rounding = round_quantile(0.75),
                           label_c = 0, max_iter = NULL,
                           standardize = TRUE, mc_min = 0.25,
-                          verbose = FALSE) {
+                          verbose = FALSE, keep_graphs = FALSE) {
   weight <- match.arg(weight)
   stopifnot(isSymmetric(unname(A)), all(A %in% c(0, 1)), all(diag(A) == 0))
   A  <- unname(A)
@@ -62,6 +64,7 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
 
   # Step 2: initialise -------------------------------------------------------
   D   <- A
+  graphs <- list()
   fit <- esf_fit(Ys, Zs, D, A, lambda, standardize, mc_min)
   out$esf_inadequate <- !isTRUE(fit$moran$p > alpha)
   trace <- data.frame(iter = 0, edges = n_edges(D), n_eig = length(fit$S),
@@ -97,6 +100,7 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
     if (length(fc$S) == 0) { stop_reason <- "no eigenvectors"; break }
     if (is.na(fc$moran$p)) { stop_reason <- "Moran undefined (saturated)"; break }
     if (fc$moran$p <= alpha) { stop_reason <- "Moran rejects"; break }
+    if (keep_graphs) graphs[[length(graphs) + 1]] <- list(D = D, fhat = fit$fhat)
     D <- Dc; fit <- fc; k <- k + 1
   }
 
@@ -104,6 +108,7 @@ find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
   out$D <- D
   out$fit <- fit
   out$trace <- trace
+  if (keep_graphs) out$graphs <- c(graphs, list(list(D = D, fhat = fit$fhat)))
   out$stop_reason <- stop_reason
   out$fhat   <- fit$fhat
   out$labels <- label_cells(fit$fhat, label_c)
