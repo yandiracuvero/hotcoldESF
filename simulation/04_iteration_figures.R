@@ -68,7 +68,7 @@ fig("fig1_cold_zones.png", 1500, 700, {
   text(prec[, "S2"], y - off, sprintf("%.2f", prec[, "S2"]), pos = 4, cex = 0.8, col = DARK, xpd = TRUE)
   legend("bottomright", c("A: clusters only", "B: clusters + covariate area"), lwd = 7, col = c(LIGHT, GREY),
          bty = "n", cex = 0.8, inset = c(0, -0.02))
-  title_left("The baseline ranking has the lowest precision",
+  title_left("Precision of the top 20 cells by ranking rule",
              "Scenarios A and B: 20 replicates each, 400 cells, top 20 cells")
   par(mar = c(4, 10, 4.5, 3))
   cc <- cold[!is.na(cold)]; lab <- key$label[!is.na(cold)]
@@ -76,7 +76,7 @@ fig("fig1_cold_zones.png", 1500, 700, {
                 border = NA, names.arg = lab, cex.names = 0.8, xlab = "Cold cells among the top 20 (%)", axes = FALSE)
   axis(1, at = seq(0, 100, 25))
   text(100 * cc, bp, sprintf("%.0f%%", 100 * cc), pos = 4, cex = 0.8, col = DARK, xpd = TRUE)
-  title_left("Half of its picks are cold zones", "Scenario B (clusters + covariate area)")
+  title_left("Cold cells among the top 20", "Scenario B (clusters + covariate area)")
 })
 
 # ==== Figure 2: iterating does not change precision (experiment 2) =============
@@ -100,7 +100,7 @@ fig("fig2_iteration_no_effect.png", 1500, 700, {
   abline(0, 1, col = DARK, lty = 2)
   text(0.97, 0.9, "no change", srt = 45, col = DARK, cex = 0.8, adj = 1)
   points(w$precision.none, w$precision.q75, pch = 21, bg = adjustcolor(ACCENT, 0.5), col = "white", cex = 1.4)
-  title_left("No systematic gain: settings scatter on both sides",
+  title_left("Precision with and without rounding and iteration",
              sprintf("Scenario B, %d settings (grid x strength x scale x a x ranking), 10 runs each",
                      nrow(w)))
   par(mar = c(4.2, 9, 4.5, 2))
@@ -116,8 +116,8 @@ fig("fig2_iteration_no_effect.png", 1500, 700, {
   segments(st[, "lo"], yy, st[, "hi"], yy, lwd = 2, col = GREY)
   points(st[, "m"], yy, pch = 16, cex = 1.4, col = ifelse(names(rk) == "R0", ACCENT, DARK))
   text(st[, "m"], yy + 0.22, sprintf("%+.2f", st[, "m"]), cex = 0.8, col = DARK)
-  text(-0.15, 0.55, "worse", adj = 0, col = GREY, cex = 0.8); text(0.15, 0.55, "better", adj = 1, col = GREY, cex = 0.8)
-  title_left("Iterating does not help the rankings that work",
+  text(-0.15, 0.55, "decrease", adj = 0, col = GREY, cex = 0.8); text(0.15, 0.55, "increase", adj = 1, col = GREY, cex = 0.8)
+  title_left("Change in precision from rounding and iteration",
              sprintf("Only the %d of %d runs where iterating removed edges (%.0f%%)",
                      nrow(dp), nrow(d), 100 * nrow(dp) / nrow(d)))
 })
@@ -142,7 +142,7 @@ fig("fig3_latent_graph.png", 1500, 700, {
   text(1, au$AUC_dres[last], "neighbour difference\nof residuals", pos = 4, col = ACCENT, cex = 0.8, xpd = TRUE)
   text(1, au$AUC_B_gamma2[last] + 0.03, "reconstruction b_ij\n(gamma^2 weights)", pos = 4, col = GREY, cex = 0.8, xpd = TRUE)
   text(1, au$AUC_B_lambda[last] - 0.03, "reconstruction b_ij\n(eigenvalue weights)", pos = 4, col = GREY, cex = 0.8, xpd = TRUE)
-  title_left("Reconstructed weights do not detect barriers",
+  title_left("Separation of barrier and real edges",
              "Scenario D: SAR on a grid with a river and a highway; 20 replicates per rho")
   par(mar = c(4.2, 12, 4.5, 2))
   ctrl <- ctrl[order(ctrl$edges_kept), ]
@@ -156,7 +156,7 @@ fig("fig3_latent_graph.png", 1500, 700, {
   abline(v = 100, col = ACCENT, lty = 2)
   text(100, max(bp) + 0.9, "should be 100%", col = ACCENT, cex = 0.8, xpd = TRUE)
   text(103, bp, sprintf("%.0f%%", 100 * ctrl$edges_kept), adj = 0, cex = 0.8, col = DARK, xpd = TRUE)
-  title_left("No barriers, yet edges are cut", "Scenario D0: same process on the full grid")
+  title_left("Edges kept with no barriers", "Scenario D0: same process on the full grid")
 })
 
 # ==== Figure S1: where ESF helps (experiment 2) =================================
@@ -186,7 +186,7 @@ fig("figS1_where_esf_helps.png", 1500, 750, {
   for (j in seq_along(lab_y)[-1]) lab_y[j] <- max(lab_y[j], lab_y[j - 1] + 0.06)
   lab_y <- lab_y - max(0, max(lab_y) - 1.02)
   text(max(xx) + 0.3, lab_y, pick$lab[o], adj = 0, col = ifelse(pick$col[o] == LIGHT, GREY, pick$col[o]), cex = 0.8, xpd = TRUE)
-  title_left("ESF zones beat adjusted residuals only on the fine grid with weak clusters",
+  title_left("Precision by grid size and cluster strength",
              "Scenario B on three grids and three cluster strengths; 10 replicates per setting")
 })
 
@@ -255,7 +255,7 @@ if (file.exists("simulation/results/05_rounding_rules.csv")) {
     ends <- P[length(ord), ]; o <- order(ends); ly <- ends[o]
     for (j in seq_along(ly)[-1]) ly[j] <- max(ly[j], ly[j - 1] + 0.05)
     text(length(ord) + 0.15, ly, rks[o], adj = 0, col = rcol[o], cex = 0.8, xpd = TRUE)
-    title_left("No rounding rule beats ranking by largest excess with no rounding",
+    title_left("Precision by rounding rule and ranking rule",
                "Scenarios A and B, 20 replicates each; everything else as in the baseline")
     par(mar = c(6.5, 4.2, 4.5, 2))
     bp <- barplot(100 * d0, col = ifelse(ord == "none", LIGHT, GREY), border = NA, ylim = c(0, 110),
@@ -264,7 +264,7 @@ if (file.exists("simulation/results/05_rounding_rules.csv")) {
     mtext(olab, side = 1, at = bp, line = 2.6, cex = 0.62, col = DARK)
     abline(h = 100, col = ACCENT, lty = 2)
     text(bp, 100 * d0 + 4, sprintf("%.0f%%", 100 * d0), cex = 0.75, col = DARK)
-    title_left("Every rule cuts edges that are real",
+    title_left("Edges kept with no barriers, by rounding rule",
                sprintf("Scenario D0, no barriers. With barriers: J = %.2f to %.2f (0 = chance)",
                        min(jd, na.rm = TRUE), max(jd, na.rm = TRUE)))
   })
@@ -296,7 +296,7 @@ if (file.exists("simulation/results/06_fine_grid.csv")) {
       text(length(ord6) + 0.15, ly, labs[o], adj = 0, col = cols[o], cex = 0.8, xpd = TRUE)
       title_left(sprintf("%d points per cluster", sn), "Scenario B, 40 x 40 grid, 10 replicates")
     }
-    mtext("On the fine grid, every rounding rule makes the zone-based rankings worse",
+    mtext("Precision by rounding rule and ranking rule, 40 x 40 grid",
           outer = TRUE, side = 3, line = 0, adj = 0.03, font = 2, col = DARK, cex = 1.1)
   })
 }
