@@ -25,13 +25,17 @@
 #'   maximum (minimum) of fhat over all cells, which controls the chance of
 #'   any false hot (cold) cell in the map.
 #' @param alpha level of the Moran test in step 2.
+#' @param penalty how the Lasso penalty is chosen (see [select_lambda()]).
+#'   The permutation band reuses the chosen penalty in every permutation.
 #' @return an object of class "hotspots" (works with [rank_cells()]) with extra
 #'   fields `upper`, `lower` (band per cell), `null_hot` (expected number of hot
 #'   cells under the null), `band`.
 #' @export
 hot_cold_map <- function(Y, Z = NULL, A, response = c("log", "std"), a = 2,
                          mc_min = NULL, nperm = 200, level = 0.95,
-                         band = c("pointwise", "max"), alpha = 0.05) {
+                         band = c("pointwise", "max"), alpha = 0.05,
+                         penalty = c("z", "cv_min", "cv_1se", "bic", "moran")) {
+  penalty <- match.arg(penalty)
   response <- match.arg(response); band <- match.arg(band)
   A  <- unname(A); n <- length(Y)
   y  <- as.numeric(scale(if (response == "log") log1p(Y) else Y))
@@ -52,8 +56,9 @@ hot_cold_map <- function(Y, Z = NULL, A, response = c("log", "std"), a = 2,
     out$zones  <- find_zones(A, out$labels)
     return(out)
   }
-  lambda <- abs(m0$z)^(-a)
   eig    <- eigen(A, symmetric = TRUE)
+  lambda <- select_lambda(y, Zs, A, eig, mc_min = mc_min, rule = penalty,
+                          z0 = m0$z, a = a, alpha = alpha)
   fit    <- esf_fit(y, Zs, A, A, lambda, mc_min = mc_min, eig = eig)
 
   # permutation band: what fhat looks like when the residuals carry no structure
