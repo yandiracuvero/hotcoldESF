@@ -21,11 +21,14 @@
 #' @param rule one of "z", "cv_min", "cv_1se", "bic", "moran".
 #' @param z0 Moran z of the OLS residuals (rule "z"). @param a exponent (rule "z").
 #' @param alpha level of the Moran test (rule "moran").
+#' @param mix 1 = Lasso (default), 0 = ridge (glmnet's `alpha`).
+#' @param foldid fold of each cell for the CV rules (NULL = 10 random folds);
+#'   see [block_folds()] for spatial folds.
 #' @return the penalty, in glmnet scaling.
 #' @export
 select_lambda <- function(y, Zs, A, eig, mc_min = NULL,
                           rule = c("z", "cv_min", "cv_1se", "bic", "moran"),
-                          z0 = NULL, a = 2, alpha = 0.05) {
+                          z0 = NULL, a = 2, alpha = 0.05, mix = 1, foldid = NULL) {
   rule <- match.arg(rule)
   if (rule == "z") return(abs(z0)^(-a))
   n <- length(y)
@@ -36,7 +39,9 @@ select_lambda <- function(y, Zs, A, eig, mc_min = NULL,
   X <- if (k) cbind(Zs, E) else E
   pen <- c(rep(0, k), rep(1, ncol(E)))
   if (rule %in% c("cv_min", "cv_1se")) {
-    cv <- glmnet::cv.glmnet(X, y, penalty.factor = pen, nfolds = 10)
+    cv <- if (is.null(foldid))
+      glmnet::cv.glmnet(X, y, penalty.factor = pen, nfolds = 10, alpha = mix) else
+      glmnet::cv.glmnet(X, y, penalty.factor = pen, foldid = foldid, alpha = mix)
     return(if (rule == "cv_min") cv$lambda.min else cv$lambda.1se)
   }
   path <- glmnet::glmnet(X, y, penalty.factor = pen)
@@ -61,4 +66,20 @@ select_lambda <- function(y, Zs, A, eig, mc_min = NULL,
     if (m$p > alpha) return(path$lambda[j])
   }
   best
+}
+
+#' Spatial folds for cross-validation: square blocks of cells
+#'
+#' The grid is cut into square blocks of `block` x `block` cells; blocks are
+#' assigned at random to `nfolds` folds, so neighbouring cells are mostly left
+#' out together.
+#' @param k cells per side (cells numbered row by row, as in [grid_adjacency()]).
+#' @return integer vector of fold ids, length k^2.
+#' @export
+block_folds <- function(k, block = 4, nfolds = 10) {
+  rc <- cbind((seq_len(k^2) - 1) %/% k, (seq_len(k^2) - 1) %% k)
+  b  <- (rc[, 1] %/% block) * ceiling(k / block) + rc[, 2] %/% block + 1
+  nb <- max(b)
+  fold_of_block <- sample(rep_len(seq_len(nfolds), nb))
+  fold_of_block[b]
 }

@@ -14,13 +14,16 @@
 #'   mc_min * (largest eigenvalue) enter the Lasso (Griffith's rule, 0.25 is
 #'   the usual choice). NULL uses all n eigenvectors (published version).
 #' @param test compute Moran's I of the residuals (skipped inside permutations).
+#' @param alpha 1 (default): Lasso, then post-Lasso OLS on the selected
+#'   eigenvectors. 0: ridge on all candidate eigenvectors, no selection and no
+#'   refit; fhat uses the shrunk coefficients.
 #' @param eig optional precomputed `eigen(D, symmetric = TRUE)` (reused by the
 #'   permutation rule, where D is the same for every permutation).
 #' @return list: `E_S`, `values_S` (eigenvalues), `gamma_S` (post-Lasso
 #'   coefficients), `S` (indices), `fhat` (= E_S gamma_S), `resid`, `moran`.
 #' @export
 esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE, mc_min = 0.25,
-                    eig = NULL, test = TRUE) {
+                    eig = NULL, test = TRUE, alpha = 1) {
   n   <- length(Y)
   if (is.null(eig)) eig <- eigen(D, symmetric = TRUE)
   cand <- if (is.null(mc_min)) seq_len(n) else
@@ -41,6 +44,16 @@ esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE, mc_min = 0.25,
     pen <- c(rep(0, k), rep(1, nE))
   }
 
+  if (alpha == 0 && nE > 0) {                       # ridge: shrink, do not select
+    if (ncol(XE) < 2) { XE <- cbind(XE, 0); pen <- c(pen, 1) }
+    fit <- glmnet::glmnet(XE, Y, alpha = 0, lambda = lambda, penalty.factor = pen,
+                          standardize = standardize)
+    g   <- as.numeric(fit$beta[(k + 1):(k + nE), 1])
+    res <- Y - as.numeric(stats::predict(fit, XE, s = lambda))
+    return(list(E_S = E, values_S = eig$values, gamma_S = g, S = seq_len(nE),
+                fhat = as.numeric(scale(E %*% g, scale = FALSE)), resid = res,
+                moran = NULL))
+  }
   if (nE == 0) {
     S <- integer(0)
   } else {

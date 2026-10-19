@@ -27,6 +27,9 @@
 #' @param alpha level of the Moran test in step 2.
 #' @param penalty how the Lasso penalty is chosen (see [select_lambda()]).
 #'   The permutation band reuses the chosen penalty in every permutation.
+#' @param fit_type "lasso" (select eigenvectors, then refit by OLS) or "ridge"
+#'   (shrink all candidate eigenvectors, no selection).
+#' @param foldid folds for the CV penalty rules (NULL = random; see [block_folds()]).
 #' @return an object of class "hotspots" (works with [rank_cells()]) with extra
 #'   fields `upper`, `lower` (band per cell), `null_hot` (expected number of hot
 #'   cells under the null), `band`.
@@ -34,7 +37,9 @@
 hot_cold_map <- function(Y, Z = NULL, A, response = c("log", "std"), a = 2,
                          mc_min = NULL, nperm = 200, level = 0.95,
                          band = c("pointwise", "max"), alpha = 0.05,
-                         penalty = c("z", "cv_min", "cv_1se", "bic", "moran")) {
+                         penalty = c("z", "cv_min", "cv_1se", "bic", "moran"),
+                         fit_type = c("lasso", "ridge"), foldid = NULL) {
+  fit_type <- match.arg(fit_type); mix <- if (fit_type == "ridge") 0 else 1
   penalty <- match.arg(penalty)
   response <- match.arg(response); band <- match.arg(band)
   A  <- unname(A); n <- length(Y)
@@ -58,14 +63,14 @@ hot_cold_map <- function(Y, Z = NULL, A, response = c("log", "std"), a = 2,
   }
   eig    <- eigen(A, symmetric = TRUE)
   lambda <- select_lambda(y, Zs, A, eig, mc_min = mc_min, rule = penalty,
-                          z0 = m0$z, a = a, alpha = alpha)
-  fit    <- esf_fit(y, Zs, A, A, lambda, mc_min = mc_min, eig = eig)
+                          z0 = m0$z, a = a, alpha = alpha, mix = mix, foldid = foldid)
+  fit    <- esf_fit(y, Zs, A, A, lambda, mc_min = mc_min, eig = eig, alpha = mix)
 
   # permutation band: what fhat looks like when the residuals carry no structure
   yhat <- y - ols$residuals
   null <- vapply(seq_len(nperm), function(b) {
     yb <- yhat + sample(ols$residuals)
-    esf_fit(yb, Zs, A, A, lambda, mc_min = mc_min, eig = eig, test = FALSE)$fhat
+    esf_fit(yb, Zs, A, A, lambda, mc_min = mc_min, eig = eig, test = FALSE, alpha = mix)$fhat
   }, numeric(n))                                        # n x nperm
   up_pw <- apply(null, 1, stats::quantile, probs = level, names = FALSE)
   lo_pw <- apply(null, 1, stats::quantile, probs = 1 - level, names = FALSE)

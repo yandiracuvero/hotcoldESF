@@ -34,6 +34,10 @@ grid_adjacency <- function(k, queen = TRUE) {
 #' @param n_background extra uniform points (noise).
 #' @param size side of the square window.
 #' @param queen contiguity type.
+#' @param aspect elongation of the clusters (1 = discs). Each cluster becomes an
+#'   ellipse with the same area, semi-axes radius*sqrt(aspect) and
+#'   radius/sqrt(aspect), at a random angle. `radius` and `sons` may be vectors
+#'   (one value per cluster).
 #' @param n_cov points whose intensity follows an environmental covariate
 #'   (a Gaussian bump placed at least `min_dist` from every parent). These
 #'   points are explained by Z, so they are NOT hot spots once Z is used.
@@ -46,13 +50,18 @@ grid_adjacency <- function(k, queen = TRUE) {
 sim_thomas <- function(k = 20, n_parents = 3, radius = 100, sons = 1000,
                        n_background = 0, size = 1000, queen = TRUE,
                        n_cov = 0, cov_strength = 3, cov_sd = 150,
-                       min_dist = 300) {
-  px <- stats::runif(n_parents, radius, size - radius)
-  py <- stats::runif(n_parents, radius, size - radius)
+                       min_dist = 300, aspect = 1) {
+  radius <- rep_len(radius, max(n_parents, 1)); sons <- rep_len(sons, max(n_parents, 1))
+  ax <- radius * sqrt(aspect); ay <- radius / sqrt(aspect)   # semi-axes, same area
+  px <- stats::runif(n_parents, ax, size - ax)
+  py <- stats::runif(n_parents, ax, size - ax)
+  ang <- if (aspect != 1) stats::runif(n_parents, 0, pi) else rep(0, n_parents)
   pts <- do.call(rbind, lapply(seq_len(n_parents), function(i) {
-    r  <- radius * sqrt(stats::runif(sons))
-    th <- stats::runif(sons, 0, 2 * pi)
-    cbind(px[i] + r * cos(th), py[i] + r * sin(th))
+    r  <- sqrt(stats::runif(sons[i]))
+    th <- stats::runif(sons[i], 0, 2 * pi)
+    u <- ax[i] * r * cos(th); v <- ay[i] * r * sin(th)
+    cbind(px[i] + u * cos(ang[i]) - v * sin(ang[i]),
+          py[i] + u * sin(ang[i]) + v * cos(ang[i]))
   }))
   if (n_background > 0)
     pts <- rbind(pts, cbind(stats::runif(n_background, 0, size),
@@ -64,7 +73,10 @@ sim_thomas <- function(k = 20, n_parents = 3, radius = 100, sons = 1000,
   bump <- function(x, y) exp(-((x - cov_center[1])^2 + (y - cov_center[2])^2) /
                                (2 * cov_sd^2))
   if (n_cov > 0) {
+    tries <- 0
     repeat {
+      tries <- tries + 1
+      if (tries > 5000) stop("no room for the covariate area: lower min_dist")
       cov_center <- stats::runif(2, cov_sd, size - cov_sd)
       if (n_parents == 0 ||
           all(sqrt((px - cov_center[1])^2 + (py - cov_center[2])^2) > min_dist)) break
@@ -96,13 +108,18 @@ sim_thomas <- function(k = 20, n_parents = 3, radius = 100, sons = 1000,
     cov_cells <- which(b > 0.5)
   }
   # cells whose centre lies inside some cluster disc (the true hot footprint)
-  foot <- if (n_parents > 0)
-    which(apply(cc, 1, function(p) any((p[1] - px)^2 + (p[2] - py)^2 <= radius^2)))
-  else integer(0)
+  inside <- function(i) {                          # cells whose centre is in cluster i
+    dx <- cc[, 1] - px[i]; dy <- cc[, 2] - py[i]
+    u <- dx * cos(ang[i]) + dy * sin(ang[i]); v <- -dx * sin(ang[i]) + dy * cos(ang[i])
+    which((u / ax[i])^2 + (v / ay[i])^2 <= 1)
+  }
+  clusters <- lapply(seq_len(n_parents), inside)
+  foot <- sort(unique(unlist(clusters)))
 
   list(Y = Y, Z = Z, A = grid_adjacency(k, queen), k = k, cell_side = h,
        centres = cc, footprint = foot, cov_center = cov_center, cov_cells = cov_cells,
-       parents = cbind(x = px, y = py),
+       parents = cbind(x = px, y = py), radius = radius, aspect = aspect, angle = ang,
+       clusters = clusters,
        parent_cells = if (n_parents > 0) cell_of(px, py) else integer(0),
        points = pts)
 }
