@@ -6,3 +6,4 @@
 *.Rcheck
 *.tar.gz
 application/data/TODO_MADRID119m.txt
+application/data/covariates_clean.rds
