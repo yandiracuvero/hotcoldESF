@@ -40,18 +40,15 @@ rank_cells(res, "R3")[1:20]     # top-20 cells (zones first, then centrality)
 
 ## Plan and status
 
-- [x] **Step 1:** merged algorithm written down (`docs/algorithm.md`, draft 2)
-- [x] **Step 2:** core function in `R/` + unit tests (all passing)
-- [x] **Step 3:** small test (`simulation/01_small_test.R`). Findings and open questions are in `docs/step3_findings.md`
-- [x] **Step 3b:** signal strength × cell size × exponent a × log scale (`simulation/02_signal_test.R`, run on the Mac). Findings: `docs/step3b_findings.md`
-- [x] **Step 3c:** latent-graph recovery test (`simulation/03_latent_graph.R`): the reconstruction does NOT recover W*. See `docs/step3c_latent_graph.md`
-- [ ] **Decision:** how to frame the contribution (with co-authors) + add Gi*/LISA baselines
-- [ ] **Step 4:** full simulation study: top-m metric, ranking variants R0–R3, baselines (top counts B0, Getis-Ord Gi*, LISA), CSR null scenario, scenario **with covariates**
-- [ ] **Step 5:** Madrid application, rerun with the package:
-  - hot/cold map per summer (2010–2013)
-  - **persistence map**: zones that are hot in several summers
-  - **out-of-sample table**: choose m cells with year t and count the sightings of year t+1 (2010→11, 11→12, 12→13), for each ranking variant and baseline. Caveat for the paper: possible interventions between years are unknown and affect all methods equally, so the comparison between methods stays fair, but absolute capture rates may be underestimated.
-- [ ] **Step 6:** revise the paper + point-by-point response (manuscript number, tracked changes)
+- [x] Steps 1-3c: algorithm written down, core functions + tests, small tests, signal test, latent-graph test (the reconstruction does not recover W*: moved to an appendix)
+- [x] Step 4: one-pass hot/cold map with a permutation band; Gi*/LISA benchmarks (`docs/step4_hotcold.md`)
+- [x] Steps 5-7: penalty choice (ridge, smooth eigenvectors, CV), Moran gate, cluster shapes (`docs/step5*`-`step7*`)
+- [x] Step 8: full simulation study, 2400 datasets (`simulation/17_full_study.R`, `docs/step8_full_study.md`)
+- [x] Step 9: gate checks (`docs/step9_gate.md`)
+- [x] Steps 10-12: Madrid application; nested models (exposure, environment, rat reports); covariate relevance (`application/`, `docs/step10*`-`step12*`)
+- [ ] Open data questions: D_GatoOK vs D_Gatos; units of Densidad; deduplication of repeated reports
+- [ ] Grid-size sensitivity (500 m, 1 km, 2 km) for the Madrid models
+- [ ] Revise the paper + point-by-point response (manuscript number, tracked changes)
 
 ## Where the old code is
 

@@ -5,8 +5,9 @@
 # ridge + CV, 999 permutations).
 #
 #   M1 exposure        residential points in the cell (log), Densidad, log cell area
-#   M2 + environment   M1 + dist_verd, AreaVer, YCons, dist_agua, dist_fuent, D_Mercados,
-#                      D_GatoOK (cat feeding points; D_Gatos as a variant), Euros, Desempleo
+#   M2 + environment   M1 + dist_verd, AreaVer, YCons, dist_agua, dist_fuent,
+#                      D_GatoOK (cat feeding points; D_Gatos as a variant), Desempleo
+#                      (D_Mercados and Euros removed after the relevance check)
 #   M3 + rat reports   M2 + log(1 + rat reports, all months, 2010-2012)
 #   M2 + field         sensitivity: M2 + variables recorded in the vector-control field
 #                      campaigns (D_AlcSuc, D_AlcDef, D_AlcRes, D_DefCons, D_Solar, D_Edif_rui)
@@ -31,8 +32,9 @@ OUT <- "application/results"; FIG <- "application/figures"
 NPERM <- 999
 
 # ---- covariates per cell ------------------------------------------------------------------
-env_vars   <- c("dist_verd", "AreaVer", "YCons", "dist_agua", "dist_fuent", "D_Mercados",
-                "D_GatoOK", "Euros", "Desempleo")
+# D_Mercados and Euros were removed after the relevance check (step 12): not significant,
+# sign not stable across summers, and the hot map barely changes without them.
+env_vars   <- c("dist_verd", "AreaVer", "YCons", "dist_agua", "dist_fuent", "D_GatoOK", "Desempleo")
 field_vars <- c("D_AlcSuc", "D_AlcDef", "D_AlcRes", "D_DefCons", "D_Solar", "D_Edif_rui")
 cv <- readRDS("application/data/covariates_clean.rds")
 pts <- st_as_sf(cv[, c("x", "y")], coords = c("x", "y"), crs = st_crs(grid))
@@ -51,7 +53,8 @@ cellmean <- function(v) {
 EXP <- cbind(log_residential = log1p(n_res), Densidad = cellmean("Densidad"),
              log_area = log(as.numeric(st_area(grid))))
 ENV <- sapply(env_vars, cellmean)
-ENV_gatos <- ENV; ENV_gatos[, "D_GatoOK"] <- cellmean("D_Gatos"); colnames(ENV_gatos)[7] <- "D_Gatos"
+ENV_gatos <- ENV; ENV_gatos[, "D_GatoOK"] <- cellmean("D_Gatos")
+colnames(ENV_gatos)[colnames(ENV_gatos) == "D_GatoOK"] <- "D_Gatos"
 FIELD <- sapply(field_vars, cellmean)
 
 # ---- responses ----------------------------------------------------------------------------

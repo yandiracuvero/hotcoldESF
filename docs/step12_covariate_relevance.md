@@ -38,3 +38,11 @@ Plain OLS p-values are much smaller (spatial autocorrelation inflates them): e.g
 Field-campaign variables add 0.6 points of explained variance and change the hot map little (overlap 0.81).
 
 Out-of-sample 2013, 25 / 50 cells: M1 19% / 33%, M2 13% / 28%, M3 11% / 25%, M2 + field 14% / 29%, top counts 29% / 50% of sightings.
+
+## Final M2 (20 Oct 2026): D_Mercados and Euros removed
+
+M2 = exposure (log residential, Densidad, log area) + dist_verd, AreaVer, YCons, dist_agua, dist_fuent, D_GatoOK, Desempleo.
+- M2: covariates explain 82.7%, Moran z 9.1, 70 hot / 61 cold, hot cells hold 38% of reports.
+- Coefficients barely change; dist_verd becomes significant (+0.08, p = 0.04); all seven keep the same sign in every summer.
+- M3: 87.5%, z 5.6, 59 hot. Rats M2: 85.9%, z 8.8, 62 hot. D_Gatos variant: 69 hot.
+- Out-of-sample 2013 (25 / 50 cells): M2 13% / 29% of sightings.
