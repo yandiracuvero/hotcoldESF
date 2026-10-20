@@ -1,0 +1,7 @@
+"","M1 exposure","M2 + environment","M2 (D_Gatos variant)","M3 + rat reports","M2 + field variables","Rats, M2 (comparison)"
+"M1 exposure",1,0.55,0.54,0.46,0.54,0.23
+"M2 + environment",0.55,1,0.91,0.53,0.81,0.28
+"M2 (D_Gatos variant)",0.54,0.91,1,0.54,0.76,0.26
+"M3 + rat reports",0.46,0.53,0.54,1,0.54,0.13
+"M2 + field variables",0.54,0.81,0.76,0.54,1,0.21
+"Rats, M2 (comparison)",0.23,0.28,0.26,0.13,0.21,1
