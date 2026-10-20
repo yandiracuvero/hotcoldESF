@@ -1,0 +1,47 @@
+"model","covariate","std_coef"
+"M1 exposure","log_residential",0.79873042087479
+"M1 exposure","Densidad",0.162339617252047
+"M1 exposure","log_area",-0.0140171473755106
+"M2 + environment","log_residential",0.745642514677971
+"M2 + environment","Densidad",0.184766320706718
+"M2 + environment","log_area",-0.0162025426279822
+"M2 + environment","D_AlcSuc",0.0312655235379798
+"M2 + environment","D_AlcDef",-0.0846796959143493
+"M2 + environment","D_RsuDefi",-0.00101016453512682
+"M2 + environment","D_Mercados",-0.020184090719057
+"M2 + environment","D_GatoOK",-0.00379043367303406
+"M2 + environment","dist_agua",-0.125590912552103
+"M2 + environment","dist_verd",0.145442058372988
+"M2 + environment","AreaVer",0.143562035631034
+"M2 + environment","YCons",-0.0821780578125033
+"M2 + environment","Euros",-0.0697980014971103
+"M2 + environment","Desempleo",-0.000998113834247698
+"M3 + rat reports","log_residential",0.319926403118269
+"M3 + rat reports","Densidad",0.0418969814131267
+"M3 + rat reports","log_area",-0.00383868532189154
+"M3 + rat reports","D_AlcSuc",0.00808297580783854
+"M3 + rat reports","D_AlcDef",-0.0625993491210116
+"M3 + rat reports","D_RsuDefi",0.00996176676377938
+"M3 + rat reports","D_Mercados",0.00197972357980149
+"M3 + rat reports","D_GatoOK",-0.000942977198708066
+"M3 + rat reports","dist_agua",-0.0348839034050315
+"M3 + rat reports","dist_verd",0.0640968918929564
+"M3 + rat reports","AreaVer",0.0748211693087339
+"M3 + rat reports","YCons",-0.0277807920569511
+"M3 + rat reports","Euros",-0.0328394124645763
+"M3 + rat reports","Desempleo",-0.00251982335709831
+"M3 + rat reports","log_rat_reports",0.581395703200081
+"Rats, M2 (comparison)","log_residential",0.7322312655847
+"Rats, M2 (comparison)","Densidad",0.245735113808408
+"Rats, M2 (comparison)","log_area",-0.0212658216048697
+"Rats, M2 (comparison)","D_AlcSuc",0.0398739577925006
+"Rats, M2 (comparison)","D_AlcDef",-0.037978173336687
+"Rats, M2 (comparison)","D_RsuDefi",-0.0188717103317331
+"Rats, M2 (comparison)","D_Mercados",-0.0381217373586798
+"Rats, M2 (comparison)","D_GatoOK",-0.00489762215071974
+"Rats, M2 (comparison)","dist_agua",-0.156015960640588
+"Rats, M2 (comparison)","dist_verd",0.139913601067735
+"Rats, M2 (comparison)","AreaVer",0.118234218010111
+"Rats, M2 (comparison)","YCons",-0.0935632400723675
+"Rats, M2 (comparison)","Euros",-0.0635687343905516
+"Rats, M2 (comparison)","Desempleo",0.00261733878402423
