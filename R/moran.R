@@ -42,3 +42,24 @@ moran_resid <- function(e, W, X) {
 #' Intercept + covariates design matrix (works when Z is NULL).
 #' @noRd
 design0 <- function(n, Z) if (is.null(Z)) matrix(1, n, 1) else cbind(1, Z)
+
+#' Moran's I test for regression residuals, permutation version
+#'
+#' Freedman-Lane: the OLS residuals are permuted, added back to the fitted
+#' values and the model is refitted; since the fitted part is removed again,
+#' this amounts to projecting the permuted residuals. Exact under
+#' exchangeable errors, whatever their distribution (e.g. sparse counts).
+#' @param e residuals of y on X. @param W weights. @param X design matrix.
+#' @param nperm number of permutations.
+#' @return list with `I`, `z` (standardised by the permutation mean and sd),
+#'   `p` (one-sided, H1: positive spatial correlation).
+#' @export
+moran_perm <- function(e, W, X, nperm = 999) {
+  q <- qr(as.matrix(X), tol = 1e-9)
+  Q <- qr.Q(q)[, seq_len(q$rank), drop = FALSE]
+  I <- as.numeric(crossprod(e, W %*% e) / crossprod(e))
+  P <- vapply(seq_len(nperm), function(b) sample(e), numeric(length(e)))
+  R <- P - Q %*% crossprod(Q, P)
+  Ib <- colSums(R * (W %*% R)) / colSums(R^2)
+  list(I = I, z = (I - mean(Ib)) / stats::sd(Ib), p = (1 + sum(Ib >= I)) / (nperm + 1))
+}

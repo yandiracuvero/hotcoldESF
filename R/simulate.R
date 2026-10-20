@@ -38,6 +38,9 @@ grid_adjacency <- function(k, queen = TRUE) {
 #'   ellipse with the same area, semi-axes radius*sqrt(aspect) and
 #'   radius/sqrt(aspect), at a random angle. `radius` and `sons` may be vectors
 #'   (one value per cluster).
+#' @param n_cold,cold_radius,cold_keep cold areas: `n_cold` discs of radius
+#'   `cold_radius` where only a share `cold_keep` of the points is kept (placed
+#'   away from the clusters and the covariate area). Returned as `cold_cells`.
 #' @param n_cov points whose intensity follows an environmental covariate
 #'   (a Gaussian bump placed at least `min_dist` from every parent). These
 #'   points are explained by Z, so they are NOT hot spots once Z is used.
@@ -50,7 +53,8 @@ grid_adjacency <- function(k, queen = TRUE) {
 sim_thomas <- function(k = 20, n_parents = 3, radius = 100, sons = 1000,
                        n_background = 0, size = 1000, queen = TRUE,
                        n_cov = 0, cov_strength = 3, cov_sd = 150,
-                       min_dist = 300, aspect = 1) {
+                       min_dist = 300, aspect = 1,
+                       n_cold = 0, cold_radius = 150, cold_keep = 0.2) {
   radius <- rep_len(radius, max(n_parents, 1)); sons <- rep_len(sons, max(n_parents, 1))
   ax <- radius * sqrt(aspect); ay <- radius / sqrt(aspect)   # semi-axes, same area
   px <- stats::runif(n_parents, ax, size - ax)
@@ -90,6 +94,29 @@ sim_thomas <- function(k = 20, n_parents = 3, radius = 100, sons = 1000,
     pts <- rbind(pts, cp[seq_len(n_cov), , drop = FALSE])
   }
 
+  # cold areas: discs where only a share `cold_keep` of the points is kept, placed
+  # away from the clusters and from the covariate area
+  cold_centers <- matrix(numeric(0), ncol = 2)
+  if (n_cold > 0) {
+    for (c0 in seq_len(n_cold)) {
+      tries <- 0
+      repeat {
+        tries <- tries + 1
+        if (tries > 5000) stop("no room for the cold area")
+        cc0 <- stats::runif(2, cold_radius, size - cold_radius)
+        far_p <- n_parents == 0 || all(sqrt((px - cc0[1])^2 + (py - cc0[2])^2) > ax + cold_radius + 50)
+        far_c <- is.null(cov_center) || sqrt(sum((cov_center - cc0)^2)) > cold_radius + 2 * cov_sd
+        far_o <- nrow(cold_centers) == 0 ||
+          all(sqrt((cold_centers[, 1] - cc0[1])^2 + (cold_centers[, 2] - cc0[2])^2) > 2 * cold_radius)
+        if (far_p && far_c && far_o) break
+      }
+      cold_centers <- rbind(cold_centers, cc0)
+      inside <- (pts[, 1] - cc0[1])^2 + (pts[, 2] - cc0[2])^2 <= cold_radius^2
+      drop <- inside & stats::runif(nrow(pts)) > cold_keep
+      pts <- pts[!drop, , drop = FALSE]
+    }
+  }
+
   cell_of <- function(x, y) {
     cx <- pmin(floor(x / (size / k)), k - 1)
     cy <- pmin(floor(y / (size / k)), k - 1)
@@ -120,6 +147,8 @@ sim_thomas <- function(k = 20, n_parents = 3, radius = 100, sons = 1000,
        centres = cc, footprint = foot, cov_center = cov_center, cov_cells = cov_cells,
        parents = cbind(x = px, y = py), radius = radius, aspect = aspect, angle = ang,
        clusters = clusters,
+       cold_cells = if (n_cold > 0) which(apply(cc, 1, function(p)
+         any((p[1] - cold_centers[, 1])^2 + (p[2] - cold_centers[, 2])^2 <= cold_radius^2))) else integer(0),
        parent_cells = if (n_parents > 0) cell_of(px, py) else integer(0),
        points = pts)
 }

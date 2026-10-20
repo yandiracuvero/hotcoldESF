@@ -30,6 +30,11 @@
 #' @param fit_type "lasso" (select eigenvectors, then refit by OLS) or "ridge"
 #'   (shrink all candidate eigenvectors, no selection).
 #' @param foldid folds for the CV penalty rules (NULL = random; see [block_folds()]).
+#' @param gate Moran test of step 2: "normal" (exact moments, normal
+#'   approximation) or "permutation" (Freedman-Lane, see [moran_perm()]).
+#' @param gate_nperm permutations for the permutation gate.
+#' @param spline_df 0: covariates enter linearly; > 0: each covariate enters
+#'   as a natural spline with this many degrees of freedom (see [covariate_basis()]).
 #' @return an object of class "hotspots" (works with [rank_cells()]) with extra
 #'   fields `upper`, `lower` (band per cell), `null_hot` (expected number of hot
 #'   cells under the null), `band`.
@@ -38,18 +43,20 @@ hot_cold_map <- function(Y, Z = NULL, A, response = c("log", "std"), a = 2,
                          mc_min = NULL, nperm = 200, level = 0.95,
                          band = c("pointwise", "max"), alpha = 0.05,
                          penalty = c("z", "cv_min", "cv_1se", "bic", "moran"),
-                         fit_type = c("lasso", "ridge"), foldid = NULL) {
+                         fit_type = c("lasso", "ridge"), foldid = NULL,
+                         gate = c("normal", "permutation"), gate_nperm = 999,
+                         spline_df = 0) {
+  gate <- match.arg(gate)
   fit_type <- match.arg(fit_type); mix <- if (fit_type == "ridge") 0 else 1
   penalty <- match.arg(penalty)
   response <- match.arg(response); band <- match.arg(band)
   A  <- unname(A); n <- length(Y)
   y  <- as.numeric(scale(if (response == "log") log1p(Y) else Y))
-  Zs <- if (is.null(Z)) NULL else scale(as.matrix(Z))
-  if (!is.null(Zs)) Zs <- Zs[, apply(Zs, 2, function(z) all(is.finite(z))), drop = FALSE]
-  if (!is.null(Zs) && ncol(Zs) == 0) Zs <- NULL
+  Zs <- covariate_basis(Z, spline_df)
   X0  <- design0(n, Zs)
   ols <- stats::lm.fit(X0, y)
-  m0  <- moran_resid(ols$residuals, A, X0)
+  m0  <- if (gate == "normal") moran_resid(ols$residuals, A, X0) else
+    moran_perm(ols$residuals, A, X0, nperm = gate_nperm)
 
   out <- structure(list(n = n, A = A, D = A, Y = Y, z0 = m0$z, p0 = m0$p,
                         response = response, a = a, band = band, level = level,
@@ -133,4 +140,22 @@ local_moran <- function(x, A, nperm = 999) {
   }, numeric(1))
   quad <- ifelse(z > 0, ifelse(lag > 0, "HH", "HL"), ifelse(lag > 0, "LH", "LL"))
   data.frame(I = I, p = p, quad = quad)
+}
+
+#' Covariate design used by the procedure
+#'
+#' @param Z covariates (n x k) or NULL.
+#' @param spline_df 0: standardised covariates (linear terms); > 0: a natural
+#'   spline basis with `spline_df` degrees of freedom for each covariate,
+#'   standardised. Columns that are constant or not finite are dropped.
+#' @return matrix or NULL.
+#' @export
+covariate_basis <- function(Z, spline_df = 0) {
+  if (is.null(Z)) return(NULL)
+  Z <- as.matrix(Z)
+  B <- if (spline_df > 0)
+    do.call(cbind, lapply(seq_len(ncol(Z)), function(j) splines::ns(Z[, j], df = spline_df))) else Z
+  B <- scale(B)
+  B <- B[, apply(B, 2, function(z) all(is.finite(z))), drop = FALSE]
+  if (ncol(B) == 0) NULL else B
 }

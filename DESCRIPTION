@@ -15,6 +15,7 @@ Encoding: UTF-8
 Imports:
     glmnet (>= 4.1),
     igraph (>= 1.5),
+    splines,
     stats
 Suggests:
     testthat (>= 3.0.0)
