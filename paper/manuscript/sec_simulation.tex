@@ -1,0 +1,98 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Simulation study}\label{sec:sim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The simulation study has two aims: to compare the proposed procedure with standard hot-spot methods on data where the true hot and cold areas are known, and to check the choices of Section~\ref{sec:rationale}. All code is available in the project repository \todo{link}.
+
+\subsection{Design}\label{sec:sim-design}
+
+\paragraph{Point patterns.} Points are generated in the square window $[0,1000]^2$. Every pattern contains three components:
+\begin{itemize}
+  \item 2000 points distributed uniformly (background);
+  \item 3000 points whose intensity follows an environmental covariate: a Gaussian bump $b(u)=\exp\{-\lVert u-u_0\rVert^2/(2\cdot150^2)\}$ centred at a random location $u_0$ away from the clusters, with points accepted with probability $\exp\{3(b(u)-1)\}$;
+  \item clusters, generated as a modified Thomas process: each cluster has a centre and a fixed number of points distributed uniformly within a disc (or an ellipse) around it.
+\end{itemize}
+The covariate area is part of the explained variation: the model receives the covariate $b$ evaluated at the centre of each cell, together with an irrelevant covariate drawn from a standard normal distribution. A method that adjusts for covariates should not label the covariate area as hot.
+
+\paragraph{Scenarios.} Table~\ref{tab:scenarios} lists the scenarios. Scenarios B, L, E, M and S vary the size, shape and number of the clusters; K adds a true cold area, where only a fraction of the points is kept; U has the same data as B but the model does not receive the covariate, to show the effect of a missing covariate; C and N contain no clusters. Every scenario except C and N has a weak and a strong version.
+
+\begin{table}[ht]
+\centering
+\caption{Simulation scenarios. All patterns also contain 2000 uniform points and 3000 points that follow the covariate; the window is $1000\times1000$.}\label{tab:scenarios}
+\small
+\begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.2cm}}
+\toprule
+Scenario & Clusters & Points per cluster (weak / strong) & Purpose \\
+\midrule
+B & 3 discs, radius 100 & 50 / 200 & compact clusters \\
+L & 2 discs, radius 200 & 200 / 600 & large, diffuse clusters \\
+E & 3 ellipses, semi-axes $300\times33$ & 100 / 300 & elongated clusters \\
+M & 3 discs, radii 50, 100, 200 & same intensity: 24, 94, 377 / 50, 200, 800 & clusters of different sizes \\
+S & 8 discs, radius 40 & 15 / 40 & many small clusters \\
+K & as B (200 points) & cold disc of radius 150 keeps 50\% / 20\% & a true cold area \\
+U & as B & 50 / 200; covariate not given to the model & missing covariate \\
+C & none & -- & covariate area only \\
+N & none & 3000 uniform points, no covariate area & complete spatial randomness \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Grids.} Points are counted on a $20\times20$ grid (cell side 50) and on a $40\times40$ grid (cell side 25), with queen contiguity. We generate 100 datasets per setting on the $20\times20$ grid and 50 on the $40\times40$ grid, 2400 datasets in total. The permutation band uses $B=200$ and $B=100$ permutations respectively.
+
+\paragraph{Methods.} The proposed procedure (Algorithm~\ref{alg:hotcold}, denoted ESF) is compared with:
+\begin{itemize}
+  \item Getis-Ord $G_i^*$ \citep{getis1992analysis,ord1995local} on the residuals $e$ of $\log(1+Y)$ on the covariates, with binary weights including the cell itself; a cell is hot if $G_i^*>1.645$ and cold if $G_i^*<-1.645$. We consider three versions: alone, preceded by the test of Step~1, and preceded by the test with a false discovery rate correction \citep{benjamini1995controlling};
+  \item local Moran's $I$ (LISA) \citep{anselin1995local} on the same residuals, with conditional permutation $p$-values (999 permutations) and preceded by the test; a cell is hot if it is high--high with $p<0.05$, cold if low--low with $p<0.05$;
+  \item two rankings without spatial smoothing: the cells with the largest residuals $e$ (top residuals) and the cells with the largest counts (top counts).
+\end{itemize}
+The $G_i^*$ ranking orders cells by $G_i^*$, and the LISA ranking orders high--high cells by their local $I$.
+
+\paragraph{Measures.} A cell belongs to a cluster if its centre lies inside the cluster or if it contains the cluster centre. For a budget of 5\% of the cells (20 or 80 cells), we report the \emph{precision} of the priority list, the share of the selected cells that belong to a cluster, and the share of clusters with at least one selected cell. For the labels we report the share of hot cells that belong to a cluster, the share of cluster cells labelled hot, the percentage of the map labelled hot when there are no clusters (C and N), the same two shares for cold cells and the cold area (K), and the share of hot cells inside the covariate area (U).
+
+\subsection{Results}\label{sec:sim-results}
+
+\paragraph{Priority list.} Table~\ref{tab:sim-ranking} and Figure~\ref{fig:sim-ranking} show the precision of the top 5\% of cells. With strong clusters, ESF, $G_i^*$ and LISA all reach 0.99--1.00 in scenarios B, L, M and K. Differences appear with weak clusters. With weak compact clusters (B), $G_i^*$ is the most precise (0.81 and 0.59 on the two grids), followed by LISA (0.75 and 0.52) and ESF (0.70 and 0.43). With clusters of different sizes (M), all methods select cluster cells, but ESF reaches more of the clusters: on the $40\times40$ grid it includes the smallest cluster (radius 50) in its top 5\% in 96\% (strong) and 88\% (weak) of the datasets, against 68\% and 62\% for $G_i^*$; on the $20\times20$ grid it includes the radius-100 cluster in 97--100\% of the datasets, against 79--90\% for $G_i^*$. When clusters are smaller than a cell neighbourhood (S, and E on the coarser grid), ranking the residuals without smoothing is the most precise, since both ESF and $G_i^*$ average over an area larger than the clusters. Ranking by counts fails in every scenario (precision at most 0.32): the covariate area dominates the counts, which shows that covariate adjustment is the most important step for all methods.
+
+\paragraph{Labels.} Table~\ref{tab:sim-labels} and Figure~\ref{fig:sim-labels} summarise the hot and cold labels. With strong compact clusters, 77\% of the ESF hot cells belong to a cluster, against 67\% for $G_i^*$; with weak clusters the methods are within a few points of each other, and $G_i^*$ finds slightly more cluster cells. $G_i^*$ with the false discovery rate correction has the most precise labels (0.88--1.00) but finds few cluster cells when clusters are weak (1--15\%).
+
+\paragraph{No clusters.} Without the test of Step~1, $G_i^*$ labels 4.0--5.6\% of the map hot in scenarios C and N, as expected from its 5\% level. With the test, ESF labels 0.2--2.2\% hot, $G_i^*$ 0.2--1.9\% and LISA 0.1--1.3\%. The test therefore provides most of the protection against false hot spots, for all local methods. It rejects in 3\% of the datasets with random points on the $20\times20$ grid, and in 19\% (C, $20\times20$) and 32\% (C, $40\times40$) of the datasets that contain only the covariate area. The rejections in C occur because the covariate enters the model linearly while its effect on $\log(1+Y)$ is not linear; a spline for each covariate reduced them to 4--6\%, at the cost of power with weak clusters (Section~\ref{sec:sim-choices}). On random points with the $40\times40$ grid the test rejected in 8 of 50 datasets; a check with 500 further datasets gave 5.0\% (95\% interval 3.3--7.3\%), so the test holds its level.
+
+\paragraph{Cold areas.} In scenario K with a strong cold area, ESF labels 97\% ($20\times20$) and 88\% ($40\times40$) of the cold-area cells cold, and 79\% and 58\% of its cold cells lie in the cold area. $G_i^*$ labels more of the cold area (100\% and 96\%), but a lower or equal share of its cold cells lies inside it (70\% and 58\%); LISA has the most precise cold labels among the methods without the correction (81\% and 74\%). Outside the cold area, cold labels mark cells with few points by chance, which is more frequent on the finer grid.
+
+\paragraph{Missing covariate.} When the model does not receive the covariate (U), every method fails in the same way: about half of the hot cells (48--64\%) and most of the top 5\% (82--99\%) fall in the covariate area. A hot spot is only defined relative to the covariates that are in the model, which is why the choice of covariates in the application deserves care.
+
+\begin{table}[ht]
+\centering
+\caption{Precision of the top 5\% of cells (share of the selected cells that belong to a cluster), mean over replicates. Bold: highest value in the row. The three $G_i^*$ versions share the same ranking.}\label{tab:sim-ranking}
+\small
+\resizebox{\textwidth}{!}{\input{../tables/sim_ranking.tex}}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Hot and cold labels, mean over replicates. Scenario U: lower is better.}\label{tab:sim-labels}
+\small
+\resizebox{\textwidth}{!}{\input{../tables/sim_labels.tex}}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{fig15_full_ranking.png}
+\caption{Precision of the top 5\% of cells by scenario, grid and cluster strength; bars show $\pm2$ Monte Carlo standard errors. The last panel shows, for scenario S, the share of clusters with at least one cell in the top 5\%.}\label{fig:sim-ranking}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{fig16_full_labels.png}
+\caption{Hot and cold labels by scenario: share of hot cells inside a cluster, share of cluster cells labelled hot, percentage of the map labelled hot without clusters (C, N), cold labels in scenario K, and hot cells in the covariate area when the covariate is missing (U).}\label{fig:sim-labels}
+\end{figure}
+
+\subsection{Choices within the procedure}\label{sec:sim-choices}
+
+The choices described in Section~\ref{sec:rationale} were made with preliminary experiments on scenarios A (three clusters of 500 points and 2000 uniform points, no covariate area), B, C and N, on the same two grids. We summarise them here; the scripts and full results are in the repository.
+
+\paragraph{Penalty.} We compared eight ways to choose the penalty (the Moran's $I$ Lasso rule $|z_0|^{-a}$ with $a=1,2,3,4$; cross-validation with the smallest error and with the one-standard-error rule; BIC; and the largest penalty whose residuals pass the Moran test), each with all eigenvectors or with the smooth candidates~\eqref{eq:candidates}. With the rule $|z_0|^{-2}$ and all eigenvectors, the precision of the top 5\% with weak clusters was 0.19 ($20\times20$) and 0.11 ($40\times40$): the Lasso selected no eigenvector in 6 of 17 datasets with residual structure. Cross-validation with smooth candidates raised these values to 0.52 and 0.36 while keeping 0.98--1.00 with strong clusters, and replacing the Lasso by ridge raised them further to 0.67 and 0.47. Spatial (block) folds for the cross-validation did not change the ridge results.
+
+\paragraph{Test and correction.} Placing the test of Step~1 in front of $G_i^*$ reduced its false hot cells without clusters from 4.0--5.6\% to 0.2--1.9\% of the map (Table~\ref{tab:sim-labels}), without changing its ranking. A natural spline with 2 to 4 degrees of freedom for each covariate reduced the false rejections in scenario C from 19--32\% to 4--6\%, but also reduced the rejections with weak small clusters (S) from 64--76\% to 28--44\%: a flexible function of a smooth covariate absorbs part of the cluster signal \citep{hodges2010adding}. We keep linear covariate terms and report the spline version as a sensitivity analysis.
+
+\paragraph{Iterative reconstruction.} The iterative reconstruction of the spatial graph and the ranking by harmonic centrality are evaluated in Appendix~\ref{app:reconstruction}. They did not improve the precision of the priority list and, without hot/cold labels, about half of the top-ranked cells were cold.

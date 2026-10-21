@@ -1,0 +1,102 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Method}\label{sec:met}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Setting and definition of a hot spot}\label{sec:setting}
+
+The study region $R$ is partitioned into $n$ cells $c_1,\dots,c_n$. For each cell we observe the number of reported sightings $Y_i$ and a vector of $k$ covariates $z_i$ (local characteristics such as building age or the distance to green areas). Spatial relations between cells are described by a binary, symmetric contiguity matrix $A=(a_{ij})$, with $a_{ij}=1$ when cells $i$ and $j$ share a border or a corner (queen contiguity) and $a_{ii}=0$.
+
+Let $y_i$ be the standardised value of $\log(1+Y_i)$, $Z$ the $n\times k$ matrix of standardised covariates and $X=(\mathbf{1},Z)$. We write
+\begin{equation}\label{eq:model}
+  y = X\beta + f + \varepsilon ,
+\end{equation}
+where $\beta$ are the covariate effects, $f=(f_1,\dots,f_n)^\top$ is a spatially structured component and $\varepsilon$ is unstructured noise. The component $f$ collects the variation in sightings that the covariates do not explain and that is shared by neighbouring cells. We define a \emph{hot spot} as a cell with $f_i>0$ and a \emph{cold spot} as a cell with $f_i<0$, in both cases when $f_i$ is larger in absolute value than what spatially unstructured noise would produce. A hot spot is therefore an area with more sightings than its local characteristics predict, and with neighbours that share this excess. This definition depends on the covariates: the same data can show different hot spots under different sets of covariates, and Section~\ref{sec:app} uses this to separate where people report from where the environment predicts more pests.
+
+The procedure has four steps: a test for residual spatial structure, an estimate of $f$ by eigenvector spatial filtering, a permutation band that labels each cell as hot, cold or neutral, and the construction of zones and of a priority list. Algorithm~\ref{alg:hotcold} summarises it.
+
+\subsection{Step 1: test for residual spatial structure}\label{sec:gate}
+
+Let $e=M_X y$ be the residuals of the ordinary least squares (OLS) regression of $y$ on $X$, with $M_X=I-X(X^\top X)^{-1}X^\top$. Moran's $I$ of the residuals,
+\begin{equation}\label{eq:moran}
+  I = \frac{e^\top A e}{e^\top e},
+\end{equation}
+is compared with its exact mean and variance under the null hypothesis of no spatial correlation, which for regression residuals depend on $X$ and $A$ only \citep{tg07}. With $T_1=\operatorname{tr}(M_XAM_X)$, $T_2=\operatorname{tr}(M_XAM_XM_XAM_X)$ and $d=n-\operatorname{rank}(X)$,
+\begin{equation}\label{eq:moran-moments}
+  \operatorname{E}(I)=\frac{T_1}{d}, \qquad
+  \operatorname{Var}(I)=\frac{2\,(d\,T_2-T_1^2)}{d^2(d+2)}, \qquad
+  z_0=\frac{I-\operatorname{E}(I)}{\sqrt{\operatorname{Var}(I)}} .
+\end{equation}
+If the one-sided $p$-value of $z_0$ is larger than $\alpha$ (we use $\alpha=0.05$), the procedure stops and every cell is labelled neutral: the covariates explain the spatial pattern of the sightings and there is no evidence of hot or cold spots. Otherwise the procedure continues.
+
+\subsection{Step 2: the spatial component by eigenvector spatial filtering}\label{sec:esf}
+
+Eigenvector spatial filtering (ESF) represents spatial patterns as linear combinations of the eigenvectors of the contiguity matrix \citep{grif2000,grif03,tg07}. Let $A=E\Delta E^\top$ with $E=(e_1,\dots,e_n)$ orthonormal and $\Delta=\operatorname{diag}(\delta_1\ge\dots\ge\delta_n)$. The eigenvector $e_j$ is a map over the cells, and its Moran's $I$ is proportional to $\delta_j$: eigenvectors with large positive eigenvalues are smooth patterns at broad scales, eigenvectors with eigenvalues near zero or negative alternate between neighbouring cells. Hot and cold spots are positively autocorrelated by definition, so we use only the candidate set
+\begin{equation}\label{eq:candidates}
+  \mathcal{C}=\{\,j:\ \delta_j\ge c\,\delta_1\,\}, \qquad c=0.25,
+\end{equation}
+the threshold suggested by \citet{grif03}. On a regular queen grid this keeps about one fifth of the eigenvectors. With $E_{\mathcal{C}}$ the matrix of candidate eigenvectors, model~\eqref{eq:model} becomes
+\begin{equation}\label{eq:esf}
+  y = X\beta + E_{\mathcal{C}}\gamma + \varepsilon ,
+\end{equation}
+and we estimate it by ridge regression \citep{hoerl1970ridge}, penalising the eigenvector coefficients but not the covariate effects:
+\begin{equation}\label{eq:ridge}
+  (\hat\beta,\hat\gamma) = \arg\min_{\beta,\gamma}\ \frac{1}{2n}\,\lVert y-X\beta-E_{\mathcal{C}}\gamma\rVert_2^2 + \frac{\lambda}{2}\,\lVert\gamma\rVert_2^2 ,
+  \qquad
+  \hat\gamma=\bigl(E_{\mathcal{C}}^\top M_X E_{\mathcal{C}}+n\lambda I\bigr)^{-1}E_{\mathcal{C}}^\top M_X\, y .
+\end{equation}
+The penalty $\lambda$ is chosen by ten-fold cross-validation (the value with the smallest cross-validated error), and the model is fitted with the \texttt{glmnet} package \citep{friedman2010regularization}. The estimated spatial component is
+\begin{equation}\label{eq:fhat}
+  \hat f = E_{\mathcal{C}}\hat\gamma - \overline{E_{\mathcal{C}}\hat\gamma}\,\mathbf{1} ,
+\end{equation}
+centred because the leading eigenvector of a connected graph is nearly constant and therefore almost collinear with the intercept. When the covariates are close to orthogonal to the candidate eigenvectors, $E_{\mathcal{C}}^\top M_X E_{\mathcal{C}}\approx I$ and ridge shrinks all coefficients by the same factor, so that $\hat f$ is, up to a scale, the projection of the residuals $e$ on the smooth patterns in $\mathcal{C}$. In this sense $\hat f$ is a smoothed residual map, with the amount of smoothing set by the candidate set and adapted to the covariates through $M_X$.
+
+\subsection{Step 3: hot, cold and neutral cells}\label{sec:band}
+
+To decide which values of $\hat f_i$ are larger than noise, we compare them with their distribution when the residuals carry no spatial structure. Following \citet{freedman1983nonstochastic}, for $b=1,\dots,B$ we permute the OLS residuals, $y^{(b)}=X\hat\beta_{\mathrm{OLS}}+\Pi_b e$, with $\Pi_b$ a random permutation matrix, and refit~\eqref{eq:ridge} with the same candidate set and the same $\lambda$, which gives $\hat f^{(b)}$. For each cell let $q_i^{\,\mathrm{lo}}$ and $q_i^{\,\mathrm{hi}}$ be the 5\% and 95\% quantiles of $\hat f_i^{(1)},\dots,\hat f_i^{(B)}$. Cell $i$ is labelled
+\begin{equation}\label{eq:labels}
+  \text{hot if } \hat f_i>q_i^{\,\mathrm{hi}}, \qquad
+  \text{cold if } \hat f_i<q_i^{\,\mathrm{lo}}, \qquad
+  \text{neutral otherwise.}
+\end{equation}
+The band is pointwise: under the null each cell has a 5\% chance of being labelled hot. The test of Step~1 controls the map as a whole, because the band is only computed when the residuals show spatial structure. We use $B=999$ in the application; in the simulation study we use $B=200$ on the $20\times20$ grid and $B=100$ on the $40\times40$ grid to limit computing time.
+
+\subsection{Step 4: zones and priority list}\label{sec:rank}
+
+Hot (cold) zones are the connected components of the hot (cold) cells in the graph of $A$. When resources are limited to $m$ cells, cells are ranked by their estimated excess: first the hot cells by decreasing $\hat f_i$, then the remaining cells by decreasing $\hat f_i$. Since $y$ is the standardised logarithm of the counts, $\hat f_i$ is measured in standard deviations of $\log(1+Y)$: a value of $0.5$ means that the cell and its neighbourhood have about half a standard deviation more log sightings than the covariates predict.
+
+\begin{algorithm}[ht]
+\caption{Covariate-adjusted hot and cold spots}\label{alg:hotcold}
+\begin{algorithmic}[1]
+\State \textbf{Input:} counts $Y$, covariates $Z$, contiguity matrix $A$; level $\alpha$, threshold $c$, permutations $B$, budget $m$.
+\State $y\gets$ standardised $\log(1+Y)$; $X\gets(\mathbf{1},Z)$ with $Z$ standardised; $e\gets M_Xy$.
+\State Compute $z_0$ from~\eqref{eq:moran}--\eqref{eq:moran-moments}. \textbf{If} its $p$-value $>\alpha$, label all cells neutral and \textbf{stop}.
+\State $A=E\Delta E^\top$; $\mathcal{C}\gets\{j:\delta_j\ge c\,\delta_1\}$.
+\State Choose $\lambda$ by ten-fold cross-validation; fit~\eqref{eq:ridge}; $\hat f\gets$~\eqref{eq:fhat}.
+\For{$b=1,\dots,B$}
+  \State $y^{(b)}\gets X\hat\beta_{\mathrm{OLS}}+\Pi_be$; refit~\eqref{eq:ridge} with the same $\mathcal{C}$ and $\lambda$; store $\hat f^{(b)}$.
+\EndFor
+\State Label each cell hot, cold or neutral with~\eqref{eq:labels}.
+\State Hot (cold) zones $\gets$ connected components of hot (cold) cells in $A$.
+\State Priority list $\gets$ hot cells by decreasing $\hat f_i$, then the other cells by decreasing $\hat f_i$; return the first $m$.
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Rationale for each step}\label{sec:rationale}
+
+Each choice above was compared with alternatives in the simulation study of Section~\ref{sec:sim}. We summarise the reasons here.
+
+\paragraph{Logarithm of the counts.} Counts of sightings are skewed and their variance grows with the mean, so a few cells with many reports dominate a model for the raw counts. On the log scale, the test of Step~1 correctly finds no spatial structure when the pattern is fully explained by a covariate; on the raw scale it does not.
+
+\paragraph{Covariate adjustment.} Without covariates, a hot spot is simply an area with many sightings, and areas where the environment favours the pest are flagged even when nothing else is going on. In the simulation study, ranking cells by their counts (or applying Getis-Ord $G_i^*$ and local Moran's $I$ to the counts) placed most of the selected cells in an area driven by a covariate: the share of the top 5\% of cells inside a true cluster was at most 0.32, and close to zero with weak clusters.
+
+\paragraph{Test before mapping.} Local statistics label some cells as hot even when there is no clustering at all: at the 5\% level, about one cell in twenty. Testing the residuals first removes most of these false hot cells: in the simulation study, $G_i^*$ labelled 4--6\% of the map hot when there were no clusters, and 0.2--1.9\% when it was preceded by the test (Section~\ref{sec:sim}). The same test can be placed in front of any local statistic, and we do so for the benchmarks.
+
+\paragraph{Eigenvector spatial filtering.} ESF estimates the spatial component inside a regression, so the covariates are adjusted for in the same model, and it represents patterns at several scales at once. Local statistics such as $G_i^*$ average each cell with a fixed neighbourhood. In the simulation study this difference matters when clusters of different sizes coexist: ESF finds the smaller clusters more often.
+
+\paragraph{Smooth candidates.} Eigenvectors with small or negative eigenvalues describe patterns that alternate between neighbours and fit cell-level noise. Restricting the candidates to~\eqref{eq:candidates} improved the precision of the top-ranked cells mainly where it was low: with weak clusters and on the finer grid it roughly doubled (for example from 0.17 to 0.36 with cross-validated penalties), with little change elsewhere.
+
+\paragraph{Ridge with cross-validation.} The Moran's $I$ Lasso of \citet{barde2023moran} sets the penalty to $\lambda=|z_0|^{-2}$, a choice with good properties for estimating $\beta$ \citep{barde2024moran}. For mapping $f$ it ties the amount of smoothing to the strength of the Moran signal: with weak clusters ($|z_0|\approx3$) the penalty is large and often no eigenvector is selected, so $\hat f=0$; with strong clusters ($|z_0|>10$) it is so small that almost all eigenvectors enter and $\hat f$ follows the noise. Cross-validation adapts the penalty to the data, and ridge keeps all smooth candidates instead of selecting a few, which avoids the empty selections. Among the eight penalty rules we compared, cross-validation with smooth candidates gave the most stable precision across scenarios, and replacing the Lasso by ridge improved it further with weak clusters (from 0.52 to 0.67 on the $20\times20$ grid). Our aim is to map $f$, not to select eigenvectors consistently, so the theoretical reservations about cross-validation for variable selection \citep{clc21} do not apply here. The labels and rankings were also insensitive to the cross-validation design (random or spatial blocks), which is consistent with the near-uniform shrinkage described after~\eqref{eq:fhat}.
+
+\paragraph{Permutation band.} The distribution of $\hat f_i$ under no spatial structure depends on the covariates, the candidate set and the penalty, and has no simple closed form. Permuting the residuals reproduces the whole estimation in each replicate, so the band accounts for the smoothing that ESF itself introduces. A band for the maximum of $\hat f$ over the map, which would control the chance of any false hot cell, labelled almost no cells in our simulations and was not retained.
+
+\paragraph{What the procedure does not do.} An earlier version of this work reconstructed a sparser spatial graph from the selected eigenvectors, iterated the selection on that graph, and ranked cells by their centrality in it. Appendix~\ref{app:reconstruction} shows that the reconstruction does not recover the graph through which the process spreads, that iterating does not improve the ranking, and that centrality in the reconstructed graph does not distinguish hot from cold areas. The one-pass procedure above replaces it.
