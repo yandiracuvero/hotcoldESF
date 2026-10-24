@@ -108,3 +108,39 @@ reconstruct_B <- function(fit, weight = c("lambda", "gamma2")) {
               gamma2 = fit$gamma_S^2)
   fit$E_S %*% (w * t(fit$E_S))
 }
+
+#' Ridge ESF as a linear smoother: fhat = S y
+#'
+#' With a fixed candidate set and a fixed penalty, the ridge estimate of the
+#' spatial component is linear in y, fhat = S y. S reproduces [esf_fit()] with
+#' `alpha = 0` (glmnet: intercept, standardised columns, penalty factors rescaled
+#' to sum to the number of columns, and the penalty divided by the standard
+#' deviation of the response, which glmnet applies internally). The response
+#' scale is taken from `y` and then held fixed, so that the permutation band
+#' uses exactly the same smoother as the fit (equation (ridge) of the paper).
+#' Because S X = 0, the band reduces to fhat^(b) = S Pi_b e.
+#' @param y standardised response (sets the scale of the penalty).
+#' @param Z standardised covariates (n x k) or NULL.
+#' @param eig `eigen(A, symmetric = TRUE)`.
+#' @param lambda penalty in glmnet scaling (e.g. from [select_lambda()]).
+#' @param mc_min candidate eigenvectors (NULL = all).
+#' @return the n x n matrix S.
+#' @export
+ridge_smoother <- function(y, Z, eig, lambda, mc_min = 0.25) {
+  n <- length(y)
+  cand <- if (is.null(mc_min)) seq_len(n) else
+    which(eig$values >= mc_min * eig$values[1] & eig$values > 1e-8)
+  E  <- eig$vectors[, cand, drop = FALSE]
+  k  <- if (is.null(Z)) 0 else ncol(Z)
+  X  <- if (k) cbind(as.matrix(Z), E) else E
+  p  <- ncol(X)
+  pf <- c(rep(0, k), rep(1, ncol(E))) * p / ncol(E)   # glmnet rescales penalty.factor
+  Xc <- sweep(X, 2, colMeans(X))
+  sj2 <- colMeans(Xc^2)                                # glmnet standardize = TRUE
+  sy  <- sqrt(mean((y - mean(y))^2))                   # glmnet scales lambda by sd(y)
+  lam <- lambda / sy
+  G  <- solve(crossprod(Xc) + n * lam * diag(pf * sj2, p), t(Xc))  # coefficients = G (y - ybar)
+  Ec <- sweep(E, 2, colMeans(E))
+  S  <- Ec %*% G[(k + 1):p, , drop = FALSE]
+  sweep(S, 2, colMeans(S))                            # right-multiply by the centring matrix
+}

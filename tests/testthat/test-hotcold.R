@@ -43,3 +43,18 @@ test_that("covariate_basis gives linear or spline columns", {
   expect_equal(ncol(covariate_basis(Z, 4)), 8)
   expect_null(covariate_basis(NULL))
 })
+
+test_that("ridge_smoother reproduces glmnet ridge and annihilates the covariates", {
+  set.seed(21)
+  s <- sim_thomas(k = 15, n_parents = 2, radius = 100, sons = 200, n_background = 1500, n_cov = 1500)
+  n <- 225; Zs <- scale(s$Z); y <- as.numeric(scale(log1p(s$Y)))
+  eig <- eigen(s$A, symmetric = TRUE); lam <- 0.5
+  S <- ridge_smoother(y, Zs, eig, lam, mc_min = 0.25)
+  cand <- which(eig$values >= 0.25 * eig$values[1] & eig$values > 1e-8)
+  E <- eig$vectors[, cand]; X <- cbind(Zs, E); k <- ncol(Zs)
+  g <- glmnet::glmnet(X, y, alpha = 0, lambda = lam, penalty.factor = c(rep(0, k), rep(1, ncol(E))),
+                      thresh = 1e-14, maxit = 1e7)
+  f_glm <- as.numeric(scale(E %*% g$beta[(k + 1):ncol(X), 1], scale = FALSE))
+  expect_equal(as.numeric(S %*% y), f_glm, tolerance = 1e-6)
+  expect_lt(max(abs(S %*% cbind(1, Zs))), 1e-10)
+})

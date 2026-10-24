@@ -40,7 +40,7 @@
 #'   cells under the null), `band`.
 #' @export
 hot_cold_map <- function(Y, Z = NULL, A, response = c("log", "std"), a = 2,
-                         mc_min = NULL, nperm = 200, level = 0.95,
+                         mc_min = NULL, nperm = 999, level = 0.95,
                          band = c("pointwise", "max"), alpha = 0.05,
                          penalty = c("z", "cv_min", "cv_1se", "bic", "moran"),
                          fit_type = c("lasso", "ridge"), foldid = NULL,
@@ -75,10 +75,18 @@ hot_cold_map <- function(Y, Z = NULL, A, response = c("log", "std"), a = 2,
 
   # permutation band: what fhat looks like when the residuals carry no structure
   yhat <- y - ols$residuals
-  null <- vapply(seq_len(nperm), function(b) {
-    yb <- yhat + sample(ols$residuals)
-    esf_fit(yb, Zs, A, A, lambda, mc_min = mc_min, eig = eig, test = FALSE, alpha = mix)$fhat
-  }, numeric(n))                                        # n x nperm
+  if (fit_type == "ridge") {
+    # ridge is a linear smoother, fhat = S y with S X = 0, so each permutation is
+    # fhat^(b) = S Pi_b e: build S once and permute the residuals (no refits)
+    Sm   <- ridge_smoother(y, Zs, eig, lambda, mc_min = mc_min)
+    fit$fhat <- as.numeric(Sm %*% y)
+    null <- Sm %*% vapply(seq_len(nperm), function(b) sample(ols$residuals), numeric(n))
+  } else {
+    null <- vapply(seq_len(nperm), function(b) {
+      yb <- yhat + sample(ols$residuals)
+      esf_fit(yb, Zs, A, A, lambda, mc_min = mc_min, eig = eig, test = FALSE, alpha = mix)$fhat
+    }, numeric(n))                                      # n x nperm
+  }
   up_pw <- apply(null, 1, stats::quantile, probs = level, names = FALSE)
   lo_pw <- apply(null, 1, stats::quantile, probs = 1 - level, names = FALSE)
   up_mx <- rep(stats::quantile(apply(null, 2, max), level, names = FALSE), n)

@@ -7,3 +7,11 @@
 *.tar.gz
 application/data/TODO_MADRID119m.txt
 application/data/covariates_clean.rds
+
+# LaTeX build files
+paper/manuscript/*.aux
+paper/manuscript/*.bbl
+paper/manuscript/*.blg
+paper/manuscript/*.log
+paper/manuscript/*.out
+paper/manuscript/*.synctex.gz

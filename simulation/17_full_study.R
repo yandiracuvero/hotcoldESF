@@ -24,8 +24,8 @@
 #      of its points
 #   U  B data (weak 50 / strong 200) but the model does NOT receive the covariate
 #   C  covariate area only (no clusters);  N  3000 random points (no clusters)
-# Grids: 20 x 20 (cell side 50; 100 replicates; 200 permutations) and
-#        40 x 40 (cell side 25;  50 replicates; 100 permutations).
+# Grids: 20 x 20 (cell side 50; 100 replicates) and 40 x 40 (cell side 25; 50 replicates);
+#        999 permutations for the band on both grids, as in the application.
 #
 # Run from the repo root: Rscript simulation/17_full_study.R   (resumable; ~3-4 h on 2 cores)
 
@@ -37,7 +37,7 @@ CORES <- as.integer(Sys.getenv("CORES", detectCores()))
 OUT   <- "simulation/results/17"
 dir.create(OUT, showWarnings = FALSE, recursive = TRUE)
 NREP  <- c("20" = as.integer(Sys.getenv("NREP20", 100)), "40" = as.integer(Sys.getenv("NREP40", 50)))
-NPERM <- c("20" = 200, "40" = 100)
+NPERM <- c("20" = 999, "40" = 999)
 
 scen <- list(
   B = list(n = 3, radius = 100, aspect = 1, weak = 50, strong = 200, min_dist = 300),
