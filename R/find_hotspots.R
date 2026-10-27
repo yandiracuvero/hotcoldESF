@@ -1,6 +1,7 @@
-# Main algorithm -----------------------------------------------------------------
+# Earlier version: iterative reconstruction of the spatial graph -------------------
 #
-# Spec: docs/algorithm.md, Steps 0-4. Ranking (Step 5) is in rank.R.
+# Not exported. Kept to reproduce Appendix A of the paper (the reconstruction does
+# not recover the latent graph and is not part of the procedure in hot_cold_map()).
 
 #' Find hot and cold spots by iterative ESF graph reconstruction
 #'
@@ -23,7 +24,7 @@
 #' @param keep_graphs store every accepted graph (and its fhat) in `out$graphs`,
 #'   to plot the iterations.
 #' @return an object of class "hotspots"; see the README for its fields.
-#' @export
+#' @noRd
 find_hotspots <- function(Y, Z = NULL, A, alpha = 0.05,
                           weight = c("lambda", "gamma2"),
                           a = 2, response = c("std", "log"),
@@ -138,7 +139,8 @@ find_zones <- function(D, labels) {
   list(hot = zone_of("hot"), cold = zone_of("cold"))
 }
 
-#' @export
+#' @exportS3Method
+#' @noRd
 print.hotspots <- function(x, ...) {
   e0 <- sum(x$A[upper.tri(x$A)]); e1 <- sum(x$D[upper.tri(x$D)])
   cat("hotspots: n =", x$n, " weight =", x$weight, " rounding =", x$rounding, "\n")

@@ -1,22 +1,40 @@
-Package: hotspots
+Package: hotcoldESF
 Type: Package
-Title: Hot and Cold Spot Detection by Iterative Eigenvector Spatial Filtering
+Title: Covariate-Adjusted Hot and Cold Spots by Eigenvector Spatial Filtering
 Version: 0.1.0
 Authors@R: c(
     person("Yandira", "Cuvero", role = c("aut", "cre"), email = "yandira.cuvero@gmail.com"),
-    person("Rowan", "Cherodian", role = "aut"),
-    person("Jorge", "Mateu", role = "aut"),
-    person("Carlos", "Almeida", role = "aut"))
-Description: Reconstructs a sparse spatial graph from the eigenvectors selected by
-    Moran's I Lasso (MI-Lasso), labels cells as hot or cold using the fitted
-    spatial component, and produces a budget-constrained priority list.
+    person("Rowan", "Cherodian", role = "aut",
+           comment = c(ORCID = "0000-0002-8951-7932")),
+    person("Jorge", "Mateu", role = "aut",
+           comment = c(ORCID = "0000-0002-2868-7604")),
+    person("Carlos", "Almeida", role = "aut",
+           comment = c(ORCID = "0000-0002-7301-963X")))
+Description: Maps hot and cold spots of area-level counts after adjusting for
+    covariates. A hot (cold) spot is an area whose spatially structured
+    residual is positive (negative) and larger than spatially unstructured
+    noise would produce. The residuals of a regression on the covariates are
+    first tested for spatial autocorrelation with Moran's I and its exact
+    moments (Tiefelsdorf and Griffith, 2007) <doi:10.1068/a37378>. The spatial
+    component is then estimated by eigenvector spatial filtering with a ridge
+    penalty chosen by cross-validation, each area is labelled hot, cold or
+    neutral with a permutation band, and the areas are ordered into a priority
+    list. Getis-Ord Gi* and local Moran's I are included as benchmarks.
 License: MIT + file LICENSE
 Encoding: UTF-8
+Language: en-GB
+Depends:
+    R (>= 4.0.0)
 Imports:
     glmnet (>= 4.1),
     igraph (>= 1.5),
     splines,
     stats
 Suggests:
+    knitr,
+    rmarkdown,
+    spelling,
     testthat (>= 3.0.0)
+VignetteBuilder: knitr
 Config/testthat/edition: 3
+RoxygenNote: 7.3.1

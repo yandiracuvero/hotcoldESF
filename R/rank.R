@@ -1,7 +1,7 @@
 # Step 5: priority list for a budget of m cells ----------------------------------
 #
-# Spec: docs/algorithm.md, Step 5. Every method returns a full ordering of the
-# n cells (best first), so any budget m can be evaluated. Ties are broken by Y.
+# Every method returns a full ordering of the n cells (best first), so any
+# budget m can be evaluated. Ties are broken by Y.
 
 #' @noRd
 harmonic <- function(D, cells = seq_len(nrow(D))) {
@@ -11,18 +11,27 @@ harmonic <- function(D, cells = seq_len(nrow(D))) {
   as.numeric(igraph::harmonic_centrality(g))
 }
 
-#' Rank cells
+#' Priority list of cells
 #'
-#' @param obj output of [find_hotspots()].
-#' @param method one of
-#'   "R0" harmonic centrality on the final graph, no labels (published);
-#'   "R1" harmonic centrality on the hot subgraph;
-#'   "R2" hot cells by fhat;
-#'   "R3" hot zones by total excess, then cells by centrality within the zone;
-#'   "B0" raw counts Y (naive baseline).
-#' @return integer vector: cell indices ordered from highest to lowest priority.
+#' Orders all cells from the highest to the lowest priority, so that any budget
+#' of m cells can be served by the first m. Ties are broken by the counts.
+#' @param obj an object of class `"hotcold"` from [hot_cold_map()].
+#' @param method `"R2"` (default): hot cells first, ordered by their estimated
+#'   excess \eqn{\hat f_i}, then all other cells by \eqn{\hat f_i};
+#'   `"R3"`: hot zones by their total excess, then cells by harmonic
+#'   centrality within the zone; `"R1"`: hot cells by harmonic centrality within
+#'   the hot cells; `"R0"`: harmonic centrality in the contiguity graph, without
+#'   labels; `"B0"`: the counts (a naive baseline).
+#' @return Integer vector of cell indices, from the highest to the lowest priority.
+#' @examples
+#' set.seed(1)
+#' s <- sim_thomas(k = 15, n_parents = 2, radius = 120, sons = 300,
+#'                 n_background = 1500, n_cov = 1500)
+#' h <- hot_cold_map(s$Y, s$Z, s$A, nperm = 199)
+#' top <- rank_cells(h)[1:10]
+#' h$labels[top]
 #' @export
-rank_cells <- function(obj, method = c("R0", "R1", "R2", "R3", "B0")) {
+rank_cells <- function(obj, method = c("R2", "R3", "R1", "R0", "B0")) {
   method <- match.arg(method)
   n <- obj$n; Y <- obj$Y; f <- obj$fhat; hot <- obj$labels == "hot"
 

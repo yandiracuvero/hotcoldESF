@@ -3,5 +3,12 @@
 ^application$
 ^paper$
 ^archive$
+^ref$
 ^README\.md$
 ^\.git$
+^\.gitignore$
+^\.Rhistory$
+^\.DS_Store$
+^.*\.Rproj$
+^\.Rproj\.user$
+^cran-comments\.md$

@@ -2,8 +2,7 @@
 #
 # Exact moments under the null of no spatial correlation, for residuals
 # e = M_X y with M_X = I - X (X'X)^{-1} X' (Tiefelsdorf & Griffith 2007,
-# eqs. 8-9). This is the same statistic used in Barde et al. (2025) and in
-# the reference MI-Lasso code.
+# eqs. 8-9). This is the same statistic used in Barde et al. (2025).
 
 #' Projection matrix that removes the column space of X.
 #' Uses a rank-revealing QR, so collinear columns are allowed (e.g. when the
@@ -17,12 +16,24 @@ proj_out <- function(X) {
 
 #' Moran's I test for regression residuals
 #'
-#' @param e residual vector (length n).
+#' Moran's I of OLS residuals, standardised with its exact mean and variance
+#' under the null hypothesis of no spatial correlation (Tiefelsdorf and
+#' Griffith, 2007), which depend only on the design matrix and the weights.
+#' @param e residual vector (length n) of the OLS regression on `X`.
 #' @param W symmetric spatial weights matrix (n x n), e.g. binary contiguity.
-#' @param X design matrix that produced the residuals (including the intercept).
-#' @return list with `I`, `z` (standardised), `p` (one-sided, H1: positive
-#'   spatial correlation). `z` and `p` are NA when the model is (nearly)
-#'   saturated and the test is undefined.
+#' @param X design matrix that produced the residuals, including the intercept.
+#' @return List with `I`, `z` (standardised statistic) and `p` (one-sided
+#'   p-value; the alternative is positive spatial correlation). `z` and `p` are
+#'   `NA` when the model is (nearly) saturated and the test is undefined.
+#' @references Tiefelsdorf, M. and Griffith, D. A. (2007). Semiparametric
+#'   filtering of spatial autocorrelation: the eigenvector approach.
+#'   *Environment and Planning A*, 39(5), 1193--1221. \doi{10.1068/a37378}
+#' @examples
+#' set.seed(5)
+#' A <- grid_adjacency(10)
+#' X <- cbind(1, rnorm(100))
+#' e <- lm.fit(X, rnorm(100))$residuals
+#' moran_resid(e, A, X)
 #' @export
 moran_resid <- function(e, W, X) {
   M   <- proj_out(X)
@@ -45,14 +56,24 @@ design0 <- function(n, Z) if (is.null(Z)) matrix(1, n, 1) else cbind(1, Z)
 
 #' Moran's I test for regression residuals, permutation version
 #'
-#' Freedman-Lane: the OLS residuals are permuted, added back to the fitted
-#' values and the model is refitted; since the fitted part is removed again,
-#' this amounts to projecting the permuted residuals. Exact under
-#' exchangeable errors, whatever their distribution (e.g. sparse counts).
-#' @param e residuals of y on X. @param W weights. @param X design matrix.
-#' @param nperm number of permutations.
-#' @return list with `I`, `z` (standardised by the permutation mean and sd),
-#'   `p` (one-sided, H1: positive spatial correlation).
+#' Permutation test in the manner of Freedman and Lane (1983): the OLS residuals
+#' are permuted, added back to the fitted values and the model is refitted.
+#' Since the fitted part is removed again, this amounts to projecting the
+#' permuted residuals. It does not rely on normality, which helps with sparse
+#' counts.
+#' @param e residual vector (length n) of the OLS regression on `X`.
+#' @param W symmetric spatial weights matrix (n x n).
+#' @param X design matrix that produced the residuals, including the intercept.
+#' @param nperm number of permutations (default 999).
+#' @return List with `I`, `z` (standardised by the permutation mean and standard
+#'   deviation) and `p` (one-sided permutation p-value; the alternative is
+#'   positive spatial correlation).
+#' @examples
+#' set.seed(6)
+#' A <- grid_adjacency(10)
+#' X <- cbind(1, rnorm(100))
+#' e <- lm.fit(X, rnorm(100))$residuals
+#' moran_perm(e, A, X, nperm = 199)$p
 #' @export
 moran_perm <- function(e, W, X, nperm = 999) {
   q <- qr(as.matrix(X), tol = 1e-9)

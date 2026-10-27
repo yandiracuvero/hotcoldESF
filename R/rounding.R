@@ -1,6 +1,4 @@
-# Rounding rules ---------------------------------------------------------------
-#
-# Spec: docs/algorithm.md, "Rounding rules".
+# Rounding rules of the earlier graph reconstruction (not exported) ---------------
 # A rule is a function(v, ctx) returning a threshold tau. An edge is kept when
 # b_ij >= tau. `v` are the positive b_ij on the edges still present; `ctx` holds
 # what some rules need (Y, Z, D, A, lambda, weight, ...).
@@ -8,7 +6,7 @@
 
 #' Quantile rule (published version)
 #' @param q quantile in (0, 1).
-#' @export
+#' @noRd
 round_quantile <- function(q = 0.75) {
   force(q)
   structure(function(v, ctx) as.numeric(stats::quantile(v, q, names = FALSE)),
@@ -19,7 +17,7 @@ round_quantile <- function(q = 0.75) {
 #'
 #' Keeps every edge, so the final graph is A. Used to measure what the
 #' iterative pruning adds beyond the first ESF fit, the labels and the ranking.
-#' @export
+#' @noRd
 round_none <- function() structure(function(v, ctx) -Inf, label = "none")
 
 #' Two-component Gaussian mixture rule
@@ -29,7 +27,7 @@ round_none <- function() structure(function(v, ctx) -Inf, label = "none")
 #' Otherwise tau is the point between the two means where the weighted
 #' component densities are equal (the classification boundary). This is a
 #' formal version of the "valley" rule.
-#' @export
+#' @noRd
 round_mixture <- function() {
   structure(function(v, ctx) {
     if (length(unique(v)) < 5) return(-Inf)
@@ -76,7 +74,7 @@ em2 <- function(x, iter = 500, tol = 1e-8) {
 #' quantile of that null distribution: kept edges are stronger than chance.
 #' @param nperm number of permutations.
 #' @param level quantile of the null distribution.
-#' @export
+#' @noRd
 round_permutation <- function(nperm = 50, level = 0.95) {
   force(nperm); force(level)
   structure(function(v, ctx) {

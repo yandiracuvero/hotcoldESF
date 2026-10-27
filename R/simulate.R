@@ -4,9 +4,17 @@
 # the sf/spatstat dependency: the window is a square and the grid is regular.
 # Cells are numbered row by row from the bottom-left, like the application.
 
-#' Queen contiguity matrix of a k x k regular grid
+#' Contiguity matrix of a regular grid
+#'
+#' Binary contiguity matrix of a k x k grid, with cells numbered row by row from
+#' the bottom-left corner.
 #' @param k number of cells per side.
-#' @param queen TRUE for queen (8 neighbours), FALSE for rook (4).
+#' @param queen `TRUE` (default) for queen contiguity (cells sharing a border or a
+#'   corner), `FALSE` for rook contiguity (sharing a border).
+#' @return A k^2 x k^2 binary symmetric matrix with zero diagonal.
+#' @examples
+#' A <- grid_adjacency(4)
+#' table(rowSums(A))    # corners 3, borders 5, interior 8 neighbours
 #' @export
 grid_adjacency <- function(k, queen = TRUE) {
   n  <- k * k
@@ -19,11 +27,14 @@ grid_adjacency <- function(k, queen = TRUE) {
   A
 }
 
-#' Simulate a modified Thomas process and aggregate it on a grid
+#' Simulate clustered points and count them on a grid
 #'
-#' Parents are uniform in the window, at least `radius` from the border.
-#' Each parent has `sons` offspring uniform in a disc of radius `radius`
-#' (as in nclust / sim_thomas_modified).
+#' Simulates a modified Thomas cluster process in a square window and counts the
+#' points in the cells of a k x k grid. Parents are uniform in the window, at
+#' least `radius` from the border; each parent has `sons` offspring uniform in a
+#' disc of radius `radius`. Optionally adds uniform background points, points
+#' that follow an environmental covariate, and cold areas where points are
+#' thinned. Used in the simulation study of the package's paper.
 #'
 #' @param k cells per side (the grid has k^2 cells). NOTE: k is the number of
 #'   cells, not the cell side. Cell side = size / k.
@@ -45,10 +56,18 @@ grid_adjacency <- function(k, queen = TRUE) {
 #'   (a Gaussian bump placed at least `min_dist` from every parent). These
 #'   points are explained by Z, so they are NOT hot spots once Z is used.
 #' @param cov_strength,cov_sd strength and width of the bump.
+#' @param min_dist minimum distance between parents, and between the parents and
+#'   the centre of the covariate bump.
 #' @return list: `Y` counts per cell, `Z` (covariates: `env` bump + `noise`;
 #'   NULL if n_cov = 0), `A`, `k`, `cell_side`, `centres`, `footprint` (cells
 #'   inside a cluster disc), `cov_cells` (cells where the bump > 0.5),
 #'   `parents`, `parent_cells`, `points`.
+#' @examples
+#' set.seed(7)
+#' s <- sim_thomas(k = 20, n_parents = 3, radius = 100, sons = 200,
+#'                 n_background = 2000, n_cov = 3000)
+#' sum(s$Y)                      # 2000 + 3000 + 3 * 200 points
+#' image(matrix(log1p(s$Y), 20, 20), asp = 1, axes = FALSE)
 #' @export
 sim_thomas <- function(k = 20, n_parents = 3, radius = 100, sons = 1000,
                        n_background = 0, size = 1000, queen = TRUE,
@@ -167,7 +186,7 @@ sim_thomas <- function(k = 20, n_parents = 3, radius = 100, sons = 1000,
 #' @param p_remove share of edges removed when type = "random".
 #' @param beta coefficients of Z = (smooth gradient, noise).
 #' @return list: `Y`, `Z`, `A`, `Wstar` (binary latent graph), `k`.
-#' @export
+#' @noRd
 sim_sar_barrier <- function(k = 20, rho = 0.8, type = c("barriers", "random", "none"),
                             p_remove = 0.2, beta = c(1, 0)) {
   type <- match.arg(type)

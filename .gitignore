@@ -18,3 +18,11 @@ paper/manuscript/*.synctex.gz
 
 # Reference PDFs (not ours to distribute)
 ref/
+
+# Vignette build output
+inst/doc
+/doc/
+/Meta/
+
+# Copies of files delivered in the Claude app
+paper/manuscript/Claude outputs/

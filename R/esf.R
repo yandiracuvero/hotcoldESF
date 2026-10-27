@@ -21,7 +21,7 @@
 #'   permutation rule, where D is the same for every permutation).
 #' @return list: `E_S`, `values_S` (eigenvalues), `gamma_S` (post-Lasso
 #'   coefficients), `S` (indices), `fhat` (= E_S gamma_S), `resid`, `moran`.
-#' @export
+#' @noRd
 esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE, mc_min = 0.25,
                     eig = NULL, test = TRUE, alpha = 1) {
   n   <- length(Y)
@@ -100,7 +100,7 @@ esf_fit <- function(Y, Z, D, A, lambda, standardize = TRUE, mc_min = 0.25,
 #' @param fit output of [esf_fit()].
 #' @param weight "lambda" (eigenvalues; published version) or "gamma2"
 #'   (squared post-Lasso coefficients: importance of each pattern for Y).
-#' @export
+#' @noRd
 reconstruct_B <- function(fit, weight = c("lambda", "gamma2")) {
   weight <- match.arg(weight)
   w <- switch(weight,
@@ -109,22 +109,35 @@ reconstruct_B <- function(fit, weight = c("lambda", "gamma2")) {
   fit$E_S %*% (w * t(fit$E_S))
 }
 
-#' Ridge ESF as a linear smoother: fhat = S y
+#' Ridge eigenvector spatial filter as a linear smoother
 #'
-#' With a fixed candidate set and a fixed penalty, the ridge estimate of the
-#' spatial component is linear in y, fhat = S y. S reproduces [esf_fit()] with
-#' `alpha = 0` (glmnet: intercept, standardised columns, penalty factors rescaled
-#' to sum to the number of columns, and the penalty divided by the standard
-#' deviation of the response, which glmnet applies internally). The response
-#' scale is taken from `y` and then held fixed, so that the permutation band
-#' uses exactly the same smoother as the fit (equation (ridge) of the paper).
-#' Because S X = 0, the band reduces to fhat^(b) = S Pi_b e.
+#' With a fixed set of candidate eigenvectors and a fixed penalty, the ridge
+#' estimate of the spatial component is linear in the response,
+#' \eqn{\hat f = S y}. Because \eqn{S X = 0} for the covariate design \eqn{X},
+#' the fit to permuted residuals is \eqn{\hat f^{(b)} = S \Pi_b u}, so the
+#' permutation band of [hot_cold_map()] needs one matrix product instead of one
+#' refit per permutation.
+#'
+#' `S` reproduces the ridge fit of [glmnet::glmnet()] with `alpha = 0`: an
+#' unpenalised intercept and covariates, standardised columns, penalty factors
+#' rescaled to sum to the number of columns, and the penalty divided by the
+#' standard deviation of the response (as `glmnet` does internally). The scale
+#' of the response is taken from `y` and then held fixed.
 #' @param y standardised response (sets the scale of the penalty).
-#' @param Z standardised covariates (n x k) or NULL.
-#' @param eig `eigen(A, symmetric = TRUE)`.
-#' @param lambda penalty in glmnet scaling (e.g. from [select_lambda()]).
-#' @param mc_min candidate eigenvectors (NULL = all).
-#' @return the n x n matrix S.
+#' @param Z standardised covariates (n x k matrix) or `NULL`.
+#' @param eig eigendecomposition of the contiguity matrix,
+#'   `eigen(A, symmetric = TRUE)`.
+#' @param lambda penalty on the `glmnet` scale, e.g. from [select_lambda()].
+#' @param mc_min candidate eigenvectors: eigenvalue at least `mc_min` times the
+#'   largest; `NULL` uses all of them.
+#' @return The n x n smoothing matrix `S`.
+#' @examples
+#' set.seed(3)
+#' A <- grid_adjacency(8)
+#' y <- as.numeric(scale(rnorm(64)))
+#' S <- ridge_smoother(y, NULL, eigen(A, symmetric = TRUE), lambda = 0.5)
+#' fhat <- S %*% y
+#' max(abs(S %*% rep(1, 64)))   # constants are removed: S 1 = 0
 #' @export
 ridge_smoother <- function(y, Z, eig, lambda, mc_min = 0.25) {
   n <- length(y)

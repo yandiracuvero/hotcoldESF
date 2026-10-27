@@ -1,0 +1,231 @@
+---
+title: "Covariate-adjusted hot and cold spots: a worked example"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Covariate-adjusted hot and cold spots: a worked example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 7, fig.height = 3.6,
+                      fig.align = "center", dpi = 96)
+```
+
+This vignette walks through the procedure of `hotcoldESF` on one simulated
+dataset: the example shown in Figure 1 of the paper that introduces the method.
+The data contain three clusters of points, an area with fewer points than expected
+(a true cold spot), and an area with many points that are explained by a
+covariate. A good method should find the clusters and the cold area, and should
+**not** flag the covariate area, because its excess of points is explained by the
+covariate.
+
+```{r}
+library(hotcoldESF)
+```
+
+## The data
+
+`sim_thomas()` simulates points in a 1000 x 1000 window and counts them on a
+20 x 20 grid. This is scenario K of the simulation study (strong version):
+
+* three clusters of 200 points each (radius 100);
+* a cold area of radius 150 that keeps only 20% of its points;
+* 2000 points spread uniformly;
+* 3000 points whose intensity follows an environmental covariate (a smooth bump).
+
+```{r data}
+set.seed(10)
+s <- sim_thomas(k = 20, n_parents = 3, radius = 100, sons = 200,
+                n_background = 2000, n_cov = 3000, min_dist = 300,
+                n_cold = 1, cold_keep = 0.2)
+str(s[c("Y", "Z", "A")])
+```
+
+The model receives two covariates: `env`, the value of the bump at the centre of
+each cell, and `noise`, an irrelevant standard normal variable. `A` is the queen
+contiguity matrix of the grid.
+
+Two small helpers draw a map of the cells and the true clusters (dashed) and
+cold area (dotted).
+
+```{r helpers}
+k <- s$k; side <- s$cell_side
+draw_map <- function(v, cols, zlim = range(v), main = "") {
+  image(seq(0, 1000, length.out = k + 1), seq(0, 1000, length.out = k + 1),
+        matrix(v, k, k), col = cols, zlim = zlim, asp = 1, axes = FALSE,
+        xlab = "", ylab = "", main = main, font.main = 1, cex.main = 0.9)
+  th <- seq(0, 2 * pi, length.out = 100)
+  for (i in seq_len(nrow(s$parents)))
+    lines(s$parents[i, 1] + s$radius[i] * cos(th),
+          s$parents[i, 2] + s$radius[i] * sin(th), lty = 2)
+  ctr <- colMeans(s$centres[s$cold_cells, , drop = FALSE])
+  lines(ctr[1] + 150 * cos(th), ctr[2] + 150 * sin(th), lty = 3)
+  rect(0, 0, 1000, 1000, border = "grey60")
+}
+greens <- colorRampPalette(c("#f2f7ee", "#a8d08d", "#4d9a3a", "#1f5f1a"))(100)
+diverging <- colorRampPalette(c("#184f95", "#6da7ec", "#f0efec", "#ec8a89", "#a32727"))(101)
+```
+
+```{r counts, fig.height = 3.6}
+op <- par(mfrow = c(1, 2), mar = c(0.5, 0.5, 2, 0.5))
+plot(s$points, pch = 16, cex = 0.15, asp = 1, axes = FALSE, xlab = "", ylab = "",
+     xlim = c(0, 1000), ylim = c(0, 1000), main = "Points", font.main = 1, cex.main = 0.9)
+draw_map(log1p(s$Y), greens, main = "log(1 + counts) per cell")
+par(op)
+```
+
+The largest counts are in the covariate area (right). Ranking cells by their counts
+would send resources there, although nothing beyond the covariate is going on.
+
+## Running the procedure
+
+`hot_cold_map()` runs the four steps of the method with its default settings:
+
+1. regress \(y\), the standardised \(\log(1 + Y)\), on the covariates and test
+   the residuals for spatial autocorrelation with Moran's I (exact moments);
+2. estimate the spatial component \(\hat f\) by eigenvector spatial filtering
+   (smooth eigenvectors of `A`, ridge penalty chosen by cross-validation);
+3. compare each \(\hat f_i\) with its distribution under 999 permutations of the
+   residuals: hot above the 95% quantile, cold below the 5% quantile;
+4. group the hot (cold) cells into zones.
+
+We keep the permuted fits (`keep_null = TRUE`) only to plot the band below.
+
+```{r fit}
+set.seed(17)
+h <- hot_cold_map(s$Y, s$Z, s$A, keep_null = TRUE)
+h
+```
+
+The test of Step 1 rejects (\(z_0\) is large), so the procedure continues.
+
+## The spatial component
+
+\(\hat f\) is the part of the log counts that the covariates do not explain and
+that is shared by neighbouring cells. Positive values (red) have more points than
+the covariates predict; negative values (blue) fewer.
+
+```{r fhat, fig.height = 3.6}
+zl <- max(abs(h$fhat)) * c(-1, 1)
+op <- par(mfrow = c(1, 2), mar = c(0.5, 0.5, 2, 0.5))
+draw_map(log1p(s$Y), greens, main = "log(1 + counts)")
+draw_map(h$fhat, diverging, zl, main = "spatial component f-hat")
+par(op)
+```
+
+Once the covariate is accounted for, the covariate area disappears, while the
+three clusters and the cold area remain.
+
+## The permutation band
+
+For each cell, the band is the range of values \(\hat f_i\) would take if the
+residuals had no spatial structure. Here are the observed value and the band for
+three cells: the cell with the largest \(\hat f\), the neutral cell with the
+largest \(\hat f\), and the cell with the smallest \(\hat f\).
+
+```{r band, fig.height = 3}
+neutral <- which(h$labels == "neutral")
+cells <- c(which.max(h$fhat), neutral[which.max(h$fhat[neutral])], which.min(h$fhat))
+op <- par(mar = c(4, 7, 1, 1))
+xr <- range(h$null[cells, ], h$fhat[cells])
+plot(NA, xlim = xr, ylim = c(0.5, 3.5), yaxt = "n", xlab = "f-hat", ylab = "")
+axis(2, at = 3:1, labels = paste("cell", cells, "\n", h$labels[cells]), las = 1, tick = FALSE)
+for (j in 1:3) {
+  y0 <- 4 - j
+  points(h$null[cells[j], ], jitter(rep(y0, ncol(h$null)), amount = 0.15),
+         pch = 16, cex = 0.3, col = "grey70")
+  segments(c(h$lower[cells[j]], h$upper[cells[j]]), y0 - 0.3,
+           c(h$lower[cells[j]], h$upper[cells[j]]), y0 + 0.3, lwd = 2)
+  points(h$fhat[cells[j]], y0, pch = 18, cex = 2,
+         col = c(hot = "#e34948", neutral = "grey40", cold = "#2a78d6")[as.character(h$labels[cells[j]])])
+}
+par(op)
+```
+
+The grey points are the 999 permuted fits, the vertical bars the 5% and 95%
+quantiles, and the diamond the observed \(\hat f_i\). The middle cell has a positive
+\(\hat f_i\) that noise could produce, so it is labelled neutral.
+
+The band is pointwise: when there is no spatial structure, each cell has a 5% chance
+of being labelled hot. The test of Step 1 protects the map as a whole, because the
+band is only computed when the test rejects.
+
+## Hot and cold cells
+
+```{r labels, fig.height = 3.6}
+lab_num <- c(cold = 1, neutral = 2, hot = 3)[as.character(h$labels)]
+op <- par(mfrow = c(1, 2), mar = c(0.5, 0.5, 2, 0.5))
+draw_map(lab_num, c("#2a78d6", "#f0efec", "#e34948"), c(1, 3), main = "hot (red) and cold (blue) cells")
+zones <- ifelse(is.na(h$zones$hot), 0, h$zones$hot)
+draw_map(zones, c("#f0efec", hcl.colors(max(zones), "Set 2")), main = "hot zones")
+par(op)
+table(h$labels)
+```
+
+Since the data are simulated, we know the truth and can check the labels.
+
+```{r check}
+hot  <- which(h$labels == "hot")
+cold <- which(h$labels == "cold")
+c(hot_cells_in_a_cluster   = mean(hot %in% s$footprint),
+  cluster_cells_found      = mean(s$footprint %in% hot),
+  cold_cells_in_cold_area  = mean(cold %in% s$cold_cells),
+  cold_area_found          = mean(s$cold_cells %in% cold),
+  hot_cells_in_covariate_area = mean(hot %in% s$cov_cells))
+```
+
+`r sum(hot %in% s$cov_cells)` of the `r length(hot)` hot cells are in the covariate area.
+
+## Priority list
+
+When resources only allow treating `m` cells, `rank_cells()` orders the cells: hot
+cells first, by decreasing \(\hat f_i\), then the others.
+
+```{r rank}
+top <- rank_cells(h)[1:20]
+top
+mean(top %in% s$footprint)                     # share of the top 20 inside a cluster
+mean(order(-s$Y)[1:20] %in% s$footprint)       # the same for the 20 largest counts
+```
+
+Ranking by counts mostly picks the covariate area.
+
+## Comparison with Getis-Ord Gi*
+
+The test of Step 1 can be placed in front of any local statistic. Here \(G_i^*\) is
+computed on the same residuals of \(\log(1 + Y)\) on the covariates.
+
+```{r gistar}
+y <- as.numeric(scale(log1p(s$Y)))
+X <- cbind(1, scale(s$Z))
+u <- lm.fit(X, y)$residuals
+moran_resid(u, s$A, X)$z                       # the z0 of Step 1
+gi <- local_gi_star(u, s$A)
+gi_hot <- which(gi > qnorm(0.95))
+c(gi_hot_cells = length(gi_hot), in_a_cluster = mean(gi_hot %in% s$footprint))
+```
+
+\(G_i^*\) labels `r length(gi_hot)` cells hot, `r round(100 * mean(gi_hot %in% s$footprint))`% of
+them inside a cluster, against `r round(100 * mean(hot %in% s$footprint))`% for
+`hot_cold_map()`. Section 3 of the paper compares the two methods over many simulated
+datasets: they perform similarly with strong clusters, `hot_cold_map()` finds clusters of
+different sizes more often, and \(G_i^*\) is more precise with weak compact clusters.
+
+## Using your own data
+
+For areal data stored as polygons, the contiguity matrix can be built with the
+`spdep` package, and the counts and covariates are columns of the same table:
+
+```{r own-data, eval = FALSE}
+library(sf)
+library(spdep)
+areas <- st_read("my_areas.gpkg")                  # one row per area
+A <- nb2mat(poly2nb(areas, queen = TRUE), style = "B", zero.policy = TRUE)
+h <- hot_cold_map(areas$count, st_drop_geometry(areas)[, c("cov1", "cov2")], A)
+areas$label <- h$labels
+plot(areas["label"])
+```
+
+Areas without neighbours should be removed first, because the contiguity matrix
+must have at least one neighbour per area for the eigenvectors to be meaningful.

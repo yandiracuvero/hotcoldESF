@@ -13,18 +13,34 @@
 #            autocorrelation (Moran test with A, p > alpha): the classical
 #            ESF stopping rule, applied along the Lasso path
 
-#' Choose the Lasso penalty for the ESF fit
+#' Choose the penalty of the eigenvector spatial filter
 #'
-#' @param y standardised response. @param Zs standardised covariates or NULL.
-#' @param A contiguity matrix (used by the "moran" rule).
-#' @param eig `eigen(A)`; @param mc_min candidate eigenvectors (NULL = all).
-#' @param rule one of "z", "cv_min", "cv_1se", "bic", "moran".
-#' @param z0 Moran z of the OLS residuals (rule "z"). @param a exponent (rule "z").
-#' @param alpha level of the Moran test (rule "moran").
-#' @param mix 1 = Lasso (default), 0 = ridge (glmnet's `alpha`).
-#' @param foldid fold of each cell for the CV rules (NULL = 10 random folds);
-#'   see [block_folds()] for spatial folds.
-#' @return the penalty, in glmnet scaling.
+#' Chooses the penalty for the ESF regression of `y` on the covariates and the
+#' candidate eigenvectors of `A` (Lasso or ridge, through [glmnet::glmnet()]).
+#' @param y standardised response.
+#' @param Zs standardised covariates (n x k matrix) or `NULL`.
+#' @param A binary contiguity matrix (used by the `"moran"` rule).
+#' @param eig eigendecomposition `eigen(A, symmetric = TRUE)`.
+#' @param mc_min candidate eigenvectors: eigenvalue at least `mc_min` times the
+#'   largest; `NULL` uses all of them.
+#' @param rule `"z"`: \eqn{|z_0|^{-a}} (Moran's I Lasso, Barde et al., 2025);
+#'   `"cv_min"`: ten-fold cross-validation, smallest error; `"cv_1se"`: largest
+#'   penalty within one standard error of the smallest; `"bic"`: BIC along the
+#'   Lasso path; `"moran"`: largest penalty along the Lasso path whose post-Lasso
+#'   residuals pass the Moran test.
+#' @param z0 standardised Moran's I of the OLS residuals (rule `"z"`).
+#' @param a exponent (rule `"z"`).
+#' @param alpha level of the Moran test (rule `"moran"`).
+#' @param mix 1 for the Lasso, 0 for ridge (the `alpha` argument of `glmnet`).
+#' @param foldid optional fold of each cell for the cross-validation rules; see
+#'   [block_folds()].
+#' @return The penalty, on the `glmnet` scale.
+#' @examples
+#' set.seed(4)
+#' s <- sim_thomas(k = 12, n_parents = 2, radius = 120, sons = 300, n_background = 800)
+#' y <- as.numeric(scale(log1p(s$Y)))
+#' select_lambda(y, NULL, s$A, eigen(s$A, symmetric = TRUE), mc_min = 0.25,
+#'               rule = "cv_min", mix = 0)
 #' @export
 select_lambda <- function(y, Zs, A, eig, mc_min = NULL,
                           rule = c("z", "cv_min", "cv_1se", "bic", "moran"),
@@ -74,7 +90,11 @@ select_lambda <- function(y, Zs, A, eig, mc_min = NULL,
 #' assigned at random to `nfolds` folds, so neighbouring cells are mostly left
 #' out together.
 #' @param k cells per side (cells numbered row by row, as in [grid_adjacency()]).
-#' @return integer vector of fold ids, length k^2.
+#' @param block side of each block, in cells.
+#' @param nfolds number of folds.
+#' @return Integer vector of fold ids, of length `k^2`.
+#' @examples
+#' matrix(block_folds(8, block = 4, nfolds = 4), 8, 8)
 #' @export
 block_folds <- function(k, block = 4, nfolds = 10) {
   rc <- cbind((seq_len(k^2) - 1) %/% k, (seq_len(k^2) - 1) %% k)

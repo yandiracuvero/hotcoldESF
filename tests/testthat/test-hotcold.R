@@ -58,3 +58,15 @@ test_that("ridge_smoother reproduces glmnet ridge and annihilates the covariates
   expect_equal(as.numeric(S %*% y), f_glm, tolerance = 1e-6)
   expect_lt(max(abs(S %*% cbind(1, Zs))), 1e-10)
 })
+
+test_that("hot_cold_map checks its inputs and prints", {
+  A <- grid_adjacency(5)
+  expect_error(hot_cold_map(1:24, NULL, A), "n x n")
+  expect_error(hot_cold_map(1:25, NULL, A + diag(25)), "zero diagonal")
+  expect_error(hot_cold_map(1:25, matrix(1, 24, 1), A), "one row per cell")
+  set.seed(8)
+  s <- sim_thomas(k = 10, n_parents = 0, n_background = 1000)
+  h <- hot_cold_map(s$Y, NULL, s$A, nperm = 99)
+  expect_s3_class(h, "hotcold")
+  expect_output(print(h), "Covariate-adjusted")
+})
