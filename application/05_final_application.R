@@ -16,7 +16,8 @@
 # Run from the repo root: Rscript application/05_final_application.R   (about 30 min)
 
 suppressMessages({
-  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else library(hotspots)
+  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else
+    if (file.exists("../DESCRIPTION")) devtools::load_all("..", quiet = TRUE) else library(hotcoldESF)
   library(sf); library(spdep)
 })
 OUT <- "application/results"; FIG <- "application/figures"; TAB <- "paper/tables"
@@ -171,41 +172,39 @@ write.csv(grid_stats, file.path(OUT, "final_grid_stats.csv"), row.names = FALSE)
 DARK <- "#3C4043"; GREY <- "#9AA0A6"
 labcol <- function(l) ifelse(l == "hot", "#F4A79F", ifelse(l == "cold", "#9EC3E6", "white"))
 map <- function(geom, col, main, sub = NULL) {
-  par(mar = c(0.3, 0.3, 3, 0.3))
-  plot(geom, col = col, border = "#DADCE0", lwd = 0.25)
-  plot(st_geometry(window), add = TRUE, border = GREY, lwd = 0.8)
-  mtext(main, side = 3, line = 1.4, adj = 0, font = 2, col = DARK, cex = 0.8)
-  if (!is.null(sub)) mtext(sub, side = 3, line = 0.3, adj = 0, col = GREY, cex = 0.68)
+  nl <- if (is.null(sub)) 0 else length(strsplit(sub, "\n")[[1]])
+  par(mar = c(0.2, 0.2, 1.5 + nl * 1.05, 0.2))
+  plot(geom, col = col, border = "#DADCE0", lwd = 0.15)
+  plot(st_geometry(window), add = TRUE, border = GREY, lwd = 0.5)
+  mtext(main, side = 3, line = 0.3 + nl * 1.05, adj = 0, font = 2, col = DARK, cex = 1)
+  if (!is.null(sub)) mtext(sub, side = 3, line = 0.3, adj = 0, col = DARK, cex = 0.9, padj = 0)
 }
 g1 <- st_geometry(G1$g)
 mlab <- c(M1 = "M1 exposure", M2 = "M2 environment", M3 = "M3 rat reports")
 
 # per-summer maps and persistence (M2, M3)
 pcol <- c("white", "#FCE8E6", "#F4A79F", "#E8665A", "#A50E0E")
-png(file.path(FIG, "final_summers.png"), 2600, 1500, res = 150, pointsize = 10)
-par(mfrow = c(2, 5), oma = c(2.5, 0, 3.2, 0), family = "sans")
+# figures are drawn at their printed size (17 cm wide, 8 pt text)
+png(file.path(FIG, "final_summers.png"), width = 6.69, height = 4.1, units = "in", res = 300, pointsize = 8, type = "cairo")
+par(mfrow = c(2, 5), oma = c(2.4, 0, 0, 0), family = "sans"); par(cex = 1)
 for (m in c("M2", "M3")) {
   for (yr in years) { h <- per[[paste(m, yr)]]
-    map(g1, labcol(h$labels), paste(mlab[m], yr), sprintf("%d hot, %d cold", sum(lab(h)), sum(lab(h, "cold")))) }
-  map(g1, pcol[persist[, m] + 1], paste(mlab[m], ": persistence"),
-      sprintf("%d cells hot in all 4 summers; %d in 2 or more", sum(persist[, m] == 4), sum(persist[, m] >= 2)))
+    map(g1, labcol(h$labels), paste(m, yr), sprintf("%d hot, %d cold", sum(lab(h)), sum(lab(h, "cold")))) }
+  map(g1, pcol[persist[, m] + 1], paste0(m, ": persistence"),
+      sprintf("hot in all 4: %d cells\nin 2 or more: %d", sum(persist[, m] == 4), sum(persist[, m] >= 2)))
 }
-par(fig = c(0, 1, 0, 0.06), new = TRUE, mar = c(0, 0, 0, 0)); plot.new()
-legend("center", c("hot", "cold", paste(1:4, "summers hot")), fill = c("#F4A79F", "#9EC3E6", pcol[2:5]),
-       border = "#DADCE0", horiz = TRUE, bty = "n", text.col = DARK)
-mtext("Cockroach hot and cold cells per summer (1 km cells), and persistence over 2010-2013",
-      outer = TRUE, side = 3, line = 1.5, adj = 0.01, font = 2, col = DARK)
+par(fig = c(0, 1, 0, 0.045), new = TRUE, mar = c(0, 0, 0, 0)); plot.new()
+legend("center", c("hot", "cold", "hot 1 summer", paste("hot", 2:4, "summers")), fill = c("#F4A79F", "#9EC3E6", pcol[2:5]),
+       border = "#DADCE0", horiz = TRUE, bty = "n", text.col = DARK, cex = 0.95, x.intersp = 0.5)
 dev.off()
 
 # grid sizes (pooled 2010-2012)
-png(file.path(FIG, "final_grid_sizes.png"), 2200, 2000, res = 150, pointsize = 10)
-par(mfrow = c(3, 3), oma = c(0, 0, 3.2, 0), family = "sans")
+png(file.path(FIG, "final_grid_sizes.png"), width = 6.69, height = 6.9, units = "in", res = 300, pointsize = 8, type = "cairo")
+par(mfrow = c(3, 3), oma = c(0, 0, 0, 0), family = "sans"); par(cex = 1)
 for (m in models) for (gn in names(grids)) { h <- gfit[[gn]][[m]]; G <- grids[[gn]]
   st <- grid_stats[grid_stats$grid == gn & grid_stats$model == m, ]
   map(st_geometry(G$g), labcol(h$labels), paste0(mlab[m], ", ", gn),
-      sprintf("%d cells (%.0f%% without reports); Moran z = %.1f; %d hot", G$n, 100 * st$zero_cells, h$z0, sum(lab(h)))) }
-mtext("Hot and cold cells by grid size; cockroaches April-September 2010-2012",
-      outer = TRUE, side = 3, line = 1.5, adj = 0.01, font = 2, col = DARK)
+      sprintf("%d cells, %.0f%% without reports\nMoran z = %.1f; %d hot", G$n, 100 * st$zero_cells, h$z0, sum(lab(h)))) }
 dev.off()
 
 print(summ, digits = 3); print(hot_again, digits = 2); print(grid_stats, digits = 3); print(grid_cmp, digits = 2)

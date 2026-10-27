@@ -2,12 +2,12 @@
 
 The clean project for the paper *Reconstructing latent spatial relationships in urban pests to control for potential public health risks* (resubmission to SERRA).
 
-The repository root is also an R package (`hotspots`). The simulation, the application and the paper all use **one** algorithm, described in `docs/algorithm.md`.
+The repository root is also an R package (`hotcoldESF`). The simulation, the application and the paper all use **one** algorithm, described in `docs/algorithm.md`.
 
 ```
 Hotspot/
 ├── README.md          this file
-├── DESCRIPTION        R package metadata (dependencies: glmnet, igraph)
+├── DESCRIPTION        R package metadata (hotcoldESF; dependencies: glmnet, igraph)
 ├── NAMESPACE
 ├── R/                 the package code: the single implementation of the algorithm
 │   ├── moran.R          Moran's I for regression residuals (exact moments)
@@ -26,17 +26,23 @@ Hotspot/
 
 ## How to use it (in RStudio, from this folder)
 
+The package is called `hotcoldESF` (the name `hotspots` is already taken on CRAN).
+
 ```r
 devtools::load_all()          # load the package without installing
 devtools::test()              # run the unit tests
+devtools::check()             # R CMD check
 
-s   <- sim_thomas(k = 20, n_parents = 3, radius = 100, sons = 1000)
-res <- find_hotspots(s$Y, Z = NULL, A = s$A,
-                     weight = "lambda",              # or "gamma2"
-                     rounding = round_quantile(0.75)) # or round_mixture(), round_permutation()
-res                             # summary
-rank_cells(res, "R3")[1:20]     # top-20 cells (zones first, then centrality)
+s <- sim_thomas(k = 20, n_parents = 3, radius = 100, sons = 200,
+                n_background = 2000, n_cov = 3000)
+h <- hot_cold_map(s$Y, s$Z, s$A)   # defaults = the procedure of the paper
+h                                   # summary
+rank_cells(h)[1:20]                 # top-20 cells of the priority list
 ```
+
+The functions of the earlier graph reconstruction (`find_hotspots()`, the `round_*()` rules,
+`reconstruct_B()`) are no longer exported; they stay in `R/` so that the appendix scripts can
+be rerun with `devtools::load_all()`.
 
 ## Plan and status
 

@@ -2,15 +2,19 @@
 \section{Application to cockroach sightings in Madrid}\label{sec:app}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Data}\label{sec:app-data}
+%\subsection{Data}\label{sec:app-data}
 
-\paragraph{Sightings.} The data come from the Technical Unit for Vector Control (TUVC) of the municipality of Madrid. When citizens sight an urban pest they report it to the TUVC, and a member of staff visits the location to confirm the sighting within 24 hours. The data contain the date and location of every confirmed cockroach and rat sighting from January 2010 to December 2013 \citep{tamayo2014risk}. Cockroaches are active in warm months \citep{ifeanyi2015microbiology}: 87\% of the cockroach reports fall between April and September, so we use these months for cockroaches, which gives 1983, 1852, 1960 and 1315 reports in the four summers. Rat reports are spread over the year and are used for all months.
+%\paragraph{Sightings.} 
+%The data come from the 
+The Technical Unit for Vector Control (TUVC) of the municipality of Madrid work to determine  the advance of urban pest in the city, specially rats and cockroachs, for that they activated the comunity in order to determine relevant areas of events. When citizens sight an urban pest they report it to the TUVC, and a member of staff visits the location to confirm the sighting within 24 hours. The data contains the date and location of every confirmed cockroach and rat sighting from January 2010 to December 2013 \citep{tamayo2014risk}. Cockroaches are active in warm months \citep{ifeanyi2015microbiology}: 87\% of the cockroach reports fall between April and September, so we use these months for cockroaches, which gives 1983, 1852, 1960 and 1315 reports in the four summers. Rat reports are spread over the year and are used for all months.
 
 The maps of different summers are very similar (correlation of $\log(1+w)$ per cell between summers 0.90--0.94). We therefore estimate the main map from the three summers 2010--2012 pooled (5795 reports), use each summer separately to assess persistence, and keep 2013 to evaluate the priority list on data not used to build it.
 
-\paragraph{Grid.} The study region is the union of the Madrid districts, cut to the bounding box of the sightings plus 1 km. We divide it into square cells of 1 km and drop the cells with less than 0.75\% of their area inside the region, which leaves $n=493$ cells with 1798 queen-contiguity edges. The choice of cell size is examined in Section~\ref{sec:app-grid}.
+%\paragraph{Grid.} 
+The study region is the union of the Madrid districts, cut to the bounding box of the sightings plus 1 km. We divide it into square cells of 1 km and drop the cells with less than 0.75\% of their area inside the region, which leaves $n=493$ cells with 1798 queen-contiguity edges. The choice of cell size is examined in Section~\ref{sec:app-grid}.
 
-\paragraph{Covariates.} The covariates come from the database compiled by \citet{tamayo2013identificacion} and used by \citet{tamayo2014risk} and \citet{ayyad2018non}. It records, for each residential address point of the city (about 120\,000), the values of environmental, building and census variables at that location. We removed eight columns that were exact copies of other columns or constant, and computed the value of each covariate in a cell as the mean over the address points in it; the 162 cells without any residential address point (a third of the region, mostly non-residential land) take the mean of their neighbours, and their residential count is zero.
+%\paragraph{Covariates.} 
+The covariates come from the database compiled by \citet{tamayo2013identificacion} and used by \citet{tamayo2014risk} and \citet{ayyad2018non}. It records, for each residential address point of the city (about 120\,000), the values of environmental, building and census variables at that location. We removed eight columns that were exact copies of other columns or constant, and computed the value of each covariate in a cell as the mean over the address points in it; the 162 cells without any residential address point (a third of the region, mostly non-residential land) take the mean of their neighbours, and their residential count is zero.
 
 We build the model in three nested steps (Table~\ref{tab:app-covariates}):
 \begin{itemize}
@@ -49,9 +53,7 @@ M3 & log rat reports & $\log(1+{}$rat reports in the cell, same years$)$ & TUVC 
 
 Exposure explains most of the variation: M1 alone accounts for 80.0\% of the variance of $\log(1+w)$ in 2010--2012, M2 for 82.7\% and M3 for 87.5\%. In every model the residuals keep clear spatial structure (Moran $z_0$ of 10.8, 9.1 and 5.6), so the test of Step~1 lets the procedure continue.
 
-To decide which environmental covariates to keep, we estimated their coefficients with the spatial structure taken into account: an ordinary least squares fit of $\log(1+w)$ on the covariates and the smooth eigenvectors selected by cross-validated Lasso, so that the eigenvectors absorb the residual autocorrelation \citep{grif03}. Without the eigenvectors, the standard errors are too small; for example, the $p$-value of the distance to water drops from 0.24 to 0.0003. We also checked whether each coefficient has the same sign in each of the four summers, and how much the hot cells change when the covariate is dropped.
-
-Figure~\ref{fig:app-relevance} shows the result for the final M2. Older buildings, larger green areas, closeness to a drinking fountain and higher unemployment are associated with more reports ($p<0.001$), and the coefficients have the same sign in every summer. The distance to green areas ($p=0.04$) and to cat-feeding points ($p=0.07$) have weaker effects with a stable sign. The distance to water is not related to cockroach reports ($p=0.24$) but is to rat reports ($p=0.002$); we keep it so that M2 is the same for both species. In the initial model, the distance to markets and the mean income had $p$-values of 0.69 and 0.81, their sign changed between summers, and dropping either left at least 91\% of the hot cells unchanged; we removed them. Of the exposure variables, the residential address points have by far the largest effect (0.63 standard deviations of $\log(1+w)$ per standard deviation), followed by density (0.14); the cell area has no effect but is kept as a design variable.
+In order to decide which environmental covariates to keep, we estimated their coefficients with the spatial structure taken into account: an ordinary least squares fit of $\log(1+w)$ on the covariates and the smooth eigenvectors selected by cross-validated Lasso, so that the eigenvectors absorb the residual autocorrelation \citep{grif03}. Without the eigenvectors, the standard errors are too small; for example, the $p$-value of the distance to water drops from 0.24 to 0.0003. We also checked whether each coefficient has the same sign in each of the four summers, and how much the hot cells change when the covariate is dropped.
 
 \begin{figure}[ht]
 \centering
@@ -59,21 +61,28 @@ Figure~\ref{fig:app-relevance} shows the result for the final M2. Older building
 \caption{Coefficients of model M2 for cockroach reports, 2010--2012, with the residual spatial structure absorbed by smooth eigenvectors ($\pm2$ standard errors); grey circles are the coefficients estimated in each summer separately. All variables are standardised.}\label{fig:app-relevance}
 \end{figure}
 
+Figure~\ref{fig:app-relevance} shows the result for the final M2. Older buildings, larger green areas, closeness to a drinking fountain and higher unemployment are associated with more reports ($p<0.001$), and the coefficients have the same sign in every summer. The distance to green areas ($p=0.04$) and to cat-feeding points ($p=0.07$) have weaker effects with a stable sign. The distance to water is not related to cockroach reports ($p=0.24$) but is to rat reports ($p=0.002$); we keep it so that M2 is the same for both species. In the initial model, the distance to markets and the mean income had $p$-values of 0.69 and 0.81, their sign changed between summers, and dropping either left at least 91\% of the hot cells unchanged; we removed them. Of the exposure variables, the residential address points have by far the largest effect (0.63 standard deviations of $\log(1+w)$ per standard deviation), followed by density (0.14); the cell area has no effect but is kept as a design variable.
+
+
+
 \subsection{Hot and cold spots}\label{sec:app-maps}
 
-Figure~\ref{fig:app-models} shows the hot and cold cells of each model for 2010--2012. With M2, 70 cells (14\% of the region) are hot and 61 are cold; the hot cells hold 38\% of the reports. The hot cells form a band across the south-centre of the city and an area in the north-centre, with smaller zones to the west and north-east. Adding the environmental covariates changes the map: the Jaccard index between the hot cells of M1 and M2 (shared cells divided by cells hot in either) is 0.56, so the hot spots of M1 are partly explained by the environment. Controlling for rat reports (M3) keeps the main zones but reduces them to 59 hot cells (Jaccard 0.54 with M2). The map is robust to the other choices: using the alternative cat variable in the database gives a Jaccard index of 0.88 with M2, and adding the field-campaign variables gives 0.73, while raising the explained variance by only 0.7 points.
-
-The same model applied to rat reports gives a very different map (Jaccard 0.27 with the cockroach M2 map), although the raw counts of the two species are almost the same map. Once exposure and environment are accounted for, the excess of reports is specific to each species, which supports the use of covariate-adjusted hot spots rather than raw counts.
-
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{madrid_cov_models.png}
 \caption{Hot (red) and cold (blue) cells for cockroach reports, April--September 2010--2012, 1 km cells, by model; the last panel applies M2 to rat reports.}\label{fig:app-models}
 \end{figure}
 
-\paragraph{Persistence.} Figure~\ref{fig:app-summers} shows the maps of each summer. The test of Step~1 rejects in every summer and model ($z_0$ between 7.2 and 9.4 for M2, and between 4.6 and 6.2 for M3). With M2, between 54 and 66 cells are hot each summer, and 61--77\% of the hot cells of one summer are hot again the next. Twenty-seven cells are hot in all four summers and 70 in at least two; with M3 the numbers are 12 and 60. The cells that are hot every year are the natural first targets for control.
+Figure~\ref{fig:app-models} shows the hot and cold cells of each model for 2010--2012. With M2, 68 cells (14\% of the region) are hot and 61 are cold; the hot cells hold 38\% of the reports. The hot cells form a band across the south-centre of the city and an area in the north-centre, with smaller zones to the west and north-east. Adding the environmental covariates changes the map: the Jaccard index between the hot cells of M1 and M2 (shared cells divided by cells hot in either) is 0.56, so the hot spots of M1 are partly explained by the environment. Controlling for rat reports (M3) keeps the main zones but reduces them to 59 hot cells (Jaccard 0.53 with M2). The map is robust to the other choices: using the alternative cat variable in the database gives a Jaccard index of 0.90 with M2, and adding the field-campaign variables gives 0.74, while raising the explained variance by only 0.7 points.
 
-\begin{figure}[ht]
+The same model applied to rat reports gives a very different map (Jaccard 0.26 with the cockroach M2 map), although the raw counts of the two species are almost the same map. Once exposure and environment are accounted for, the excess of reports is specific to each species, which supports the use of covariate-adjusted hot spots rather than raw counts.
+
+
+
+%\paragraph{Persistence.} 
+Figure~\ref{fig:app-summers} shows the maps of each summer. The test of Step~1 rejects in every summer and model ($z_0$ between 7.2 and 9.4 for M2, and between 4.6 and 6.2 for M3). With M2, between 54 and 66 cells are hot each summer, and 61--75\% of the hot cells of one summer are hot again the next. Twenty-seven cells are hot in all four summers and 70 in at least two; with M3 the numbers are 12 and 60. The cells that are hot every year are the natural first targets for control.
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{final_summers.png}
 \caption{Hot and cold cells in each summer, 2010--2013, for models M2 (top) and M3 (bottom), and number of summers in which each cell is hot (right).}\label{fig:app-summers}
@@ -105,16 +114,16 @@ The results of an analysis on areal units depend on the size of the units \citep
 Cell size & Cells & reports & (M1 / M2 / M3) & (M2) & (M2) & cells (M2) \\
 \midrule
 500 m & 1901 & 65\% & 21.8 / 18.9 / 14.7 & 171 & 9\% & 42\% \\
-1 km  & 493  & 53\% & 10.8 / 9.1 / 5.6   & 70  & 14\% & 38\% \\
+1 km  & 493  & 53\% & 10.8 / 9.1 / 5.6   & 68  & 14\% & 38\% \\
 2 km  & 136  & 39\% & 4.6 / 4.0 / 2.1    & 25  & 22\% & 55\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The test of Step~1 rejects for every cell size and model, although with 2 km cells the evidence under M3 is weak ($z_0=2.1$). Larger cells label a larger share of the city hot (9\%, 14\% and 22\% with M2). The main zones, the south-central band and the north-central area, appear at all three sizes, but their extent changes: the Jaccard index between the hot areas is 0.29 for 500 m and 1 km, 0.36 for 1 km and 2 km, and 0.25 for 500 m and 2 km. The cell size should therefore be chosen with the intervention in mind: a 1 km cell is a manageable unit for a control campaign in a city of this size, and finer cells locate the excess more precisely but contain fewer reports each (65\% of the 500 m cells have none).
+The test of Step~1 rejects for every cell size and model, although with 2 km cells the evidence under M3 is weak ($z_0=2.1$). Larger cells label a larger share of the city hot (9\%, 14\% and 22\% with M2). The main zones, the south-central band and the north-central area, appear at all three sizes, but their extent changes: the Jaccard index between the hot areas is 0.29 for 500 m and 1 km, 0.35 for 1 km and 2 km, and 0.25 for 500 m and 2 km. The cell size should therefore be chosen with the intervention in mind: a 1 km cell is a manageable unit for a control campaign in a city of this size, and finer cells locate the excess more precisely but contain fewer reports each (65\% of the 500 m cells have none).
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{final_grid_sizes.png}
+\includegraphics[width=0.7\textwidth]{final_grid_sizes.png}
 \caption{Hot and cold cells for cockroach reports, 2010--2012, with cells of 500 m, 1 km and 2 km (columns) and models M1--M3 (rows).}\label{fig:app-grid}
 \end{figure}

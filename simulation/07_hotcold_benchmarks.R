@@ -30,7 +30,8 @@
 # Run from the repo root: Rscript simulation/07_hotcold_benchmarks.R  (resumable)
 
 suppressMessages({
-  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else library(hotspots)
+  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else
+    if (file.exists("../DESCRIPTION")) devtools::load_all("..", quiet = TRUE) else library(hotcoldESF)
   library(parallel)
 })
 CORES <- as.integer(Sys.getenv("CORES", detectCores()))
@@ -78,7 +79,7 @@ run_job <- function(j) {
     cov_fp = if (length(s$cov_cells)) mean(top %in% s$cov_cells) else NA) }
 
   t0 <- Sys.time()
-  h  <- hot_cold_map(s$Y, Z, s$A, nperm = j$nperm)
+  h  <- hot_cold_map(s$Y, Z, s$A, nperm = j$nperm, penalty = "z", mc_min = NULL, fit_type = "lasso")
   esf_secs <- as.numeric(Sys.time() - t0, units = "secs")
   lab_pw <- if (is.null(h$labels_pointwise)) h$labels else h$labels_pointwise
   lab_mx <- if (is.null(h$labels_max)) h$labels else h$labels_max

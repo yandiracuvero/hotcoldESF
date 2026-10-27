@@ -23,7 +23,8 @@
 # Run from the repo root: Rscript application/04_models_covariates.R   (about 5 min)
 
 suppressMessages({
-  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else library(hotspots)
+  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else
+    if (file.exists("../DESCRIPTION")) devtools::load_all("..", quiet = TRUE) else library(hotcoldESF)
   library(sf); library(glmnet)
 })
 d <- readRDS("application/data/madrid_grid.rds")
@@ -146,26 +147,27 @@ write.csv(oos, file.path(OUT, "madrid_cov_out_of_sample.csv"), row.names = FALSE
 DARK <- "#3C4043"; GREY <- "#9AA0A6"; HOT <- "#D93025"; COLD <- "#2166AC"; LIGHT <- "#E8EAED"
 geom <- st_geometry(grid)
 map <- function(col, main, sub = NULL) {
-  par(mar = c(0.3, 0.3, 3, 0.3))
-  plot(geom, col = col, border = "#DADCE0", lwd = 0.3)
-  plot(st_geometry(d$window), add = TRUE, border = GREY, lwd = 0.8)
-  mtext(main, side = 3, line = 1.4, adj = 0, font = 2, col = DARK, cex = 0.8)
-  if (!is.null(sub)) mtext(sub, side = 3, line = 0.3, adj = 0, col = GREY, cex = 0.68)
+  nl <- if (is.null(sub)) 0 else length(strsplit(sub, "\n")[[1]])
+  par(mar = c(0.2, 0.2, 1.5 + nl * 1.05, 0.2))
+  plot(geom, col = col, border = "#DADCE0", lwd = 0.2)
+  plot(st_geometry(d$window), add = TRUE, border = GREY, lwd = 0.6)
+  mtext(main, side = 3, line = 0.3 + nl * 1.05, adj = 0, font = 2, col = DARK, cex = 1)
+  if (!is.null(sub)) mtext(sub, side = 3, line = 0.3, adj = 0, col = DARK, cex = 0.9, padj = 0)
 }
 labcol <- function(l) ifelse(l == "hot", "#F4A79F", ifelse(l == "cold", "#9EC3E6", "white"))
 show <- c("M1 exposure", "M2 + environment", "M3 + rat reports", "M2 + field variables", "Rats, M2 (comparison)")
-png(file.path(FIG, "madrid_cov_models.png"), 2600, 800, res = 150, pointsize = 10)
-par(mfrow = c(1, 5), oma = c(0, 0, 3.2, 0), family = "sans")
+# figures are drawn at their printed size (17 cm wide, 8 pt text)
+png(file.path(FIG, "madrid_cov_models.png"), width = 6.69, height = 2.2, units = "in", res = 300, pointsize = 8, type = "cairo")
+par(mfrow = c(1, 5), oma = c(0, 0, 0, 0), family = "sans"); par(cex = 1)
 for (nm in show) { h <- fits[[nm]]; s <- summ[summ$model == nm, ]
-  map(labcol(h$labels), nm, sprintf("covariates explain %.0f%%; %d hot, %d cold; hot hold %.0f%%",
+  map(labcol(h$labels), sub(" (comparison)", "", nm, fixed = TRUE), sprintf("explained: %.0f%%\n%d hot, %d cold\nhot hold %.0f%% of reports",
       100 * s$r2_covariates, s$n_hot, s$n_cold, 100 * s$share_reports_in_hot)) }
-mtext("Hot (red) and cold (blue) cells by model; cockroaches April-September 2010-2012, rats all months 2010-2012",
-      outer = TRUE, side = 3, line = 1.5, adj = 0.01, font = 2, col = DARK, cex = 1)
 dev.off()
 
 # coefficient plot: ESF-adjusted coefficient +/- 2 SE, cockroaches; by-year points
-png(file.path(FIG, "madrid_cov_relevance.png"), 1700, 1000, res = 150, pointsize = 10)
-par(mar = c(4.5, 10, 4, 1), family = "sans", col.axis = DARK, col.lab = DARK, fg = GREY, las = 1)
+png(file.path(FIG, "madrid_cov_relevance.png"), width = 5.69, height = 3.3, units = "in", res = 300, pointsize = 8, type = "cairo")
+par(mar = c(3.4, 7, 3.4, 1), family = "sans", col.axis = DARK, col.lab = DARK, fg = GREY, las = 1,
+    mgp = c(2.1, 0.5, 0), tcl = -0.2, cex.axis = 0.9)
 r <- rel[match(colnames(Z2), rel$covariate), ]; k <- nrow(r); yy <- rev(seq_len(k))
 xl <- range(c(r$coef_esf - 2 * r$se_esf, r$coef_esf + 2 * r$se_esf, as.matrix(r[, paste0("coef_", 2010:2013)])))
 plot(NA, xlim = xl, ylim = c(0.5, k + 0.5), yaxt = "n", bty = "n",
@@ -173,11 +175,11 @@ plot(NA, xlim = xl, ylim = c(0.5, k + 0.5), yaxt = "n", bty = "n",
 abline(v = 0, col = DARK); abline(h = yy, col = LIGHT)
 axis(2, at = yy, labels = r$covariate, tick = FALSE)
 for (yr in 2010:2013) points(r[[paste0("coef_", yr)]], yy, pch = 1, col = GREY, cex = 0.9)
-segments(r$coef_esf - 2 * r$se_esf, yy, r$coef_esf + 2 * r$se_esf, yy, col = "#2a78d6", lwd = 2)
-points(r$coef_esf, yy, pch = 16, col = "#2a78d6", cex = 1.3)
-mtext("Covariate effects on cockroach reports (model M2)", side = 3, line = 2, adj = 0, font = 2, col = DARK)
-mtext("Blue: 2010-2012 pooled, ESF-adjusted, +/- 2 SE. Grey circles: each summer 2010-2013 separately.",
-      side = 3, line = 0.8, adj = 0, col = GREY, cex = 0.85)
+segments(r$coef_esf - 2 * r$se_esf, yy, r$coef_esf + 2 * r$se_esf, yy, col = "#2a78d6", lwd = 1.5)
+points(r$coef_esf, yy, pch = 16, col = "#2a78d6", cex = 1.1)
+mtext("Covariate effects on cockroach reports (model M2)", side = 3, line = 1.9, adj = 0, font = 2, col = DARK)
+mtext("Blue: 2010-2012 pooled, ESF-adjusted, +/- 2 SE. Grey circles: each summer separately.",
+      side = 3, line = 0.7, adj = 0, col = DARK, cex = 0.9)
 dev.off()
 
 print(summ, digits = 3); print(round(overlap, 2))

@@ -21,7 +21,8 @@
 # Run from the repo root: Rscript simulation/13_gate_and_cv.R   (resumable)
 
 suppressMessages({
-  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else library(hotspots)
+  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else
+    if (file.exists("../DESCRIPTION")) devtools::load_all("..", quiet = TRUE) else library(hotcoldESF)
   library(parallel)
 })
 CORES <- as.integer(Sys.getenv("CORES", detectCores()))

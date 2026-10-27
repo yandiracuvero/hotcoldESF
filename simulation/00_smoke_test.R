@@ -2,7 +2,7 @@
 # Not the simulation study. It only checks that everything runs and gives a first look.
 # Run from the repo root after devtools::load_all(), or with the package installed.
 
-library(hotspots)
+library(hotcoldESF)
 set.seed(10)
 s <- sim_thomas(k = 20, n_parents = 3, radius = 100, sons = 1000, n_background = 1500)
 cat("n =", length(s$Y), " parent cells:", s$parent_cells, "\n\n")

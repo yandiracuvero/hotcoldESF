@@ -21,7 +21,8 @@
 # Run from the repo root: Rscript application/03_models_exposure.R   (about 5 min)
 
 suppressMessages({
-  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else library(hotspots)
+  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else
+    if (file.exists("../DESCRIPTION")) devtools::load_all("..", quiet = TRUE) else library(hotcoldESF)
   library(sf)
 })
 d <- readRDS("application/data/madrid_grid.rds")

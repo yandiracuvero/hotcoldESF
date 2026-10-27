@@ -89,71 +89,71 @@ lines_l <- c(head(lines_l, -1), "\\bottomrule", "\\end{tabular}")
 lines_l <- gsub("x20", "$\\\\times$20", gsub("x40", "$\\\\times$40", lines_l, fixed = FALSE))
 writeLines(lines_l, "paper/tables/sim_labels.tex")
 
+# ---- figures: drawn at their printed size (17 cm wide, 8 pt text) -------------------------
+FIG_W <- 6.69; PT <- 8                                  # \textwidth of the paper, in inches
+fig_png <- function(file, h) png(file, width = FIG_W, height = h, units = "in", res = 300, pointsize = PT, type = "cairo")
+fig_par <- function() par(family = "sans", col.axis = DARK, col.lab = DARK, fg = GREY, las = 1, tcl = -0.2,
+                          mgp = c(2, 0.45, 0), cex.axis = 0.85, cex.lab = 0.9, mar = c(3, 3.1, 1.6, 0.4), oma = c(0, 0, 0.3, 0), cex = 1)
+short <- c(B = "B: compact clusters", L = "L: large clusters", E = "E: elongated clusters",
+           M = "M: mixed sizes", S = "S: small clusters", K = "K: cold area", U = "U: covariate missing",
+           C = "C: covariate only", N = "N: random points")
+
 # ---- figure 15: ranking ---------------------------------------------------------------------
 RCOL <- c("ESF" = "#2a78d6", "Gi*" = "#eb6834", "LISA + gate" = "#1baf7a",
           "Top residuals" = "#eda100", "Top counts" = "#e87ba4")
 RPCH <- c(16, 15, 17, 18, 4)
 xset <- data.frame(k = c(20, 20, 40, 40), st = c("weak", "strong", "weak", "strong"),
-                   lab = c("20x20\nweak", "20x20\nstrong", "40x40\nweak", "40x40\nstrong"))
-panel_dots <- function(sc, col, methods, cols, pchs, ylab, ylim = c(0, 1), main = scn_lab[sc]) {
+                   lab = c("weak", "strong", "weak", "strong"))
+panel_dots <- function(sc, col, methods, cols, pchs, ylab, ylim = c(0, 1), main = short[sc]) {
   plot(NA, xlim = c(0.6, 4.4), ylim = ylim, xaxt = "n", bty = "n", xlab = "", ylab = ylab)
-  abline(h = pretty(ylim), col = LIGHT); abline(v = 2.5, col = GREY, lty = 3)
+  abline(h = pretty(ylim), col = LIGHT, lwd = 0.6); abline(v = 2.5, col = GREY, lty = 3, lwd = 0.6)
   axis(1, at = 1:4, labels = FALSE)
-  text(1:4, ylim[1] - 0.1 * diff(ylim), xset$lab, xpd = NA, cex = 0.8, col = DARK, adj = c(0.5, 1))
-  off <- seq(-0.24, 0.24, length.out = length(methods))
+  text(1:4, ylim[1] - 0.09 * diff(ylim), xset$lab, xpd = NA, cex = 0.85, col = DARK, adj = c(0.5, 1))
+  text(c(1.5, 3.5), ylim[1] - 0.2 * diff(ylim), c("20\u00d720", "40\u00d740"), xpd = NA, cex = 0.85, col = DARK, adj = c(0.5, 1))
+  off <- seq(-0.26, 0.26, length.out = length(methods))
   for (i in seq_along(methods)) {
     v  <- mapply(function(k, st) get(k, sc, st, methods[i], col), xset$k, xset$st)
     se <- mapply(function(k, st) get(k, sc, st, methods[i], paste0(col, "_se")), xset$k, xset$st)
-    segments(1:4 + off[i], v - 2 * se, 1:4 + off[i], v + 2 * se, col = cols[i], lwd = 1.2)
-    points(1:4 + off[i], v, pch = pchs[i], col = cols[i], cex = 1.3)
+    segments(1:4 + off[i], v - 2 * se, 1:4 + off[i], v + 2 * se, col = cols[i], lwd = 0.8)
+    points(1:4 + off[i], v, pch = pchs[i], col = cols[i], cex = 0.9)
   }
-  mtext(main, side = 3, line = 0.6, adj = 0, font = 2, col = DARK, cex = 0.85)
+  mtext(main, side = 3, line = 0.4, adj = 0, font = 2, col = DARK, cex = 1)
 }
-png("simulation/figures/fig15_full_ranking.png", 2600, 1500, res = 150, pointsize = 10)
-layout(rbind(1:4, 5:8, 9), heights = c(1, 1, 0.16))
-par(family = "sans", col.axis = DARK, col.lab = DARK, fg = GREY, las = 1, tcl = -0.25,
-    mgp = c(2.4, 0.6, 0), oma = c(0, 0, 4, 0), mar = c(4.5, 4, 2.4, 1))
+legend_row <- function(cols, pchs) {
+  par(mar = c(0, 0, 0, 0)); plot.new()
+  legend("center", names(cols), col = cols, pch = pchs, horiz = TRUE, bty = "n", text.col = DARK, cex = 0.95,
+         x.intersp = 0.6, text.width = NA)
+}
+fig_png("simulation/figures/fig15_full_ranking.png", 4.3)
+layout(rbind(1:4, 5:8, 9), heights = c(1, 1, 0.16)); fig_par()
 for (sc in sc_cl) panel_dots(sc, "top_precision", names(RCOL), RCOL, RPCH, "Precision (top 5%)")
-# 8th panel: clusters with a cell in the top 5%, scenario M and S (small clusters matter here)
-panel_dots("S", "clusters_top", names(RCOL), RCOL, RPCH, "Share of clusters",
-           main = "S: clusters with a cell in the top 5%")
-par(mar = c(0, 0, 0, 0)); plot.new()
-legend("center", names(RCOL), col = RCOL, pch = RPCH, horiz = TRUE, bty = "n", cex = 1.05, text.col = DARK)
-mtext("Precision of the top 5% of cells (share inside a true cluster), by scenario", outer = TRUE, side = 3,
-      line = 2.2, adj = 0.01, font = 2, col = DARK, cex = 1.05)
-mtext("Mean over replicates (100 on 20x20, 50 on 40x40); bars: +/- 2 Monte Carlo standard errors. The three Gi* versions share the same ranking.",
-      outer = TRUE, side = 3, line = 0.9, adj = 0.01, col = GREY, cex = 0.8)
+# 8th panel: scenario S, share of clusters with a cell in the top 5%
+panel_dots("S", "clusters_top", names(RCOL), RCOL, RPCH, "Share of clusters", main = "S: clusters found")
+legend_row(RCOL, RPCH)
 dev.off()
 
 # ---- figure 16: labels -------------------------------------------------------------------
 LCOL <- c("ESF" = "#2a78d6", "Gi*" = "#e87ba4", "Gi* + gate" = "#eb6834",
           "Gi* + gate + FDR" = "#eda100", "LISA + gate" = "#1baf7a")
 LPCH <- c(16, 4, 15, 18, 17)
-sc6 <- c("B", "L", "E", "M", "S", "K")
-png("simulation/figures/fig16_full_labels.png", 2600, 1900, res = 150, pointsize = 10)
-layout(rbind(1:4, 5:8, 9:12, 13), heights = c(1, 1, 1, 0.14))
-par(family = "sans", col.axis = DARK, col.lab = DARK, fg = GREY, las = 1, tcl = -0.25,
-    mgp = c(2.4, 0.6, 0), oma = c(0, 0, 4, 0), mar = c(4.5, 4, 2.4, 1))
-for (sc in c("B", "L", "M", "S")) panel_dots(sc, "hot_precision", names(LCOL), LCOL, LPCH, "Share",
-                                             main = paste0(scn_lab[sc], ": hot cells inside a cluster"))
-for (sc in c("B", "L", "M", "S")) panel_dots(sc, "hot_sensitivity", names(LCOL), LCOL, LPCH, "Share",
-                                             main = paste0(scn_lab[sc], ": cluster cells labelled hot"))
+fig_png("simulation/figures/fig16_full_labels.png", 6.2)
+layout(rbind(1:4, 5:8, 9:12, 13), heights = c(1, 1, 1, 0.14)); fig_par()
+for (sc in c("B", "L", "M", "S")) panel_dots(sc, "hot_precision", names(LCOL), LCOL, LPCH, "Hot cells in a cluster")
+for (sc in c("B", "L", "M", "S")) panel_dots(sc, "hot_sensitivity", names(LCOL), LCOL, LPCH, "Cluster cells hot")
 # false hot cells with no clusters (% of cells)
-nul <- data.frame(sc = c("C", "N", "C", "N"), k = c(20, 20, 40, 40), lab = c("C\n20x20", "N\n20x20", "C\n40x40", "N\n40x40"))
-plot(NA, xlim = c(0.6, 4.4), ylim = c(0, 6), xaxt = "n", bty = "n", xlab = "", ylab = "% of cells")
-abline(h = 0:6, col = LIGHT); axis(1, at = 1:4, labels = FALSE)
-text(1:4, -0.6, nul$lab, xpd = NA, cex = 0.8, col = DARK, adj = c(0.5, 1))
-off <- seq(-0.24, 0.24, length.out = length(LCOL))
+nul <- data.frame(sc = c("C", "N", "C", "N"), k = c(20, 20, 40, 40),
+                  lab = c("C", "N", "C", "N"))
+plot(NA, xlim = c(0.6, 4.4), ylim = c(0, 6), xaxt = "n", bty = "n", xlab = "", ylab = "% of map hot")
+abline(h = 0:6, col = LIGHT, lwd = 0.6); axis(1, at = 1:4, labels = FALSE)
+text(1:4, -0.54, nul$lab, xpd = NA, cex = 0.85, col = DARK, adj = c(0.5, 1))
+text(c(1.5, 3.5), -1.2, c("20\u00d720", "40\u00d740"), xpd = NA, cex = 0.85, col = DARK, adj = c(0.5, 1))
+off <- seq(-0.26, 0.26, length.out = length(LCOL))
 for (i in seq_along(LCOL)) points(1:4 + off[i], mapply(function(sc, k) 100 * get(k, sc, "none", names(LCOL)[i], "n_hot") / k^2,
-                                                      nul$sc, nul$k), pch = LPCH[i], col = LCOL[i], cex = 1.3)
-mtext("No clusters: cells labelled hot", side = 3, line = 0.6, adj = 0, font = 2, col = DARK, cex = 0.85)
-panel_dots("K", "cold_precision", names(LCOL), LCOL, LPCH, "Share", main = "K: cold cells inside the cold area")
-panel_dots("K", "cold_sensitivity", names(LCOL), LCOL, LPCH, "Share", main = "K: cold-area cells labelled cold")
-panel_dots("U", "hot_in_cov", names(LCOL), LCOL, LPCH, "Share", main = "U: hot cells in the covariate area")
-par(mar = c(0, 0, 0, 0)); plot.new()
-legend("center", names(LCOL), col = LCOL, pch = LPCH, horiz = TRUE, bty = "n", cex = 1.05, text.col = DARK)
-mtext("Hot and cold labels, by scenario", outer = TRUE, side = 3, line = 2.2, adj = 0.01, font = 2, col = DARK, cex = 1.05)
-mtext("Mean over replicates; bars: +/- 2 Monte Carlo standard errors. U: lower is better (the covariate area is not a hot spot).",
-      outer = TRUE, side = 3, line = 0.9, adj = 0.01, col = GREY, cex = 0.8)
+                                                      nul$sc, nul$k), pch = LPCH[i], col = LCOL[i], cex = 0.9)
+mtext("C, N: no clusters", side = 3, line = 0.4, adj = 0, font = 2, col = DARK, cex = 1)
+panel_dots("K", "cold_precision", names(LCOL), LCOL, LPCH, "Cold cells in cold area")
+panel_dots("K", "cold_sensitivity", names(LCOL), LCOL, LPCH, "Cold area labelled cold")
+panel_dots("U", "hot_in_cov", names(LCOL), LCOL, LPCH, "Hot cells in covariate area")
+legend_row(LCOL, LPCH)
 dev.off()
 message("written: 17_summary.csv, sim_ranking.tex, sim_labels.tex, fig15, fig16")

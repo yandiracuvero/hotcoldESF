@@ -18,7 +18,8 @@
 # much faster on a Mac with more cores)
 
 suppressMessages({
-  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else library(hotspots)
+  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else
+    if (file.exists("../DESCRIPTION")) devtools::load_all("..", quiet = TRUE) else library(hotcoldESF)
   library(parallel)
 })
 NREP  <- as.integer(Sys.getenv("NREP", 10))

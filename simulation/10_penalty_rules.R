@@ -24,7 +24,8 @@
 # Run from the repo root: Rscript simulation/10_penalty_rules.R   (resumable)
 
 suppressMessages({
-  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else library(hotspots)
+  if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else
+    if (file.exists("../DESCRIPTION")) devtools::load_all("..", quiet = TRUE) else library(hotcoldESF)
   library(parallel)
 })
 CORES <- as.integer(Sys.getenv("CORES", detectCores()))-2
@@ -72,7 +73,7 @@ run_job <- function(j) {
     set.seed(seed + 100 * v)
     t0 <- Sys.time()
     h <- hot_cold_map(s$Y, s$Z, s$A, nperm = j$nperm, a = va$a, penalty = va$penalty,
-                      mc_min = if (va$cand == "all") NULL else 0.25)
+                      mc_min = if (va$cand == "all") NULL else 0.25, fit_type = "lasso")
     hot <- which(h$labels == "hot")
     data.frame(label = va$label, cand = va$cand,
                lambda = if (is.null(h$lambda)) NA else h$lambda,

@@ -12,7 +12,8 @@
 #
 # Run from the repo root: Rscript simulation/09_example_maps.R   (about 1 min)
 
-suppressMessages(if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else library(hotspots))
+suppressMessages(if (file.exists("DESCRIPTION")) devtools::load_all(".", quiet = TRUE) else
+    if (file.exists("../DESCRIPTION")) devtools::load_all("..", quiet = TRUE) else library(hotcoldESF))
 dir.create("simulation/figures", showWarnings = FALSE)
 GREY <- "#9AA0A6"; DARK <- "#3C4043"; LIGHT <- "#DADCE0"; ACCENT <- "#1A73E8"; WARM <- "#D93025"; COLD <- "#2166AC"
 
@@ -43,7 +44,7 @@ for (e in seq_len(nrow(examples))) {
   n <- k^2; m <- round(0.05 * n)
   X0 <- cbind(1, scale(s$Z))
   res <- lm.fit(X0, as.numeric(scale(log1p(s$Y))))$residuals
-  h <- hot_cold_map(s$Y, s$Z, s$A, nperm = nperm)
+  h <- hot_cold_map(s$Y, s$Z, s$A, nperm = nperm, penalty = "z", mc_min = NULL, fit_type = "lasso")
   gi <- local_gi_star(res, s$A); li <- local_moran(res, s$A)
   hot_gi <- which(gi > qnorm(0.95)); hot_li <- which(li$quad == "HH" & li$p < 0.05)
   top_esf <- rank_cells(h, "R2")[1:m]; top_gi <- order(-gi)[1:m]
