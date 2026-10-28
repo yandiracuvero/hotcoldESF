@@ -54,8 +54,12 @@ dataset and `vignette("madrid")` on the Madrid data.
 | `paper/` | LaTeX source of the paper |
 | `docs/` | notes, including `cran-submission.md` |
 
-The large raw covariate file (`application/data/TODO_MADRID119m.txt`, 103 MB) is not
-in the repository; `application/00_clean_covariates.R` describes how it is processed.
+Two raw files are not in the repository: the covariate database
+(`application/data/TODO_MADRID119m.txt`, 103 MB; `application/00_clean_covariates.R`
+describes how it is processed) and the point-level reports
+(`application/data/RC_Madrid_Year_Month_Week.csv`), which hold the exact location of each
+citizen report and are not distributed. The package and the repository contain only
+counts per cell.
 
 ## Data
 

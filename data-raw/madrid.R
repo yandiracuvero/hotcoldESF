@@ -1,7 +1,10 @@
 # Build the datasets madrid, madrid_A and madrid_boundary ----------------------------------
 # Run from the root of the paper repository (it reads application/data/), with the
 # package source as working copy:  Rscript data-raw/madrid.R
-# Needs sf and spdep (not package dependencies). Same 1 km grid, counts and cell
+# Needs sf, spdep (not package dependencies) and the point-level reports
+# application/data/RC_Madrid_Year_Month_Week.csv, which are NOT distributed (exact
+# locations of citizen reports); only the counts per cell go into the package.
+# Same 1 km grid, counts and cell
 # covariates as application/05_final_application.R.
 suppressMessages({ library(sf); library(spdep) })
 APP <- Sys.getenv("APP_DATA", "application/data")
