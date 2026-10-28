@@ -19,10 +19,14 @@ Description: Maps hot and cold spots of area-level counts after adjusting for
     component is then estimated by eigenvector spatial filtering with a ridge
     penalty chosen by cross-validation, each area is labelled hot, cold or
     neutral with a permutation band, and the areas are ordered into a priority
-    list. Getis-Ord Gi* and local Moran's I are included as benchmarks.
+    list. Getis-Ord Gi* and local Moran's I are included as benchmarks. The
+    package includes cockroach and rat reports in Madrid on a 1 km grid.
 License: MIT + file LICENSE
+URL: https://github.com/yandiracuvero/hotcoldESF
+BugReports: https://github.com/yandiracuvero/hotcoldESF/issues
 Encoding: UTF-8
 Language: en-GB
+LazyData: true
 Depends:
     R (>= 4.0.0)
 Imports:

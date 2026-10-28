@@ -12,3 +12,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^cran-comments\.md$
+^data-raw$
+^README\.Rmd$

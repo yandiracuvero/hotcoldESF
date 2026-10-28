@@ -1,63 +1,74 @@
-# hotspots
+# hotcoldESF
 
-The clean project for the paper *Reconstructing latent spatial relationships in urban pests to control for potential public health risks* (resubmission to SERRA).
+<!-- badges: start -->
+<!-- badges: end -->
 
-The repository root is also an R package (`hotcoldESF`). The simulation, the application and the paper all use **one** algorithm, described in `docs/algorithm.md`.
+**hotcoldESF** maps covariate-adjusted hot and cold spots of area-level counts.
+A hot (cold) spot is an area with more (fewer) events than its covariates predict,
+and with neighbours that share this excess. The procedure
 
-```
-Hotspot/
-├── README.md          this file
-├── DESCRIPTION        R package metadata (hotcoldESF; dependencies: glmnet, igraph)
-├── NAMESPACE
-├── R/                 the package code: the single implementation of the algorithm
-│   ├── moran.R          Moran's I for regression residuals (exact moments)
-│   ├── esf.R            ESF(D): MI-Lasso selection, post-Lasso fit, reconstruct_B()
-│   ├── rounding.R       rounding rules: none, quantile, mixture, permutation
-│   ├── find_hotspots.R  main algorithm (Steps 0-4) + hot/cold labels + zones
-│   ├── rank.R           priority lists R0-R3 and baseline B0 (Step 5)
-│   └── simulate.R       queen grid, modified Thomas process, SAR on a latent graph
-├── tests/testthat/    unit tests (nesting, termination, sign invariance, ...)
-├── docs/              algorithm spec, decisions, notes
-├── simulation/        simulation study scripts and results
-├── application/       Madrid cockroach application
-├── paper/             LaTeX source of the resubmission + response letter
-└── archive/           pointers to old code (originals stay in 02SepTest)
-```
+1. tests the residuals of a regression on the covariates for spatial autocorrelation
+   (Moran's I with its exact moments) and stops if there is none;
+2. estimates the spatial component by eigenvector spatial filtering, with the smooth
+   eigenvectors of the contiguity matrix and a ridge penalty chosen by cross-validation;
+3. labels each area hot, cold or neutral with a permutation band;
+4. groups hot and cold areas into zones and orders the areas into a priority list.
 
-## How to use it (in RStudio, from this folder)
+This repository also contains the simulation study, the application to cockroach
+reports in Madrid, and the LaTeX source of the paper that introduces the method.
 
-The package is called `hotcoldESF` (the name `hotspots` is already taken on CRAN).
+## Installation
 
 ```r
-devtools::load_all()          # load the package without installing
-devtools::test()              # run the unit tests
-devtools::check()             # R CMD check
-
-s <- sim_thomas(k = 20, n_parents = 3, radius = 100, sons = 200,
-                n_background = 2000, n_cov = 3000)
-h <- hot_cold_map(s$Y, s$Z, s$A)   # defaults = the procedure of the paper
-h                                   # summary
-rank_cells(h)[1:20]                 # top-20 cells of the priority list
+# install.packages("remotes")
+remotes::install_github("yandiracuvero/hotcoldESF", build_vignettes = TRUE)
 ```
 
-The functions of the earlier graph reconstruction (`find_hotspots()`, the `round_*()` rules,
-`reconstruct_B()`) are no longer exported; they stay in `R/` so that the appendix scripts can
-be rerun with `devtools::load_all()`.
+## Example
 
-## Plan and status
+```r
+library(hotcoldESF)
 
-- [x] Steps 1-3c: algorithm written down, core functions + tests, small tests, signal test, latent-graph test (the reconstruction does not recover W*: moved to an appendix)
-- [x] Step 4: one-pass hot/cold map with a permutation band; Gi*/LISA benchmarks (`docs/step4_hotcold.md`)
-- [x] Steps 5-7: penalty choice (ridge, smooth eigenvectors, CV), Moran gate, cluster shapes (`docs/step5*`-`step7*`)
-- [x] Step 8: full simulation study, 2400 datasets (`simulation/17_full_study.R`, `docs/step8_full_study.md`)
-- [x] Step 9: gate checks (`docs/step9_gate.md`)
-- [x] Steps 10-12: Madrid application; nested models (exposure, environment, rat reports); covariate relevance (`application/`, `docs/step10*`-`step12*`)
-- [ ] Open data questions: D_GatoOK vs D_Gatos; units of Densidad; deduplication of repeated reports
-- [ ] Grid-size sensitivity (500 m, 1 km, 2 km) for the Madrid models
-- [ ] Revise the paper + point-by-point response (manuscript number, tracked changes)
+# cockroach reports in Madrid, summers 2010-2012, 1 km cells
+Y <- with(madrid, cockroaches_2010 + cockroaches_2011 + cockroaches_2012)
+Z <- with(madrid, cbind(log_residential = log1p(residential), density,
+                        log_area = log(area), dist_green, green_area, year_built,
+                        dist_water, dist_fountain, dist_cat, unemployment))
+set.seed(2026)
+h <- hot_cold_map(Y, Z, madrid_A)
+h                      # 68 hot and 61 cold cells
+rank_cells(h)[1:25]    # priority list for a budget of 25 cells
+```
 
-## Where the old code is
+Two vignettes walk through the method: `vignette("hotcoldESF")` on a simulated
+dataset and `vignette("madrid")` on the Madrid data.
 
-The originals are untouched in `~/Documents/UJI/02SepTest`:
-`Codigo/50Location.Rmd` (application), `Paquete/old/R` (first package + simulation),
-`Paquete/SpatialStructure` (new package skeleton), and `CodigoV1`–`V5` (older versions).
+## Repository contents
+
+| Folder | Contents |
+|---|---|
+| `R/`, `man/`, `tests/`, `vignettes/`, `data/` | the R package |
+| `data-raw/` | how the package datasets are built from `application/data/` |
+| `simulation/` | simulation study: scripts, results and figures |
+| `application/` | Madrid application: scripts, results and figures |
+| `paper/` | LaTeX source of the paper |
+| `docs/` | notes, including `cran-submission.md` |
+
+The large raw covariate file (`application/data/TODO_MADRID119m.txt`, 103 MB) is not
+in the repository; `application/00_clean_covariates.R` describes how it is processed.
+
+## Data
+
+The Madrid reports were collected by the Technical Unit for Vector Control of the
+municipality of Madrid; the covariates come from the database of Tamayo-Uría et al.
+(2013). See `?madrid` for the sources and the processing.
+<!-- TODO: data licence (to agree with the co-authors) -->
+
+## Licence
+
+Code: MIT (see `LICENSE`).
+<!-- TODO: data licence -->
+
+## Authors
+
+Yandira Cuvero, Rowan Cherodian, Jorge Mateu, Carlos Almeida.

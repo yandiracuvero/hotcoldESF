@@ -1,13 +1,17 @@
 1se
+30N
 Anselin
 B0
 Barde
+EPSG
 ESF
+ETRS89
 Getis
 Gi
 HH
 HL
 LH
+M2
 ORCID
 R0
 R1
@@ -29,6 +33,7 @@ gi
 glmnet
 hotcold
 ids
+madrid
 mc
 moran
 nb2mat

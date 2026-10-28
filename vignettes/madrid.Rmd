@@ -1,0 +1,109 @@
+---
+title: "Cockroach hot spots in Madrid"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Cockroach hot spots in Madrid}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 7, fig.height = 3.8,
+                      fig.align = "center", dpi = 96)
+```
+
+This vignette reproduces the main map of the application in the package's paper:
+cockroach hot and cold spots in Madrid, summers 2010--2012, on a 1 km grid,
+after adjusting for exposure and environmental covariates (model M2).
+
+```{r}
+library(hotcoldESF)
+dim(madrid)
+```
+
+`madrid` has one row per cell, with the reports per year and the covariates;
+`madrid_A` is the queen contiguity matrix of the cells, and `madrid_boundary` the
+outline of the city (see `?madrid`).
+
+## Reports and covariates
+
+We pool the cockroach reports of the summers (April--September) of 2010, 2011 and
+2012, and keep 2013 to check the priority list later.
+
+```{r data}
+Y <- with(madrid, cockroaches_2010 + cockroaches_2011 + cockroaches_2012)
+sum(Y)
+```
+
+Reports depend on how many people live in a cell and can see a pest. The model
+therefore includes exposure (number of residential address points, population
+density, cell area) and the environmental risk factors (green areas, age of the
+buildings, water, drinking fountains, cat-feeding points, unemployment).
+
+```{r covariates}
+Z <- with(madrid, cbind(log_residential = log1p(residential), density,
+                        log_area = log(area), dist_green, green_area, year_built,
+                        dist_water, dist_fountain, dist_cat, unemployment))
+summary(lm(log1p(Y) ~ Z))$r.squared
+```
+
+The covariates explain most of the variation of the log counts. The question is
+where the rest is concentrated.
+
+## Hot and cold spots
+
+```{r fit}
+set.seed(2026)
+h <- hot_cold_map(Y, Z, madrid_A)
+h
+```
+
+A helper draws the cells as 1 km squares inside the city outline.
+
+```{r helper}
+draw <- function(col, main) {
+  plot(NA, xlim = range(madrid$x) + c(-500, 500), ylim = range(madrid$y) + c(-500, 500),
+       asp = 1, axes = FALSE, xlab = "", ylab = "", main = main, font.main = 1, cex.main = 0.9)
+  rect(madrid$x - 500, madrid$y - 500, madrid$x + 500, madrid$y + 500, col = col, border = "white", lwd = 0.3)
+  for (r in unique(madrid_boundary$ring))
+    with(madrid_boundary[madrid_boundary$ring == r, ], polygon(x, y, border = "grey30"))
+}
+greens <- colorRampPalette(c("#f2f7ee", "#a8d08d", "#4d9a3a", "#1f5f1a"))(100)
+```
+
+```{r maps, fig.height = 3.8}
+op <- par(mfrow = c(1, 2), mar = c(0.5, 0.5, 2, 0.5))
+draw(greens[cut(log1p(Y), 100, labels = FALSE)], "log(1 + reports), summers 2010-2012")
+draw(c(hot = "#e34948", neutral = "#f0efec", cold = "#2a78d6")[as.character(h$labels)],
+     "hot (red) and cold (blue) cells, model M2")
+par(op)
+```
+
+The cells with most reports follow where people live. Once exposure and the
+environment are accounted for, the hot cells form a band across the south-centre
+of the city and an area in the north-centre.
+
+```{r summary}
+c(hot = sum(h$labels == "hot"), cold = sum(h$labels == "cold"),
+  share_of_reports_in_hot_cells = round(sum(Y[h$labels == "hot"]) / sum(Y), 2))
+```
+
+## Priority list and the following summer
+
+If a control campaign can only cover 25 cells, `rank_cells()` gives them: hot cells
+first, ordered by their estimated excess. We check how many of the 2013 reports fall
+in those cells, against the 25 cells with most reports in 2010--2012.
+
+```{r rank}
+top_esf    <- rank_cells(h)[1:25]
+top_counts <- order(-Y)[1:25]
+c(esf = sum(madrid$cockroaches_2013[top_esf]),
+  counts = sum(madrid$cockroaches_2013[top_counts])) / sum(madrid$cockroaches_2013)
+```
+
+Ranking by counts captures more of next year's reports, because reports follow
+exposure, which does not change from one year to the next. The covariate-adjusted
+list targets a different question: where there are more reports than the
+characteristics of the area explain. The paper discusses this trade-off and suggests
+using the hot zones to decide where to act and the counts or residuals to order the
+cells within them.

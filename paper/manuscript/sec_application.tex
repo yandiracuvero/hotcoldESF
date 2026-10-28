@@ -14,7 +14,7 @@ The maps of different summers are very similar (correlation of $\log(1+w)$ per c
 The study region is the union of the Madrid districts, cut to the bounding box of the sightings plus 1 km. We divide it into square cells of 1 km and drop the cells with less than 0.75\% of their area inside the region, which leaves $n=493$ cells with 1798 queen-contiguity edges. The choice of cell size is examined in Section~\ref{sec:app-grid}.
 
 %\paragraph{Covariates.} 
-The covariates come from the database compiled by \citet{tamayo2013identificacion} and used by \citet{tamayo2014risk} and \citet{ayyad2018non}. It records, for each residential address point of the city (about 120\,000), the values of environmental, building and census variables at that location. We removed eight columns that were exact copies of other columns or constant, and computed the value of each covariate in a cell as the mean over the address points in it; the 162 cells without any residential address point (a third of the region, mostly non-residential land) take the mean of their neighbours, and their residential count is zero.
+The covariates come from the database compiled by \citet{tamayo2013identificacion} and used by \citet{tamayo2014risk} and \citet{ayyad2018non}. It records, for each residential address point of the city (about 120\,000), the values of environmental, building and census variables at that location. We computed the value of each covariate in a cell as the mean over the address points in it; thethe 162 cells without any residential address point (a third of the region, mostly non-residential land) take the mean of their neighbours, and their residential count is zero.
 
 We build the model in three nested steps (Table~\ref{tab:app-covariates}):
 \begin{itemize}
@@ -102,6 +102,8 @@ Table~\ref{tab:app-oos} shows the results. Ranking by counts captures the most s
 
 \subsection{Cell size}\label{sec:app-grid}
 
+
+
 The results of an analysis on areal units depend on the size of the units \citep{openshaw1984modifiable}. We repeated the analysis of 2010--2012 with cells of 500 m and 2 km (Table~\ref{tab:app-grid}, Figure~\ref{fig:app-grid}). To compare maps on different grids, we overlay a common lattice of 250 m cells and call a 250 m cell hot for a grid if its centre lies in a hot cell of that grid.
 
 \begin{table}[ht]
@@ -120,10 +122,12 @@ Cell size & Cells & reports & (M1 / M2 / M3) & (M2) & (M2) & cells (M2) \\
 \end{tabular}
 \end{table}
 
-The test of Step~1 rejects for every cell size and model, although with 2 km cells the evidence under M3 is weak ($z_0=2.1$). Larger cells label a larger share of the city hot (9\%, 14\% and 22\% with M2). The main zones, the south-central band and the north-central area, appear at all three sizes, but their extent changes: the Jaccard index between the hot areas is 0.29 for 500 m and 1 km, 0.35 for 1 km and 2 km, and 0.25 for 500 m and 2 km. The cell size should therefore be chosen with the intervention in mind: a 1 km cell is a manageable unit for a control campaign in a city of this size, and finer cells locate the excess more precisely but contain fewer reports each (65\% of the 500 m cells have none).
-
-\begin{figure}[H]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\textwidth]{final_grid_sizes.png}
+\includegraphics[width=0.75\textwidth]{final_grid_sizes.png}
 \caption{Hot and cold cells for cockroach reports, 2010--2012, with cells of 500 m, 1 km and 2 km (columns) and models M1--M3 (rows).}\label{fig:app-grid}
 \end{figure}
+
+The test of Step~1 rejects for every cell size and model, although with 2 km cells the evidence under M3 is weak ($z_0=2.1$). Larger cells label a larger share of the city hot (9\%, 14\% and 22\% with M2). The main zones, the south-central band and the north-central area, appear at all three sizes, but their extent changes: the Jaccard index between the hot areas is 0.29 for 500 m and 1 km, 0.35 for 1 km and 2 km, and 0.25 for 500 m and 2 km. The cell size should therefore be chosen with the intervention in mind: a 1 km cell is a manageable unit for a control campaign in a city of this size, and finer cells locate the excess more precisely but contain fewer reports each (65\% of the 500 m cells have none).
+
+

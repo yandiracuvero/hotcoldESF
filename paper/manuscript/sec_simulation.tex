@@ -2,7 +2,7 @@
 \section{Simulation study}\label{sec:sim}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section we test the procidure Algorithm~\ref{alg:hotcold}, identify its characteristics, properties, and also compare it  with standard hot-spot methods on data where the true hot and cold areas are known. All code is available in the package repository called \texttt{hotcoldESF} \todo{link}. \footnote{In order to create the link, I need to know if the data can be shared publicly or not. Jorge, can I share it? If not, a summarized version of the data can be uplated which will allow reviewers to see the code without sharing the original data. }
+In this section we test procedure in Algorithm~\ref{alg:hotcold}, identify its characteristics, properties, and also compare it  with standard hot-spot methods on data where the true hot and cold areas are known. All code is available in the package repository called \texttt{hotcoldESF} \todo{link}. 
 %, and to check the choices of Section~\ref{sec:rationale}. 
 
 \subsection{Design}\label{sec:sim-design}
@@ -105,7 +105,7 @@ The distribution of $\hat f_i$ under no spatial structure depends on the covaria
 \end{enumerate}
 
 % Not tied to a line of the algorithm: it concerns a procedure that is no longer used.
-\paragraph{Iterative reconstruction.} The iterative reconstruction of the spatial graph and the ranking by harmonic centrality are evaluated in Appendix~\ref{app:reconstruction}. They did not improve the precision of the priority list and, without hot/cold labels, about half of the top-ranked cells were cold.
+%\paragraph{Iterative reconstruction.} The iterative reconstruction of the spatial graph and the ranking by harmonic centrality are evaluated in Appendix~\ref{app:reconstruction}. They did not improve the precision of the priority list and, without hot/cold labels, about half of the top-ranked cells were cold.
 
 \subsection{Simulation results}\label{sec:sim-results}
 

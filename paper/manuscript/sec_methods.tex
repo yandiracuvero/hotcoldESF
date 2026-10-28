@@ -12,7 +12,7 @@ Let $y_i$ be the standardised value of $\log(1+w_i)$,  the matrix of standardise
 \end{equation}
 where $\beta \in  \mathbb{R}^{k+1}$ are the covariate effects, $f=(f_1,\dots,f_n)^\top \in  \mathbb{R}^{n}$ is a spatially structured component and $\varepsilon \in  \mathbb{R}^{n}$ is unstructured noise. The component $f$ collects the variation in events that the covariates do not explain and that is shared by neighbouring cells. We define a \emph{hot spot} as a cell with $f_i>0$ and a \emph{cold spot} as a cell with $f_i<0$, in both cases, when $f_i$ is larger in absolute value than what spatially unstructured noise would produce.
 
-In order to determine the hot spots of region $R$ we consider a procedure with four steps: a test for residual spatial structure, an estimate of $f$ by eigenvector spatial filtering, a permutation band that labels each cell as hot, cold or neutral, and the construction of zones and of a priority list. Algorithm~\ref{alg:hotcold} summarises it. Figure~\ref{fig:algorithm} illustrates the procedure on a simulated dataset.
+In order to determine the hot spots of region $R$ we consider a procedure with four steps: a test for residual spatial structure, an estimate of $f$ by eigenvector spatial filtering, a permutation band that labels each cell as hot, cold or neutral, and the construction of zones and of a priority list. Algorithm~\ref{alg:hotcold} summarises it. Figure~\ref{fig:algorithm} illustrates the procedure on a simulated dataset. An outline of the steps is as follows.
 
 \begin{figure}[t]
 \centering
@@ -28,10 +28,10 @@ Consider the regression model without the spatial component, that is, model~\eqr
 \begin{equation}\label{eq:regresion}
    y = X\beta + \varepsilon,
 \end{equation}
-where 
+and set 
 $
 M_X = I - X(X^\top X)^{-1}X^\top,
-$ and
+$ then,
 $
   u = y - X\hat\beta_{\mathrm{OLS}} = M_X y
 $
@@ -53,7 +53,7 @@ If the one-sided $p$-value of $z_0$ is larger than $\alpha$ (we use $\alpha=0.05
 
 %Eigenvector spatial filtering (ESF) represents spatial patterns as linear combinations of the eigenvectors of the adjacency matrix \citep{grif2000,grif03,tg07}. 
 
-Let $E=(e_1,\dots,e_n)$ orthonormal eigenvectors and $\Delta=\operatorname{diag}(\delta_1\ge\dots\ge\delta_n)$ eigenvalues of $A$ so that $A=E\Delta E^\top$. 
+Let $E=(e_1,\dots,e_n)$ be the orthonormal eigenvectors and $\Delta=\operatorname{diag}(\delta_1\ge\dots\ge\delta_n)$ the eigenvalues of $A$ so that $A=E\Delta E^\top$. 
 %
 %
 %The eigenvector $e_j$ is a map over the cells, and its Moran's $I$ is proportional to $\delta_j$: eigenvectors with large positive eigenvalues are smooth patterns at broad scales, eigenvectors with eigenvalues near zero or negative alternate between neighbouring cells.
@@ -88,7 +88,7 @@ Let  $b\in\{1,\dots,B\}$ and $\Pi_b$ a random permutation matrix. Following \cit
 \begin{equation}\label{eq:smoother}
   \hat f = S y, \qquad S = \Bigl(I-\tfrac{1}{n}\mathbf{1}\mathbf{1}^\top\Bigr)E_{\mathcal{C}}\bigl(E_{\mathcal{C}}^\top M_X E_{\mathcal{C}}+n\lambda I\bigr)^{-1}E_{\mathcal{C}}^\top M_X ,
 \end{equation}
-and $SX=0$ because $M_XX=0$. (The \texttt{glmnet} package standardises the columns before penalising, which changes the scale of $\lambda$; since the candidate eigenvectors have unit norm and mean close to zero, $S$ keeps the form~\eqref{eq:smoother} up to this rescaling, and our implementation uses the exact \texttt{glmnet} version.) Hence $\hat f^{(b)}=S\,\Pi_b u$: the refit does not need to be carried out, and the whole band is obtained from one $n\times n$ matrix $S$ applied to the $B$ permuted residual vectors. 
+and $SX=0$ because $M_XX=0$. The \texttt{glmnet} package standardises the columns before penalising, which changes the scale of $\lambda$; since the candidate eigenvectors have unit norm and mean close to zero, $S$ keeps the form~\eqref{eq:smoother} up to this rescaling, and our implementation uses \texttt{glmnet} 4.1-8, with \texttt{R} 4.3.3 (2024-02-29) and \texttt{igraph 1.6.0}. Hence $\hat f^{(b)}=S\,\Pi_b u$: the refit does not need to be carried out, and the whole band is obtained from one $n\times n$ matrix $S$ applied to the $B$ permuted residual vectors. 
 
 %We comparevalues the values of $\hat f_i$ with their
 %distribution under the null hypothesis $H_0\!: f=0$ of model~\eqref{eq:regresion},
@@ -121,7 +121,7 @@ of a tail probability of $0.05$ is about $0.007$. With smaller values the band i
 Hot (cold) zones are the connected components of the hot (cold) cells in the graph of $A$. When resources are limited to $m$ cells, cells are ranked by their estimated excess: first the hot cells by decreasing $\hat f_i$, then the remaining cells by decreasing $\hat f_i$. Since $y$ is the standardised logarithm of the counts, $\hat f_i$ is measured in standard deviations of $\log(1+w_i)$: a value of $0.5$ means that the cell and its neighbourhood have about half a standard deviation more log sightings than the covariates predict.
 \end{enumerate}
 
-All the steps are summarized in Algorithm~\ref{alg:hotcold}.
+All the steps are summarised in Algorithm~\ref{alg:hotcold}.
 
 \begin{algorithm}[ht]
 \caption{Covariate-adjusted hot and cold spots}\label{alg:hotcold}

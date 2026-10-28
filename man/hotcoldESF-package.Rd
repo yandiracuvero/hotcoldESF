@@ -14,14 +14,22 @@ labels each area hot, cold or neutral with a permutation band.
 [local_moran()] compute the usual local statistics, and [sim_thomas()]
 simulates clustered data on a grid for testing.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/yandiracuvero/hotcoldESF}
+  \item Report bugs at \url{https://github.com/yandiracuvero/hotcoldESF/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Yandira Cuvero \email{yandira.cuvero@gmail.com}
 
 Authors:
 \itemize{
-  \item Rowan Cherodian
-  \item Jorge Mateu
-  \item Carlos Almeida
+  \item Rowan Cherodian (\href{https://orcid.org/0000-0002-8951-7932}{ORCID})
+  \item Jorge Mateu (\href{https://orcid.org/0000-0002-2868-7604}{ORCID})
+  \item Carlos Almeida (\href{https://orcid.org/0000-0002-7301-963X}{ORCID})
 }
 
 }
