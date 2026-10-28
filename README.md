@@ -1,6 +1,7 @@
 # hotcoldESF
 
 <!-- badges: start -->
+[![DOI](https://zenodo.org/badge/1436450097.svg)](https://doi.org/10.5281/zenodo.23717892)
 <!-- badges: end -->
 
 **hotcoldESF** maps covariate-adjusted hot and cold spots of area-level counts.
@@ -72,6 +73,15 @@ municipality of Madrid; the covariates come from the database of Tamayo-Uría et
 
 Code: MIT (see `LICENSE`).
 <!-- TODO: data licence -->
+
+## Citation
+
+Cuvero, Y., Cherodian, R., Mateu, J. and Almeida, C. (2026). hotcoldESF: Covariate-Adjusted Hot and
+Cold Spots by Eigenvector Spatial Filtering, version 0.1.0. Zenodo.
+https://doi.org/10.5281/zenodo.23717893
+
+The DOI above is for version 0.1.0; https://doi.org/10.5281/zenodo.23717892 always points to the
+latest version.
 
 ## Authors
 
