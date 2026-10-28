@@ -26,3 +26,6 @@ inst/doc
 
 # Copies of files delivered in the Claude app
 paper/manuscript/Claude outputs/
+
+# Point-level reports (exact locations of citizen reports): never commit or publish
+application/data/RC_Madrid_Year_Month_Week.csv
